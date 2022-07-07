@@ -60,4 +60,3 @@ CREATE TABLE inbox(
     thread_id INTEGER,
     foreign key(thread_id) references threads(thread_id)
 );
-
