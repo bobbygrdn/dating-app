@@ -500,4 +500,4 @@ insert into users (username, first_name, last_name, email, password, profile_pic
 insert into users (username, first_name, last_name, email, password, profile_pic_url, age, height, body_type, gender, sexual_orientation, city, state, zipcode, bio) values ('gwolseleydv', 'Gui', 'Wolseley', 'gwolseleydv@examiner.com', 'y9iNMaZin0dE', 'https://robohash.org/debitisexplicabocum.png?size=200x250&set=set1', 80, 59, 'XL', 'Female', 'Transsexual', 'Syracuse', 'New York', '13205', 'vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend');
 
 
-\i pendingConnectionSeed.sql
+\i pendingConnectionsSeed.sql
