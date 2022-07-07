@@ -498,3 +498,5 @@ insert into pending_connections (requesting_user_id, liked_user_id) values (36, 
 insert into pending_connections (requesting_user_id, liked_user_id) values (40, 35);
 insert into pending_connections (requesting_user_id, liked_user_id) values (41, 43);
 insert into pending_connections (requesting_user_id, liked_user_id) values (27, 22);
+
+\i messagesSeed.sql
