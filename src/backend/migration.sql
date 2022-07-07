@@ -21,7 +21,7 @@ CREATE TABLE users(
     age NUMERIC,
     height TEXT,
     body_type TEXT,
-    gender VARCHAR(10),
+    gender VARCHAR(15),
     bio TEXT,
     sexual_orientation VARCHAR(20),
     city VARCHAR(85),
