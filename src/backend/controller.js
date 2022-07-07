@@ -32,8 +32,22 @@ const getOneUserById = async (req, res) => {
     }
 }
 
+const getAllPendingConnections = async (_, res) => {
+    try {
+        let client = await pool.connect();
+        let data = await client.query('SELECT * FROM pending_connections');
+        res.json(data.rows)
+        client.release();
+    }
+    catch (error) {
+        console.log(error);
+        res.send(error)
+    }
+}
+
 module.exports = {
     testRoute,
     getAllUsers,
-    getOneUserById
+    getOneUserById,
+    getAllPendingConnections
 }

@@ -23,8 +23,9 @@ app.get('/test', controller.testRoute);
 
 app.get('/api/users', controller.getAllUsers);
 
-app.get('/api/users/:id', controller.getOneUserById)
+app.get('/api/users/:id', controller.getOneUserById);
 
+app.get('/api/pendingconnections', controller.getAllPendingConnections)
 
 
 
