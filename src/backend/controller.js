@@ -45,9 +45,22 @@ const getAllPendingConnections = async (_, res) => {
     }
 }
 
+const getAllMessages = async (_, res) => {
+    try {
+        let client = await pool.connect();
+        let data = await client.query('SELECT * FROM messages');
+        res.json(data.rows);
+        client.release();
+    } catch (error) {
+        console.log(error);
+        res.send(error)
+    }
+}
+
 module.exports = {
     testRoute,
     getAllUsers,
     getOneUserById,
-    getAllPendingConnections
+    getAllPendingConnections,
+    getAllMessages
 }

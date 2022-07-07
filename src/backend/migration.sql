@@ -39,7 +39,8 @@ CREATE TABLE pending_connections(
 CREATE TABLE messages(
     message_id SERIAL PRIMARY KEY,
     content TEXT,
-    date_time_stamp TEXT,
+    date_stamp TEXT,
+    time_stamp TEXT,
     read_receipt BOOLEAN,
     sent_from_user_id INTEGER,
     foreign key(sent_from_user_id) references users(user_id),
