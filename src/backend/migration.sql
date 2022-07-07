@@ -26,7 +26,7 @@ CREATE TABLE users(
     sexual_orientation VARCHAR(20),
     city VARCHAR(85),
     state VARCHAR(50),
-    zipcode VARCHAR(10)
+    zipcode VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE pending_connections(
