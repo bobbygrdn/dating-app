@@ -23,3 +23,6 @@
 
 -Aligning your branch with the main
 1. Run the command 'git pull'
+
+-Branch Naming Conventions
+1. All branches should be names 'feature/[FEATURE NAME]
