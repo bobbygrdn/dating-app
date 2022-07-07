@@ -2,9 +2,11 @@
 1. Run the command 'git clone [REPO URL]'
 2. Create branch using the command 'git checkout -b [feature/BRANCH NAME]
 3. Commit changes by using the command 'git add .', 'git commit -m "[COMMENT]"'
+4. Switch branches using the command 'git checkout main'
+5. Run the command 'git push origin main'
 
 -Creating a Pull Request
-1. Under the project repo, find and select your branch
+1. Under the project repo, find and select your branch or follow the Git link it creates
 2. Under the 'Contribute' tab click the arrow and hit the 'Open pull request' button
 3. Type in a comment and hit 'Create pull request'
 4. Once the request is made, have a teammate look over your code and comment as necessary
