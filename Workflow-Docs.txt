@@ -1,0 +1,20 @@
+-Cloning Repository and Creating Branch
+1. Run the command 'git clone [REPO URL]'
+2. Create branch using the command 'git checkout -b [feature/BRANCH NAME]
+3. Commit changes by using the command 'git add .', 'git commit -m "[COMMENT]"'
+
+-Creating a Pull Request
+1. Under the project repo, find and select your branch
+2. Under the 'Contribute' tab click the arrow and hit the 'Open pull request' button
+3. Type in a comment and hit 'Create pull request'
+4. Once the request is made, have a teammate look over your code and comment as necessary
+5. Once your code has been reviewed make any necessary changes
+6. Open your pull request and hit the 'merge branch' button
+7. The project repo is now up-to-date with your changes
+
+-Deleting Branches Locally
+1. Run the command 'git checkout main' (This will switch you to the main branch)
+2. Run the command 'git branch -d [BRANCH NAME]'
+
+-Checking Branches Locally
+1. Run the command 'git branch'
