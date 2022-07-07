@@ -20,3 +20,6 @@
 
 -Checking Branches Locally
 1. Run the command 'git branch'
+
+-Aligning your branch with the main
+1. Run the command 'git pull'
