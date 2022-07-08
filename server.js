@@ -9,10 +9,8 @@ const path = require('path');
 
 const PORT = process.env.PORT || 8000;
 
-
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static('build'))
-}
+app.use(express.json());
+app.use(express.static('build'))
 
 app.listen(PORT, (err) => {
     if (err) return console.log(err);
@@ -25,14 +23,13 @@ app.get('/api/users', controller.getAllUsers);
 
 app.get('/api/users/:id', controller.getOneUserById);
 
-app.get('/api/pendingconnections', controller.getAllPendingConnections)
+app.get('/api/pendingconnections', controller.getAllPendingConnections);
 
+app.get('/api/messages', controller.getAllMessages)
 
-
-//! uncomment this route before deploying.
-// app.get('*', (_, res) => {
-//     res.sendFile(path.join(__dirname, '/build/index.html'))
-// });
+app.get('*', (_, res) => {
+    res.sendFile(path.join(__dirname, '/build/index.html'))
+});
 
 app.use((_, res) => {
     res.status(404);
