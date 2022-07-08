@@ -4,12 +4,10 @@ const express = require("express");
 const app = express();
 const cors = require('cors')
 
-const controller = require("./src/backend/controller");
+// const controller = require("./src/backend/controller");
 
 const path = require("path");
 const pool = require("./src/backend/connection");
-
-const path = require('path');
 
 const PORT = process.env.PORT || 8000;
 
@@ -23,16 +21,18 @@ app.listen(PORT, (err) => {
   console.log(`Listening on port: ${PORT}`);
 });
 
-//app.get('/test', controller.testRoute);
 
 //GET ALL users;
 app.get("/api/users", async (req, res) => {
   try {
-    controller.connect();
-    const data = await pool.query("SELECT * FROM users;");
-    res.json(data.rows);
-  } catch (err) {
-    console.error(err);
+    let client = await pool.connect();
+    let data = await client.query('SELECT * FROM users');
+    res.json(data.rows)
+    client.release();
+  }
+  catch (error) {
+    console.log(error);
+    res.send(error)
   }
 });
 
@@ -153,7 +153,7 @@ app.delete("/api/users/:id", async (req, res) => {
       req.params.id,
     ]);
     res.json(data.rows);
-  } catch (err) {}
+  } catch (err) { }
 });
 
 //GET ALL pending_connections;
@@ -189,7 +189,7 @@ app.delete("/api/pending_connections/:id", async (req, res) => {
       [req.params.id]
     );
     res.json(data.rows);
-  } catch (err) {}
+  } catch (err) { }
 });
 
 //GET ALL messages;
@@ -287,7 +287,7 @@ app.delete("/api/messages/:id", async (req, res) => {
       [req.params.id]
     );
     res.json(data.rows);
-  } catch (err) {}
+  } catch (err) { }
 });
 
 app.get("*", (_, res) => {
