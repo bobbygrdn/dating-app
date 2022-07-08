@@ -2,8 +2,10 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
+const cors = require('cors')
 
 const controller = require('./src/backend/controller');
+
 
 const path = require('path');
 
@@ -11,6 +13,8 @@ const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 app.use(express.static('build'))
+
+app.use(cors())
 
 app.listen(PORT, (err) => {
     if (err) return console.log(err);
