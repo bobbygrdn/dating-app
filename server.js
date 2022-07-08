@@ -9,6 +9,7 @@ const path = require('path');
 
 const PORT = process.env.PORT || 8000;
 
+app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static('build'))
