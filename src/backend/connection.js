@@ -6,10 +6,11 @@ const pool = new Pool({
     //add connection string data to the .env file
 
     connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false }
 })
 
-if (process.env.NODE_ENV === "production") {
-    pool.ssl = { rejectUnauthorized: false }
-}
+// if (process.env.NODE_ENV === "production") {
+//     pool.ssl = { rejectUnauthorized: false }
+// }
 
 module.exports = pool

@@ -1,9 +1,9 @@
-DROP DATABASE IF EXISTS findluv;
-CREATE DATABASE findluv;
+-- DROP DATABASE IF EXISTS findluv;
+-- CREATE DATABASE findluv;
 
-\c findluv;
+-- \c findluv;
 
--- DROP TABLE IF EXISTS landing_page, users, pending_connections messages, threads, inbox;
+DROP TABLE IF EXISTS landing_page, users, pending_connections messages, threads, inbox;
 
 CREATE TABLE landing_page(
     img_id SERIAL PRIMARY KEY,

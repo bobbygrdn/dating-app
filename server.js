@@ -10,10 +10,10 @@ const path = require('path');
 const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
+app.use(express.static('build'))
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static('build'))
-}
+// if (process.env.NODE_ENV === "production") {
+// }
 
 app.listen(PORT, (err) => {
     if (err) return console.log(err);
