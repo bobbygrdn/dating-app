@@ -1,28 +1,57 @@
 .profile-page-main-container {
-    border: 1px solid #3335;
+    /* border: 1px solid #3335; */
     margin: 0 1rem 0 1rem;
-    display: grid;
-    gap: 1rem;
     font-size: 1rem;
     padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+        "pic snapshot snapshot"
+        "match-options match-options match-options"
+        "bio bio bio"
+        "settings settings button";
+    gap: 1rem;
 }
 
-.profile-page-main-container>* {
+/* .profile-page-main-container>* {
     border: 1px solid red;
     padding: 1rem;
+} */
+
+.pic-container {
+    grid-area: pic;
 }
 
-.pic-container {}
-
-.pic-container img {
+img {
     border-radius: 100%;
 }
 
-.snapshot-container-container {}
+.snapshot-container {
+    grid-area: snapshot;
+}
 
-.bio-details-container {}
+.match-preferences-options-container {
+    grid-area: match-options;
+    /* width: 100%; */
+}
 
-.edit-save-btn {}
+
+.bio-details-container {
+    grid-area: bio;
+}
+
+.bio-details-container p:first-line {
+    text-indent: 30px;
+}
+
+.user-settings-container {
+    grid-area: settings;
+
+}
+
+.edit-save-btn {
+    grid-area: button;
+}
 
 .edit-save-btn:hover {
     cursor: pointer;
