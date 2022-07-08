@@ -1,0 +1,23 @@
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.usersContainer {
+    border: 2px solid black;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 10px;
+}
+
+.user {
+    text-align: center;
+    border: 2px ridge;
+    border-color: whitesmoke;
+    border-width: 10px;
+    margin: 10px;
+}
