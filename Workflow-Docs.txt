@@ -26,6 +26,3 @@
 
 -Branch Naming Conventions
 1. All branches should be names 'feature/[FEATURE NAME]
-
--Adding changes from Main Branch to your Branch
-1. Run the command 'git rebase origin/main'
