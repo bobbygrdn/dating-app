@@ -40,9 +40,9 @@ CREATE TABLE pending_connections(
 CREATE TABLE threads(
     thread_id SERIAL PRIMARY KEY,
     recipient_user_id INTEGER,
-    foreign key(recipient_user_id) references users(recipient_user_id),
+    foreign key(recipient_user_id) references users(user_id),
     sender_user_id INTEGER,
-    foreign key(sender_user_id) references users(sender_user_id)
+    foreign key(sender_user_id) references users(user_id)
 );
 
 CREATE TABLE messages(
