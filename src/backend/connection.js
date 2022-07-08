@@ -1,4 +1,4 @@
-const { Pool } = require('pg')
+const { Pool } = require("pg");
 
 const pool = new Pool({
     //conStr syntax = postgres://${PSQLusername}:${password(blank if none)}@localhost:5432/${nameOfDataBase}
@@ -11,3 +11,4 @@ const pool = new Pool({
 
 
 module.exports = pool
+
