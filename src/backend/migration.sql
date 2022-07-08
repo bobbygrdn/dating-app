@@ -3,7 +3,7 @@
 
 -- \c findluv;
 
-DROP TABLE IF EXISTS landing_page, users, pending_connections messages, threads, inbox;
+DROP TABLE IF EXISTS landing_page, users, pending_connections messages, threads;
 
 CREATE TABLE landing_page(
     img_id SERIAL PRIMARY KEY,
@@ -59,12 +59,3 @@ CREATE TABLE messages(
     foreign key(sent_to_user_id) references users(user_id)
 );
 
-
-
--- CREATE TABLE inbox(
---     inbox_id SERIAL PRIMARY KEY,
---     inbox_owner_user_id INTEGER,
---     foreign key(inbox_owner_user_id) references users(user_id),
---     thread_id INTEGER,
---     foreign key(thread_id) references threads(thread_id)
--- );
