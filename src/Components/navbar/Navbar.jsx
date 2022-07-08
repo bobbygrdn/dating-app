@@ -5,7 +5,6 @@ import './navbarStyles.css'
 function Navbar() {
 
     const handleClick = (e) => {
-        console.log(e.target)
         document.querySelectorAll('.nav-link').forEach(elem => elem.classList.remove('active-tab'))
         e.target.classList.add('active-tab')
     }

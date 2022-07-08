@@ -32,9 +32,9 @@ app.get('/api/messages', controller.getAllMessages)
 
 
 //! uncomment this route before deploying.
-// app.get('*', (_, res) => {
-//     res.sendFile(path.join(__dirname, '/build/index.html'))
-// });
+app.get('*', (_, res) => {
+    res.sendFile(path.join(__dirname, '/build/index.html'))
+});
 
 app.use((_, res) => {
     res.status(404);
