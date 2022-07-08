@@ -4,9 +4,16 @@ import './profileStyles.css'
 function MyProfile() {
     const [editing, setEditing] = useState(false)
 
-    const handleEditClick = {
-        // console.log('working')
+    const handleEditClick = () => {
+        console.log('clicked EDIT, now page can be edited')
+        setEditing(true)
     }
+
+    const handleSaveClick = () => {
+        console.log('clicked SAVE, update request sent')
+        setEditing(false)
+    }
+
     return (
         <div className='profile-page-main-container'>
             <div className='pic-container'>
@@ -34,10 +41,11 @@ function MyProfile() {
 
             <div className='user-settings-container'>
                 <p>setting options / theme</p>
+
             </div>
 
-            {editing ? <button>Save</button> : <button type='button' onClick={handleEditClick}>Edit</button>}
-            <button>Save</button>
+            {editing ? <button className="edit-save-btn" onClick={handleSaveClick}>Save</button> : <button className="edit-save-btn" onClick={handleEditClick}>Edit</button>}
+
         </div>
     )
 }
