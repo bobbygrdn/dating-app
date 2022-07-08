@@ -1,7 +1,10 @@
 import React from 'react'
+import Landing from './Components/Landing.jsx'
 
 function App() {
-  return <h1>Boilerplate .Find(luv)</h1>
+  return <>
+    <Landing/>
+  </>
 }
 
 export default App
