@@ -8,8 +8,17 @@ import Inbox from './Components/inbox/Inbox.jsx'
 import PendingConnections from './Components/pending-connections/PendingConnections.jsx'
 import MyProfile from './Components/profile/MyProfile.jsx'
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 function App() {
+
+    const [users, setUsers] = useState(null);
+
+    useEffect(() => {
+        fetch('https://find-luv.herokuapp.com/api/users')
+        .then(response => response.json())
+        .then(data => setUsers({data}))
+    }, []);
 
     return (
         <>
@@ -18,7 +27,7 @@ function App() {
             <div className='App-container'>
                 <Routes>
 
-                    <Route path='/' element={<Home />} />
+                    <Route path='/' element={<Home users={users}/>} />
                     <Route path='/search-results' element={<SearchResults />} />
                     <Route path='/matches' element={<Matches />} />
                     <Route path='/inbox' element={<Inbox />} />
