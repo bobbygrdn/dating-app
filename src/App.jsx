@@ -7,12 +7,14 @@ import Matches from './Components/matches/Matches.jsx'
 import Inbox from './Components/inbox/Inbox.jsx'
 import PendingConnections from './Components/pending-connections/PendingConnections.jsx'
 import MyProfile from './Components/profile/MyProfile.jsx'
+import Landing from './Components/Landing/Landing.jsx'
 
 function App() {
 
     return (
         <>
             <Navbar />
+            <Landing/>
 
             <div className='App-container'>
                 <Routes>

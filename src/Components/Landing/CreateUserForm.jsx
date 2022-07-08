@@ -3,7 +3,7 @@ import CreateInputs from './CreateInputs.jsx'
 
 export default function CreateUserForm() {
   return (
-    <div>CreateUserForm
+    <div>
       <CreateInputs />
     </div>
   )
