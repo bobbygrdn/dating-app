@@ -1,9 +1,13 @@
 import React from 'react'
+import Users from './UsersContainer';
+import '../../ComponentStyles/Home.css'
 
 function Home(props) {
-    console.log(props.users);
+    
     return (
-        <div> - Home page - </div>
+        <div className='usersContainer'>
+        <Users users={props.users}/>
+        </div>
     )
 }
 
