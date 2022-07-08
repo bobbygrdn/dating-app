@@ -2,7 +2,7 @@ import React from 'react'
 
 function PendingConnections() {
     return (
-        <div>PendingConnections</div>
+        <div> - Pending Connections page - </div>
     )
 }
 

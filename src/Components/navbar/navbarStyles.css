@@ -1,0 +1,33 @@
+.navbar-container {
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 1rem
+}
+
+.navbar-UL {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #1115;
+    transition: all .3s ease-in-out;
+    opacity: .8;
+}
+
+.nav-link:hover {
+    opacity: 1;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.active-tab {
+    color: #333;
+    opacity: 1;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
