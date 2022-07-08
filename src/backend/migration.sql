@@ -30,33 +30,41 @@ CREATE TABLE users(
 );
 
 CREATE TABLE pending_connections(
+    pending_connections_id SERIAL PRIMARY KEY,
     requesting_user_id INTEGER,
     foreign key(requesting_user_id) references users(user_id),
     liked_user_id INTEGER,
     foreign key(liked_user_id) references users(user_id)
 );
 
+CREATE TABLE threads(
+    thread_id SERIAL PRIMARY KEY,
+    recipient_user_id INTEGER,
+    foreign key(recipient_user_id) references users(user_id),
+    sender_user_id INTEGER,
+    foreign key(sender_user_id) references users(user_id)
+);
+
 CREATE TABLE messages(
     message_id SERIAL PRIMARY KEY,
     content TEXT,
-    date_time_stamp TEXT,
+    date_stamp TEXT,
+    time_stamp TEXT,
     read_receipt BOOLEAN,
+    thread_id INTEGER,
+    foreign key(thread_id) references threads(thread_id),
     sent_from_user_id INTEGER,
     foreign key(sent_from_user_id) references users(user_id),
     sent_to_user_id INTEGER,
     foreign key(sent_to_user_id) references users(user_id)
 );
 
-CREATE TABLE threads(
-    thread_id SERIAL PRIMARY KEY,
-    message_id INTEGER,
-    foreign key(message_id) references messages(message_id)
-);
 
-CREATE TABLE inbox(
-    inbox_id SERIAL PRIMARY KEY,
-    inbox_owner_user_id INTEGER,
-    foreign key(inbox_owner_user_id) references users(user_id),
-    thread_id INTEGER,
-    foreign key(thread_id) references threads(thread_id)
-);
+
+-- CREATE TABLE inbox(
+--     inbox_id SERIAL PRIMARY KEY,
+--     inbox_owner_user_id INTEGER,
+--     foreign key(inbox_owner_user_id) references users(user_id),
+--     thread_id INTEGER,
+--     foreign key(thread_id) references threads(thread_id)
+-- );

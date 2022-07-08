@@ -25,7 +25,9 @@ app.get('/api/users', controller.getAllUsers);
 
 app.get('/api/users/:id', controller.getOneUserById);
 
-app.get('/api/pendingconnections', controller.getAllPendingConnections)
+app.get('/api/pendingconnections', controller.getAllPendingConnections);
+
+app.get('/api/messages', controller.getAllMessages)
 
 
 
