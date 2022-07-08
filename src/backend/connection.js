@@ -6,7 +6,7 @@ const pool = new Pool({
     //add connection string data to the .env file
 
     connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
+    // ssl: { rejectUnauthorized: false }
 })
 
 
