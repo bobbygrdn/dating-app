@@ -11,23 +11,21 @@ import MyProfile from './Components/profile/MyProfile.jsx'
 function App() {
 
     return (
-        <>
+        <div className='App-container'>
             <Navbar />
 
-            <div className='App-container'>
-                <Routes>
+            <Routes>
 
-                    <Route path='/' element={<Home />} />
-                    <Route path='/search-results' element={<SearchResults />} />
-                    <Route path='/matches' element={<Matches />} />
-                    <Route path='/inbox' element={<Inbox />} />
-                    <Route path='/pending-connections' element={<PendingConnections />} />
-                    <Route path='/profile' element={<MyProfile />} />
+                <Route path='/' element={<Home />} />
+                <Route path='/search-results' element={<SearchResults />} />
+                <Route path='/matches' element={<Matches />} />
+                <Route path='/inbox' element={<Inbox />} />
+                <Route path='/pending-connections' element={<PendingConnections />} />
+                <Route path='/profile' element={<MyProfile />} />
 
-                </Routes>
-            </div>
+            </Routes>
+        </div>
 
-        </>
     )
 }
 
