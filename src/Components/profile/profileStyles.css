@@ -24,6 +24,8 @@
 
 img {
     border-radius: 100%;
+    border: 1px solid whitesmoke;
+    /* box-shadow: 3px 3px 5px whitesmoke; */
 }
 
 .snapshot-container {
@@ -38,10 +40,6 @@ img {
 
 .bio-details-container {
     grid-area: bio;
-}
-
-.bio-details-container p:first-line {
-    text-indent: 30px;
 }
 
 .user-settings-container {

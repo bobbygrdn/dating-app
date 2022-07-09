@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 import Navbar from './Components/navbar/Navbar.jsx'
 import Home from './Components/home/Home.jsx'
@@ -9,6 +9,7 @@ import PendingConnections from './Components/pending-connections/PendingConnecti
 import MyProfile from './Components/profile/MyProfile.jsx'
 
 function App() {
+    const [darkTheme, setDarkTheme] = useState(false)
 
     return (
         <div className='App-container'>
@@ -21,7 +22,7 @@ function App() {
                 <Route path='/matches' element={<Matches />} />
                 <Route path='/inbox' element={<Inbox />} />
                 <Route path='/pending-connections' element={<PendingConnections />} />
-                <Route path='/profile' element={<MyProfile />} />
+                <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} />} />
 
             </Routes>
         </div>
