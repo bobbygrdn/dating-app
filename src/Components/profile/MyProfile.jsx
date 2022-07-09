@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import './profileStyles.css'
+import DarkThemeToggleBtn from './DarkThemeToggleBtn.jsx'
 
-function MyProfile() {
+function MyProfile({ darkTheme, setDarkTheme }) {
     const [editing, setEditing] = useState(false)
 
     const handleEditClick = () => {
@@ -22,7 +23,7 @@ function MyProfile() {
 
             <div className='snapshot-container'>
                 <h5>snapshot info</h5>
-                <p>I'm baby put a bird on it lumbersexual church-key, meggings glossier bushwick normcore deep v shabby chic banjo aesthetic heirloom portland pitchfork jianbing. Pinterest master cleanse fam neutra palo santo pabst mlkshk ramps direct trade tacos gastropub blue bottle woke. VHS yr green juice, quinoa master cleanse tattooed etsy freegan narwhal tbh slow-carb. Polaroid forage cronut small batch, offal actually single-origin coffee distillery freegan meh lo-fi. Taxidermy vexillologist copper mug bicycle rights DIY occupy chicharrones franzen tote bag irony. Mumblecore cray single-origin coffee wolf keytar deep v. Kickstarter snackwave flexitarian 8-bit chia. Twee mlkshk pickled intelligentsia. Normcore brooklyn biodiesel XOXO, banh mi kinfolk photo booth organic locavore next level hexagon schlitz activated charcoal hashtag. Subway tile yr fingerstache lomo quinoa. Yr chia listicle flexitarian sustainable, keffiyeh kogi iPhone craft beer hella austin viral quinoa messenger bag. Bitters vinyl waistcoat sartorial, actually pop-up viral bushwick blue bottle beard taiyaki salvia. Distillery squid gluten-free thundercats taxidermy. Gastropub fanny pack meh polaroid art party echo park fashion axe plaid sartorial literally subway tile tattooed put a bird on it tilde.</p>
+                <p>I'm baby put a bird on it lumbersexual church-key, meggings glossier bushwick normcore deep v shabby chic banjo aesthetic heirloom portland pitchfork jianbing. Pinterest master cleanse fam neutra palo santo pabst mlkshk ramps direct trade tacos gastropub blue bottle woke. VHS yr green juice, quinoa master cleanse tattooed etsy freegan narwhal tbh slow-carb. Polaroid forage cronut small batch, offal actually single-origin coffee distillery freegan meh lo-fi. Taxidermy vexillologist copper mug bicycle rights DIY occupy chicharrones franzen tote bag irony. Mumblecore cray single-origin coffee wolf keytar deep v. Kickstarter snackwave flexitarian 8-bit chia. Twee mlkshk pickled intelligentsia. Normcore brooklyn biodiesel XOXO, banh mi kinfolk photo booth organic locavore next level hexagon schlitz activated charcoal hashtag. Subway tile yr fingerstache lomo quinoa. Yr chia listicle flexitarian sustainable, keffiyeh kogi iPhone craft beer hella austin viral quinoa messenger bag. Bitters vinyl waistcoat sartorial, actually pop-up viral bushwick blue bottle beard taiyaki salvia.</p>
             </div>
 
             <div className='match-preferences-options-container'>
@@ -40,8 +41,7 @@ function MyProfile() {
             </div>
 
             <div className='user-settings-container'>
-                <p>setting options: dark theme toggle, font size, font style</p>
-
+                <DarkThemeToggleBtn darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
             </div>
 
             {editing ? <button className="edit-save-btn" onClick={handleSaveClick}>Save</button> : <button className="edit-save-btn" onClick={handleEditClick}>Edit</button>}

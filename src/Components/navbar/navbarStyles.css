@@ -3,7 +3,9 @@
     font-size: 1.5rem;
     width: fit-content;
     margin: 0 auto;
-    padding: 1rem
+    padding: 1rem;
+    border-radius: 25px;
+    color: #333;
 }
 
 .navbar-UL {
@@ -14,19 +16,19 @@
 
 .nav-link {
     text-decoration: none;
-    color: #1115;
+    color: inherit;
     transition: all .3s ease-in-out;
-    opacity: .8;
+    opacity: .3;
 }
 
 .nav-link:hover {
     opacity: 1;
-    color: #333;
+    color: inherit;
     font-size: 1.8rem;
 }
 
 .active-tab {
-    color: #333;
+    color: inherit;
     opacity: 1;
     font-weight: bold;
     font-size: 1.8rem;
