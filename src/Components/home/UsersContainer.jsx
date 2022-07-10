@@ -1,12 +1,15 @@
 import React from 'react'
 import User from './User';
+import {useContext} from 'react';
+import HomeContext from '../../context/HomeContext';
 
-function Users(props) {
-    console.log(props.users);
-    if(props.users !== null) {
+function Users() {
+    const {users} = useContext(HomeContext)
+    
+    if(users !== null) {
         return (
-        <div>
-            {props.users.data.map((elem) => {
+        <div className='usersContainer'>
+            {users.map((elem) => {
                 return (
                     <User elem={elem} key={elem.user_id} />
                 )
