@@ -7,11 +7,16 @@
 }
 
 .usersContainer {
-    border: 2px solid black;
-    padding: 10px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px 10px;
+  border: 2px ridge;
+  border-color: gray;
+
+  border-width: 10px;
+  padding: 10px;
+  display: grid; 
+  grid-auto-flow: row; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  gap: 0px 0px; 
 }
 
 .user {
@@ -20,4 +25,12 @@
     border-color: whitesmoke;
     border-width: 10px;
     margin: 10px;
+    cursor: pointer;
+}
+.user:hover {
+  text-decoration: underline;
+}
+
+h5, h6, img {
+  pointer-events: none;
 }
