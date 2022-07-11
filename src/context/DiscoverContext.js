@@ -4,13 +4,24 @@ import { useState, createContext } from 'react';
 const DiscoverContext = createContext()
 
 export const DiscoverProvider = ({children}) => {
-    // state
+    
+    /* Setting the initial state of the context. */
     const [users, setUsers] = useState(null)
-    const [singleUser, setSingleUser] = useState(null);
+    const [singleUser, setSingleUser] = useState(null)
     const [singleModal, setSingleModal] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
+    const [distance, setDistance] = useState('25')
+    const [age1, setAge1] = useState('18')
+    const [age2, setAge2] = useState('100')
+    const [gender, setGender] = useState('male')
 
-    // functionality / functions
+    /**
+     * "addUsers" is a function that takes in a parameter called "data" and then sets the state of
+     * "users" to the value of "data".
+     * 
+     * "addSingleUser" is a function that takes in a parameter called "data" and then sets the state of
+     * "singleUser" to the value of "data".
+     */
     const addUsers = (data) => {
         setUsers(data);
     }
@@ -18,6 +29,8 @@ export const DiscoverProvider = ({children}) => {
         setSingleUser(data);
     }
         
+    
+    /* Returning the context provider with the value of the context. */
     return <DiscoverContext.Provider value={{
         users,
         addUsers,
@@ -26,7 +39,15 @@ export const DiscoverProvider = ({children}) => {
         singleModal,
         setSingleModal,
         searchModal,
-        setSearchModal
+        setSearchModal,
+        distance,
+        setDistance,
+        age1,
+        age2,
+        setAge1,
+        setAge2,
+        gender,
+        setGender
     }}>
         {children}
     </DiscoverContext.Provider>
