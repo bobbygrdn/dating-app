@@ -74,19 +74,13 @@ function SearchModal ({show}) {
                 </select>
                 </div>
 
-                {/* A dropdown menu that allows the user to select an age range. */}
+                
+                {/* Creates two input fields that allow the user to select an age range. */}
                 <div className="criteria">
                 <label htmlFor="age" className="attributeSelect">Choose an Age Range: </label>
-                <select name="age1" id="age" defaultValue={"18"} onChange={(e) => setAge1(e.target.value)}>
-                    <option value="18">18</option>
-
-                    <option value="100">100</option>
-                </select>
+                    <input type="number" name="age1" id="age" min="18" max="100" step="1" placeholder="18" onChange={(e) => setAge1(e.target.value)}></input>
                 
-                <select name="age2" id="age" defaultValue={"100"} onChange={(e) => setAge2(e.target.value)}>
-                    <option value="18">18</option>
-                    <option value="100">100</option>
-                </select>
+                    <input type="number" name="age1" id="age" min="18" max="100" step="1" placeholder="100" onChange={(e) => setAge1(e.target.value)}></input>
                 </div>
 
                 {/* A dropdown menu that allows the user to select a distance. */}
