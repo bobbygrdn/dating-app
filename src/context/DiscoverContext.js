@@ -7,6 +7,7 @@ export const DiscoverProvider = ({children}) => {
     
     /* Setting the initial state of the context. */
     const [users, setUsers] = useState(null)
+    const [pageUsers, setPageUsers] = useState(null)
     const [singleUser, setSingleUser] = useState(null)
     const [singleModal, setSingleModal] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
@@ -14,6 +15,8 @@ export const DiscoverProvider = ({children}) => {
     const [age1, setAge1] = useState('18')
     const [age2, setAge2] = useState('100')
     const [gender, setGender] = useState('male')
+    const [page, setPage] = useState(1)
+    const [pages, setPages] = useState(0)
 
     /**
      * "addUsers" is a function that takes in a parameter called "data" and then sets the state of
@@ -47,7 +50,13 @@ export const DiscoverProvider = ({children}) => {
         setAge1,
         setAge2,
         gender,
-        setGender
+        setGender,
+        page,
+        setPage,
+        pages,
+        setPages,
+        pageUsers,
+        setPageUsers
     }}>
         {children}
     </DiscoverContext.Provider>
