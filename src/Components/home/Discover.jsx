@@ -16,14 +16,14 @@ function Discover() {
         fetch('https://find-luv.herokuapp.com/api/users')
         .then(response => response.json())
         .then(data => addUsers(data))
-    }, [addUsers]);
+    }, []);
 
     /* Fetching the data from the API and adding it to the state. */
     useEffect(() => {
         fetch('https://find-luv.herokuapp.com/api/users')
         .then(response => response.json())
         .then(data => addSingleUser(data[0]))
-    }, [addSingleUser])
+    }, [])
    
     /* Returning the Users component, the SingleUserModal component, and the SearchModal component. */
     return (
