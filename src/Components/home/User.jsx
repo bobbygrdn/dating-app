@@ -1,14 +1,30 @@
 import React from "react";
+import { useContext } from "react";
+import HomeContext from "../../context/HomeContext";
 
 function User (props) {
+
+    const {addSingleUser, setSingleModal, singleUser} = useContext(HomeContext)
+    
+    const handleClick = (e) =>{
+        fetch(`https://find-luv.herokuapp.com/api/users/${e.target.id}`)
+        .then(response => response.json())
+        .then(data => addSingleUser(data))
+        if(singleUser !== null) {
+            setSingleModal(true)
+        }
+    }
+
+    
+
     return (
-        <div className="user">
+        <div className="user" onClick={handleClick} id={props.elem.user_id} >
             <img 
             src={props.elem.profile_pic_url} 
             alt=''
             className="profilePics" />
             <h5>{props.elem.first_name}, {props.elem.age}</h5>
-            <h5>Distance: </h5>
+            <h6> Miles Away</h6>
         </div>
     )
 }
