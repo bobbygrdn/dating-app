@@ -1,9 +1,9 @@
 import { useContext } from "react"
-import HomeContext from "../../context/HomeContext"
+import DiscoverContext from "../../context/DiscoverContext"
 import '../../ComponentStyles/Discover.css'
 
 function SingleUserModal({show}) {
-    const {singleUser, setSingleModal} = useContext(HomeContext)
+    const {singleUser, setSingleModal} = useContext(DiscoverContext)
 
     const closeModal = () => {
         setSingleModal(false)

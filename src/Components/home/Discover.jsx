@@ -2,13 +2,13 @@ import React, { useEffect } from 'react'
 import Users from './UsersContainer';
 import '../../ComponentStyles/Discover.css'
 import {useContext} from 'react'
-import HomeContext from '../../context/HomeContext';
+import DiscoverContext from '../../context/DiscoverContext';
 import SingleUserModal from './SingleUserModal';
 import SearchModal from './SearchModal';
 
 function Discover() {
 
-    const {addUsers, singleModal, addSingleUser, searchModal} = useContext(HomeContext)
+    const {addUsers, singleModal, addSingleUser, searchModal} = useContext(DiscoverContext)
 
     useEffect(() => {
         fetch('https://find-luv.herokuapp.com/api/users')

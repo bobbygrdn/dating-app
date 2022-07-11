@@ -1,10 +1,10 @@
 import React from "react";
 import { useContext } from "react";
-import HomeContext from "../../context/HomeContext";
+import DiscoverContext from "../../context/DiscoverContext";
 
 function User (props) {
 
-    const {addSingleUser, setSingleModal, singleUser} = useContext(HomeContext)
+    const {addSingleUser, setSingleModal, singleUser} = useContext(DiscoverContext)
     
     const handleClick = (e) =>{
         fetch(`https://find-luv.herokuapp.com/api/users/${e.target.id}`)

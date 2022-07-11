@@ -1,10 +1,10 @@
 import React from 'react'
 import User from './User';
 import {useContext} from 'react';
-import HomeContext from '../../context/HomeContext';
+import DiscoverContext from '../../context/DiscoverContext';
 
 function Users() {
-    const {users} = useContext(HomeContext)
+    const {users, searchModal} = useContext(DiscoverContext)
     
     if(users !== null) {
         return (
