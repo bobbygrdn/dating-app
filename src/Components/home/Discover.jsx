@@ -4,10 +4,11 @@ import '../../ComponentStyles/Discover.css'
 import {useContext} from 'react'
 import HomeContext from '../../context/HomeContext';
 import SingleUserModal from './SingleUserModal';
+import SearchModal from './SearchModal';
 
 function Discover() {
 
-    const {addUsers, singleModal, addSingleUser} = useContext(HomeContext)
+    const {addUsers, singleModal, addSingleUser, searchModal} = useContext(HomeContext)
 
     useEffect(() => {
         fetch('https://find-luv.herokuapp.com/api/users')
@@ -25,6 +26,7 @@ function Discover() {
         <div>
         <Users />
         <SingleUserModal show={singleModal} />
+        <SearchModal show={searchModal} />
         </div>
     )
 
