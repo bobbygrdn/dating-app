@@ -6,14 +6,14 @@ import Matches from './Components/matches/Matches.jsx'
 import Inbox from './Components/inbox/Inbox.jsx'
 import PendingConnections from './Components/pending-connections/PendingConnections.jsx'
 import MyProfile from './Components/profile/MyProfile.jsx'
-import {HomeProvider} from './context/HomeContext'
 import Discover from './Components/home/Discover.jsx';
+import { DiscoverProvider } from './context/DiscoverContext.js';
 
 function App() {
 
     return (
         <>
-            <HomeProvider>
+            <DiscoverProvider>
             <Navbar />
 
             <div className='App-container'>
@@ -27,7 +27,7 @@ function App() {
 
                 </Routes>
             </div>
-            </HomeProvider>
+            </DiscoverProvider>
 
         </>
     )
