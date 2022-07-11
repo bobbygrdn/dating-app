@@ -1,9 +1,9 @@
 import { useState, createContext } from 'react';
 
 // create your context
-const HomeContext = createContext()
+const DiscoverContext = createContext()
 
-export const HomeProvider = ({children}) => {
+export const DiscoverProvider = ({children}) => {
     // state
     const [users, setUsers] = useState(null)
     const [singleUser, setSingleUser] = useState(null);
@@ -22,7 +22,7 @@ export const HomeProvider = ({children}) => {
         setSearchModal(data);
     }
         
-    return <HomeContext.Provider value={{
+    return <DiscoverContext.Provider value={{
         users,
         addUsers,
         singleUser,
@@ -33,7 +33,7 @@ export const HomeProvider = ({children}) => {
         addSearch
     }}>
         {children}
-    </HomeContext.Provider>
+    </DiscoverContext.Provider>
 }
 
-export default HomeContext
+export default DiscoverContext
