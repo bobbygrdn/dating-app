@@ -17,10 +17,6 @@ export const DiscoverProvider = ({children}) => {
     const addSingleUser = (data) => {
         setSingleUser(data);
     }
-
-    const addSearch = (data) => {
-        setSearchModal(data);
-    }
         
     return <DiscoverContext.Provider value={{
         users,
@@ -30,7 +26,7 @@ export const DiscoverProvider = ({children}) => {
         singleModal,
         setSingleModal,
         searchModal,
-        addSearch
+        setSearchModal
     }}>
         {children}
     </DiscoverContext.Provider>
