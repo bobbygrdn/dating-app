@@ -8,6 +8,7 @@ export const HomeProvider = ({children}) => {
     const [users, setUsers] = useState(null)
     const [singleUser, setSingleUser] = useState(null);
     const [singleModal, setSingleModal] = useState(false)
+    const [searchModal, setSearchModal] = useState(false)
 
     // functionality / functions
     const addUsers = (data) => {
@@ -16,6 +17,10 @@ export const HomeProvider = ({children}) => {
     const addSingleUser = (data) => {
         setSingleUser(data);
     }
+
+    const addSearch = (data) => {
+        setSearchModal(data);
+    }
         
     return <HomeContext.Provider value={{
         users,
@@ -23,7 +28,9 @@ export const HomeProvider = ({children}) => {
         singleUser,
         addSingleUser,
         singleModal,
-        setSingleModal
+        setSingleModal,
+        searchModal,
+        addSearch
     }}>
         {children}
     </HomeContext.Provider>
