@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import HomeContext from "../../context/HomeContext"
-import '../../ComponentStyles/Home.css'
+import '../../ComponentStyles/Discover.css'
 
 function SingleUserModal({show}) {
     const {singleUser, setSingleModal} = useContext(HomeContext)
