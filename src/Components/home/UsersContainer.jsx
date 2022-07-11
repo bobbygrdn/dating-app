@@ -2,11 +2,11 @@ import React from 'react'
 import User from './User';
 import {useContext} from 'react';
 import DiscoverContext from '../../context/DiscoverContext';
-import DiscoverNavBar from './DiscoverNavBar';
+// import DiscoverNavBar from './DiscoverNavBar';
 
 function Users() {
     /* Destructuring the context object. */
-    const {users, setSearchModal} = useContext(DiscoverContext)
+    const {setSearchModal, users} = useContext(DiscoverContext)
     
     /**
      * When the user clicks on the search icon, the search modal will appear.
@@ -24,11 +24,12 @@ function Users() {
                 {/* Mapping through the users array and returning the User component. */}
                 <div className='usersContainer'>
                     {users.map((elem) => {
+                        
                         return (
                             <User elem={elem} key={elem.user_id} />
                         )
                     })}
-                    <DiscoverNavBar />
+                    {/* <DiscoverNavBar /> */}
                 </div>
             </div>
     )}
