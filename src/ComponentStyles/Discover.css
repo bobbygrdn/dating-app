@@ -60,6 +60,28 @@ h2, h5, h6, img {
   background-color: white;
 }
 
+.searchContainer {
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+
+  display: grid;
+  align-items: center;
+  text-align: center;
+
+  background-color: rgba(255, 253, 253, 0.628);
+  padding: 40px;
+}
+
+.searchModal {
+  border: 2px ridge;
+  border-color: whitesmoke;
+  border-width: 10px;
+  background-color: white;
+}
+
 button {
   cursor: pointer;
 }
