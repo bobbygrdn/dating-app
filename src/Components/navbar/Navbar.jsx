@@ -12,7 +12,7 @@ function Navbar() {
         <div className='navbar-container'>
             <ul className='navbar-UL'>
                 <li>
-                    <Link to='/' className='nav-link active-tab' onClick={handleClick}>Home</Link>
+                    <Link to='/' className='nav-link active-tab' onClick={handleClick}>Discover</Link>
                 </li>
                 <li>
                     <Link to='/search-results' className='nav-link' onClick={handleClick}>Search</Link>
