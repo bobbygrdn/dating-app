@@ -24,7 +24,7 @@ function Discover() {
         .then(response => response.json())
         .then(data => addSingleUser(data[0]))
     }, [addSingleUser])
-
+   
     /* Returning the Users component, the SingleUserModal component, and the SearchModal component. */
     return (
         <div>
