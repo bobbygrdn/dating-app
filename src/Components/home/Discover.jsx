@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import Users from './UsersContainer';
-import '../../ComponentStyles/Home.css'
+import '../../ComponentStyles/Discover.css'
 import {useContext} from 'react'
 import HomeContext from '../../context/HomeContext';
 import SingleUserModal from './SingleUserModal';
 
-function Home() {
+function Discover() {
 
     const {addUsers, singleModal, addSingleUser} = useContext(HomeContext)
 
@@ -30,4 +30,4 @@ function Home() {
 
 }
 
-export default Home
+export default Discover
