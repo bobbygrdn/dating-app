@@ -49,7 +49,7 @@ h2, h5, h6, img {
   align-items: center;
   text-align: center;
 
-  background-color: rgba(255, 253, 253, 0.628);
+  background-color: rgba(255, 253, 253, 0.772);
   padding: 40px;
 }
 
@@ -71,7 +71,7 @@ h2, h5, h6, img {
   align-items: center;
   text-align: center;
 
-  background-color: rgba(255, 253, 253, 0.628);
+  background-color: rgba(255, 253, 253, 0.772);
   padding: 40px;
 }
 
@@ -101,6 +101,11 @@ button {
   margin-bottom: 10px;
 }
 
+.searchContent {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .dislikeButton {
   float: left;
 }
@@ -119,4 +124,16 @@ button {
   border: 2px ridge;
   border-color: gray;
   border-width: 8px;
+}
+
+.attributeSelect {
+  font-size: 20px;
+  /* margin-right: 10px; */
+}
+
+#gender,
+#age,
+#distance {
+  height: 30px;
+  border-radius: 5px;
 }
