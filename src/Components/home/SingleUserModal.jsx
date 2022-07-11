@@ -41,7 +41,6 @@ function SingleUserModal({show}) {
             </div>
             : null}
         
-          
         </>
     )
 }
