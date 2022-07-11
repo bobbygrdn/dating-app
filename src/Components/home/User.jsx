@@ -4,8 +4,10 @@ import DiscoverContext from "../../context/DiscoverContext";
 
 function User (props) {
 
+   /* Destructuring the context object. */
     const {addSingleUser, setSingleModal, singleUser} = useContext(DiscoverContext)
     
+    /* It fetches a user from the database and then adds that user to the state. */
     const handleClick = (e) =>{
         fetch(`https://find-luv.herokuapp.com/api/users/${e.target.id}`)
         .then(response => response.json())
@@ -17,6 +19,7 @@ function User (props) {
 
     
 
+    /* Returning a user card that can be clicked to see their profile */
     return (
         <div className="user" onClick={handleClick} id={props.elem.user_id} >
             <img 
