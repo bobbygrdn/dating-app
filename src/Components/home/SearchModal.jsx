@@ -80,7 +80,7 @@ function SearchModal ({show}) {
                 <label htmlFor="age" className="attributeSelect">Choose an Age Range: </label>
                     <input type="number" name="age1" id="age" min="18" max="100" step="1" placeholder="18" onChange={(e) => setAge1(e.target.value)}></input>
                 
-                    <input type="number" name="age1" id="age" min="18" max="100" step="1" placeholder="100" onChange={(e) => setAge1(e.target.value)}></input>
+                    <input type="number" name="age1" id="age" min="18" max="100" step="1" placeholder="100" onChange={(e) => setAge2(e.target.value)}></input>
                 </div>
 
                 {/* A dropdown menu that allows the user to select a distance. */}
