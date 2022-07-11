@@ -3,8 +3,10 @@ import DiscoverContext from "../../context/DiscoverContext"
 import '../../ComponentStyles/Discover.css'
 
 function SingleUserModal({show}) {
+    /* Destructuring the context object. */
     const {singleUser, setSingleModal} = useContext(DiscoverContext)
 
+    /* When the user clicks the close button, the modal will close. */
     const closeModal = () => {
         setSingleModal(false)
     }
@@ -12,9 +14,12 @@ function SingleUserModal({show}) {
     return (
         <>
           
+            {/* A ternary operator. It is saying if show is true, then render the modal. If show is
+            false, then render null. */}
             {show ? 
             <div className="singleUserContainer">
                 <div className="singleUserModal"> 
+                    {/* Rendering a button that when clicked, will close the modal. */}
                     <button className="closeButton" onClick={closeModal}>Close</button>
 
                     <div className="header">
@@ -34,6 +39,8 @@ function SingleUserModal({show}) {
                         </div>
                     </div>
 
+                    {/* Rendering two buttons. One button is a "No" button and the other is a "Yes"
+                    button. When the user clicks the "No" button, the modal will close and the profile will not be added to their potential matches. When the user clicks the "Yes" button, the modal will close and the profile will be added to their potential matches. */}
                     <div className="footer">
                         <button className="dislikeButton" onClick={closeModal}>No</button> <button className="likeButton" onClick={closeModal}>Yes</button>
                     </div>
