@@ -9,7 +9,6 @@
 .usersContainer {
   border: 2px ridge;
   border-color: gray;
-
   border-width: 10px;
   padding: 10px;
   display: grid; 
@@ -31,6 +30,66 @@
   text-decoration: underline;
 }
 
-h5, h6, img {
+h2, h5, h6, img {
   pointer-events: none;
+}
+
+.singleUserContainer {
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+
+  display: grid;
+  align-items: center;
+  text-align: center;
+
+  background-color: rgba(255, 253, 253, 0.628);
+  padding: 40px;
+}
+
+.singleUserModal {
+  border: 2px ridge;
+  border-color: whitesmoke;
+  border-width: 10px;
+  background-color: white;
+}
+
+.userInfo {
+  
+}
+
+button {
+  cursor: pointer;
+}
+.closeButton {
+  float: right;
+}
+
+.header {
+  border: 6px solid gray;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.content {
+  border: 6px solid gray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.dislikeButton {
+  float: left;
+}
+
+.likeButton {
+  float: right;
+}
+
+.singleUserPic {
+  margin: 40px;
+  border: 2px ridge;
+  border-color: gray;
+  border-width: 8px;
 }
