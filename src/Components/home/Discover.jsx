@@ -8,20 +8,24 @@ import SearchModal from './SearchModal';
 
 function Discover() {
 
+    /* Destructuring the context object. */
     const {addUsers, singleModal, addSingleUser, searchModal} = useContext(DiscoverContext)
 
+   /* Fetching the data from the API and adding it to the state. */
     useEffect(() => {
         fetch('https://find-luv.herokuapp.com/api/users')
         .then(response => response.json())
         .then(data => addUsers(data))
     }, []);
 
+    /* Fetching the data from the API and adding it to the state. */
     useEffect(() => {
         fetch('https://find-luv.herokuapp.com/api/users')
         .then(response => response.json())
         .then(data => addSingleUser(data[0]))
     }, [])
 
+    /* Returning the Users component, the SingleUserModal component, and the SearchModal component. */
     return (
         <div>
         <Users />
