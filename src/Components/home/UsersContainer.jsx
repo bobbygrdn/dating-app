@@ -8,13 +8,16 @@ function Users() {
     
     if(users !== null) {
         return (
-        <div className='usersContainer'>
-            {users.map((elem) => {
-                return (
-                    <User elem={elem} key={elem.user_id} />
-                )
-            })}
-        </div>
+            <div className='discoverContainer'>
+                <button className='searchButton'>Search</button>
+                <div className='usersContainer'>
+                    {users.map((elem) => {
+                        return (
+                            <User elem={elem} key={elem.user_id} />
+                            )
+                        })}
+                </div>
+            </div>
     )}
 }
 
