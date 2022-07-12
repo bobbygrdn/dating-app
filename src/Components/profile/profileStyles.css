@@ -54,6 +54,12 @@ img {
     cursor: pointer;
 }
 
+.fontStyleContainer {}
+
+.fontStyleContainer:hover {
+    cursor: pointer;
+}
+
 .edit-save-btn {
     grid-area: button;
 }
