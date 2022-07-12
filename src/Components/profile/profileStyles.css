@@ -44,7 +44,14 @@ img {
 
 .user-settings-container {
     grid-area: settings;
+    display: flex;
+    gap: 1rem;
+}
 
+.fontSizeSelectionContainer {}
+
+.fontSizeDropDown:hover {
+    cursor: pointer;
 }
 
 .edit-save-btn {
