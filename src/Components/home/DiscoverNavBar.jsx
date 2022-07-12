@@ -6,8 +6,8 @@ function DiscoverNavBar () {
     const {pages, setPage} = useContext(DiscoverContext)
 
     const handleClick = (e) => {
-        // setPage(e.target.id)
         console.log(e.target.id);
+        // setPage(e.target.id)
     }
 
     return (
