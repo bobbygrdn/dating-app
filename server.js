@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
-const cors = require('cors')
+const cors = require("cors");
 
 // const controller = require("./src/backend/controller");
 
@@ -14,25 +14,23 @@ const PORT = process.env.PORT || 8000;
 app.use(express.json());
 app.use(express.static("build"));
 
-app.use(cors())
+app.use(cors());
 
 app.listen(PORT, (err) => {
   if (err) return console.log(err);
   console.log(`Listening on port: ${PORT}`);
 });
 
-
 //GET ALL users;
 app.get("/api/users", async (req, res) => {
   try {
     let client = await pool.connect();
-    let data = await client.query('SELECT * FROM users');
-    res.json(data.rows)
+    let data = await client.query("SELECT * FROM users");
+    res.json(data.rows);
     client.release();
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
-    res.send(error)
+    res.send(error);
   }
 });
 
@@ -153,7 +151,7 @@ app.delete("/api/users/:id", async (req, res) => {
       req.params.id,
     ]);
     res.json(data.rows);
-  } catch (err) { }
+  } catch (err) {}
 });
 
 //GET ALL pending_connections;
@@ -189,7 +187,7 @@ app.delete("/api/pending_connections/:id", async (req, res) => {
       [req.params.id]
     );
     res.json(data.rows);
-  } catch (err) { }
+  } catch (err) {}
 });
 
 //GET ALL messages;
@@ -287,7 +285,43 @@ app.delete("/api/messages/:id", async (req, res) => {
       [req.params.id]
     );
     res.json(data.rows);
-  } catch (err) { }
+  } catch (err) {}
+});
+
+//GET ALL threads
+app.get("/api/threads", async (req, res) => {
+  try {
+    pool.connect();
+    const data = await pool.query("SELECT * FROM threads;");
+    res.json(data.rows);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+//GET ONE thread by thread_id
+app.get("/api/threads/:id", async (req, res) => {
+  try {
+    const data = await pool.query(
+      "SELECT * FROM messages WHERE thread_id=$1;",
+      [parseInt(req.params.id)]
+    );
+    res.json(data.rows[0]);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+//DELETE thread by thread_id
+app.delete("/api/threads/:id", async (req, res) => {
+  try {
+    await pool.connect();
+    const data = await pool.query(
+      "DELETE FROM threads WHERE thread_id = $1 AND sender_user_id = $2;",
+      [req.params.id]
+    );
+    res.json(data.rows);
+  } catch (err) {}
 });
 
 app.get("*", (_, res) => {
