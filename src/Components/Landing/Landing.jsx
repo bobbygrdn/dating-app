@@ -82,7 +82,10 @@ export default function Landing() {
         height: `${sizes[0]}px`,
         transform: `translate(${initialPositions[7][0]}px,${initialPositions[7][1]}px)`
       }}/>
-      <CreateUserForm />
+      <div className='forms'>
+        <CreateUserForm />
+      </div>
     </div>
+
   )
 }
