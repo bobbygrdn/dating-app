@@ -5,7 +5,7 @@ import FontSizeSelection from './FontSizeSelection.jsx'
 import FontStyleSelection from './FontStyleSelection.jsx'
 import ProfilePicPlaceHolder from './ProfilePicPlaceHolder'
 
-function MyProfile({ darkTheme, setDarkTheme, dummyUser }) {
+function MyProfile({ darkTheme, setDarkTheme, dummyUser, setDummyUser }) {
     const [editing, setEditing] = useState(false)
 
     const handleEditClick = () => {
@@ -44,8 +44,8 @@ function MyProfile({ darkTheme, setDarkTheme, dummyUser }) {
 
             <div className='user-settings-container'>
                 <DarkThemeToggleBtn darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
-                <FontSizeSelection />
-                <FontStyleSelection />
+                <FontSizeSelection dummyUser={dummyUser} setDummyUser={setDummyUser} />
+                <FontStyleSelection dummyUser={dummyUser} setDummyUser={setDummyUser} />
             </div>
 
             {editing ? <button className="edit-save-btn" onClick={handleSaveClick}>Save</button> : <button className="edit-save-btn" onClick={handleEditClick}>Edit</button>}

@@ -33,7 +33,7 @@ function App() {
                 <Route path='/matches' element={<Matches />} />
                 <Route path='/inbox' element={<Inbox />} />
                 <Route path='/pending-connections' element={<PendingConnections />} />
-                <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} dummyUser={dummyUser} />} />
+                <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} dummyUser={dummyUser} setDummyUser={setDummyUser} />} />
 
             </Routes>
         </div>

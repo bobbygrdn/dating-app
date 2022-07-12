@@ -1,7 +1,6 @@
 .profile-page-main-container {
-    /* border: 1px solid #3335; */
     margin: 0 1rem 0 1rem;
-    font-size: 1rem;
+    font-size: inherit;
     padding: 1rem;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -12,11 +11,6 @@
         "settings settings button";
     gap: 1rem;
 }
-
-/* .profile-page-main-container>* {
-    border: 1px solid red;
-    padding: 1rem;
-} */
 
 .pic-container {
     grid-area: pic;
@@ -32,7 +26,6 @@
 img {
     border-radius: 100%;
     border: 1px solid whitesmoke;
-    /* box-shadow: 3px 3px 5px whitesmoke; */
 }
 
 .snapshot-container {
@@ -63,7 +56,7 @@ img {
 
 .fontStyleContainer {}
 
-.fontStyleContainer:hover {
+.fontStyleDropDown:hover {
     cursor: pointer;
 }
 
