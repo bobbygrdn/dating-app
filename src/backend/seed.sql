@@ -499,6 +499,4 @@ insert into users (username, first_name, last_name, email, password, age, height
 insert into users (username, first_name, last_name, email, password, age, height, body_type, gender, profile_pic_url, sexual_orientation, city, state, zipcode, bio) values ('lannetsdu', 'Larry', 'Annets', 'lannetsdu@dion.ne.jp', 'N9uBG1xBhV', 33, 62, '3XL', 'Male', 'https://xsgames.co/randomusers/assets/avatars/male/48.jpg', 'Transsexual Male', 'Portland', 'Oregon', '97271', 'in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam');
 insert into users (username, first_name, last_name, email, password, age, height, body_type, gender, profile_pic_url, sexual_orientation, city, state, zipcode, bio) values ('mgavahandv', 'Maridel', 'Gavahan', 'mgavahandv@unc.edu', 'P7yjdgGxWhEp', 19, 62, 'L', 'Female', 'https://xsgames.co/randomusers/assets/avatars/female/47.jpg', 'Trans Female', 'Topeka', 'Kansas', '66611', 'in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu');
 
-
-
 \i pendingConnectionsSeed.sql
