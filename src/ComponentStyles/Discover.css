@@ -137,3 +137,20 @@ button {
   height: 30px;
   border-radius: 5px;
 }
+
+.discoverNav {
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  margin: 10px;
+}
+
+.navNumbers {
+  padding-left: 10px;
+  cursor: pointer;
+  display: inline-flex;
+}
+.navNumbers:hover {
+  text-decoration: underline;
+  color: blue;
+}
