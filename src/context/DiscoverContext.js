@@ -31,7 +31,7 @@ export const DiscoverProvider = ({children}) => {
     const addSingleUser = (data) => {
         setSingleUser(data);
     }
-        
+    
     
     /* Returning the context provider with the value of the context. */
     return <DiscoverContext.Provider value={{
