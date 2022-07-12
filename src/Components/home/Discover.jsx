@@ -9,7 +9,7 @@ import SearchModal from './SearchModal';
 function Discover() {
 
     /* Destructuring the context object. */
-    const {addUsers, singleModal, addSingleUser, searchModal} = useContext(DiscoverContext)
+    const {addUsers, singleModal, addSingleUser, searchModal, users, setPages} = useContext(DiscoverContext)
 
    /* Fetching the data from the API and adding it to the state. */
     useEffect(() => {
@@ -24,6 +24,12 @@ function Discover() {
         .then(response => response.json())
         .then(data => addSingleUser(data[0]))
     }, [])
+
+    useEffect(() => {
+        if(users !== null) {
+            setPages(Math.round(users.length/24))
+        }
+    })
    
     /* Returning the Users component, the SingleUserModal component, and the SearchModal component. */
     return (
