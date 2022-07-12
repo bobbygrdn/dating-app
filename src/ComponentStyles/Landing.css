@@ -28,11 +28,6 @@
   border-radius: 50%;
   box-shadow: 0 0 20px #FFDFDD;
 }
-.dbubble {
-  background-clip: red;
-  height: 266px;
-  width: 266px;
-}
 .invisi-bubble {
   border: none !important;
   box-shadow: none !important;
