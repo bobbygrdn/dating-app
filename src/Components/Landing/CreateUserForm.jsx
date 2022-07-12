@@ -98,7 +98,7 @@ const CreateUserForm = () => {
     setNewUserData({...newUserData, [e.target.name]: e.target.value})
    };
 
-// console.log(newUserData)
+console.log(newUserData)
   return (
     <div
      className='createuser--container'>

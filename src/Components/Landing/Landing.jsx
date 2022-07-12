@@ -1,5 +1,6 @@
 import React from 'react'
 import CreateUserForm from './CreateUserForm'
+import Login from './Login.jsx'
 import '../../ComponentStyles/Landing.css'
 
 const gender = []
@@ -84,6 +85,9 @@ export default function Landing() {
       }}/>
       <div className='forms'>
         <CreateUserForm />
+      </div>
+      <div className='forms'>
+      <Login />
       </div>
     </div>
 
