@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './profileStyles.css'
 import DarkThemeToggleBtn from './DarkThemeToggleBtn.jsx'
+import FontSizeSelection from './FontSizeSelection.jsx'
+import FontStyleSelection from './FontStyleSelection.jsx'
 
 function MyProfile({ darkTheme, setDarkTheme }) {
     const [editing, setEditing] = useState(false)
@@ -42,6 +44,8 @@ function MyProfile({ darkTheme, setDarkTheme }) {
 
             <div className='user-settings-container'>
                 <DarkThemeToggleBtn darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+                <FontSizeSelection />
+                <FontStyleSelection />
             </div>
 
             {editing ? <button className="edit-save-btn" onClick={handleSaveClick}>Save</button> : <button className="edit-save-btn" onClick={handleEditClick}>Edit</button>}
