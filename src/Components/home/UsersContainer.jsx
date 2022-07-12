@@ -2,7 +2,7 @@ import React from 'react'
 import User from './User';
 import {useContext} from 'react';
 import DiscoverContext from '../../context/DiscoverContext';
-// import DiscoverNavBar from './DiscoverNavBar';
+import DiscoverNavBar from './DiscoverNavBar';
 
 function Users() {
     /* Destructuring the context object. */
@@ -29,8 +29,8 @@ function Users() {
                             <User elem={elem} key={elem.user_id} />
                         )
                     })}
-                    {/* <DiscoverNavBar /> */}
                 </div>
+                <DiscoverNavBar />
             </div>
     )}
 }
