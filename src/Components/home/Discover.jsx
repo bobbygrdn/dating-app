@@ -25,12 +25,20 @@ function Discover() {
         .then(data => addSingleUser(data[0]))
     }, [])
 
-    useEffect(() => {
-        if(users !== null) {
-            setPages(Math.round(users.length/24))
+    /* Creating an array of numbers that will be used to create the pagination buttons. */
+    function updatePages () {
+        let numOfPages = Math.round(users.length/24)
+        let newArray = [];
+        for (let i = 1; i <= numOfPages; i++) {
+            const current = i;
+            newArray.push(current);    
         }
-    })
-   
+        setPages(newArray)
+    }    
+    if(users !== null) {
+            updatePages();
+    }
+
     /* Returning the Users component, the SingleUserModal component, and the SearchModal component. */
     return (
         <div>
