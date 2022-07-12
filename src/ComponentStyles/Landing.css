@@ -5,21 +5,24 @@
   margin: 0;
   padding: 0;
 }
-#header-root {
+#landing-root {
   display: grid;
   gap: 40px 40px;
   grid-template-columns: auto auto auto;
   margin: 80px 0 80px 80px;
-  background-image: url(https://live.staticflickr.com/65535/52179814599_f44092cc51_h.jpg);
-
-  /* filter: blur(8px); */
   /* Testing */
-  /* position: absolute;
+  position: absolute;
   top: 0;
   margin: 0;
   width: 100vw;
-  height: 100vh; */
-
+  height: 100vh;
+}
+#landing-bg {
+  background-image: url(https://live.staticflickr.com/65535/52179814599_f44092cc51_h.jpg);
+  filter: blur(8px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 .bubble {
   border: 5px solid gold;
