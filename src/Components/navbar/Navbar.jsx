@@ -8,6 +8,7 @@ function Navbar() {
         document.querySelectorAll('.nav-link').forEach(elem => elem.classList.remove('active-tab'))
         e.target.classList.add('active-tab')
     }
+
     return (
         <div className='navbar-container'>
             <ul className='navbar-UL'>

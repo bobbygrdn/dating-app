@@ -3,8 +3,9 @@ import './profileStyles.css'
 import DarkThemeToggleBtn from './DarkThemeToggleBtn.jsx'
 import FontSizeSelection from './FontSizeSelection.jsx'
 import FontStyleSelection from './FontStyleSelection.jsx'
+import ProfilePicPlaceHolder from './ProfilePicPlaceHolder'
 
-function MyProfile({ darkTheme, setDarkTheme }) {
+function MyProfile({ darkTheme, setDarkTheme, dummyUser }) {
     const [editing, setEditing] = useState(false)
 
     const handleEditClick = () => {
@@ -16,11 +17,10 @@ function MyProfile({ darkTheme, setDarkTheme }) {
         console.log('clicked SAVE, update request sent')
         setEditing(false)
     }
-
     return (
         <div className='profile-page-main-container'>
             <div className='pic-container'>
-                <img src='https://xsgames.co/randomusers/avatar.php?g=female' alt='profile-img' />
+                {dummyUser !== null ? <img src={dummyUser['profile_pic_url']} alt='profile-pic' /> : <ProfilePicPlaceHolder />}
             </div>
 
             <div className='snapshot-container'>

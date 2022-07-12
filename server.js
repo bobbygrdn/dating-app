@@ -37,10 +37,12 @@ app.get("/api/users", async (req, res) => {
 //GET ONE user;
 app.get("/api/users/:id", async (req, res) => {
   try {
-    const data = await pool.query("SELECT * FROM users WHERE user_id=$1;", [
-      parseInt(req.params.id),
+    let client = await pool.connect();
+    const data = await client.query("SELECT * FROM users WHERE user_id=$1;", [
+      req.params.id
     ]);
     res.json(data.rows[0]);
+    client.release();
   } catch (err) {
     console.error(err);
   }
@@ -151,7 +153,7 @@ app.delete("/api/users/:id", async (req, res) => {
       req.params.id,
     ]);
     res.json(data.rows);
-  } catch (err) {}
+  } catch (err) { }
 });
 
 //GET ALL pending_connections;
@@ -187,7 +189,7 @@ app.delete("/api/pending_connections/:id", async (req, res) => {
       [req.params.id]
     );
     res.json(data.rows);
-  } catch (err) {}
+  } catch (err) { }
 });
 
 //GET ALL messages;
@@ -285,7 +287,7 @@ app.delete("/api/messages/:id", async (req, res) => {
       [req.params.id]
     );
     res.json(data.rows);
-  } catch (err) {}
+  } catch (err) { }
 });
 
 //GET ALL threads
@@ -321,7 +323,7 @@ app.delete("/api/threads/:id", async (req, res) => {
       [req.params.id]
     );
     res.json(data.rows);
-  } catch (err) {}
+  } catch (err) { }
 });
 
 app.get("*", (_, res) => {

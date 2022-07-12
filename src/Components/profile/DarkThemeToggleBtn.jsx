@@ -1,24 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './DarkThemeToggleStyles.css'
 
 function DarkThemeToggleBtn({ darkTheme, setDarkTheme }) {
 
+    useEffect(() => {
+        if (darkTheme) {
+            document.querySelector('body').classList.add('darkTheme')
+            document.querySelector('.navbar-container').classList.add('navDarkTheme')
+        }
+        if (!darkTheme) {
+            document.querySelector('body').classList.remove('darkTheme')
+            document.querySelector('.navbar-container').classList.remove('navDarkTheme')
+        }
+    }, [darkTheme])
 
-
-    const handleChange = () => {
-        setDarkTheme(!darkTheme)
+    const handleChange = (e) => {
+        setDarkTheme(e.target.checked)
     }
 
-    if (darkTheme) {
-        document.querySelector('body').classList.add('darkTheme')
-        document.querySelector('.navbar-container').classList.add('navDarkTheme')
-    }
 
-    if (!darkTheme) {
-        document.querySelector('body').classList.remove('darkTheme')
-        document.querySelector('.navbar-container').classList.remove('navDarkTheme')
-
-    }
     return (
         <div className="toggleContainer">
             {'Dark Theme:'}{" "}

@@ -23,7 +23,7 @@ body {
     display: inline-block;
     text-align: left;
     top: 8px;
-    font-size: .8rem;
+    font-size: .8rem !important;
     position: relative;
     top: 10px;
 }
