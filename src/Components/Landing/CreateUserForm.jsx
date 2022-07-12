@@ -116,15 +116,15 @@ console.log(newUserData)
       <div className='createuser--formWrapper'>
         <form onSubmit={handleSubmit}>
           {inputs.map((input) => (
-            <CreateInputs 
-            key={input.id} 
-            {...input} value={newUserData[input.name]} 
+            <CreateInputs
+            key={input.id}
+            {...input} value={newUserData[input.name]}
             onChange={handleChange}
             />
           ))}
-          
+
             <button className='btn--submit'>Submit</button>
-          
+
         </form>
       </div>
     </div>
