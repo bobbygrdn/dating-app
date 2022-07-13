@@ -47,8 +47,12 @@ li {
 .title {
     text-align: center;
     font-family: 'Lily Script One', cursive;
+    font-size: 6rem;
+    margin-bottom: 20px;
 }
 
 .logo {
-    float: right;
+    position: absolute;
+    right: 0;
+    border: none;
 }
