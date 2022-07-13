@@ -6,13 +6,10 @@ import Matches from './Components/matches/Matches.jsx'
 import Inbox from './Components/inbox/Inbox.jsx'
 import PendingConnections from './Components/pending-connections/PendingConnections.jsx'
 import MyProfile from './Components/profile/MyProfile.jsx'
-<<<<<<< HEAD
 import Landing from './Components/Landing/Landing.jsx'
-=======
 import Discover from './Components/home/Discover.jsx';
 import { DiscoverProvider } from './context/DiscoverContext.js';
->>>>>>> a151b480660ef393bab0a7ccaf8914e4ac243f24
-
+import { LandingProvider } from './context/LandingProvider.js'
 function App() {
 
     const [darkTheme, setDarkTheme] = useState(false)
@@ -28,29 +25,30 @@ function App() {
             .then(data => setDummyUser(data))
     }
     return (
-<<<<<<< HEAD
         <>
+            <LandingProvider>
             <Navbar />
             <Landing/>
-=======
->>>>>>> a151b480660ef393bab0a7ccaf8914e4ac243f24
 
-        <div className='App-container'>
-            <DiscoverProvider>
-            <Navbar />
-            
-            <Routes>
+            <div className='App-container'>
+                <DiscoverProvider>
+                <Navbar />
 
-                <Route path='/' element={<Discover />} />
-                <Route path='/search-results' element={<SearchResults />} />
-                <Route path='/matches' element={<Matches />} />
-                <Route path='/inbox' element={<Inbox />} />
-                <Route path='/pending-connections' element={<PendingConnections />} />
-                <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} dummyUser={dummyUser} setDummyUser={setDummyUser} />} />
+                <Routes>
 
-            </Routes>
-            </DiscoverProvider>
-        </div>
+                    <Route path='/' element={<Discover />} />
+                    <Route path='/search-results' element={<SearchResults />} />
+                    <Route path='/matches' element={<Matches />} />
+                    <Route path='/inbox' element={<Inbox />} />
+                    <Route path='/pending-connections' element={<PendingConnections />} />
+                    <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} dummyUser={dummyUser} setDummyUser={setDummyUser} />} />
+
+                </Routes>
+                </DiscoverProvider>
+            </LandingProvider>
+            </div>
+
+        </>
 
     )
 }
