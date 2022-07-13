@@ -93,10 +93,20 @@ const CreateUserForm = () => {
 
   ];
 
-   const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(newTempUserData)
-   };
+    console.log(JSON.stringify(newTempUserData))
+    let fetchData = {
+        method: "PATCH",
+        body: JSON.stringify(newTempUserData),
+        headers: new Headers({
+            'Content-Type': 'application/json; charset=UTF-8'
+        })
+    }
+    fetch('https://localhost:3001/api/users',fetchData).then(() => {
+      console.log('createdUser')
+    })
+  };
 
    const handleChange = (e) => {
     setTempUserData({...newTempUserData, [e.target.name]: e.target.value})

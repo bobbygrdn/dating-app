@@ -1,7 +1,7 @@
---  DROP DATABASE IF EXISTS findluv;
---  CREATE DATABASE findluv;
+ DROP DATABASE IF EXISTS findluv;
+ CREATE DATABASE findluv;
 
---  \c findluv;
+ \c findluv;
 
 DROP TABLE IF EXISTS landing_page, users, pending_connections, messages, threads;
 
@@ -26,7 +26,7 @@ CREATE TABLE users(
     sexual_orientation VARCHAR(20),
     city VARCHAR(85),
     state VARCHAR(50),
-    zipcode VARCHAR(10) NOT NULL, 
+    zipcode VARCHAR(10) NOT NULL,
     dark_theme BOOLEAN,
     font_size TEXT,
     font_style TEXT
