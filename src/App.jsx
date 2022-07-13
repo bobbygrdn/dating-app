@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route } from "react-router-dom";
 import Navbar from './Components/navbar/Navbar.jsx'
-import SearchResults from './Components/search-results/SearchResults.jsx'
 import Matches from './Components/matches/Matches.jsx'
 import Inbox from './Components/inbox/Inbox.jsx'
 import PendingConnections from './Components/pending-connections/PendingConnections.jsx'
@@ -32,7 +31,6 @@ function App() {
                 <Routes>
 
                     <Route path='/' element={<Discover />} />
-                    <Route path='/search-results' element={<SearchResults />} />
                     <Route path='/matches' element={<Matches />} />
                     <Route path='/inbox' element={<Inbox dummyUser={dummyUser} />} />
                     <Route path='/pending-connections' element={<PendingConnections />} />
