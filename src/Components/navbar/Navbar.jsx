@@ -8,11 +8,12 @@ function Navbar() {
         document.querySelectorAll('.nav-link').forEach(elem => elem.classList.remove('active-tab'))
         e.target.classList.add('active-tab')
     }
+
     return (
         <div className='navbar-container'>
             <ul className='navbar-UL'>
                 <li>
-                    <Link to='/' className='nav-link active-tab' onClick={handleClick}>Home</Link>
+                    <Link to='/' className='nav-link active-tab' onClick={handleClick}>Discover</Link>
                 </li>
                 <li>
                     <Link to='/search-results' className='nav-link' onClick={handleClick}>Search</Link>
