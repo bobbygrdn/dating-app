@@ -1,6 +1,10 @@
+:root {
+    --font-size: 1.5rem
+}
+
 .navbar-container {
     box-sizing: border-box;
-    font-size: 1.5rem;
+    font-size: var(--font-size);
     width: fit-content;
     margin: 0 auto;
     padding: 1rem;
@@ -12,11 +16,17 @@
     display: flex;
     gap: 1rem;
     list-style: none;
+    font-size: inherit;
+}
+
+li {
+    font-size: inherit;
 }
 
 .nav-link {
     text-decoration: none;
     color: inherit;
+    font-size: inherit;
     transition: all .3s ease-in-out;
     opacity: .3;
 }
@@ -24,12 +34,13 @@
 .nav-link:hover {
     opacity: 1;
     color: inherit;
-    font-size: 1.8rem;
+    /* font-size: 1.8rem; */
+    font-size: calc(var(--font-size) + .5rem);
 }
 
 .active-tab {
     color: inherit;
     opacity: 1;
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: calc(var(--font-size) + .5rem);
 }
