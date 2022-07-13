@@ -44,9 +44,11 @@ li {
     font-weight: bold;
     font-size: calc(var(--font-size) + .5rem);
 }
+.title {
+    text-align: center;
+    font-family: 'Lily Script One', cursive;
+}
 
-.header {
-    border-radius: 25px;
-    display: flex;
-    justify-content: center;
+.logo {
+    float: right;
 }
