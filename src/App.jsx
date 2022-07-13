@@ -30,31 +30,31 @@ function App() {
     }
 
     if (!login) {
-        if (!buttonPressed) return (<Landing/>)
-        else if (buttonPressed === 'createUserButton') return (<CreateUserForm/>)
-        else if (buttonPressed === 'loginButton') return (<Login/>)
+        if (!buttonPressed) return (<Landing />)
+        else if (buttonPressed === 'createUserButton') return (<CreateUserForm />)
+        else if (buttonPressed === 'loginButton') return (<Login />)
     } else {
         return (
-            <>
+
 
             <div className='App-container'>
                 <DiscoverProvider>
-                <Navbar />
+                    <Navbar />
 
-                <Routes>
+                    <Routes>
 
-                    <Route path='/' element={<Discover />} />
-                    <Route path='/search-results' element={<SearchResults />} />
-                    <Route path='/matches' element={<Matches />} />
-                    <Route path='/inbox' element={<Inbox dummyUser={dummyUser} />} />
-                    <Route path='/pending-connections' element={<PendingConnections />} />
-                    <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} dummyUser={dummyUser} setDummyUser={setDummyUser} />} />
+                        <Route path='/' element={<Discover />} />
+                        <Route path='/search-results' element={<SearchResults />} />
+                        <Route path='/matches' element={<Matches />} />
+                        <Route path='/inbox' element={<Inbox dummyUser={dummyUser} />} />
+                        <Route path='/pending-connections' element={<PendingConnections />} />
+                        <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} dummyUser={dummyUser} setDummyUser={setDummyUser} />} />
 
-                </Routes>
-            </DiscoverProvider>
-        </div>
+                    </Routes>
+                </DiscoverProvider>
+            </div>
 
-    )
+        )
+    }
 }
-
 export default App
