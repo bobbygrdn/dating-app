@@ -10,6 +10,12 @@ function Navbar() {
     }
 
     return (
+        <>
+        <div className="header">
+            <h1>.Find(luv)</h1>
+            <img 
+             className="logo" src='../../design/logo.png' alt='none'></img>
+            </div>
         <div className='navbar-container'>
             <ul className='navbar-UL'>
                 <li>
@@ -29,6 +35,7 @@ function Navbar() {
                 </li>
             </ul>
         </div>
+        </>
     )
 }
 
