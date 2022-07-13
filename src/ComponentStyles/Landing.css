@@ -5,3 +5,66 @@
   margin: 0;
   padding: 0;
 }
+#landing-root {
+  display: grid;
+  gap: 40px 40px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  position: absolute;
+  top: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+#landing-bg {
+  background-image: url(https://imgcp.aacdn.jp/img-a/1200/900/global-aaj-front/article/2020/01/5e17f350b5dd1_5e17f08241fb1_308092002.jpg);
+  filter: blur(8px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.bubble {
+  border: 5px solid #FFDFDD;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #FFDFDD;
+}
+.invisi-bubble {
+  border: none !important;
+  box-shadow: none !important;
+  z-index: 3;
+  height: 266px;
+  width: 266px;
+}
+.box {
+  z-index: 1;
+  /* background-color: rgba(73, 148, 255, 0.474); */
+}
+#infoBox {
+  grid-column: span 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+#infoBox h1 {
+  color: white;
+  font-family: 'Lily Script One', cursive;
+  font-size: 5rem;
+  width: 100%;
+  text-align: center;
+}
+#infoBox button {
+  border: none;
+  background-color: aquamarine;
+  font-size: 2rem;
+  padding: 10px;
+  border-radius: 13px;
+  color: cadetblue;
+  font-family: 'Lily Script One', cursive;
+}
+#infoBox button:nth-child(2) {
+  margin: 0 1rem 0 auto;
+}
+#infoBox button:nth-child(3) {
+  margin: 0 auto 0 1rem;
+}
