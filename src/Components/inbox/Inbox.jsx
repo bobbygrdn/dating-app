@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import './inboxStyles.css'
 
-function Inbox() {
-    fetch('https://find-luv.herokuapp.com/api/threads')
-        .then(res => res.json())
-        .then(data => console.log(data))
+function Inbox({ dummyUser, setDummyUser }) {
+
+    const [threads, setThreads] = useState([])
+    useEffect(() => {
+        fetchAllUserThreads()
+    }, [threads])
+
+    const fetchAllUserThreads = () => {
+        fetch(`https://find-luv.herokuapp.com/api/threads/user/${dummyUser['user_id']}`)
+            .then(res => res.json())
+            .then(data => setThreads(data))
+    }
+
     return (
-        <div> - Inbox page WIP by Neo - </div>
+        <div className='inbox-main-container'>
+            {threads.map(thread => {
+                return (
+                    <p>{thread['recipient_user_id']}</p>
+                )
+            })}
+        </div>
     )
 }
 
