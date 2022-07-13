@@ -6,7 +6,8 @@ import MsgNoThreads from './MsgNoThreads.jsx'
 
 function Inbox({ dummyUser, setDummyUser }) {
 
-    const [threads, setThreads] = useState(null)
+    const [threads, setThreads] = useState([])
+    const [profileData, setProfileData] = useState([])
 
     useEffect(() => {
         fetchAllUserThreads()
@@ -33,22 +34,24 @@ function Inbox({ dummyUser, setDummyUser }) {
     }
 
 
-    if (threads !== null) {
+    // if (threads !== null) {
 
-        let arrayOfIds = []
+    //     let arrayOfIds = []
 
-        threads.forEach((elem) => {
-            elem.recipient_user_id === dummyUser.user_id ? arrayOfIds.unshift(elem.sender_user_id) : arrayOfIds.unshift(elem.recipient_user_id)
-        })
+    //     threads.map((elem) => {
+    //         return elem.recipient_user_id === dummyUser.user_id ? arrayOfIds.unshift(elem.sender_user_id) : arrayOfIds.unshift(elem.recipient_user_id)
+    //     })
 
-        let arrayOfProfiles = fetchProfileData(arrayOfIds)
+    //     let profiles = fetchProfileData(arrayOfIds)
 
-        return (
-            <div className='inbox-main-container'>
-                <DisplayThreads arrayOfProfiles={arrayOfProfiles} />
-            </div>
-        )
-    }
+    // }
+
+    return (
+        <div className='inbox-main-container'>
+            <DisplayThreads threads={threads} dummyUser={dummyUser} />
+
+        </div>
+    )
 }
 
 export default Inbox

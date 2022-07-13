@@ -19,13 +19,13 @@ function FontStyleSelection({ dummyUser, setDummyUser }) {
 
         switch (dummyUser['font_style']) {
             case 'Arial':
-                body.style.fontFamily = 'Arial'
+                body.style.fontFamily = 'Noto Serif'
                 break;
             case 'Fantasy':
-                body.style.fontFamily = 'Fantasy'
+                body.style.fontFamily = 'Edu NSW ACT Foundation'
                 break;
             case 'Georgia':
-                body.style.fontFamily = 'Georgia'
+                body.style.fontFamily = 'Shadows Into Light'
                 break;
             default:
                 console.warn('Failed to load Font Style')
@@ -40,9 +40,9 @@ function FontStyleSelection({ dummyUser, setDummyUser }) {
                 onChange={handleChange}
                 name="font_style"
             >
-                <option value='Arial'>Arial</option>
+                <option value='Arial'>New Serif</option>
                 <option value='Fantasy'>Fantasy</option>
-                <option value='Georgia'>Georgia</option>
+                <option value='Georgia'>Child</option>
             </select>
         </div>
     )

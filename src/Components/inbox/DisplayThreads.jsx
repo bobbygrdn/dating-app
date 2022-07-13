@@ -1,21 +1,47 @@
-import React, { useEffect } from 'react'
+import { computeHeadingLevel } from '@testing-library/react'
+import React, { useState, useEffect } from 'react'
 
-function DisplayThreads({ arrayOfProfiles }) {
-    console.log(arrayOfProfiles)
+function DisplayThreads({ threads, dummyUser }) {
 
-    // useEffect(() => {
-    //     test()
-    // }, [arrayOfProfiles])
+
+    const [profileData, setProfileData] = useState([])
+    const [userIds, setUserIds] = useState([])
+
+    console.log(threads)
+
+    useEffect(() => {
+    }, [])
+
+
+    const profilePic = (id) => {
+        fetch(`https://find-luv.herokuapp.com/api/users/${id}`)
+            .then(res => res.json())
+            .then(data => { return data.profile_pic_url })
+    }
 
 
     return (
         <>
-            {arrayOfProfiles.forEach((elem) => (
-                <div className='threadCard'>
-                    <img src={elem.profile_pic_url} alt="thread-card-pic" />
-                </div>
-            ))}
+            {threads.map(elem => {
+                let id;
+                if (elem.recipient_user_id === dummyUser.user_id) {
+                    id = elem.sender_user_id
+                    {/* url = profilePic(elem.sender_user_id) */ }
+                }
+                else {
+                    id = elem.recipient_user_id
+                    {/* url = profilePic(elem.recipient_user_id) */ }
+                }
 
+                let url = profilePic(id)
+
+                console.log(profilePic(id))
+
+                return (<div id={elem.thread_id}>
+                    {elem.thread_id}
+                    {url !== null ? <img src={url} alt='thread-pic' /> : null}
+                </div>)
+            })}
         </>
     );
 
