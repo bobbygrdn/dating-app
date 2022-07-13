@@ -1,4 +1,4 @@
-import { useState }from 'react'
+import { useState } from 'react'
 
 const CreateInputs = (props) => {
   const {label, errorMessage, onChange, id, ...rest} = props;

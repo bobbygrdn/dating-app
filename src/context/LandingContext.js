@@ -4,7 +4,7 @@ const LandingContext = createContext()
 
 export const LandingProvider = ({children}) => {
   const [ login, setLogin ] = useState(false)
-  const [ newUser, setNewUser ] = useState(null)
+  const [ userData, setUserData ] = useState(null)
   const [ buttonPressed, setWhichButtonWasPressed ] = useState(null)
   const pressedButton = (whichOne) => {
     setWhichButtonWasPressed(whichOne)
@@ -12,8 +12,8 @@ export const LandingProvider = ({children}) => {
   return <LandingContext.Provider value={{
     login,
     setLogin,
-    newUser,
-    setNewUser,
+    userData,
+    setUserData,
     buttonPressed,
     pressedButton
   }}>

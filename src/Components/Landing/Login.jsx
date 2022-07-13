@@ -1,7 +1,11 @@
-import { React, useState } from 'react'
-import LoginInputs from "./LoginInputs"
+import { React, useContext, useState } from 'react';
+import LandingContext from '../../context/LandingContext';
+import '../../ComponentStyles/CreateSlashLogin.css';
+import LoginInputs from './LoginInputs';
 
 const Login = () => {
+
+const {setUserData} = useContext(LandingContext)
 
 const [loginData, setLoginData] = useState({
   username:"",

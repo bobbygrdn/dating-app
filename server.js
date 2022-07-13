@@ -48,6 +48,28 @@ app.get("/api/users/:id", async (req, res) => {
   }
 });
 
+//Get User Data with Email && Password
+app.get("/api/users/login", async(req, res) => {
+try {
+const {username, password} = req.body;
+
+  let client = await pool.connect();
+  const { rows }= await client.query('SELECT * FROM users where username=$1 AND password=$2;', [username, password]);
+
+if(rows.length === 0){
+
+  res.send("Username and password are incorrect, please try again or create an account.");
+
+} else {
+
+  res.json(data.rows);
+
+}
+} catch (error) {
+  console.log(error);
+}
+});
+
 //POST a user;
 app.post("/api/users", async (req, res) => {
   try {
