@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './inboxStyles.css'
+import DisplayThreads from './DisplayThreads.jsx'
 import MsgLoadingThreads from './MsgLoadingThreads.jsx'
 import MsgNoThreads from './MsgNoThreads.jsx'
 
 function Inbox({ dummyUser, setDummyUser }) {
 
-    const [threads, setThreads] = useState([])
+    const [threads, setThreads] = useState(null)
 
     useEffect(() => {
         fetchAllUserThreads()
@@ -15,50 +16,39 @@ function Inbox({ dummyUser, setDummyUser }) {
         fetch(`https://find-luv.herokuapp.com/api/threads/user/${dummyUser['user_id']}`)
             .then(res => res.json())
             .then(data => setThreads(data))
+            .catch(err => console.log(err))
     }
 
-    const obtainUserIds = () => {
-        let arrayOfUserIdsToFetch = [];
+    const fetchProfileData = (arrayOfIds) => {
+        let arrayOfProfiles = []
 
-        threads.forEach(item => {
-            item.recipient_user_id === dummyUser.user_id ? arrayOfUserIdsToFetch = [item.sender_user_id, ...arrayOfUserIdsToFetch] : arrayOfUserIdsToFetch = [item.recipient_user_id, ...arrayOfUserIdsToFetch]
-        })
-
-        fetchUserProfileData(arrayOfUserIdsToFetch)
-    }
-
-    const fetchUserProfileData = (arrayOfIds) => {
-        let arrayOfProfileData = []
-
-        arrayOfIds.forEach(item => {
-            fetch(`https://find-luv.herokuapp.com/api/users/${item}`)
+        arrayOfIds.forEach(elem => {
+            fetch(`https://find-luv.herokuapp.com/api/users/${elem}`)
                 .then(res => res.json())
-                .then(data => arrayOfProfileData.push(data))
+                .then(data => arrayOfProfiles.push(data))
+                .catch(err => console.log(err))
         })
 
-        displayThreadCards(arrayOfProfileData)
+        return arrayOfProfiles
     }
 
-    const displayThreadCards = (arrayOfProfileData) => {
-        arrayOfProfileData.forEach(profile => {
-            console.log(profile)
-            return (
-                <p>{profile.user_id}</p>
-            )
+
+    if (threads !== null) {
+
+        let arrayOfIds = []
+
+        threads.forEach((elem) => {
+            elem.recipient_user_id === dummyUser.user_id ? arrayOfIds.unshift(elem.sender_user_id) : arrayOfIds.unshift(elem.recipient_user_id)
         })
+
+        let arrayOfProfiles = fetchProfileData(arrayOfIds)
+
+        return (
+            <div className='inbox-main-container'>
+                <DisplayThreads arrayOfProfiles={arrayOfProfiles} />
+            </div>
+        )
     }
-    return (
-        <div className='inbox-main-container'>
-            {threads.length > 0 ? obtainUserIds() : <MsgNoThreads />}
-
-            {/* {threads.map(thread => {
-                return (
-                    <p>{thread['recipient_user_id']}</p>
-                )
-            })} */}
-
-        </div>
-    )
 }
 
 export default Inbox

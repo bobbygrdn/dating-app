@@ -17,8 +17,15 @@
     border-radius: 25px;
 }
 
-.inbox-main-container p {
-    border-bottom: 1px solid #5555;
+.threadCard {
+    border-bottom: 1px solid #3335;
     width: 80%;
-    text-align: center;
+    display: grid;
+    padding: .5rem;
+
+}
+
+.threadCard img {
+    height: 128px;
+    width: 128px;
 }
