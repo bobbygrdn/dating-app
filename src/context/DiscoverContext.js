@@ -42,13 +42,10 @@ export const DiscoverProvider = ({children}) => {
         if(id < 2) {
             setIndex1(1)
             setIndex2(24)
-        } else if(id % 2 === 0) {
+        } else {
             setIndex1(index2+1)
             setIndex2(id*24)
-        } else if(id > 2 && id % 2 === 1) {
-            setIndex1(index2+1)
-            setIndex2(id*24)
-        }
+        } 
     }
     
     
