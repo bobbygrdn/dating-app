@@ -6,7 +6,7 @@ import DiscoverNavBar from './DiscoverNavBar';
 
 function Users() {
     /* Destructuring the context object. */
-    const {setSearchModal, users} = useContext(DiscoverContext)
+    const {setSearchModal, users, index1, index2} = useContext(DiscoverContext)
     
     /**
      * When the user clicks on the search icon, the search modal will appear.
@@ -23,7 +23,7 @@ function Users() {
                 <button className='searchButton' onClick={handleClick}>Search</button>
                 {/* Mapping through the users array and returning the User component. */}
                 <div className='usersContainer'>
-                    {users.filter((elem, index) => index < 24).map((elem) => {
+                    {users.filter((elem, index) => index > index1 && index < index2).map((elem) => {
                         
                         return (
                             <User elem={elem} key={elem.user_id} />
