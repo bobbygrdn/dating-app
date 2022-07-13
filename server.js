@@ -323,7 +323,7 @@ app.get("/api/threads/:id", async (req, res) => {
 app.get('/api/threads/user/:id', async (req, res) => {
   try {
     let client = await pool.connect();
-    let data = client.query('SELECT * FROM threads WHERE recipient_user_id = $1 OR sender_user_id = $2', [req.params.id, req.params.id])
+    let data = await client.query('SELECT * FROM threads WHERE recipient_user_id = $1 OR sender_user_id = $2', [req.params.id, req.params.id])
     res.json(data.rows)
     client.release()
   } catch (error) {
