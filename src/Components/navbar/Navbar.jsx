@@ -16,9 +16,6 @@ function Navbar() {
                     <Link to='/' className='nav-link active-tab' onClick={handleClick}>Discover</Link>
                 </li>
                 <li>
-                    <Link to='/search-results' className='nav-link' onClick={handleClick}>Search</Link>
-                </li>
-                <li>
                     <Link to='/matches' className='nav-link' onClick={handleClick}>Matches</Link>
                 </li>
                 <li>
