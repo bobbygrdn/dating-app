@@ -1,33 +1,46 @@
+:root {
+    --font-size: 1.5rem
+}
+
 .navbar-container {
     box-sizing: border-box;
-    font-size: 1.5rem;
+    font-size: var(--font-size);
     width: fit-content;
     margin: 0 auto;
-    padding: 1rem
+    padding: 1rem;
+    border-radius: 25px;
+    color: #333;
 }
 
 .navbar-UL {
     display: flex;
     gap: 1rem;
     list-style: none;
+    font-size: inherit;
+}
+
+li {
+    font-size: inherit;
 }
 
 .nav-link {
     text-decoration: none;
-    color: #1115;
+    color: inherit;
+    font-size: inherit;
     transition: all .3s ease-in-out;
-    opacity: .8;
+    opacity: .3;
 }
 
 .nav-link:hover {
     opacity: 1;
-    color: #333;
-    font-size: 1.8rem;
+    color: inherit;
+    /* font-size: 1.8rem; */
+    font-size: calc(var(--font-size) + .5rem);
 }
 
 .active-tab {
-    color: #333;
+    color: inherit;
     opacity: 1;
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: calc(var(--font-size) + .5rem);
 }

@@ -1,0 +1,112 @@
+.profile-page-main-container {
+    margin: 0 3rem 0 3rem;
+    font-size: inherit;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "pic snapshot"
+        "match-options null"
+        "bio bio "
+        "settings settings ";
+    gap: 1rem;
+    justify-items: center;
+    align-items: center;
+    border: 1px solid #555;
+    box-shadow: 3px 3px 3px 3px #333;
+    border-radius: 25px;
+}
+
+.pic-container {
+    grid-area: pic;
+}
+
+.profilePicPlaceHolder {
+    height: 256px;
+    width: 256px;
+    background-color: #5555;
+    border-radius: 100%;
+}
+
+img {
+    border-radius: 100%;
+    border: 1px solid whitesmoke;
+}
+
+.snapshot-container {
+    grid-area: snapshot;
+    justify-self: left;
+}
+
+.snapshotUL {
+    list-style: none;
+    /* padding: .5rem; */
+}
+
+.snapshotUL li {
+    margin: .5rem;
+}
+
+.match-preferences-options-container {
+    grid-area: match-options;
+    /* justify-self: left; */
+    /* width: 100%; */
+}
+
+.connectionInfoUL {
+    list-style: none;
+    /* padding: .5rem; */
+}
+
+.connectionInfoUL li {
+    margin: .5rem
+}
+
+.bio-details-container {
+    grid-area: bio;
+    justify-self: left;
+}
+
+.bio-details-container>* {
+    margin: .5rem;
+}
+
+.user-settings-container {
+    grid-area: settings;
+    display: flex;
+    gap: 3rem;
+    align-items: baseline;
+}
+
+.user-settings-container>* {
+    height: fit-content;
+}
+
+.fontSizeSelectionContainer {
+    padding: 1rem;
+}
+
+.fontSizeDropDown,
+.fontStyleDropDown {
+    background-color: #9995;
+    padding: .5rem;
+    border: none;
+    border-radius: 1000px;
+    text-align: center;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    box-shadow: 3px 3px 3px 3px #333;
+    ;
+    /* font-weight: bold; */
+}
+
+.fontSizeDropDown:hover {
+    cursor: pointer;
+}
+
+.fontStyleContainer {}
+
+.fontStyleDropDown:hover {
+    cursor: pointer;
+}

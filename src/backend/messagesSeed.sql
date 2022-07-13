@@ -1999,3 +1999,4 @@ insert into messages (date_stamp, time_stamp, read_receipt, sent_from_user_id, s
 insert into messages (date_stamp, time_stamp, read_receipt, sent_from_user_id, sent_to_user_id, content) values ('7/6/2022', '3:10 PM', false, 272, 149, 'rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet');
 insert into messages (date_stamp, time_stamp, read_receipt, sent_from_user_id, sent_to_user_id, content) values ('7/10/2022', '5:37 AM', false, 314, 304, 'amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis');
 
+\i threadsSeed.sql
