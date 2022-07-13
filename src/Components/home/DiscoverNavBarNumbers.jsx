@@ -3,8 +3,12 @@ import React from "react";
 
 function DiscoverNavBarNumbers (props) {
 
+    const handleClick = (e) => {
+        console.log(e.target.id);
+    }
+
     return (
-    <div className="navNumbers" id={props.elem} onClick={props.handleClick}>{props.elem}</div>
+    <div className="navNumbers" id={props.elem} onClick={handleClick}>{props.elem}</div>
     )
 }
 
