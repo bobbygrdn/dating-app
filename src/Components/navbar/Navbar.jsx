@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './navbarStyles.css'
+import logo from "./logo.png"
 
 function Navbar() {
 
@@ -10,13 +11,14 @@ function Navbar() {
     }
 
     return (
+        <>
+        <img 
+            className="logo" src={logo} alt='none' height="200px" width="200px"></img>
         <div className='navbar-container'>
+             <h1 className='title'>.Find(luv)</h1>
             <ul className='navbar-UL'>
                 <li>
                     <Link to='/' className='nav-link active-tab' onClick={handleClick}>Discover</Link>
-                </li>
-                <li>
-                    <Link to='/search-results' className='nav-link' onClick={handleClick}>Search</Link>
                 </li>
                 <li>
                     <Link to='/matches' className='nav-link' onClick={handleClick}>Matches</Link>
@@ -32,6 +34,8 @@ function Navbar() {
                 </li>
             </ul>
         </div>
+        </>
+
     )
 }
 
