@@ -23,7 +23,7 @@ function Users() {
                 <button className='searchButton' onClick={handleClick}>Search</button>
                 {/* Mapping through the users array and returning the User component. */}
                 <div className='usersContainer'>
-                    {users.filter((elem, index) => index > index1 && index < index2).map((elem) => {
+                    {users.filter((elem, index) => index >= index1 && index <= index2).map((elem) => {
                         
                         return (
                             <User elem={elem} key={elem.user_id} />
