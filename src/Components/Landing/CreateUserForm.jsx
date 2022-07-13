@@ -4,6 +4,7 @@ import LandingContext from '../../context/LandingContext'
 import '../../ComponentStyles/CreateSlashLogin.css'
 
 const CreateUserForm = () => {
+  const { setLogin } = useContext(LandingContext)
   const [newTempUserData, setTempUserData] = useState({
     username: "",
     first_name: "",
@@ -105,6 +106,7 @@ const CreateUserForm = () => {
     fetch('https://find-luv.herokuapp.com/api/users',fetchData).then(() => {
       console.log('createdUser')
     })
+    setLogin(true)
   };
 
    const handleChange = (e) => {
