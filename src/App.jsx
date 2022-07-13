@@ -34,7 +34,7 @@ function App() {
                 <Route path='/' element={<Discover />} />
                 <Route path='/search-results' element={<SearchResults />} />
                 <Route path='/matches' element={<Matches />} />
-                <Route path='/inbox' element={<Inbox />} />
+                <Route path='/inbox' element={<Inbox dummyUser={dummyUser} setDummyUser={setDummyUser} />} />
                 <Route path='/pending-connections' element={<PendingConnections />} />
                 <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} dummyUser={dummyUser} setDummyUser={setDummyUser} />} />
 
