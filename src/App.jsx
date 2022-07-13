@@ -8,6 +8,8 @@ import PendingConnections from './Components/pending-connections/PendingConnecti
 import MyProfile from './Components/profile/MyProfile.jsx'
 import Landing from './Components/Landing/Landing.jsx'
 import Discover from './Components/home/Discover.jsx';
+import CreateUserForm from './Components/Landing/CreateUserForm'
+import Login from './Components/Landing/Login'
 import { DiscoverProvider } from './context/DiscoverContext.js';
 import LandingContext from './context/LandingContext'
 
@@ -15,7 +17,7 @@ function App() {
 
     const [darkTheme, setDarkTheme] = useState(false)
     const [dummyUser, setDummyUser] = useState(null)
-    const { login } = useContext(LandingContext)
+    const { login, buttonPressed } = useContext(LandingContext)
 
     useEffect(() => {
         fetchProfile()
@@ -27,7 +29,9 @@ function App() {
             .then(data => setDummyUser(data))
     }
     if (!login) {
-        return (<Landing/>)
+        if (!buttonPressed) return (<Landing/>)
+        else if (buttonPressed === 'createUserButton') return (<CreateUserForm/>)
+        else if (buttonPressed === 'loginButton') return (<Login/>)
     } else {
         return (
             <>

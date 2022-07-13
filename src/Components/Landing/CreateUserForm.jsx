@@ -1,9 +1,11 @@
 
-import { React, useState } from 'react'
+import { React, useContext, useState } from 'react'
 import CreateInputs from './CreateInputs.jsx'
+import LandingContext from '../../context/LandingContext'
+import '../../ComponentStyles/CreateSlashLogin.css'
 
 const CreateUserForm = () => {
-  const [newUserData, setNewUserData] = useState({
+  const [newTempUserData, setTempUserData] = useState({
     username: "",
     first_name: "",
     last_name: "",
@@ -12,6 +14,7 @@ const CreateUserForm = () => {
     verifyPassword: "",
     zipcode: ""
   });
+  //const [ setNewUser ] = useContext(LandingContext)
 
   const inputs = [
     {
@@ -73,7 +76,7 @@ const CreateUserForm = () => {
       placeholder: "Verify Password",
       errorMessage: "Passwords must match!",
       label:"Verify Password",
-      pattern: newUserData.password,
+      pattern: newTempUserData.password,
       required: true
     },
 
@@ -92,13 +95,12 @@ const CreateUserForm = () => {
 
    const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(newTempUserData)
    };
 
    const handleChange = (e) => {
-    setNewUserData({...newUserData, [e.target.name]: e.target.value})
+    setTempUserData({...newTempUserData, [e.target.name]: e.target.value})
    };
-
-console.log(newUserData)
   return (
     <div
      className='createuser--container'>
@@ -118,7 +120,7 @@ console.log(newUserData)
           {inputs.map((input) => (
             <CreateInputs
             key={input.id}
-            {...input} value={newUserData[input.name]}
+            {...input} value={newTempUserData[input.name]}
             onChange={handleChange}
             />
           ))}

@@ -1,6 +1,7 @@
-import React from 'react'
+import { React, useContext } from 'react'
 import CreateUserForm from './CreateUserForm'
 import '../../ComponentStyles/Landing.css'
+import LandingContext from '../../context/LandingContext'
 
 const gender = []
 const random = []
@@ -23,6 +24,16 @@ for (let _ = 0; _ < 8; _++) {
 }
 
 export default function Landing() {
+  const {pressedButton} = useContext(LandingContext)
+  const clickedSignup = () => {
+    console.log("Signup pressed")
+    pressedButton('createUserButton')
+  }
+  const clickedLogin = () => {
+    console.log("Login pressed")
+    pressedButton('loginButton')
+  }
+
   return (
     <div id="landing-root">
       <div id="landing-bg"></div>
@@ -74,8 +85,8 @@ export default function Landing() {
       <div className="box" id="infoBox">
         <h1>.Find(luv)</h1>
         {/* paragraph with cool animation goes here */}
-        <button>Sign Up</button>
-        <button>Log In</button>
+        <button onClick={clickedSignup}>Sign Up</button>
+        <button onClick={clickedLogin}>Log In</button>
       </div>
       <div className="box empty"></div>
       <div className="box">
@@ -106,7 +117,6 @@ export default function Landing() {
         }}/>
       </div>
       <div className="box empty"></div>
-      {/* <CreateUserForm /> */}
     </div>
   )
 }
