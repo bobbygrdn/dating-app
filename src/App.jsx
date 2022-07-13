@@ -28,6 +28,7 @@ function App() {
             .then(res => res.json())
             .then(data => setDummyUser(data))
     }
+
     if (!login) {
         if (!buttonPressed) return (<Landing/>)
         else if (buttonPressed === 'createUserButton') return (<CreateUserForm/>)
@@ -38,7 +39,6 @@ function App() {
 
             <div className='App-container'>
                 <DiscoverProvider>
-
                 <Navbar />
 
                 <Routes>
@@ -46,17 +46,15 @@ function App() {
                     <Route path='/' element={<Discover />} />
                     <Route path='/search-results' element={<SearchResults />} />
                     <Route path='/matches' element={<Matches />} />
-                    <Route path='/inbox' element={<Inbox />} />
+                    <Route path='/inbox' element={<Inbox dummyUser={dummyUser} />} />
                     <Route path='/pending-connections' element={<PendingConnections />} />
                     <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} dummyUser={dummyUser} setDummyUser={setDummyUser} />} />
 
                 </Routes>
-                </DiscoverProvider>
-            </div>
+            </DiscoverProvider>
+        </div>
 
-            </>
-        )
-    }
+    )
 }
 
 export default App

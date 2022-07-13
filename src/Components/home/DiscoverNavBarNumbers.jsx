@@ -1,10 +1,13 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import DiscoverContext from '../../context/DiscoverContext'
 
 function DiscoverNavBarNumbers (props) {
+    const {updateIndexes} = useContext(DiscoverContext)
 
     const handleClick = (e) => {
         console.log(e.target.id);
+        updateIndexes(e.target.id)
+        window.scrollTo(0, 0)
     }
 
     return (
