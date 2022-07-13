@@ -2,7 +2,7 @@ import React from 'react'
 
 function Inbox() {
     return (
-        <div> - Inbox page - </div>
+        <div> - Inbox page WIP by Neo - </div>
     )
 }
 
