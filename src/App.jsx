@@ -9,8 +9,8 @@ import MyProfile from './Components/profile/MyProfile.jsx'
 import Landing from './Components/Landing/Landing.jsx'
 import Discover from './Components/home/Discover.jsx';
 import { DiscoverProvider } from './context/DiscoverContext.js';
-import { LandingProvider } from './context/LandingContext.js'
 import LandingContext from './context/LandingContext'
+
 function App() {
 
     const [darkTheme, setDarkTheme] = useState(false)
@@ -27,21 +27,12 @@ function App() {
             .then(data => setDummyUser(data))
     }
     if (!login) {
-        return (
-            <>
-                <LandingProvider>
-                    <Landing/>
-                </LandingProvider>
-            </>
-        )
+        return (<Landing/>)
     } else {
         return (
             <>
 
-            <Navbar />
-
             <div className='App-container'>
-                <LandingProvider>
                 <DiscoverProvider>
 
                 <Navbar />
@@ -57,7 +48,6 @@ function App() {
 
                 </Routes>
                 </DiscoverProvider>
-                </LandingProvider>
             </div>
 
             </>
