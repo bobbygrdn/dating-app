@@ -1,4 +1,3 @@
-
 import { React, useContext, useState } from 'react'
 import CreateInputs from './CreateInputs.jsx'
 import LandingContext from '../../context/LandingContext'
@@ -97,13 +96,13 @@ const CreateUserForm = () => {
     e.preventDefault();
     console.log(JSON.stringify(newTempUserData))
     let fetchData = {
-        method: "PATCH",
+        method: "POST",
         body: JSON.stringify(newTempUserData),
         headers: new Headers({
             'Content-Type': 'application/json; charset=UTF-8'
         })
     }
-    fetch('https://localhost:3001/api/users',fetchData).then(() => {
+    fetch('http://localhost:3000/api/users',fetchData).then(() => {
       console.log('createdUser')
     })
   };
