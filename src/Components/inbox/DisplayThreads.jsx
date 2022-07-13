@@ -10,7 +10,7 @@ function DisplayThreads({ arrayOfProfiles }) {
 
     return (
         <>
-            {arrayOfProfiles.map((elem) => (
+            {arrayOfProfiles.forEach((elem) => (
                 <div className='threadCard'>
                     <img src={elem.profile_pic_url} alt="thread-card-pic" />
                 </div>
