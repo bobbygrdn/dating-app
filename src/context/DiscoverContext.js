@@ -31,6 +31,22 @@ export const DiscoverProvider = ({children}) => {
     const addSingleUser = (data) => {
         setSingleUser(data);
     }
+
+    /**
+     * If the id is less than 2, set the indexes to 1 and 24. If the id is even, set the index2 to the
+     * id multiplied by 24. If the id is greater than 2 and odd, set the index2 to the id multiplied by
+     * 24.
+     * @param id - the id of the clicked item
+     */
+    const updateIndexes = (id) => {
+        if(id < 2) {
+            setIndex1(1)
+            setIndex2(24)
+        } else {
+            setIndex1(index2+1)
+            setIndex2(id*24)
+        } 
+    }
     
     
     /* Returning the context provider with the value of the context. */
@@ -55,7 +71,8 @@ export const DiscoverProvider = ({children}) => {
         index1,
         index2,
         setIndex1,
-        setIndex2
+        setIndex2,
+        updateIndexes
     }}>
         {children}
     </DiscoverContext.Provider>
