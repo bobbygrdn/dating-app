@@ -1,7 +1,7 @@
- DROP DATABASE IF EXISTS findluv;
- CREATE DATABASE findluv;
-
- \c findluv;
+--  DROP DATABASE IF EXISTS findluv;
+--  CREATE DATABASE findluv;
+--
+--  \c findluv;
 
 DROP TABLE IF EXISTS landing_page, users, pending_connections, messages, threads;
 

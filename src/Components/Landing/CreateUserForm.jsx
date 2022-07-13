@@ -102,7 +102,7 @@ const CreateUserForm = () => {
             'Content-Type': 'application/json; charset=UTF-8'
         })
     }
-    fetch('http://localhost:3000/api/users',fetchData).then(() => {
+    fetch('https://find-luv.herokuapp.com/api/users',fetchData).then(() => {
       console.log('createdUser')
     })
   };
