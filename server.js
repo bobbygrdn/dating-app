@@ -194,12 +194,15 @@ app.delete("/api/pending_connections/:id", async (req, res) => {
 
 //GET ALL messages;
 app.get("/api/messages", async (req, res) => {
+
   try {
-    pool.connect();
-    const data = await pool.query("SELECT * FROM messages;");
+    let client = await pool.connect()
+    const data = await client.query("SELECT * FROM messages;");
     res.json(data.rows);
+    client.release()
   } catch (err) {
     console.error(err);
+    res.send(err)
   }
 });
 
@@ -304,15 +307,30 @@ app.get("/api/threads", async (req, res) => {
 //GET ONE thread by thread_id
 app.get("/api/threads/:id", async (req, res) => {
   try {
-    const data = await pool.query(
-      "SELECT * FROM messages WHERE thread_id=$1;",
+    let client = await pool.connect()
+    const data = await client.query(
+      "SELECT * FROM threads WHERE thread_id=$1;",
       [parseInt(req.params.id)]
     );
     res.json(data.rows[0]);
+    client.release()
   } catch (err) {
     console.error(err);
   }
 });
+
+//Get threads by user- recipient id or sender id
+app.get('/api/threads/user/:id', async (req, res) => {
+  try {
+    let client = await pool.connect();
+    let data = client.query('SELECT * FROM threads WHERE recipient_user_id = $1 OR sender_user_id = $1', [req.params.id])
+    res.json(data.rows[0])
+    client.release()
+  } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+})
 
 //DELETE thread by thread_id
 app.delete("/api/threads/:id", async (req, res) => {

@@ -35,6 +35,7 @@ function FontSizeSelection({ dummyUser, setDummyUser }) {
 
     return (
         <div className='fontSizeSelectionContainer'>
+            <label>Font Size: </label>
             <select className='fontSizeDropDown'
                 value={dummyUser['font_size']}
                 onChange={handleChange}
