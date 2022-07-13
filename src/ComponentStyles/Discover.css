@@ -1,0 +1,156 @@
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.discoverContainer {
+  border: 2px ridge;
+  border-color: gray;
+  border-width: 10px;
+  position: relative;
+}
+
+.usersContainer {
+  padding: 10px;
+  display: grid; 
+  grid-auto-flow: row; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+}
+
+.user {
+    text-align: center;
+    border: 2px ridge;
+    border-color: whitesmoke;
+    border-width: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+.user:hover {
+  text-decoration: underline;
+}
+
+h2, h5, h6, img {
+  pointer-events: none;
+}
+
+.singleUserContainer {
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+
+  display: grid;
+  align-items: center;
+  text-align: center;
+
+  background-color: rgba(255, 253, 253, 0.772);
+  padding: 40px;
+}
+
+.singleUserModal {
+  border: 2px ridge;
+  border-color: whitesmoke;
+  border-width: 10px;
+  background-color: white;
+}
+
+.searchContainer {
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+
+  display: grid;
+  align-items: center;
+  text-align: center;
+
+  background-color: rgba(255, 253, 253, 0.772);
+  padding: 40px;
+}
+
+.searchModal {
+  border: 2px ridge;
+  border-color: whitesmoke;
+  border-width: 10px;
+  background-color: white;
+}
+
+button {
+  cursor: pointer;
+}
+.closeButton {
+  float: right;
+}
+
+.header {
+  border: 6px solid gray;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.content {
+  border: 6px solid gray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.searchContent {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.dislikeButton {
+  float: left;
+}
+
+.likeButton {
+  float: right;
+}
+.searchButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.singleUserPic {
+  margin: 40px;
+  border: 2px ridge;
+  border-color: gray;
+  border-width: 8px;
+}
+
+.attributeSelect {
+  font-size: 20px;
+  /* margin-right: 10px; */
+}
+
+#gender,
+#age,
+#distance {
+  height: 30px;
+  border-radius: 5px;
+}
+
+.discoverNav {
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  margin: 10px;
+}
+
+.navNumbers {
+  padding-left: 10px;
+  cursor: pointer;
+  display: inline-flex;
+}
+.navNumbers:hover {
+  text-decoration: underline;
+  color: blue;
+}
