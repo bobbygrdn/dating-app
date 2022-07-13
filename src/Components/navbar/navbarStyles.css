@@ -44,3 +44,9 @@ li {
     font-weight: bold;
     font-size: calc(var(--font-size) + .5rem);
 }
+
+.header {
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+}
