@@ -194,12 +194,15 @@ app.delete("/api/pending_connections/:id", async (req, res) => {
 
 //GET ALL messages;
 app.get("/api/messages", async (req, res) => {
+
   try {
-    pool.connect();
-    const data = await pool.query("SELECT * FROM messages;");
+    let client = await pool.connect()
+    const data = await client.query("SELECT * FROM messages;");
     res.json(data.rows);
+    client.release()
   } catch (err) {
     console.error(err);
+    res.send(err)
   }
 });
 
