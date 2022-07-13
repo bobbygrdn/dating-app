@@ -33,13 +33,9 @@ function DisplayThreads({ threads, dummyUser }) {
                     {/* url = profilePic(elem.recipient_user_id) */ }
                 }
 
-                let url = profilePic(id)
-
-                console.log(url)
-
                 return (<div id={elem.thread_id}>
                     {elem.thread_id}
-                    {url != undefined ? <img src={url} alt='thread-pic' /> : null}
+                    <img src={profilePic(id)} alt='thread-pic' />
                 </div>)
             })}
         </>
