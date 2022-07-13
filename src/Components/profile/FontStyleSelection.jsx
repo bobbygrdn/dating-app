@@ -33,6 +33,8 @@ function FontStyleSelection({ dummyUser, setDummyUser }) {
     }
     return (
         <div className='fontStyleContainer'>
+            <label>Font Style: </label>
+
             <select className='fontStyleDropDown'
                 value={dummyUser['font_style']}
                 onChange={handleChange}

@@ -15,8 +15,9 @@ body {
     width: fit-content;
     margin: 0;
     text-justify: center;
-    position: relative;
-    top: 5px;
+    /* position: relative; */
+    /* top: 5px; */
+    font-family: inherit;
 }
 
 .toggle-switch {
