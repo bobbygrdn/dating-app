@@ -15,18 +15,17 @@ import LandingContext from './context/LandingContext'
 function App() {
 
     const [darkTheme, setDarkTheme] = useState(false)
-    const [dummyUser, setDummyUser] = useState(null)
     const { login, buttonPressed } = useContext(LandingContext)
 
-    useEffect(() => {
-        fetchProfile()
-    }, [])
+    // useEffect(() => {
+    //     fetchProfile()
+    // }, [])
 
-    const fetchProfile = () => {
-        fetch('https://find-luv.herokuapp.com/api/users/1')
-            .then(res => res.json())
-            .then(data => setDummyUser(data))
-    }
+    // const fetchProfile = () => {
+    //     fetch('https://find-luv.herokuapp.com/api/users/1')
+    //         .then(res => res.json())
+    //         .then(data => setDummyUser(data))
+    // }
 
     if (!login) {
         if (!buttonPressed) return (<Landing />)
@@ -43,9 +42,9 @@ function App() {
 
                         <Route path='/' element={<Discover />} />
                         <Route path='/matches' element={<Matches />} />
-                        <Route path='/inbox' element={<Inbox dummyUser={dummyUser} />} />
+                        <Route path='/inbox' element={<Inbox />} />
                         <Route path='/pending-connections' element={<PendingConnections />} />
-                        <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} dummyUser={dummyUser} setDummyUser={setDummyUser} />} />
+                        <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} />} />
 
                     </Routes>
                 </DiscoverProvider>
