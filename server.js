@@ -22,18 +22,18 @@ app.listen(PORT, (err) => {
 });
 
 //GET ALL users except for the user logged in;
-// app.get("/api/users/:id", async (req, res) => {
-//   const id = req.params.id
-//   try {
-//     let client = await pool.connect();
-//     let data = await client.query(`SELECT * FROM users WHERE user_id NOT ${id};`)
-//     res.json(data.rows);
-//     client.release();
-//   } catch (error) {
-//     console.log(error);
-//     res.send(error)
-//   }
-// })
+app.get("/api/current/:id", async (req, res) => {
+  const id = req.params.id
+  try {
+    let client = await pool.connect();
+    let data = await client.query(`SELECT * FROM users WHERE user_id != '${id}' LIMIT 500;`)
+    res.json(data.rows);
+    client.release();
+  } catch (error) {
+    console.log(error);
+    res.send(error)
+  }
+})
 
 //GET ALL users;
 app.get("/api/users", async (req, res) => {
@@ -48,7 +48,7 @@ app.get("/api/users", async (req, res) => {
   }
 });
 
-//GET ONE user;
+//GET ONE user;`
 app.get("/api/users/:id", async (req, res) => {
   try {
     let client = await pool.connect();
