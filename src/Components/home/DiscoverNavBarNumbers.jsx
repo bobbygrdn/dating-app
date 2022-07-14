@@ -5,7 +5,6 @@ function DiscoverNavBarNumbers (props) {
     const {updateIndexes} = useContext(DiscoverContext)
 
     const handleClick = (e) => {
-        console.log(e.target.id);
         updateIndexes(e.target.id)
         window.scrollTo(0, 0)
     }

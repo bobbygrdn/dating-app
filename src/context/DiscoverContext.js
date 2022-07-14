@@ -33,18 +33,17 @@ export const DiscoverProvider = ({children}) => {
     }
 
     /**
-     * If the id is less than 2, set the indexes to 1 and 24. If the id is even, set the index2 to the
-     * id multiplied by 24. If the id is greater than 2 and odd, set the index2 to the id multiplied by
-     * 24.
-     * @param id - the id of the clicked item
+     * If the id is less than 2, set the index1 to 1 and index2 to 24. Otherwise, set index2 to id*24
+     * and index1 to id*24-23.
+     * @param id - the id of the page you're on
      */
     const updateIndexes = (id) => {
         if(id < 2) {
             setIndex1(1)
             setIndex2(24)
         } else {
-            setIndex1(index2+1)
             setIndex2(id*24)
+            setIndex1(id*24-23)
         } 
     }
     

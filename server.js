@@ -21,6 +21,20 @@ app.listen(PORT, (err) => {
   console.log(`Listening on port: ${PORT}`);
 });
 
+//GET ALL users except for the user logged in;
+// app.get("/api/users/:id", async (req, res) => {
+//   const id = req.params.id
+//   try {
+//     let client = await pool.connect();
+//     let data = await client.query(`SELECT * FROM users WHERE user_id NOT ${id};`)
+//     res.json(data.rows);
+//     client.release();
+//   } catch (error) {
+//     console.log(error);
+//     res.send(error)
+//   }
+// })
+
 //GET ALL users;
 app.get("/api/users", async (req, res) => {
   try {
@@ -45,6 +59,24 @@ app.get("/api/users/:id", async (req, res) => {
     client.release();
   } catch (err) {
     console.error(err);
+  }
+});
+
+
+//Post User Data with Email && Password
+app.post("/api/login", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    let client = await pool.connect();
+    const { rows } = await client.query('SELECT * FROM users WHERE username =$1 AND password =$2;', [username, password]);
+    if (rows.length === 0) {
+      res.send("Invalid username and password, please create an account or try again.")
+    } else {
+      res.json(rows)
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 
