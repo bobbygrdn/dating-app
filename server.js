@@ -21,13 +21,13 @@ app.listen(PORT, (err) => {
   console.log(`Listening on port: ${PORT}`);
 });
 
-//GET ALL users except for the user logged in;
-app.get("/api/current/:id", async (req, res) => {
-  const id = req.params.id;
+//POST ALL users except for the user logged in;
+app.post("/api/current", async (req, res) => {
+  const { user_id, gender_preference, age1, age2 } = req.body
   try {
     let client = await pool.connect();
     let data = await client.query(
-      `SELECT * FROM users WHERE user_id != '${id}' LIMIT 500;`
+      `SELECT * FROM users WHERE user_id != '${user_id}' AND gender = '${gender_preference}' AND age BETWEEN '${age1}' AND '${age2}' LIMIT 500;`
     );
     res.json(data.rows);
     client.release();
@@ -212,8 +212,8 @@ app.delete("/api/users/:id", async (req, res) => {
 //GET ALL pending_connections;
 app.get("/api/pending_connections", async (req, res) => {
   try {
-    pool.connect();
-    const data = await pool.query("SELECT * FROM pending_connections;");
+    let client = await pool.connect();
+    const data = await client.query("SELECT * FROM pending_connections;");
     res.json(data.rows);
     client.release();
   } catch (err) {

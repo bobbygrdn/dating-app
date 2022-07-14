@@ -28,4 +28,7 @@
 1. All branches should be names 'feature/[FEATURE NAME]
 
 -Rebasing Branches with the Main Branch
-1. Run the command 'git rebase origin/main'
+1. run the command 'git checkout main'
+2. run the command 'git pull'
+3. run the command 'git checkout [BRANCHNAME]
+2. Run the command 'git rebase origin/main'
