@@ -11,14 +11,21 @@ import CreateUserForm from './Components/Landing/CreateUserForm'
 import Login from './Components/Landing/Login'
 import { DiscoverProvider } from './context/DiscoverContext.js';
 import LandingContext from './context/LandingContext'
-import { InboxProvider } from './context/InboxContext.js';
 import InboxContext from './context/InboxContext.js';
 
 function App() {
 
     const [darkTheme, setDarkTheme] = useState(false)
     const { login, buttonPressed } = useContext(LandingContext)
-    // const {fetchAllUserThreads}
+    const { threads, fetchAllUserThreads } = useContext(InboxContext)
+
+    useEffect(() => {
+        fetchAllUserThreads()
+    }, [login])
+
+    useEffect(() => {
+
+    }, [threads])
 
     if (!login) {
         if (!buttonPressed) return (<Landing />)
@@ -35,11 +42,7 @@ function App() {
 
                         <Route path='/' element={<Discover />} />
                         <Route path='/matches' element={<Matches />} />
-
-                        <InboxProvider>
-                            <Route path='/inbox' element={<Inbox />} />
-                        </InboxProvider>
-
+                        <Route path='/inbox' element={<Inbox />} />
                         <Route path='/pending-connections' element={<PendingConnections />} />
                         <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} />} />
 
