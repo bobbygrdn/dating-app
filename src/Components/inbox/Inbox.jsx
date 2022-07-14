@@ -7,7 +7,6 @@ import MsgNoThreads from './MsgNoThreads.jsx'
 function Inbox({ dummyUser, setDummyUser }) {
 
     const [threads, setThreads] = useState([])
-    const [profileData, setProfileData] = useState([])
 
     useEffect(() => {
         fetchAllUserThreads()
@@ -20,34 +19,10 @@ function Inbox({ dummyUser, setDummyUser }) {
             .catch(err => console.log(err))
     }
 
-    const fetchProfileData = (arrayOfIds) => {
-        let arrayOfProfiles = []
-
-        arrayOfIds.forEach(elem => {
-            fetch(`https://find-luv.herokuapp.com/api/users/${elem}`)
-                .then(res => res.json())
-                .then(data => arrayOfProfiles.push(data))
-                .catch(err => console.log(err))
-        })
-
-        return arrayOfProfiles
-    }
-
-
-    // if (threads !== null) {
-
-    //     let arrayOfIds = []
-
-    //     threads.map((elem) => {
-    //         return elem.recipient_user_id === dummyUser.user_id ? arrayOfIds.unshift(elem.sender_user_id) : arrayOfIds.unshift(elem.recipient_user_id)
-    //     })
-
-    //     let profiles = fetchProfileData(arrayOfIds)
-
-    // }
 
     return (
         <div className='inbox-main-container'>
+
             <DisplayThreads threads={threads} dummyUser={dummyUser} />
 
         </div>

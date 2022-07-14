@@ -1,4 +1,3 @@
-import { computeHeadingLevel } from '@testing-library/react'
 import React, { useState, useEffect } from 'react'
 
 function DisplayThreads({ threads, dummyUser }) {
@@ -9,35 +8,38 @@ function DisplayThreads({ threads, dummyUser }) {
 
     console.log(threads)
 
-    useEffect(() => {
-    }, [])
-
 
     const profilePic = (id) => {
         fetch(`https://find-luv.herokuapp.com/api/users/${id}`)
             .then(res => res.json())
-            .then(data => { return data.profile_pic_url })
+            .then(data => { console.log(data) })
+
     }
+
+    if (threads.length > 0) {
+        threads.forEach(elem => {
+            let id;
+            if (elem.recipient_user_id === dummyUser.user_id) {
+                id = elem.sender_user_id
+            }
+            else {
+                id = elem.recipient_user_id
+            }
+            profilePic(id)
+        })
+    }
+
 
 
     return (
         <>
-            {threads.map(elem => {
-                let id;
-                if (elem.recipient_user_id === dummyUser.user_id) {
-                    id = elem.sender_user_id
-                    {/* url = profilePic(elem.sender_user_id) */ }
-                }
-                else {
-                    id = elem.recipient_user_id
-                    {/* url = profilePic(elem.recipient_user_id) */ }
-                }
+            {threads.map((elem) => (
 
-                return (<div id={elem.thread_id}>
+                <div id={elem.thread_id} >
                     {elem.thread_id}
-                    <img src={profilePic(id)} alt='thread-pic' />
-                </div>)
-            })}
+
+                </div>
+            ))}
         </>
     );
 
