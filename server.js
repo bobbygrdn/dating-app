@@ -45,7 +45,7 @@ app.post("/api/current", async (req, res) => {
   try {
     let client = await pool.connect();
     let data = await client.query(
-      `SELECT * FROM users WHERE user_id != '${user_id}' AND gender = '${gender_preference}' AND age BETWEEN '${age1}' AND '${age2}' LIMIT 500;`
+      `SELECT * FROM users WHERE (user_id != '${user_id}') AND ( gender = '${gender_preference}') AND (age BETWEEN '${age1}' and '${age2}') LIMIT 500;`
     );
     res.json(data.rows);
     client.release();
