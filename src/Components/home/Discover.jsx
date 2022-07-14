@@ -16,7 +16,7 @@ function Discover() {
 
     /* Fetching the data from the API and adding it to the state. */
     useEffect(() => {
-        let info ={
+        let info = {
             gender: userData.gender,
             age1: userData.age1,
             age2: userData.age2,
@@ -30,7 +30,7 @@ function Discover() {
             })
         }
 
-        fetch('https://find-luv.herokuapp.com/api/users')
+        fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}`)
             .then(response => response.json())
             .then(data => addUsers(data))
     }, []);
