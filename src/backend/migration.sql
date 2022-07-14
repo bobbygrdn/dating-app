@@ -27,6 +27,9 @@ CREATE TABLE users(
     city VARCHAR(85),
     state VARCHAR(50),
     zipcode VARCHAR(10) NOT NULL,
+    age1 NUMERIC,
+    age2 NUMERIC,
+    gender_preference VARCHAR(20),
     dark_theme BOOLEAN,
     font_size TEXT,
     font_style TEXT

@@ -27,7 +27,6 @@ function User (props) {
             alt=''
             className="profilePics" />
             <h5>{props.elem.first_name}, {props.elem.age}</h5>
-            <h6> Miles Away</h6>
         </div>
     )
 }
