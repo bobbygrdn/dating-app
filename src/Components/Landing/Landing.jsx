@@ -18,8 +18,8 @@ for (let _ = 0; _ < 8; _++) {
   gender.push(coinToss([true, false]))
   sizes.push(Math.floor(Math.random() * (266 - 150) + 150))
   initialPositions.push([
-    Math.floor(Math.random() * coinToss([50, -50])),
-    Math.floor(Math.random() * coinToss([50, -50]))
+    Math.floor(Math.random() * coinToss([80, -80])),
+    Math.floor(Math.random() * coinToss([80, -80]))
   ])
 }
 
