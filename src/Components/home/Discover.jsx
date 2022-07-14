@@ -12,8 +12,10 @@ function Discover() {
     /* Destructuring the context object. */
     const { addUsers, singleModal, addSingleUser, searchModal } = useContext(DiscoverContext)
 
+    /* Destructuring the context object. */
     const { userData } = useContext(LandingContext)
 
+    
     /* Fetching the data from the API and adding it to the state. */
     useEffect(() => {
         let data = {
