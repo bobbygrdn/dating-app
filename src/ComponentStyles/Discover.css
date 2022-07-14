@@ -1,6 +1,6 @@
 *,
 *::before,
-*::after{
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -15,35 +15,39 @@
 
 .usersContainer {
   padding: 10px;
-  display: grid; 
-  grid-auto-flow: row; 
-  grid-template-columns: 1fr 1fr 1fr; 
-  grid-template-rows: 1fr 1fr 1fr; 
-  gap: 0px 0px; 
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
 }
 
 .user {
-    text-align: center;
-    border: 2px ridge;
-    border-color: whitesmoke;
-    border-width: 10px;
-    margin: 10px;
-    cursor: pointer;
+  text-align: center;
+  border: 2px ridge;
+  border-color: whitesmoke;
+  border-width: 10px;
+  margin: 10px;
+  cursor: pointer;
 }
+
 .user:hover {
   text-decoration: underline;
 }
 
-h2, h5, h6, img {
+h2,
+h5,
+h6,
+img {
   pointer-events: none;
 }
 
 .singleUserContainer {
   position: fixed;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   display: grid;
   align-items: center;
@@ -60,12 +64,18 @@ h2, h5, h6, img {
   background-color: white;
 }
 
+
+.singleUserModalDarkTheme {
+  color: red;
+}
+
+
 .searchContainer {
   position: fixed;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   display: grid;
   align-items: center;
@@ -85,6 +95,7 @@ h2, h5, h6, img {
 button {
   cursor: pointer;
 }
+
 .closeButton {
   float: right;
 }
@@ -113,6 +124,7 @@ button {
 .likeButton {
   float: right;
 }
+
 .searchButton {
   position: absolute;
   top: 0;
@@ -150,6 +162,7 @@ button {
   cursor: pointer;
   display: inline-flex;
 }
+
 .navNumbers:hover {
   text-decoration: underline;
   color: blue;
