@@ -12,6 +12,7 @@ import Login from './Components/Landing/Login'
 import { DiscoverProvider } from './context/DiscoverContext.js';
 import LandingContext from './context/LandingContext'
 import InboxContext from './context/InboxContext.js';
+import '../src/ComponentStyles/CreateSlashLogin.css'
 
 function App() {
 

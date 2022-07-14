@@ -5,7 +5,7 @@ const LandingContext = createContext()
 export const LandingProvider = ({ children }) => {
   const [login, setLogin] = useState(false)
   const [userData, setUserData] = useState(null)
-  const [buttonPressed, setWhichButtonWasPressed] = useState('createUserButton')
+  const [buttonPressed, setWhichButtonWasPressed] = useState(null)
   const pressedButton = (whichOne) => {
     setWhichButtonWasPressed(whichOne)
   }
