@@ -1,6 +1,7 @@
 import { React, useContext, useState } from 'react'
 import CreateInputs from './CreateInputs.jsx'
 import LandingContext from '../../context/LandingContext'
+
 import '../../ComponentStyles/Forms.css'
 
 const CreateUserForm = () => {
@@ -81,7 +82,8 @@ const CreateUserForm = () => {
       placeholder: "Password",
       errorMessage: "Password must be 8-20 characters and should include atleast 1 letter, 1 number and 1 special character!",
       label: "Password",
-      pattern: `^(?=.*?[A-Z])(?=.?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[A-Za-z0-9#?!@$%^&*-].{8,20}$`,
+      // pattern: `/^(?=.*?[A-Z])(?=.?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[A-Za-z0-9#?!@$%^&*-].{8,20}$/g`,
+
       required: true
     },
 
@@ -109,6 +111,7 @@ const CreateUserForm = () => {
 
   ];
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(JSON.stringify(newTempUserData))
@@ -122,7 +125,9 @@ const CreateUserForm = () => {
     fetch('https://find-luv.herokuapp.com/api/users', fetchData).then(() => {
       console.log('createdUser')
     })
-    setLogin(true)
+    // setLogin(true)
+    alert('Account successfully created, please log in!')
+    window.location.reload()
   };
 
   const handleChange = (e) => {
