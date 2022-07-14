@@ -19,13 +19,14 @@ function App() {
     const { login, buttonPressed } = useContext(LandingContext)
     const { threads, fetchAllUserThreads } = useContext(InboxContext)
 
+
     useEffect(() => {
-        fetchAllUserThreads()
+        checkIfLoggedIn()
     }, [login])
 
-    useEffect(() => {
-
-    }, [threads])
+    const checkIfLoggedIn = () => {
+        if (login) { return fetchAllUserThreads() }
+    }
 
     if (!login) {
         if (!buttonPressed) return (<Landing />)

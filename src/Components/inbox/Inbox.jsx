@@ -11,7 +11,7 @@ function Inbox() {
     return (
         <div className='inbox-main-container'>
 
-            <DisplayThreads threads={threads} />
+            {/* <DisplayThreads threads={threads} /> */}
 
         </div>
     )
