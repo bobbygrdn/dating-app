@@ -48,7 +48,7 @@ const Login = () => {
     }
     fetch('https://find-luv.herokuapp.com/api/login', fetchData)
       .then((res) => res.json())
-      .then((data) => {4
+      .then((data) => {
         setUserData(data[0]);
         setLogin(true);
       });
