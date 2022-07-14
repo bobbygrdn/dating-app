@@ -16,12 +16,12 @@ function MyProfile({ darkTheme, setDarkTheme }) {
             </div>
 
             <div className='snapshot-container'>
-                <h3>At a glance</h3>
+                <h3>At a glance <button>test</button></h3>
                 <ul className='snapshotUL'>
                     <li>{`Username: ${userData.username}`}</li>
                     <li>{`First name: ${userData.first_name}`}</li>
                     <li>{`Last name: ${userData.last_name}`}</li>
-                    <li>{`Age: ${userData.age}`}</li>
+                    <li>{`Age: ${userData.age == 0 ? 'not specified' : userData.age}`}</li>
                     <li>{`Location: ${userData.city}, ${userData.state}, ${userData.zipcode}`}</li>
                 </ul>
             </div>
