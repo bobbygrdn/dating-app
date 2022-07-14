@@ -49,7 +49,7 @@ app.get("/api/users/:id", async (req, res) => {
 });
 
 //Get User Data with Email && Password
-app.get("/api/users/login", async (req, res) => {
+app.get("/api/login", async (req, res) => {
   try {
     const { username, password } = req.body;
 
