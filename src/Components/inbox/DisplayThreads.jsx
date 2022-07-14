@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import IndividualThread from './IndividualThread.jsx'
 
 function DisplayThreads({ threads, dummyUser }) {
-    const [profiles, setProfiles] = useState([])
 
-    console.log(threads)
+    const [profiles, setProfiles] = useState(null)
 
     useEffect(() => {
 
@@ -18,7 +18,6 @@ function DisplayThreads({ threads, dummyUser }) {
                 return arrayOfIds.push(elem.recipient_user_id)
             }
         })
-
         createProfilesArray(arrayOfIds)
     }, [])
 
@@ -37,7 +36,6 @@ function DisplayThreads({ threads, dummyUser }) {
                 .then(res => res.json())
                 .then(data => { arrayOfProfiles.push(data) })
         })
-
         setProfiles(arrayOfProfiles)
     }
 
@@ -45,22 +43,7 @@ function DisplayThreads({ threads, dummyUser }) {
         console.log(e.target.id)
     }
 
-
-    return (
-        <>
-            {threads.map((elem) => {
-
-                return (
-                    <div id={elem.thread_id} onClick={handleClick} >
-                        {elem.thread_id}
-                    </div>
-                )
-            })
-            }
-
-        </>
-    );
-
+    if (profiles) { return <IndividualThread threads={threads} profiles={profiles} /> }
 
 
 }
