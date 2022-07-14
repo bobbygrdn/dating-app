@@ -11,21 +11,13 @@ import CreateUserForm from './Components/Landing/CreateUserForm'
 import Login from './Components/Landing/Login'
 import { DiscoverProvider } from './context/DiscoverContext.js';
 import LandingContext from './context/LandingContext'
+import { InboxProvider } from './context/InboxContext.js';
+import InboxContext from './context/InboxContext.js';
 
 function App() {
 
     const [darkTheme, setDarkTheme] = useState(false)
     const { login, buttonPressed } = useContext(LandingContext)
-
-    // useEffect(() => {
-    //     fetchProfile()
-    // }, [])
-
-    // const fetchProfile = () => {
-    //     fetch('https://find-luv.herokuapp.com/api/users/1')
-    //         .then(res => res.json())
-    //         .then(data => setDummyUser(data))
-    // }
 
     if (!login) {
         if (!buttonPressed) return (<Landing />)
@@ -42,7 +34,11 @@ function App() {
 
                         <Route path='/' element={<Discover />} />
                         <Route path='/matches' element={<Matches />} />
-                        <Route path='/inbox' element={<Inbox />} />
+
+                        <InboxProvider>
+                            <Route path='/inbox' element={<Inbox />} />
+                        </InboxProvider>
+
                         <Route path='/pending-connections' element={<PendingConnections />} />
                         <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} />} />
 
