@@ -23,6 +23,21 @@ function App() {
             .then(res => res.json())
             .then(data => setDummyUser(data))
     }
+
+    // const [threads, setThreads] = useState(null)
+
+    // useEffect(() => {
+    //     fetchAllUserThreads()
+    // }, [])
+
+    // const fetchAllUserThreads = () => {
+    //     fetch(`https://find-luv.herokuapp.com/api/threads/user/1`)
+    //         .then(res => res.json())
+    //         .then(data => setThreads(data))
+    //         .catch(err => console.log(err))
+    // }
+
+
     return (
 
         <div className='App-container'>

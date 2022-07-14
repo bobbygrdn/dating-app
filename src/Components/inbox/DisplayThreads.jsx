@@ -21,12 +21,6 @@ function DisplayThreads({ threads, dummyUser }) {
         createProfilesArray(arrayOfIds)
     }, [])
 
-    const fetchProfileData = (id) => {
-        fetch(`https://find-luv.herokuapp.com/api/users/${id}`)
-            .then(res => res.json())
-            .then(data => { return { data } })
-    }
-
 
     const createProfilesArray = (arrayOfIds) => {
         let arrayOfProfiles = []
@@ -38,15 +32,9 @@ function DisplayThreads({ threads, dummyUser }) {
         })
         setProfiles(arrayOfProfiles)
     }
-
-    const handleClick = (e) => {
-        console.log(e.target.id)
-    }
-
+    // if (profiles) { return console.log('yes') }
     if (profiles) { return <IndividualThread threads={threads} profiles={profiles} /> }
 
-
 }
-
 
 export default DisplayThreads
