@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS image_files
+DROP TABLE IF EXISTS image_files;
 
 CREATE TABLE image_files (
     id SERIAL NOT NULL PRIMARY KEY,
