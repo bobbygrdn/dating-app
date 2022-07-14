@@ -37,6 +37,7 @@ function Discover() {
         fetch(`https://find-luv.herokuapp.com/api/current`, fetchData)
             .then(response => response.json())
             .then(data => addUsers(data))
+            console.log(data);
     }, []);
 
     /* Fetching the data from the API and adding it to the state. */
