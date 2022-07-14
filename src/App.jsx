@@ -25,7 +25,7 @@ function App() {
     }, [login])
 
     const checkIfLoggedIn = () => {
-        if (login) { return fetchAllUserThreads() }
+        // if (login) { return fetchAllUserThreads() }
     }
 
     if (!login) {
