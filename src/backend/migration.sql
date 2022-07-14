@@ -1,7 +1,7 @@
---  DROP DATABASE IF EXISTS findluv;
---  CREATE DATABASE findluv;
---
---  \c findluv;
+ DROP DATABASE IF EXISTS findluv;
+ CREATE DATABASE findluv;
+
+ \c findluv;
 
 DROP TABLE IF EXISTS landing_page, users, pending_connections, messages, threads;
 
@@ -65,3 +65,10 @@ CREATE TABLE messages(
     foreign key(sent_to_user_id) references users(user_id)
 );
 
+CREATE TABLE image_files (
+    id SERIAL NOT NULL PRIMARY KEY,
+    filename TEXT UNIQUE NOT NULL,
+    filepath TEXT NOT NULL,
+    mimetype TEXT NOT NULL,
+    size BIGINT NOT NULL
+);
