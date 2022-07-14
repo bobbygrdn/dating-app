@@ -5,11 +5,14 @@ import {useContext} from 'react'
 import DiscoverContext from '../../context/DiscoverContext';
 import SingleUserModal from './SingleUserModal';
 import SearchModal from './SearchModal';
+import LandingContext from '../../context/LandingContext'
 
 function Discover() {
 
     /* Destructuring the context object. */
     const {addUsers, singleModal, addSingleUser, searchModal} = useContext(DiscoverContext)
+
+    const {userData} = useContext(LandingContext)
 
    /* Fetching the data from the API and adding it to the state. */
     useEffect(() => {
@@ -26,6 +29,7 @@ function Discover() {
     }, [])
 
     /* Returning the Users component, the SingleUserModal component, and the SearchModal component. */
+    console.log(userData);
     return (
         <div>
         <Users />
