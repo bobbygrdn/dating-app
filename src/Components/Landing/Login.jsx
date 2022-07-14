@@ -5,11 +5,11 @@ import LoginInputs from './LoginInputs';
 
 const Login = () => {
 
-const {setLogin, setUserData} = useContext(LandingContext)
-const [loginData, setLoginData] = useState({
-  username:"",
-  password: ""
-});
+  const { setLogin, setUserData } = useContext(LandingContext)
+  const [loginData, setLoginData] = useState({
+    username: "",
+    password: ""
+  });
 
   const inputs = [
     {
@@ -18,7 +18,7 @@ const [loginData, setLoginData] = useState({
       type: "text",
       placeholder: "Username",
       errorMessage: "Username should be between 3-20 characters and shouldn't include any special characters!",
-      label:"Username",
+      label: "Username",
       pattern: "^[A-Za-z0-9]{3,20}$",
       required: true
     },
@@ -28,7 +28,7 @@ const [loginData, setLoginData] = useState({
       type: "password",
       placeholder: "Password",
       errorMessage: "Password must be 8-20 characters and should include atleast 1 letter, 1 number and 1 special character!",
-      label:"Password",
+      label: "Password",
       pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*][8-20]$`,
       required: true
     }
@@ -47,17 +47,17 @@ const [loginData, setLoginData] = useState({
       })
     }
     fetch('https://find-luv.herokuapp.com/api/login', fetchData)
-    .then((res) => res.json())
-    .then((data) => {
-      setUserData(data[0]);
-      setLogin(true);
+      .then((res) => res.json())
+      .then((data) => {
+        setUserData(data[0]);
+        setLogin(true);
       });
-    
-    
+
+
   };
 
   const handleChange = (e) => {
-    setLoginData({...loginData, [e.target.name]: e.target.value})
+    setLoginData({ ...loginData, [e.target.name]: e.target.value })
   };
 
 
@@ -76,13 +76,13 @@ const [loginData, setLoginData] = useState({
       <div className='loginForm--wrapper'>
 
         <form onSubmit={handleSubmit}>
-        {inputs.map((input)=>(
-          <LoginInputs
-          key={input.id} 
-          {...input}
-           value={loginData[input.name]}
-          onChange={handleChange}
-          />
+          {inputs.map((input) => (
+            <LoginInputs
+              key={input.id}
+              {...input}
+              value={loginData[input.name]}
+              onChange={handleChange}
+            />
           ))}
 
           <button className='btn-submit'>Submit</button>
