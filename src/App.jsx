@@ -18,20 +18,8 @@ function App() {
 
     const [darkTheme, setDarkTheme] = useState(false)
     const { login, buttonPressed } = useContext(LandingContext)
+    // const {fetchAllUserThreads}
 
-<<<<<<< HEAD
-=======
-    // useEffect(() => {
-    //     fetchProfile()
-    // }, [])
-
-    // const fetchProfile = () => {
-    //     fetch('https://find-luv.herokuapp.com/api/users/1')
-    //         .then(res => res.json())
-    //         .then(data => setDummyUser(data))
-    // }
-
->>>>>>> 22c749f81435572a4f61ba77be6411f69fc7b866
     if (!login) {
         if (!buttonPressed) return (<Landing />)
         else if (buttonPressed === 'createUserButton') return (<CreateUserForm />)
@@ -47,15 +35,11 @@ function App() {
 
                         <Route path='/' element={<Discover />} />
                         <Route path='/matches' element={<Matches />} />
-<<<<<<< HEAD
 
                         <InboxProvider>
                             <Route path='/inbox' element={<Inbox />} />
                         </InboxProvider>
 
-=======
-                        <Route path='/inbox' element={<Inbox />} />
->>>>>>> 22c749f81435572a4f61ba77be6411f69fc7b866
                         <Route path='/pending-connections' element={<PendingConnections />} />
                         <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} />} />
 
