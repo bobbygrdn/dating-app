@@ -14,8 +14,8 @@ export const DiscoverProvider = ({children}) => {
     const [age1, setAge1] = useState('18')
     const [age2, setAge2] = useState('100')
     const [gender, setGender] = useState('male')
-    const [index1, setIndex1] = useState(1)
-    const [index2, setIndex2] = useState(24)
+    const [index1, setIndex1] = useState(0)
+    const [index2, setIndex2] = useState(23)
     const [pages, setPages] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
 
     /**
@@ -38,9 +38,12 @@ export const DiscoverProvider = ({children}) => {
      * @param id - the id of the page you're on
      */
     const updateIndexes = (id) => {
-        if(id < 2) {
-            setIndex1(1)
-            setIndex2(24)
+        if(id < 1) {
+            setIndex1(0)
+            setIndex2(23)
+        } else if(id > 20) {
+            setIndex2(id*24)
+            setIndex1(id*24-22)
         } else {
             setIndex2(id*24)
             setIndex1(id*24-23)
