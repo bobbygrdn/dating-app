@@ -12,7 +12,23 @@ const CreateUserForm = () => {
     email: "",
     password: "",
     verifyPassword: "",
-    zipcode: ""
+    zipcode: "",
+    profile_pic_url: "https://xsgames.co/randomusers/avatar.php?g=pixel",
+    age: "00",
+    height: "not specified",
+    body_type: "not specified",
+    gender: "not specified",
+    bio: "Bio not specified",
+    sexual_orientation: "not specified",
+    city: "not specified",
+    state: "not specified",
+    age1: "00",
+    age2: "00",
+    gender_preference: "not specified",
+    dark_theme: false,
+    font_size: "Medium",
+    font_style: "Arial"
+
   });
   //const [ setNewUser ] = useContext(LandingContext)
 
@@ -23,7 +39,7 @@ const CreateUserForm = () => {
       type: "text",
       placeholder: "Username",
       errorMessage: "Username should be between 3-20 characters and shouldn't include any special characters!",
-      label:"Username",
+      label: "Username",
       pattern: "^[A-Za-z0-9]{3,20}$",
       required: true
     },
@@ -34,7 +50,7 @@ const CreateUserForm = () => {
       type: "text",
       placeholder: "First Name",
       errorMessage: "",
-      label:"First Name",
+      label: "First Name",
       required: true
     },
 
@@ -44,7 +60,7 @@ const CreateUserForm = () => {
       type: "text",
       placeholder: "Last Name",
       errorMessage: "",
-      label:"Last Name",
+      label: "Last Name",
       required: true
     },
 
@@ -54,7 +70,7 @@ const CreateUserForm = () => {
       type: "email",
       placeholder: "Email",
       errorMessage: "Should be a vailid email address!",
-      label:"Email",
+      label: "Email",
       required: true
     },
 
@@ -64,7 +80,7 @@ const CreateUserForm = () => {
       type: "password",
       placeholder: "Password",
       errorMessage: "Password must be 8-20 characters and should include atleast 1 letter, 1 number and 1 special character!",
-      label:"Password",
+      label: "Password",
       pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*][8-20]$`,
       required: true
     },
@@ -75,7 +91,7 @@ const CreateUserForm = () => {
       type: "password",
       placeholder: "Verify Password",
       errorMessage: "Passwords must match!",
-      label:"Verify Password",
+      label: "Verify Password",
       pattern: newTempUserData.password,
       required: true
     },
@@ -86,7 +102,7 @@ const CreateUserForm = () => {
       type: "text",
       placeholder: "Zip Code",
       errorMessage: "Max five digits and should only contain numbers!",
-      label:"Zip Code",
+      label: "Zip Code",
       pattern: `^[0-9]{5,5}$`,
       required: true
     }
@@ -97,28 +113,28 @@ const CreateUserForm = () => {
     e.preventDefault();
     console.log(JSON.stringify(newTempUserData))
     let fetchData = {
-        method: "POST",
-        body: JSON.stringify(newTempUserData),
-        headers: new Headers({
-            'Content-Type': 'application/json; charset=UTF-8'
-        })
+      method: "POST",
+      body: JSON.stringify(newTempUserData),
+      headers: new Headers({
+        'Content-Type': 'application/json; charset=UTF-8'
+      })
     }
-    fetch('https://find-luv.herokuapp.com/api/users',fetchData).then(() => {
+    fetch('https://find-luv.herokuapp.com/api/users', fetchData).then(() => {
       console.log('createdUser')
     })
     setLogin(true)
   };
 
-   const handleChange = (e) => {
-    setTempUserData({...newTempUserData, [e.target.name]: e.target.value})
-   };
+  const handleChange = (e) => {
+    setTempUserData({ ...newTempUserData, [e.target.name]: e.target.value })
+  };
   return (
     <div
-     className='createuser--container'>
+      className='createuser--container'>
       <div className='createuser--header'>
 
         <div className='createuser--title'>
-            Sign Up to Find Luv Now
+          Sign Up to Find Luv Now
         </div>
 
         <div className='createuser--closebtn'>
@@ -130,13 +146,13 @@ const CreateUserForm = () => {
         <form onSubmit={handleSubmit}>
           {inputs.map((input) => (
             <CreateInputs
-            key={input.id}
-            {...input} value={newTempUserData[input.name]}
-            onChange={handleChange}
+              key={input.id}
+              {...input} value={newTempUserData[input.name]}
+              onChange={handleChange}
             />
           ))}
 
-            <button className='btn--submit'>Submit</button>
+          <button className='btn--submit'>Submit</button>
 
         </form>
       </div>

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 
-function FontSizeSelection({ dummyUser, setDummyUser }) {
+function FontSizeSelection({ userData, setUserData }) {
 
     const handleChange = (e) => {
-        setDummyUser((prevData) => {
+        setUserData((prevData) => {
             return {
                 ...prevData,
                 [e.target.name]: e.target.value
@@ -13,12 +13,12 @@ function FontSizeSelection({ dummyUser, setDummyUser }) {
 
     useEffect(() => {
         changeFontSize()
-    }, [dummyUser['font_size']])
+    }, [userData['font_size']])
 
     const changeFontSize = () => {
         let body = document.querySelector('body')
 
-        switch (dummyUser['font_size']) {
+        switch (userData['font_size']) {
             case 'Small':
                 body.style.fontSize = '.9rem'
                 break;
@@ -37,7 +37,7 @@ function FontSizeSelection({ dummyUser, setDummyUser }) {
         <div className='fontSizeSelectionContainer'>
             <label>Font Size: </label>
             <select className='fontSizeDropDown'
-                value={dummyUser['font_size']}
+                value={userData['font_size']}
                 onChange={handleChange}
                 name="font_size">
                 <option value='Small'>Small</option>

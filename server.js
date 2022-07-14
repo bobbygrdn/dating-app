@@ -83,8 +83,9 @@ app.post("/api/login", async (req, res) => {
 //POST a user;
 app.post("/api/users", async (req, res) => {
   try {
-    const data = await pool.query(
-      "INSERT INTO users(username, first_name, last_name, email, password, age, height, body_type, gender, profile_pic_url, sexual_orientation, city, state, zipcode, bio) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)",
+    const client = await pool.connect()
+    const data = await client.query(
+      "INSERT INTO users(username, first_name, last_name, email, password, age, height, body_type, gender, profile_pic_url, sexual_orientation, city, state, zipcode, bio, font_style, font_size, dark_theme, gender_preference, age1, age2) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21)",
       [
         req.body.username,
         req.body.first_name,
@@ -101,9 +102,16 @@ app.post("/api/users", async (req, res) => {
         req.body.state,
         req.body.zipcode,
         req.body.bio,
+        req.body.font_style,
+        req.body.font_size,
+        req.body.dark_theme,
+        req.body.gender_preference,
+        req.body.age1,
+        req.body.age2
       ]
     );
     res.send(req.body);
+    client.release()
   } catch (err) {
     console.error(err);
   }
