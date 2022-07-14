@@ -13,10 +13,9 @@ const imageUpload = multer({
   storage: multer.diskStorage(
     {
       destination: function (req, file, cb) {
-          cb(null, 'images/');
+        cb(null, 'images/');
       },
       filename: function (req, file, cb) {
-        console.log(file)
         cb(
           null,
           new Date().valueOf() + 
@@ -448,7 +447,6 @@ app.delete("/api/threads/:id", async (req, res) => {
 });
 
 app.post('/image', imageUpload.single('image'), (req, res) => { 
-  //console.log(req.file);
   res.json('/image upload done');
 });// Image Get Routes
 
@@ -456,6 +454,7 @@ app.get('/image/:filename', (req, res) => {
   const { filename } = req.params;
   const dirname = path.resolve();
   const fullfilepath = path.join(dirname, 'images/' + filename);
+  console.log(fullfilepath)
   return res.sendFile(fullfilepath);
 });
 
