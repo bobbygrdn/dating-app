@@ -5,8 +5,7 @@ import LoginInputs from './LoginInputs';
 
 const Login = () => {
 
-const {setUserData} = useContext(LandingContext)
-
+const {setLogin, setUserData} = useContext(LandingContext)
 const [loginData, setLoginData] = useState({
   username:"",
   password: ""
@@ -14,7 +13,7 @@ const [loginData, setLoginData] = useState({
 
   const inputs = [
     {
-      id: 1,
+      id: 8,
       name: "username",
       type: "text",
       placeholder: "Username",
@@ -24,7 +23,7 @@ const [loginData, setLoginData] = useState({
       required: true
     },
     {
-      id: 2,
+      id: 9,
       name: "password",
       type: "password",
       placeholder: "Password",
@@ -36,8 +35,25 @@ const [loginData, setLoginData] = useState({
 
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    let jsonDat = JSON.stringify(loginData)
+
+    let fetchData = {
+      method: "POST",
+      body: jsonDat,
+      headers: new Headers({
+        'Content-type': 'application/json'
+      })
+    }
+    fetch('https://find-luv.herokuapp.com/api/login', fetchData)
+    .then((res) => res.json())
+    .then((data) => {
+      setUserData(data[0]);
+      setLogin(true);
+      });
+    
+    
   };
 
   const handleChange = (e) => {
@@ -63,7 +79,8 @@ const [loginData, setLoginData] = useState({
         {inputs.map((input)=>(
           <LoginInputs
           key={input.id} 
-          {...input} value={loginData[input.name]}
+          {...input}
+           value={loginData[input.name]}
           onChange={handleChange}
           />
           ))}
