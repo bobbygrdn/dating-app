@@ -16,6 +16,20 @@ function Discover() {
 
    /* Fetching the data from the API and adding it to the state. */
     useEffect(() => {
+        let info ={
+            gender: userData.gender,
+            age1: userData.age1,
+            age2: userData.age2,
+        }
+
+        let fetchData = {
+            method: 'GET',
+            body: JSON.stringify(info),
+            headers: new Headers ({
+                'Content-Type': 'application/json',
+            })
+        }
+
         fetch('https://find-luv.herokuapp.com/api/users')
         .then(response => response.json())
         .then(data => addUsers(data))
@@ -25,7 +39,7 @@ function Discover() {
     useEffect(() => {
         fetch('https://find-luv.herokuapp.com/api/users')
         .then(response => response.json())
-        .then(data => addSingleUser(data[0]))
+        .then(data => addSingleUser(data))
     }, [])
 
     /* Returning the Users component, the SingleUserModal component, and the SearchModal component. */
