@@ -18,15 +18,15 @@ function App() {
     const [dummyUser, setDummyUser] = useState(null)
     const { login, buttonPressed } = useContext(LandingContext)
 
-    useEffect(() => {
-        fetchProfile()
-    }, [])
+    // useEffect(() => {
+    //     fetchProfile()
+    // }, [])
 
-    const fetchProfile = () => {
-        fetch('https://find-luv.herokuapp.com/api/users/1')
-            .then(res => res.json())
-            .then(data => setDummyUser(data))
-    }
+    // const fetchProfile = () => {
+    //     fetch('https://find-luv.herokuapp.com/api/users/1')
+    //         .then(res => res.json())
+    //         .then(data => setDummyUser(data))
+    // }
 
     if (!login) {
         if (!buttonPressed) return (<Landing />)
