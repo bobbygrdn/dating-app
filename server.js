@@ -212,8 +212,8 @@ app.delete("/api/users/:id", async (req, res) => {
 //GET ALL pending_connections;
 app.get("/api/pending_connections", async (req, res) => {
   try {
-    pool.connect();
-    const data = await pool.query("SELECT * FROM pending_connections;");
+    let client = await pool.connect();
+    const data = await client.query("SELECT * FROM pending_connections;");
     res.json(data.rows);
     client.release();
   } catch (err) {
