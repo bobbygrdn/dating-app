@@ -3,12 +3,7 @@
     font-size: inherit;
     padding: 1rem;
     display: grid;
-    /* grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "pic snapshot"
-        "match-options null"
-        "bio bio "
-        "settings settings "; */
+
     gap: 1rem;
     justify-items: center;
     align-items: center;
@@ -18,14 +13,45 @@
 }
 
 .threadCard {
-    border-bottom: 1px solid #3335;
+    /* border-bottom: 1px solid #3335;
+    border-right: 1px solid #3335; */
+    border-radius: 25px;
     width: 80%;
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "'thread-pic' thread-user-info"
+    ;
     padding: .5rem;
+    box-shadow: 3px 3px 3px 3px #3335;
+}
 
+.threadCard:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
 }
 
 .threadCard img {
+    grid-area: 'thread-pic';
     height: 128px;
     width: 128px;
+    justify-self: center;
+}
+
+.thread-user-info {
+    grid-area: 'thread-user-info';
+    align-self: center;
+}
+
+.modalContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
 }

@@ -251,6 +251,19 @@ app.get("/api/messages/:id", async (req, res) => {
   }
 });
 
+//GET all messages by thread ID;
+app.get("/api/thread/messages/:id", async (req, res) => {
+  try {
+    const client = await pool.connect()
+    const data = await pool.query("SELECT * FROM messages WHERE thread_id=$1;", [req.params.id]);
+    res.json(data.rows);
+    client.release()
+  } catch (err) {
+    console.error(err);
+    res.send(err)
+  }
+});
+
 //POST a message;
 app.post("/api/messages", async (req, res) => {
   try {

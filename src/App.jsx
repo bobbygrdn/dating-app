@@ -28,6 +28,9 @@ function App() {
             .then(data => setDummyUser(data))
     }
 
+    return (
+
+
     if (!login) {
         if (!buttonPressed) return (<Landing />)
         else if (buttonPressed === 'createUserButton') return (<CreateUserForm />)
