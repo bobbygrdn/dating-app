@@ -1,6 +1,6 @@
 import { React, useContext, useState } from 'react';
 import LandingContext from '../../context/LandingContext';
-import '../../ComponentStyles/CreateSlashLogin.css';
+import '../../ComponentStyles/Forms.css';
 import LoginInputs from './LoginInputs';
 
 const Login = () => {
