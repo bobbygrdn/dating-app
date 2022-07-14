@@ -23,11 +23,11 @@ app.listen(PORT, (err) => {
 
 //POST ALL users except for the user logged in;
 app.post("/api/current", async (req, res) => {
-  const { user_id, gender, age1, age2 } = req.body
+  const { user_id, gender_preference, age1, age2 } = req.body
   try {
     let client = await pool.connect();
     let data = await client.query(
-      `SELECT * FROM users WHERE user_id != '${user_id}' AND gender = '${gender}' AND age BETWEEN '${age1}' AND '${age2}' LIMIT 500;`
+      `SELECT * FROM users WHERE user_id != '${user_id}' AND gender = '${gender_preference}' AND age BETWEEN '${age1}' AND '${age2}' LIMIT 500;`
     );
     res.json(data.rows);
     client.release();
