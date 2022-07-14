@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 
-function FontStyleSelection({ dummyUser, setDummyUser }) {
+function FontStyleSelection({ userData, setUserData }) {
     const handleChange = (e) => {
-        setDummyUser((prevData) => {
+        setUserData((prevData) => {
             return {
                 ...prevData,
                 [e.target.name]: e.target.value
@@ -12,12 +12,12 @@ function FontStyleSelection({ dummyUser, setDummyUser }) {
 
     useEffect(() => {
         changeFontStyle()
-    }, [dummyUser['font_style']])
+    }, [userData['font_style']])
 
     const changeFontStyle = () => {
         let body = document.querySelector('body')
 
-        switch (dummyUser['font_style']) {
+        switch (userData['font_style']) {
             case 'Arial':
                 body.style.fontFamily = 'Noto Serif'
                 break;
@@ -36,7 +36,7 @@ function FontStyleSelection({ dummyUser, setDummyUser }) {
             <label>Font Style: </label>
 
             <select className='fontStyleDropDown'
-                value={dummyUser['font_style']}
+                value={userData['font_style']}
                 onChange={handleChange}
                 name="font_style"
             >
