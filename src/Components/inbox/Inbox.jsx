@@ -6,7 +6,7 @@ import MsgNoThreads from './MsgNoThreads.jsx'
 
 function Inbox({ dummyUser, setDummyUser }) {
 
-    const [threads, setThreads] = useState([])
+    const [threads, setThreads] = useState(null)
 
     useEffect(() => {
         fetchAllUserThreads()
@@ -19,14 +19,15 @@ function Inbox({ dummyUser, setDummyUser }) {
             .catch(err => console.log(err))
     }
 
+    if (threads !== null) {
+        return (
+            <div className='inbox-main-container'>
 
-    return (
-        <div className='inbox-main-container'>
+                <DisplayThreads threads={threads} dummyUser={dummyUser} />
 
-            <DisplayThreads threads={threads} dummyUser={dummyUser} />
-
-        </div>
-    )
+            </div>
+        )
+    }
 }
 
 export default Inbox
