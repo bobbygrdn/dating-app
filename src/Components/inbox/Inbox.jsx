@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './inboxStyles.css'
 import DisplayThreads from './DisplayThreads.jsx'
 import MsgLoadingThreads from './MsgLoadingThreads.jsx'
 import MsgNoThreads from './MsgNoThreads.jsx'
+import LandingContext from '../../context/LandingContext'
+import InboxContext from '../../context/InboxContext'
 
-function Inbox({ dummyUser, setDummyUser }) {
+function Inbox() {
 
-    const [threads, setThreads] = useState(null)
+    const { userData, setUserData, login } = useContext(LandingContext)
+
+    const { threads } = useContext(InboxContext)
 
     useEffect(() => {
-        fetchAllUserThreads()
+
     }, [])
 
-    const fetchAllUserThreads = () => {
-        fetch(`https://find-luv.herokuapp.com/api/threads/user/${dummyUser['user_id']}`)
-            .then(res => res.json())
-            .then(data => setThreads(data))
-            .catch(err => console.log(err))
-    }
 
     if (threads !== null) {
         return (
             <div className='inbox-main-container'>
 
-                <DisplayThreads threads={threads} dummyUser={dummyUser} />
+                <DisplayThreads threads={threads} dummyUser={userData} />
 
             </div>
         )
