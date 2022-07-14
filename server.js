@@ -3,11 +3,29 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const multer = require('multer')
 
 // const controller = require("./src/backend/controller");
 
 const path = require("path");
 const pool = require("./src/backend/connection");
+const imageUpload = multer({
+  storage: multer.diskStorage(
+    {
+      destination: function (req, file, cb) {
+        cb(null, 'images/');
+      },
+      filename: function (req, file, cb) {
+        cb(
+          null,
+          new Date().valueOf() + 
+          '_' +
+          file.originalname
+        );
+      }
+    }
+  ),
+})
 
 const PORT = process.env.PORT || 8000;
 
@@ -426,6 +444,18 @@ app.delete("/api/threads/:id", async (req, res) => {
     res.json(data.rows);
     client.release();
   } catch (err) {}
+});
+
+app.post('/image', imageUpload.single('image'), (req, res) => { 
+  res.json('/image upload done');
+});// Image Get Routes
+
+app.get('/image/:filename', (req, res) => {
+  const { filename } = req.params;
+  const dirname = path.resolve();
+  const fullfilepath = path.join(dirname, 'images/' + filename);
+  console.log(fullfilepath)
+  return res.sendFile(fullfilepath);
 });
 
 app.get("*", (_, res) => {
