@@ -1,7 +1,7 @@
 import { React, useContext, useState } from 'react'
 import CreateInputs from './CreateInputs.jsx'
 import LandingContext from '../../context/LandingContext'
-import '../../ComponentStyles/CreateSlashLogin.css'
+import '../../ComponentStyles/Forms.css'
 
 const CreateUserForm = () => {
   const { setLogin } = useContext(LandingContext)
