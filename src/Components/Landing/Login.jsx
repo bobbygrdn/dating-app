@@ -1,6 +1,6 @@
 import { React, useContext, useState } from 'react';
 import LandingContext from '../../context/LandingContext';
-import '../../ComponentStyles/CreateSlashLogin.css';
+import '../../ComponentStyles/Forms.css';
 import LoginInputs from './LoginInputs';
 
 const Login = () => {
@@ -29,7 +29,7 @@ const Login = () => {
       placeholder: "Password",
       errorMessage: "Password must be 8-20 characters and should include atleast 1 letter, 1 number and 1 special character!",
       label: "Password",
-      pattern: `/^(?=.*?[A-Z])(?=.?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[A-Za-z0-9#?!@$%^&*-].{8,20}$/g`,
+      pattern: `^(?=.*?[A-Z])(?=.?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[A-Za-z0-9#?!@$%^&*-].{8,20}$`,
       required: true
     }
 
@@ -48,7 +48,7 @@ const Login = () => {
     }
     fetch('https://find-luv.herokuapp.com/api/login', fetchData)
       .then((res) => res.json())
-      .then((data) => {
+      .then((data) => {4
         setUserData(data[0]);
         setLogin(true);
       });
