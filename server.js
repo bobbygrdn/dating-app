@@ -21,20 +21,21 @@ app.listen(PORT, (err) => {
   console.log(`Listening on port: ${PORT}`);
 });
 
-//POST ALL users except for the user logged in;
-app.post("/api/current/:id", async (req, res) => {
-  const id = req.params.id
-  const { gender, age1, age2 } = req.body;
+//GET ALL users except for the user logged in;
+app.get("/api/current/:id", async (req, res) => {
+  const id = req.params.id;
   try {
     let client = await pool.connect();
-    let data = await client.query(`SELECT * FROM users WHERE user_id != '${id}' AND gender = '${gender}' AND age BETWEEN '${age1}' AND '${age2}' LIMIT 500;`)
+    let data = await client.query(
+      `SELECT * FROM users WHERE user_id != '${id}' LIMIT 500;`
+    );
     res.json(data.rows);
     client.release();
   } catch (error) {
     console.log(error);
-    res.send(error)
+    res.send(error);
   }
-})
+});
 
 //GET ALL users;
 app.get("/api/users", async (req, res) => {
@@ -54,7 +55,7 @@ app.get("/api/users/:id", async (req, res) => {
   try {
     let client = await pool.connect();
     const data = await client.query("SELECT * FROM users WHERE user_id=$1;", [
-      req.params.id
+      req.params.id,
     ]);
     res.json(data.rows[0]);
     client.release();
@@ -63,18 +64,23 @@ app.get("/api/users/:id", async (req, res) => {
   }
 });
 
-
 //Post User Data with Email && Password
 app.post("/api/login", async (req, res) => {
   try {
     const { username, password } = req.body;
 
     let client = await pool.connect();
-    const { rows } = await client.query('SELECT * FROM users WHERE username =$1 AND password =$2;', [username, password]);
+    const { rows } = await client.query(
+      "SELECT * FROM users WHERE username =$1 AND password =$2;",
+      [username, password]
+    );
     if (rows.length === 0) {
-      res.send("Invalid username and password, please create an account or try again.")
+      res.send(
+        "Invalid username and password, please create an account or try again."
+      );
     } else {
-      res.json(rows)
+      res.json(rows);
+      client.release();
     }
   } catch (error) {
     console.log(error);
@@ -84,8 +90,9 @@ app.post("/api/login", async (req, res) => {
 //POST a user;
 app.post("/api/users", async (req, res) => {
   try {
-    const data = await pool.query(
-      "INSERT INTO users(username, first_name, last_name, email, password, age, height, body_type, gender, profile_pic_url, sexual_orientation, city, state, zipcode, bio) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)",
+    const client = await pool.connect()
+    const data = await client.query(
+      "INSERT INTO users(username, first_name, last_name, email, password, age, height, body_type, gender, profile_pic_url, sexual_orientation, city, state, zipcode, bio, font_style, font_size, dark_theme, gender_preference, age1, age2) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21)",
       [
         req.body.username,
         req.body.first_name,
@@ -102,9 +109,17 @@ app.post("/api/users", async (req, res) => {
         req.body.state,
         req.body.zipcode,
         req.body.bio,
+        req.body.font_style,
+        req.body.font_size,
+        req.body.dark_theme,
+        req.body.gender_preference,
+        req.body.age1,
+        req.body.age2
       ]
     );
     res.send(req.body);
+    client.release();
+
   } catch (err) {
     console.error(err);
   }
@@ -113,6 +128,7 @@ app.post("/api/users", async (req, res) => {
 //UPDATE a user;
 app.patch("/api/users/:id", async (req, res) => {
   try {
+    let client = await pool.connect();
     const {
       username,
       first_name,
@@ -131,7 +147,7 @@ app.patch("/api/users/:id", async (req, res) => {
       bio,
     } = req.body;
     console.log(req.params);
-    const data = await pool.query(`SELECT * FROM users WHERE user_id = $1`, [
+    const data = await client.query(`SELECT * FROM users WHERE user_id = $1`, [
       parseInt(req.params.id),
     ]);
     const updateDB = {
@@ -151,7 +167,7 @@ app.patch("/api/users/:id", async (req, res) => {
       zipcode: parseInt(zipcode) || data.rows[0].zipcode,
       bio: bio || data.rows[0].bio,
     };
-    const updateUsers = await pool.query(
+    const updateUsers = await client.query(
       `UPDATE users SET username = $1, first_name = $2, last_name = $3, email = $4, password = $5, age = $6, height = $7, body_type = $8, gender = $9, profile_pic_url = $10, sexual_orientation = $11, city = $12, state = $13, zipcode = $14, bio = $15 WHERE user_id = $16 RETURNING *`,
       [
         updateDB.username,
@@ -173,6 +189,7 @@ app.patch("/api/users/:id", async (req, res) => {
       ]
     );
     res.json(updateUsers.rows[0]);
+    client.release();
   } catch (err) {
     console.error(err);
   }
@@ -181,12 +198,15 @@ app.patch("/api/users/:id", async (req, res) => {
 //DELETE a user;
 app.delete("/api/users/:id", async (req, res) => {
   try {
-    await pool.connect();
-    const data = await pool.query("DELETE FROM users WHERE user_id = $1;", [
+    const client = await pool.connect();
+    const data = await client.query("DELETE FROM users WHERE user_id = $1;", [
       req.params.id,
     ]);
     res.json(data.rows);
-  } catch (err) { }
+    client.release();
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 //GET ALL pending_connections;
@@ -195,6 +215,7 @@ app.get("/api/pending_connections", async (req, res) => {
     pool.connect();
     const data = await pool.query("SELECT * FROM pending_connections;");
     res.json(data.rows);
+    client.release();
   } catch (err) {
     console.error(err);
   }
@@ -203,11 +224,13 @@ app.get("/api/pending_connections", async (req, res) => {
 //GET ONE pending_connection;
 app.get("/api/pending_connections/:id", async (req, res) => {
   try {
-    const data = await pool.query(
+    let client = await pool.connect();
+    const data = await client.query(
       "SELECT * FROM pending_connections WHERE pending_connections_id=$1;",
       [parseInt(req.params.id)]
     );
     res.json(data.rows[0]);
+    client.release();
   } catch (err) {
     console.error(err);
   }
@@ -216,37 +239,39 @@ app.get("/api/pending_connections/:id", async (req, res) => {
 //DELETE a pending_connection;
 app.delete("/api/pending_connections/:id", async (req, res) => {
   try {
-    await pool.connect();
-    const data = await pool.query(
+    let client = await pool.connect();
+    const data = await client.query(
       "DELETE FROM pending_connections WHERE pending_connections_id = $1;",
       [req.params.id]
     );
     res.json(data.rows);
-  } catch (err) { }
+    client.release();
+  } catch (err) {}
 });
 
 //GET ALL messages;
 app.get("/api/messages", async (req, res) => {
-
   try {
-    let client = await pool.connect()
+    let client = await pool.connect();
     const data = await client.query("SELECT * FROM messages;");
     res.json(data.rows);
-    client.release()
+    client.release();
   } catch (err) {
     console.error(err);
-    res.send(err)
+    res.send(err);
   }
 });
 
 //GET ONE message;
 app.get("/api/messages/:id", async (req, res) => {
   try {
-    const data = await pool.query(
+    let client = await pool.connect();
+    const data = await client.query(
       "SELECT * FROM messages WHERE message_id=$1;",
       [parseInt(req.params.id)]
     );
     res.json(data.rows[0]);
+    client.release();
   } catch (err) {
     console.error(err);
   }
@@ -255,19 +280,23 @@ app.get("/api/messages/:id", async (req, res) => {
 //GET all messages by thread ID;
 app.get("/api/thread/messages/:id", async (req, res) => {
   try {
-    const client = await pool.connect()
-    const data = await pool.query("SELECT * FROM messages WHERE thread_id=$1;", [req.params.id]);
+    const client = await pool.connect();
+    const data = await client.query(
+      "SELECT * FROM messages WHERE thread_id=$1;",
+      [req.params.id]
+    );
     res.json(data.rows);
-    client.release()
+    client.release();
   } catch (err) {
     console.error(err);
-    res.send(err)
+    res.send(err);
   }
 });
 
 //POST a message;
 app.post("/api/messages", async (req, res) => {
   try {
+    let client = await pool.connect();
     const data = await pool.query(
       "INSERT INTO messages(date_stamp, time_stamp, read_receipt, sent_from_user_id, sent_to_user_id, content) VALUES($1, $2, $3, $4, $5, $6)",
       [
@@ -280,6 +309,7 @@ app.post("/api/messages", async (req, res) => {
       ]
     );
     res.send(req.body);
+    client.release();
   } catch (err) {
     console.error(err);
   }
@@ -288,6 +318,7 @@ app.post("/api/messages", async (req, res) => {
 //UPDATE a message;
 app.patch("/api/messages/:id", async (req, res) => {
   try {
+    let client = await pool.connect();
     const {
       date_stamp,
       time_stamp,
@@ -297,7 +328,7 @@ app.patch("/api/messages/:id", async (req, res) => {
       content,
     } = req.body;
     console.log(req.params);
-    const data = await pool.query(
+    const data = await client.query(
       `SELECT * FROM messages WHERE message_id = $1`,
       [parseInt(req.params.id)]
     );
@@ -309,7 +340,7 @@ app.patch("/api/messages/:id", async (req, res) => {
       sent_to_user_id: sent_to_user_id || data.rows[0].sent_to_user_id,
       content: content || data.rows[0].content,
     };
-    const updateMessages = await pool.query(
+    const updateMessages = await client.query(
       `UPDATE messages SET date_stamp = $1, time_stamp = $2, read_receipt = $3, sent_from_user_id = $4, sent_to_user_id = $5, content = $6 WHERE message_id = $7 RETURNING *`,
       [
         updateDB.date_stamp,
@@ -322,6 +353,7 @@ app.patch("/api/messages/:id", async (req, res) => {
       ]
     );
     res.json(updateMessages.rows[0]);
+    client.release();
   } catch (err) {
     console.error(err);
   }
@@ -330,21 +362,23 @@ app.patch("/api/messages/:id", async (req, res) => {
 //DELETE a message;
 app.delete("/api/messages/:id", async (req, res) => {
   try {
-    await pool.connect();
-    const data = await pool.query(
+    let client = await pool.connect();
+    const data = await client.query(
       "DELETE FROM messages WHERE message_id = $1;",
       [req.params.id]
     );
     res.json(data.rows);
-  } catch (err) { }
+    client.release();
+  } catch (err) {}
 });
 
 //GET ALL threads
 app.get("/api/threads", async (req, res) => {
   try {
-    pool.connect();
-    const data = await pool.query("SELECT * FROM threads;");
+    let client = await pool.connect();
+    const data = await client.query("SELECT * FROM threads;");
     res.json(data.rows);
+    client.release();
   } catch (err) {
     console.error(err);
   }
@@ -353,41 +387,45 @@ app.get("/api/threads", async (req, res) => {
 //GET ONE thread by thread_id
 app.get("/api/threads/:id", async (req, res) => {
   try {
-    let client = await pool.connect()
+    let client = await pool.connect();
     const data = await client.query(
       "SELECT * FROM threads WHERE thread_id=$1;",
       [parseInt(req.params.id)]
     );
     res.json(data.rows[0]);
-    client.release()
+    client.release();
   } catch (err) {
     console.error(err);
   }
 });
 
 //Get threads by user- recipient id or sender id
-app.get('/api/threads/user/:id', async (req, res) => {
+app.get("/api/threads/user/:id", async (req, res) => {
   try {
     let client = await pool.connect();
-    let data = await client.query('SELECT * FROM threads WHERE recipient_user_id = $1 OR sender_user_id = $1', [req.params.id])
-    res.json(data.rows)
-    client.release()
+    let data = await client.query(
+      "SELECT * FROM threads WHERE recipient_user_id = $1 OR sender_user_id = $1",
+      [req.params.id]
+    );
+    res.json(data.rows);
+    client.release();
   } catch (error) {
-    console.log(error)
-    res.send(error)
+    console.log(error);
+    res.send(error);
   }
-})
+});
 
 //DELETE thread by thread_id
 app.delete("/api/threads/:id", async (req, res) => {
   try {
-    await pool.connect();
-    const data = await pool.query(
+    let client = await pool.connect();
+    const data = await client.query(
       "DELETE FROM threads WHERE thread_id = $1 AND sender_user_id = $2;",
       [req.params.id]
     );
     res.json(data.rows);
-  } catch (err) { }
+    client.release();
+  } catch (err) {}
 });
 
 app.get("*", (_, res) => {
