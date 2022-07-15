@@ -38,12 +38,11 @@ export const DiscoverProvider = ({children}) => {
         setSingleUser(data);
     }
 
+    
     /**
-     * When the user clicks on a user, the user's id is set to the state variable clickedUser.
-     * @param e - the event object
+     * It takes the value of the pending variable and sends it to the server.
      */
     const likeUser = () => {
-        console.log(clickedUser)
         let data = {
             liked: pending
         }
