@@ -121,5 +121,17 @@ img {
 .editDataBtn:hover {
     cursor: pointer;
     opacity: 1;
-    transform: translate3d(10px);
+    transform: translateY(-1px);
+}
+
+.editPicBtn {
+    /* opacity: 0; */
+    vertical-align: top;
+    position: relative;
+    top: 20px;
+    left: -20px
+}
+
+.pic-container:hover .editDataBtn {
+    opacity: 1;
 }
