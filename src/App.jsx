@@ -17,7 +17,7 @@ import "../src/ComponentStyles/CreateSlashLogin.css";
 function App() {
 
     const [darkTheme, setDarkTheme] = useState(false)
-    const { login, buttonPressed } = useContext(LandingContext)
+    const { login, buttonPressed, userData } = useContext(LandingContext)
     const { threads, fetchAllUserThreads } = useContext(InboxContext)
 
     if (!login) {
@@ -31,7 +31,7 @@ function App() {
 
             <div className='App-container'>
                 <DiscoverProvider>
-                    <Navbar />
+                    <Navbar userData={userData}/>
 
                     <Routes>
 

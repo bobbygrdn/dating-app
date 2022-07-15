@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import './navbarStyles.css'
 import logo from "./logo.png"
 import { useNavigate } from 'react-router-dom'
+import {BiUser} from 'react-icons/bi'
 
-function Navbar() {
+function Navbar({userData}) {
 
     const handleClick = (e) => {
         document.querySelectorAll('.nav-link').forEach(elem => elem.classList.remove('active-tab'))
@@ -49,7 +50,7 @@ function Navbar() {
                     <li className='navSpacer'>|</li>
 
                     <li>
-                        <Link to='/' className='nav-link' onClick={handleLogout}>Log out</Link>
+                        <Link to='/' className='nav-link' onClick={handleLogout}>Log out  <span className='userNameSpan'> <BiUser/> {userData.username}</span></Link>
                     </li>
                 </ul>
             </div>
