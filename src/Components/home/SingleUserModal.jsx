@@ -7,7 +7,6 @@ function SingleUserModal({ show, darkTheme }) {
     /* Destructuring the context object. */
     const { singleUser, setSingleModal, likeUser, setClickedUser } = useContext(DiscoverContext)
 
-    const { userData } = useContext(LandingContext)
     
     /**
      * When the user clicks the close button, the modal will close and the clicked user will be set to
