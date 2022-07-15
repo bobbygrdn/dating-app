@@ -17,6 +17,7 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     let newPicFile = document.getElementById('newPicFile')
 
     const picFormData = new FormData();
