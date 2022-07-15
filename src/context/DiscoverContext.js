@@ -18,29 +18,54 @@ export const DiscoverProvider = ({children}) => {
     const [index2, setIndex2] = useState(23)
     const [pages, setPages] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
     const [clickedUser, setClickedUser] = useState(null)
+    const [pending, setPending] = useState(null)
 
     /**
-     * "addUsers" is a function that takes in a parameter called "data" and then sets the state of
-     * "users" to the value of "data".
-     * 
-     * "addSingleUser" is a function that takes in a parameter called "data" and then sets the state of
-     * "singleUser" to the value of "data".
+     * AddUsers is a function that takes in data and sets the state of users to the data that was
+     * passed in.
+     * @param data - The data that is being passed in from the API call.
      */
     const addUsers = (data) => {
         setUsers(data);
     }
+
+    /**
+     * This function takes in a single user object and sets the state of the singleUser to that object.
+     * @param data - the data that is being passed in from the parent component
+     */
     const addSingleUser = (data) => {
         setSingleUser(data);
     }
-    const likeUser = (e) => {
-        setClickedUser(e.target.id)
-        console.log(clickedUser)
-    }
 
     /**
-     * If the id is less than 2, set the index1 to 1 and index2 to 24. Otherwise, set index2 to id*24
-     * and index1 to id*24-23.
-     * @param id - the id of the page you're on
+     * When the user clicks on a user, the user's id is set to the state variable clickedUser.
+     * @param e - the event object
+     */
+    const likeUser = () => {
+        console.log(clickedUser)
+        let data = {
+            liked: pending
+        }
+
+        let fetchData ={
+            method: "PATCH",
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify(data)
+        }
+
+        fetch('https://https://find-luv.herokuapp.com/api/users', fetchData)
+        .then(response => response.json())
+        .then(data => alert(data))
+    }
+
+    
+    /**
+     * If the id is less than 1, set the index1 to 0 and index2 to 23. If the id is greater than 20,
+     * set index2 to id*24 and index1 to id*24-22. Otherwise, set index2 to id*24 and index1 to
+     * id*24-23.
+     * @param id - the id of the clicked item
      */
     const updateIndexes = (id) => {
         if(id < 1) {
@@ -82,7 +107,8 @@ export const DiscoverProvider = ({children}) => {
         updateIndexes,
         clickedUser,
         setClickedUser,
-        likeUser
+        likeUser,
+        setPending
     }}>
         {children}
     </DiscoverContext.Provider>
