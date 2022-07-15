@@ -12,7 +12,7 @@ const pool = require("./src/backend/connection");
 const imageUpload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "image/");
+      cb(null, "images/");
     },
     filename: function (req, file, cb) {
       cb(null, new Date().valueOf() + "_" + file.originalname);
@@ -475,7 +475,7 @@ app.patch("/image/:id", imageUpload.single("image"), async (req, res) => {
 
 });
 
-app.get("/image/:filename", (req, res) => {
+app.get("/images/:filename", (req, res) => {
   const { filename } = req.params;
   const dirname = path.resolve();
   const fullfilepath = path.join(dirname, "images/" + filename);
