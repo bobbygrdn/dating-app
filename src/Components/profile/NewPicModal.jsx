@@ -21,14 +21,15 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
 
     const picFormData = new FormData();
 
-    // picFormData.append("profilePic", newPicFile.files[0])
+    picFormData.append("image", newPicFile.files[0])
     
     console.log(newPicFile.files[0])
     console.log(newPicFile)
-    // fetch('', {
-    //     method: "post",
-    //      body: picFormData
-    //     })
+
+    fetch(`https://find-luv.herokuapp.com/image/${userData.user_id}`, {
+        method: "post",
+         body: picFormData
+        })
 
     // changeUserData(formData)
 
