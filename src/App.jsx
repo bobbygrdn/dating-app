@@ -1,18 +1,18 @@
-import { React, useContext, useState, useEffect } from 'react'
+import { React, useContext, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import Navbar from './Components/navbar/Navbar.jsx'
-import Matches from './Components/matches/Matches.jsx'
-import Inbox from './Components/inbox/Inbox.jsx'
-import PendingConnections from './Components/pending-connections/PendingConnections.jsx'
-import MyProfile from './Components/profile/MyProfile.jsx'
-import Landing from './Components/Landing/Landing.jsx'
-import Discover from './Components/home/Discover.jsx';
-import CreateUserForm from './Components/Landing/CreateUserForm'
-import Login from './Components/Landing/Login'
-import { DiscoverProvider } from './context/DiscoverContext.js';
-import LandingContext from './context/LandingContext'
-import InboxContext from './context/InboxContext.js';
-import '../src/ComponentStyles/CreateSlashLogin.css'
+import Navbar from "./Components/navbar/Navbar.jsx";
+import Matches from "./Components/matches/Matches.jsx";
+import Inbox from "./Components/inbox/Inbox.jsx";
+import PendingConnections from "./Components/pending-connections/PendingConnections.jsx";
+import MyProfile from "./Components/profile/MyProfile.jsx";
+import Landing from "./Components/Landing/Landing.jsx";
+import Discover from "./Components/home/Discover.jsx";
+import CreateUserForm from "./Components/Landing/CreateUserForm";
+import Login from "./Components/Landing/Login";
+import { DiscoverProvider } from "./context/DiscoverContext.js";
+import LandingContext from "./context/LandingContext";
+import InboxContext from "./context/InboxContext.js";
+import "../src/ComponentStyles/CreateSlashLogin.css";
 
 function App() {
 
@@ -54,5 +54,6 @@ function App() {
 
         )
     }
+
 }
-export default App
+export default App;
