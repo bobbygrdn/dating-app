@@ -1,9 +1,9 @@
-import { useContext } from "react"
+import { useContext, useEffect} from "react"
 import DiscoverContext from "../../context/DiscoverContext"
 import '../../ComponentStyles/Discover.css'
 import LandingContext from "../../context/LandingContext"
 
-function SingleUserModal({ show }) {
+function SingleUserModal({ show, darkTheme }) {
     /* Destructuring the context object. */
     const { singleUser, setSingleModal, likeUser, setClickedUser, clickedUser } = useContext(DiscoverContext)
 
@@ -22,6 +22,19 @@ function SingleUserModal({ show }) {
         likeUser(userData.user_id, clickedUser)
     }
 
+    useEffect(() => {
+      checkForDarkTheme()
+    },[show])
+
+    const checkForDarkTheme = () => {
+        let singleUserModal = document.querySelector('.singleUserModal')
+      if(darkTheme && singleUserModal) {
+    return singleUserModal.classList.add('singleUserModalDarkTheme')
+      }
+      if(!darkTheme && singleUserModal){
+       return singleUserModal.classList.remove('singleUserModalDarkTheme')
+      }
+    }
     return (
         <>
 
