@@ -20,6 +20,7 @@ export const DiscoverProvider = ({children}) => {
     const [clickedUser, setClickedUser] = useState(null)
     const [pending, setPending] = useState(null)
 
+
     /**
      * AddUsers is a function that takes in data and sets the state of users to the data that was
      * passed in.
