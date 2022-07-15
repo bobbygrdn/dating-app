@@ -30,6 +30,8 @@
 img {
     border-radius: 100%;
     border: 1px solid whitesmoke;
+    height: 256px;
+    width: 256px
 }
 
 .snapshot-container {
