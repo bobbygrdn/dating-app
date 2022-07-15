@@ -78,7 +78,7 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
             />{" "}
           </div>
 
-          <input type="submit" value="Update Bio" id="editUserDataBtn" />
+          <input type="submit" value="Update Match info" id="editUserDataBtn" />
         </form>
 
         <button

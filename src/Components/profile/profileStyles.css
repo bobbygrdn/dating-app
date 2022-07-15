@@ -218,7 +218,7 @@ img {
     font-size: .8rem;
     height: 25px;
     padding: 0 10px 0 10px;
-    opacity: .5;
+    opacity: .6;
     transition: font-size .2s;
     transition: opacity .2s;
     color: white;
@@ -303,8 +303,7 @@ img {
     width: 80%
 }
 
-.dataBodyType,
-.dataUsername {
+.dataBodyType {
     width: 73%
 }
 
@@ -317,15 +316,17 @@ img {
 .dataZipcode{
     width: 65%
 }
-
+.dataUsername{
+    width:65%;
+}
 .dataPassword{
-width: 55%;
+width: 50%;
 }
 .editLoginSettingsContainer{
     height: 250px;
 }
 .editProfilePicContainer{
-    height:180px
+    height:150px
 }
 #newPicFile:hover {
     cursor: pointer;
