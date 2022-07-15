@@ -50,9 +50,11 @@ function Navbar({userData}) {
                     <li className='navSpacer'>|</li>
 
                     <li>
-                        <Link to='/' className='nav-link' onClick={handleLogout}>Log out  <span className='userNameSpan'> <BiUser/> {userData.username}</span></Link>
+                        <Link to='/' className='nav-link' onClick={handleLogout}>Log out</Link>
                     </li>
+                    <span className='userNameSpan'> <BiUser/> {userData.username}</span>
                 </ul>
+                
             </div>
         </>
 
