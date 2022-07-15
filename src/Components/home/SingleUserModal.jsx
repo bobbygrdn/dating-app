@@ -5,7 +5,7 @@ import LandingContext from "../../context/LandingContext"
 
 function SingleUserModal({ show }) {
     /* Destructuring the context object. */
-    const { singleUser, setSingleModal, likeUser, setClickedUser } = useContext(DiscoverContext)
+    const { singleUser, setSingleModal, likeUser, setClickedUser, clickedUser } = useContext(DiscoverContext)
 
     const { userData } = useContext(LandingContext)
     
@@ -19,7 +19,7 @@ function SingleUserModal({ show }) {
     }
 
     const runLikeUser = () => {
-        likeUser(userData.user_id)
+        likeUser(userData.user_id, clickedUser)
     }
 
     return (
