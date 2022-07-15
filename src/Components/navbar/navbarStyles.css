@@ -44,6 +44,7 @@ li {
     font-weight: bold;
     font-size: calc(var(--font-size) + .5rem);
 }
+
 .title {
     text-align: center;
     font-family: 'Lily Script One', cursive;
@@ -55,4 +56,8 @@ li {
     position: absolute;
     right: 0;
     border: none;
+}
+
+.navSpacer {
+    opacity: 50%;
 }

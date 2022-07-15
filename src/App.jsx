@@ -21,19 +21,21 @@ function App() {
     const { threads, fetchAllUserThreads } = useContext(InboxContext)
 
 
-    useEffect(() => {
-        checkIfLoggedIn()
-    }, [login])
+    // useEffect(() => {
+    //     checkIfLoggedIn()
+    // }, [login])
 
-    const checkIfLoggedIn = () => {
-        // if (login) { return fetchAllUserThreads() }
-    }
+    // const checkIfLoggedIn = () => {
+    //     // if (login) { return fetchAllUserThreads() }
+    // }
 
     if (!login) {
         if (!buttonPressed) return (<Landing />)
         else if (buttonPressed === 'createUserButton') return (<CreateUserForm />)
         else if (buttonPressed === 'loginButton') return (<Login />)
-    } else {
+    }
+
+    else {
         return (
 
             <div className='App-container'>
@@ -43,9 +45,7 @@ function App() {
                     <Routes>
 
                         <Route path='/' element={<Discover />} />
-                        <Route path='/matches' element={<Matches />} />
                         <Route path='/inbox' element={<Inbox />} />
-                        <Route path='/pending-connections' element={<PendingConnections />} />
                         <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} />} />
 
                     </Routes>

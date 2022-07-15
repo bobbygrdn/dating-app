@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
+import { FaRegEdit } from 'react-icons/fa';
 import './profileStyles.css'
 import DarkThemeToggleBtn from './DarkThemeToggleBtn.jsx'
 import FontSizeSelection from './FontSizeSelection.jsx'
@@ -9,25 +10,46 @@ import LandingContext from '../../context/LandingContext'
 function MyProfile({ darkTheme, setDarkTheme }) {
 
     const { userData, setUserData } = useContext(LandingContext)
+    const [showEditProfileModal, setShowEditProfileModal] = useState(false)
+    const [showEditBioModal, setShowEditBioModal] = useState(false)
+
+    const handleClick = (e) => {
+        // console.log(e.currentTarget.id)
+
+        switch (e.currentTarget.id) {
+            case 'bio':
+                console.log('bio')
+                break;
+
+            default:
+                console.log('click')
+        }
+
+
+    }
+
     return (
         <div className='profile-page-main-container'>
+
             <div className='pic-container'>
                 {userData !== null ? <img src={userData['profile_pic_url']} alt='profile-pic' /> : <ProfilePicPlaceHolder />}
+                <FaRegEdit id="profilePic" className='editDataBtn editPicBtn' onClick={handleClick} />
+
             </div>
 
             <div className='snapshot-container'>
-                <h3>At a glance</h3>
+                <h3>At a glance <FaRegEdit id='glanceData' className='editDataBtn' onClick={handleClick} /></h3>
                 <ul className='snapshotUL'>
                     <li>{`Username: ${userData.username}`}</li>
                     <li>{`First name: ${userData.first_name}`}</li>
                     <li>{`Last name: ${userData.last_name}`}</li>
-                    <li>{`Age: ${userData.age}`}</li>
+                    <li>{`Age: ${userData.age == 0 ? 'not specified' : userData.age}`}</li>
                     <li>{`Location: ${userData.city}, ${userData.state}, ${userData.zipcode}`}</li>
                 </ul>
             </div>
 
             <div className='match-preferences-options-container'>
-                <h3>Connections match info</h3>
+                <h3>Connections match info <FaRegEdit id='matchData' className='editDataBtn' onClick={handleClick} /></h3>
                 <ul className='connectionInfoUL'>
                     <li>{`Height: ${userData.height}`} inches</li>
                     <li>{`Body type: ${userData.body_type}`}</li>
@@ -37,7 +59,7 @@ function MyProfile({ darkTheme, setDarkTheme }) {
             </div>
 
             <div className='bio-details-container'>
-                <h3>My Bio</h3>
+                <h3>My Bio <FaRegEdit id='bio' className='editDataBtn' onClick={handleClick} /></h3>
                 <p>{userData.bio}</p>
 
             </div>
