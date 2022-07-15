@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { FaRegEdit } from 'react-icons/fa';
 import './profileStyles.css'
 import DarkThemeToggleBtn from './DarkThemeToggleBtn.jsx'
 import FontSizeSelection from './FontSizeSelection.jsx'
@@ -9,6 +10,10 @@ import LandingContext from '../../context/LandingContext'
 function MyProfile({ darkTheme, setDarkTheme }) {
 
     const { userData, setUserData } = useContext(LandingContext)
+    const handleclick = () => {
+        console.log('click')
+    }
+
     return (
         <div className='profile-page-main-container'>
             <div className='pic-container'>
@@ -16,7 +21,7 @@ function MyProfile({ darkTheme, setDarkTheme }) {
             </div>
 
             <div className='snapshot-container'>
-                <h3>At a glance <button>test</button></h3>
+                <h3>At a glance <FaRegEdit className='editDataBtn' onClick={handleclick} /></h3>
                 <ul className='snapshotUL'>
                     <li>{`Username: ${userData.username}`}</li>
                     <li>{`First name: ${userData.first_name}`}</li>
@@ -27,7 +32,7 @@ function MyProfile({ darkTheme, setDarkTheme }) {
             </div>
 
             <div className='match-preferences-options-container'>
-                <h3>Connections match info</h3>
+                <h3>Connections match info <FaRegEdit /></h3>
                 <ul className='connectionInfoUL'>
                     <li>{`Height: ${userData.height}`} inches</li>
                     <li>{`Body type: ${userData.body_type}`}</li>

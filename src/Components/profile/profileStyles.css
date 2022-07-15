@@ -113,3 +113,13 @@ img {
 .fontStyleDropDown:hover {
     cursor: pointer;
 }
+
+.editDataBtn {
+    opacity: .5;
+}
+
+.editDataBtn:hover {
+    cursor: pointer;
+    opacity: 1;
+    transform: translate3d(10px);
+}
