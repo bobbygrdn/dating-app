@@ -7,7 +7,7 @@ import SingleUserModal from './SingleUserModal';
 import SearchModal from './SearchModal';
 import LandingContext from '../../context/LandingContext'
 
-function Discover() {
+function Discover({darkTheme}) {
 
     /* Destructuring the context object. */
     const { addUsers, singleModal, addSingleUser, searchModal } = useContext(DiscoverContext)
@@ -34,7 +34,7 @@ function Discover() {
     return (
         <div>
             <Users />
-            <SingleUserModal show={singleModal} />
+            <SingleUserModal show={singleModal} darkTheme={darkTheme}/>
             <SearchModal show={searchModal} />
         </div>
     )

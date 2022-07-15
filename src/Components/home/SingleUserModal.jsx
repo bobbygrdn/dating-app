@@ -1,8 +1,8 @@
-import { useContext } from "react"
+import { useContext, useEffect} from "react"
 import DiscoverContext from "../../context/DiscoverContext"
 import '../../ComponentStyles/Discover.css'
 
-function SingleUserModal({ show }) {
+function SingleUserModal({ show, darkTheme }) {
     /* Destructuring the context object. */
     const { singleUser, setSingleModal } = useContext(DiscoverContext)
 
@@ -11,6 +11,19 @@ function SingleUserModal({ show }) {
         setSingleModal(false)
     }
 
+    useEffect(() => {
+      checkForDarkTheme()
+    },[show])
+
+    const checkForDarkTheme = () => {
+        let singleUserModal = document.querySelector('.singleUserModal')
+      if(darkTheme && singleUserModal) {
+    return singleUserModal.classList.add('singleUserModalDarkTheme')
+      }
+      if(!darkTheme && singleUserModal){
+       return singleUserModal.classList.remove('singleUserModalDarkTheme')
+      }
+    }
     return (
         <>
 
