@@ -3,29 +3,22 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const multer = require('multer')
+const multer = require("multer");
 
 // const controller = require("./src/backend/controller");
 
 const path = require("path");
 const pool = require("./src/backend/connection");
 const imageUpload = multer({
-  storage: multer.diskStorage(
-    {
-      destination: function (req, file, cb) {
-        cb(null, 'images/');
-      },
-      filename: function (req, file, cb) {
-        cb(
-          null,
-          new Date().valueOf() + 
-          '_' +
-          file.originalname
-        );
-      }
-    }
-  ),
-})
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, "images/");
+    },
+    filename: function (req, file, cb) {
+      cb(null, new Date().valueOf() + "_" + file.originalname);
+    },
+  }),
+});
 
 const PORT = process.env.PORT || 8000;
 
@@ -41,7 +34,7 @@ app.listen(PORT, (err) => {
 
 //POST ALL users except for the user logged in;
 app.post("/api/current", async (req, res) => {
-  const { user_id, gender_preference, age1, age2 } = req.body
+  const { user_id, gender_preference, age1, age2 } = req.body;
   try {
     let client = await pool.connect();
     let data = await client.query(
@@ -108,7 +101,7 @@ app.post("/api/login", async (req, res) => {
 //POST a user;
 app.post("/api/users", async (req, res) => {
   try {
-    const client = await pool.connect()
+    const client = await pool.connect();
     const data = await client.query(
       "INSERT INTO users(username, first_name, last_name, email, password, age, height, body_type, gender, profile_pic_url, sexual_orientation, city, state, zipcode, bio, font_style, font_size, dark_theme, gender_preference, age1, age2) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21)",
       [
@@ -132,12 +125,11 @@ app.post("/api/users", async (req, res) => {
         req.body.dark_theme,
         req.body.gender_preference,
         req.body.age1,
-        req.body.age2
+        req.body.age2,
       ]
     );
     res.send(req.body);
     client.release();
-
   } catch (err) {
     console.error(err);
   }
@@ -446,15 +438,15 @@ app.delete("/api/threads/:id", async (req, res) => {
   } catch (err) {}
 });
 
-app.post('/image', imageUpload.single('image'), (req, res) => { 
-  res.json('/image upload done');
-});// Image Get Routes
+app.post("/image", imageUpload.single("image"), (req, res) => {
+  res.json("/image upload done");
+}); // Image Get Routes
 
-app.get('/image/:filename', (req, res) => {
+app.get("/image/:filename", (req, res) => {
   const { filename } = req.params;
   const dirname = path.resolve();
-  const fullfilepath = path.join(dirname, 'images/' + filename);
-  console.log(fullfilepath)
+  const fullfilepath = path.join(dirname, "images/" + filename);
+  console.log(fullfilepath);
   return res.sendFile(fullfilepath);
 });
 
