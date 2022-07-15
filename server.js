@@ -467,11 +467,12 @@ app.patch("/image/:id", imageUpload.single("image"), async (req, res) => {
       [req.file.path, req.params.id]
     );
     res.json("/image upload done");
+
     client.release();
   } catch (err) {
     console.error(err.message);
   }
-  console.log(req.file.filename);
+
 });
 
 app.get("/image/:filename", (req, res) => {
