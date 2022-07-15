@@ -152,15 +152,16 @@ img {
 .editDataContainer {
     z-index: 1;
     width: 480px;
-    height: 230px;
-    background: #3335;
+    height: 300px;
+    background: #1115;
+    border: 1px solid #222;
     display: grid;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
     position: relative;
     animation: animate 0.3s;
-    box-shadow: 10px 10px 10px black;
+    box-shadow: 10px 10px 10px #555;
 }
 
 .modalCloseBtn {
@@ -185,9 +186,9 @@ img {
 }
 
 #editDataSubmitBtn {
-    position: relative;
+    /* position: relative;
     left: 8px;
-    top: -174px;
+    top: -174px; */
     font-size: .8rem;
     height: 25px;
     padding: 0 10px 0 10px;
@@ -232,15 +233,21 @@ img {
 }
 
 #editDataTextArea {
-    position: relative;
+    /* position: relative;
     left: -40px;
-    top: 10px;
+    top: 10px; */
     font-size: inherit;
     color: #222;
     background-color: whitesmoke;
     font-family: inherit;
     border: none;
     border-radius: 5px;
+    color: rgb(22, 73, 149);
+    
+}
+
+#editDataTextArea:focus{
+    outline: none;
 }
 
 .updateUserDataForm {
@@ -266,7 +273,47 @@ img {
 .userDataInputBox {
     background-color: rgb(117, 90, 235);
     border: none;
-    opacity: .8;
+    opacity: .7;
     padding-left: 5px;
-    /* width: 50%; */
+    width: 50%;
+    /* border: none; */
+}
+
+.userDataInputBox:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.userDataInputBox:focus {
+    outline: none;
+    opacity: 1;
+    color: white;
+    cursor: text
+}
+
+.dataHeight {
+    width: 80%
+}
+
+.dataBodyType {
+    width: 73%
+}
+
+.dataGender {
+    width: 80%
+}
+
+.editGlanceContainer{
+    height: 380px
+}
+
+.dataFirstName,
+.dataLastName,
+.dataZipcode{
+    width: 65%
+}
+.dataAge,
+.dataCity,
+.dataState{
+    width:80%
 }
