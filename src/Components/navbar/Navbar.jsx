@@ -38,6 +38,12 @@ function Navbar({userData}) {
                     <li className='navSpacer'>|</li>
 
                     <li>
+                        <Link to='/connections' className='nav-link' onClick={handleClick}>Connections</Link>
+                    </li>
+
+                    <li className='navSpacer'>|</li>
+
+                    <li>
                         <Link to='/profile' className='nav-link' onClick={handleClick}>My Profile</Link>
                     </li>
 

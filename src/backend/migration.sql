@@ -1,7 +1,7 @@
---  DROP DATABASE IF EXISTS findluv;
---  CREATE DATABASE findluv;
+ DROP DATABASE IF EXISTS findluv;
+ CREATE DATABASE findluv;
 
---  \c findluv;
+ \c findluv;
 
 DROP TABLE IF EXISTS landing_page, users, pending_connections, messages, threads;
 
@@ -32,7 +32,8 @@ CREATE TABLE users(
     gender_preference VARCHAR(20),
     dark_theme BOOLEAN,
     font_size TEXT,
-    font_style TEXT
+    font_style TEXT, 
+    liked TEXT
 );
 
 CREATE TABLE pending_connections(

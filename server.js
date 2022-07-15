@@ -3,29 +3,22 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const multer = require('multer')
+const multer = require("multer");
 
 // const controller = require("./src/backend/controller");
 
 const path = require("path");
 const pool = require("./src/backend/connection");
 const imageUpload = multer({
-  storage: multer.diskStorage(
-    {
-      destination: function (req, file, cb) {
-        cb(null, 'images/');
-      },
-      filename: function (req, file, cb) {
-        cb(
-          null,
-          new Date().valueOf() + 
-          '_' +
-          file.originalname
-        );
-      }
-    }
-  ),
-})
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, "images/");
+    },
+    filename: function (req, file, cb) {
+      cb(null, new Date().valueOf() + "_" + file.originalname);
+    },
+  }),
+});
 
 const PORT = process.env.PORT || 8000;
 
@@ -41,7 +34,7 @@ app.listen(PORT, (err) => {
 
 //GET ALL users except for the user logged in;
 app.get("/api/current/:id", async (req, res) => {
-  let id = req.params.id
+  let id = req.params.id;
   try {
     let client = await pool.connect();
     let data = await client.query(
@@ -108,7 +101,7 @@ app.post("/api/login", async (req, res) => {
 //POST a user;
 app.post("/api/users", async (req, res) => {
   try {
-    const client = await pool.connect()
+    const client = await pool.connect();
     const data = await client.query(
       "INSERT INTO users(username, first_name, last_name, email, password, age, height, body_type, gender, profile_pic_url, sexual_orientation, city, state, zipcode, bio, font_style, font_size, dark_theme, gender_preference, age1, age2) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21)",
       [
@@ -132,12 +125,11 @@ app.post("/api/users", async (req, res) => {
         req.body.dark_theme,
         req.body.gender_preference,
         req.body.age1,
-        req.body.age2
+        req.body.age2,
       ]
     );
     res.send(req.body);
     client.release();
-
   } catch (err) {
     console.error(err);
   }
@@ -153,16 +145,23 @@ app.patch("/api/users/:id", async (req, res) => {
       last_name,
       email,
       password,
+      profile_pic_url,
       age,
       height,
       body_type,
       gender,
-      profile_pic_url,
+      bio,
       sexual_orientation,
       city,
       state,
       zipcode,
-      bio,
+      age1,
+      age2,
+      gender_preference,
+      dark_theme,
+      font_size,
+      font_style,
+      liked,
     } = req.body;
     console.log(req.params);
     const data = await client.query(`SELECT * FROM users WHERE user_id = $1`, [
@@ -174,35 +173,49 @@ app.patch("/api/users/:id", async (req, res) => {
       last_name: last_name || data.rows[0].last_name,
       email: email || data.rows[0].email,
       password: password || data.rows[0].password,
+      profile_pic_url: profile_pic_url || data.rows[0].profile_pic_url,
       age: parseInt(age) || data.rows[0].age,
       height: parseInt(height) || data.rows[0].height,
       body_type: body_type || data.rows[0].body_type,
       gender: gender || data.rows[0].gender,
-      profile_pic_url: profile_pic_url || data.rows[0].profile_pic_url,
+      bio: bio || data.rows[0].bio,
       sexual_orientation: sexual_orientation || data.rows[0].sexual_orientation,
       city: city || data.rows[0].city,
       state: state || data.rows[0].state,
       zipcode: parseInt(zipcode) || data.rows[0].zipcode,
-      bio: bio || data.rows[0].bio,
+      age1: parseInt(age1) || data.rows[0].age1,
+      age2: parseInt(age2) || data.rows[0].age2,
+      gender_preference: gender_preference || data.rows[0].gender_preference,
+      dark_theme: dark_theme || data.rows[0].dark_theme,
+      font_size: font_size || data.rows[0].font_size,
+      font_style: font_style || data.rows[0].font_style,
+      liked: liked || data.rows[0].liked,
     };
     const updateUsers = await client.query(
-      `UPDATE users SET username = $1, first_name = $2, last_name = $3, email = $4, password = $5, age = $6, height = $7, body_type = $8, gender = $9, profile_pic_url = $10, sexual_orientation = $11, city = $12, state = $13, zipcode = $14, bio = $15 WHERE user_id = $16 RETURNING *`,
+      `UPDATE users SET username = $1, first_name = $2, last_name = $3, email = $4, password = $5, profile_pic_url =$ 6, age = $7, height = $8, body_type = $9, gender = $10, bio = $11, sexual_orientation = $12, city = $13, state = $14, zipcode = $15, age1 = $16, age2 = $17, gender_preference = $18, dark_theme = $19, font_size = $20, font_style = $21, liked = $22 WHERE user_id = $23 RETURNING *`,
       [
         updateDB.username,
         updateDB.first_name,
         updateDB.last_name,
         updateDB.email,
         updateDB.password,
+        updateDB.profile_pic_url,
         updateDB.age,
         updateDB.height,
         updateDB.body_type,
         updateDB.gender,
-        updateDB.profile_pic_url,
+        updateDB.bio,
         updateDB.sexual_orientation,
         updateDB.city,
         updateDB.state,
         updateDB.zipcode,
-        updateDB.bio,
+        updateDB.age1,
+        updateDB.age2,
+        updateDB.gender_preference,
+        updateDB.dark_theme,
+        updateDB.font_size,
+        updateDB.font_style,
+        updateDB.liked,
         req.params.id,
       ]
     );
@@ -446,15 +459,27 @@ app.delete("/api/threads/:id", async (req, res) => {
   } catch (err) {}
 });
 
-app.post('/image', imageUpload.single('image'), (req, res) => { 
-  res.json('/image upload done');
-});// Image Get Routes
+app.patch("/image/:id", imageUpload.single("image"), async (req, res) => {
+  try {
+    let client = await pool.connect();
+    await client.query(
+      "UPDATE users SET profile_pic_url = $1 WHERE user_id = $2",
+      [req.file.path, req.params.id]
+    );
+    res.json("/image upload done");
 
-app.get('/image/:filename', (req, res) => {
+    client.release();
+  } catch (err) {
+    console.error(err.message);
+  }
+
+});
+
+app.get("/image/:filename", (req, res) => {
   const { filename } = req.params;
   const dirname = path.resolve();
-  const fullfilepath = path.join(dirname, 'images/' + filename);
-  console.log(fullfilepath)
+  const fullfilepath = path.join(dirname, "images/" + filename);
+  console.log(fullfilepath);
   return res.sendFile(fullfilepath);
 });
 
