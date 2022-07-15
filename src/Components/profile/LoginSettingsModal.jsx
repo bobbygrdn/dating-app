@@ -87,7 +87,7 @@ let dataToUpdate = {
             />{" "}
           </div>
 
-          <input type="submit" value="Update Bio" id="editUserDataBtn" onClick={handleClick}/>
+          <input type="submit" value="Update Login settings" id="editUserDataBtn" onClick={handleClick}/>
         </form>
 
         <button

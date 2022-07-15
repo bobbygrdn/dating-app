@@ -17,7 +17,7 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     let newPicFile = document.getElementById('newPicFile')
 
     const picFormData = new FormData();
@@ -62,7 +62,7 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
           </div>
 
 
-          <input type="submit" value="Update Bio" id="editUserDataBtn" />
+          <input type="submit" value="Update Profile Pic" id="editUserDataBtn" />
         </form>
 
         <button

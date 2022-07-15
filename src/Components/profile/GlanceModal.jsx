@@ -38,17 +38,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
     <div className="modalContainer" ref={modalRef} onClick={closeModal}>
       <div className="editDataContainer editGlanceContainer">
         <form onSubmit={handleSubmit} className="updateUserDataForm">
-          {/* <div className="dataLabel">
-            Username: 
-            <input
-              className="userDataInputBox dataUsername"
-              type="text"
-              name="username"
-              onChange={handleChange}
-              value={formData.username}
-            />
-          </div> */}
-
+       
           <div className="dataLabel">
             First name: 
             <input
@@ -115,7 +105,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
             />{" "}
           </div>
 
-          <input type="submit" value="Update Bio" id="editUserDataBtn" />
+          <input type="submit" value="Update Glance info" id="editUserDataBtn" />
         </form>
 
         <button
