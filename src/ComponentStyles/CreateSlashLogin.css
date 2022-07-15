@@ -1,4 +1,6 @@
 .loginForm--container {
+  background: -webkit-linear-gradient(#c1c8e4, #84ceeb);
+  position: relative;
   width: 100%;
   height: max-content;
 
@@ -11,6 +13,15 @@
 
   text-align: center;
 
+
+  padding: 16.4rem;
+}
+
+.heartLogo2 {
+  position: absolute;
+  right: 100px;
+  margin-top: 85px;
+  border: none;
   padding: 0.5rem;
 }
 
@@ -25,8 +36,10 @@
 .loginForm--title {
   line-height: 2;
   padding: 0.5rem;
-  font-size: 20px;
+  font-size: 70px;
   line-clamp: 20px;
+  background: -webkit-linear-gradient(#84ceeb, #c1c8e4);
+  border: 5px solid #5680e9;
 }
 
 .loginForm--closeBtn {
@@ -37,14 +50,109 @@
   width: 100%;
   height: 100%;
   display: grid;
-
   gap: 0.5rem;
 }
 
 .login--formInput {
   display: flex;
   flex-direction: column;
+  font-size: 25px;
+  padding-bottom: 0.5rem;
+}
+.login--formInput > input {
+  min-width: 100%;
+  height: 30px;
+  padding: 20px;
+}
 
+.login--formInput > label {
+  padding-top: 0.5rem;
+  text-align: start;
+}
+
+.login--formInput > input:invalid[focused="true"] ~ .form--errorMessages {
+  display: block;
+}
+
+.login--formInput > input:invalid[focused="true"] {
+  border: 1px solid red;
+}
+.forms {
+  filter: none;
+  background-color: aliceblue;
+  z-index: 20;
+  width: 350px;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+/* create user form div */
+.createuser--container {
+  background: -webkit-linear-gradient(#c1c8e4, #84ceeb);
+  position: static;
+  width: 100%;
+  height: max-content;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-rows: min-content;
+  line-height: 1.5;
+  place-content: center;
+  text-align: center;
+  padding: 8.2rem;
+}
+
+.heartLogo {
+  position: absolute;
+  right: 100px;
+  margin-top: -25px;
+  border: none;
+}
+
+/* create user header div contains title and closebtn */
+.createuser--header {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-auto-flow: column;
+}
+
+/* Title */
+.createuser--title {
+  line-height: 2;
+  padding: 0.5rem;
+  font-size: 35px;
+  line-clamp: 20px;
+  border: 5px solid #5680e9;
+  background: -webkit-linear-gradient(#84ceeb, #c1c8e4);
+}
+
+/* Close Button */
+.createuser--closebtn {
+  padding: 0.25rem;
+}
+
+/* Form and Form input selectors begin now */
+
+/* Create user form */
+.createuser--formWrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+
+  gap: 0.5rem;
+}
+
+/* Create user form input divs */
+.createuser--Inputs {
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 0.25rem;
+}
+
+/* input fields */
+.createuser--Inputs > input {
   padding-bottom: 0.25rem;
 }
 
@@ -80,16 +188,12 @@
 .createuser--container {
   width: 100%;
   height: max-content;
-
   display: grid;
   grid-auto-flow: row;
   grid-template-rows: 1;
-
   line-height: 1.5;
   place-content: center;
-
   text-align: center;
-
   padding: 0.5rem;
 }
 
@@ -97,7 +201,6 @@
 .createuser--header {
   width: 100%;
   height: 100%;
-
   display: grid;
   grid-auto-flow: column;
 
@@ -105,7 +208,6 @@
 
 /* Title */
 .createuser--title {
-
   line-height: 2;
   padding: 0.5rem;
   font-size: 20px;
@@ -114,7 +216,6 @@
 
 /* Close Button */
 .createuser--closebtn {
-
   padding: 0.25rem;
 }
 
@@ -125,7 +226,6 @@
   width: 100%;
   height: 100%;
   display: grid;
-
   gap: 0.5rem;
 }
 
@@ -133,7 +233,6 @@
 .createuser--Inputs {
   display: flex;
   flex-direction: column;
-
   padding-bottom: 0.25rem;
 }
 
@@ -144,16 +243,33 @@
   padding: 20px;
 }
 
-.createuser--Inputs>label {
+.createuser--Inputs > label {
   padding-top: 0.5rem;
   text-align: start;
 }
 
+.btn-submit {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem;
+  width: 100%;
+  background-color: #8860d0;
+  box-shadow: 5px 5px #5680e9;
+  font-family: "Noto Serif", serif;
+  font-size: 15px;
+}
+
 .btn--submit {
   display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.60rem;
+  margin-top: 0.6rem;
+  padding: 0.5rem;
   width: 100%;
+  background-color: #8860d0;
+  box-shadow: 5px 5px #5680e9;
+  font-family: "Noto Serif", serif;
+  font-size: 15px;
+
+
 }
 
 .form--errorMessages {
@@ -161,10 +277,10 @@
   color: red;
 }
 
-.createuser--Inputs>input:invalid[focused=true]~.form--errorMessages {
+.createuser--Inputs > input:invalid[focused="true"] ~ .form--errorMessages {
   display: block;
 }
-
-.createuser--Inputs>input:invalid[focused=true] {
+.createuser--Inputs > input:invalid[focused="true"] {
   border: 1px solid red;
 }
+
