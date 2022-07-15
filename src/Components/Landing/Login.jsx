@@ -1,8 +1,9 @@
-import { React, useContext, useState } from "react";
-import LandingContext from "../../context/LandingContext";
-import logo from "./logo.png";
-import LoginInputs from "./LoginInputs";
-import { IoMdCloseCircleOutline } from 'react-icons/io'
+import { React, useContext, useState } from 'react';
+import LandingContext from '../../context/LandingContext';
+import '../../ComponentStyles/Forms.css';
+import LoginInputs from './LoginInputs';
+import { useNavigate } from 'react-router-dom'
+
 
 const Login = () => {
   const { setLogin, setUserData } = useContext(LandingContext);
@@ -36,6 +37,8 @@ const Login = () => {
     },
   ];
 
+  let navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let jsonDat = JSON.stringify(loginData);
@@ -52,6 +55,7 @@ const Login = () => {
       .then((data) => {
         setUserData(data[0]);
         setLogin(true);
+        navigate('/')
       });
   };
 
