@@ -40,22 +40,28 @@ export const DiscoverProvider = ({children}) => {
     /**
      * It takes the value of the pending variable and sends it to the server.
      */
-    const likeUser = () => {
-        let data = {
-            liked: pending
-        }
+    const likeUser = (id) => {
+        // let data = {
+        //     liked: id
+        // }
 
-        let fetchData ={
-            method: "PATCH",
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            }),
-            body: JSON.stringify(data)
-        }
+        // let fetchData ={
+        //     method: "PATCH",
+        //     headers: new Headers({
+        //         'Content-Type': 'application/json'
+        //     }),
+        //     body: JSON.stringify(data)
+        // }
 
-        fetch('https://https://find-luv.herokuapp.com/api/users', fetchData)
-        .then(response => response.json())
-        .then(data => alert(data))
+        // fetch('https://https://find-luv.herokuapp.com/api/users/:${clickedUser}', fetchData)
+        // .then(() => {
+        //     window.alert(`You liked ${e.target.first_name}`)
+        // })
+        // .catch(err => {
+        //     console.error(err)
+        // })
+        setSingleModal(false)
+        setClickedUser(null)
     }
 
     
@@ -105,7 +111,7 @@ export const DiscoverProvider = ({children}) => {
         updateIndexes,
         clickedUser,
         setClickedUser,
-        likeUser
+        likeUser,
     }}>
         {children}
     </DiscoverContext.Provider>
