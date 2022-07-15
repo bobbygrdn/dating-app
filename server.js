@@ -12,7 +12,7 @@ const pool = require("./src/backend/connection");
 const imageUpload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "images/");
+      cb(null, "image/");
     },
     filename: function (req, file, cb) {
       cb(null, new Date().valueOf() + "_" + file.originalname);

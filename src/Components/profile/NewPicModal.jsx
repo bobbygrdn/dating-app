@@ -30,8 +30,8 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
 
     fetch(`https://find-luv.herokuapp.com/image/${userData.user_id}`, {
         method: "patch",
-        // headers: {'Content-Type': 'application/json'},
-         body: picFormData,
+        headers: {'Content-Type': 'application/json'},
+         body: JSON.stringify(picFormData),
         })
         .catch((error) => {console.log(error)})
 
