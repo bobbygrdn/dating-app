@@ -36,28 +36,34 @@ export const DiscoverProvider = ({children}) => {
         setSingleUser(data);
     }
 
-
     /**
-     * When the user clicks on a user, the user's id is set to the state variable clickedUser.
-     * @param e - the event object
+     * When the user clicks the like button, the user's id is sent to the server and the user's liked
+     * array is updated with the id of the user they liked.
+     * @param id1 - the id of the user who is liking the other user
+     * @param id2 - the id of the user you are liking
+     * @param firstName - the first name of the user you are liking
      */
-    const likeUser = (id) => {
-        console.log(clickedUser)
-        // let data = {
-        //     liked: pending
-        // }
+    const likeUser = (id1, id2) => {
+        let data = {
+            liked: id1
+        }
 
-        // let fetchData ={
-        //     method: "PATCH",
-        //     headers: new Headers({
-        //         'Content-Type': 'application/json'
-        //     }),
-        //     body: JSON.stringify(data)
-        // }
+        let fetchData ={
+            method: "PATCH",
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify(data)
+        }
 
-        // fetch('https://https://find-luv.herokuapp.com/api/users', fetchData)
-        // .then(response => response.json())
-        // .then(data => alert(data))
+        fetch(`https://find-luv.herokuapp.com/api/users/${id2}`, fetchData)
+        .then(() => {
+            console.log(`liked user ${id2}`)
+        })
+        .catch(error => {
+            console.error(error);
+        })
+        setSingleModal(false)
     }
 
     
