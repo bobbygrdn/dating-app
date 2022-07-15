@@ -113,7 +113,7 @@ export const DiscoverProvider = ({children}) => {
         updateIndexes,
         clickedUser,
         setClickedUser,
-        likeUser
+        likeUser,
     }}>
         {children}
     </DiscoverContext.Provider>
