@@ -6,30 +6,43 @@ import FontSizeSelection from './FontSizeSelection.jsx'
 import FontStyleSelection from './FontStyleSelection.jsx'
 import ProfilePicPlaceHolder from './ProfilePicPlaceHolder'
 import LandingContext from '../../context/LandingContext'
+import BioModal from './BioModal';
+import GlanceModal from './GlanceModal';
+import MatchModal from './MatchModal';
 
 function MyProfile({ darkTheme, setDarkTheme }) {
 
     const { userData, setUserData } = useContext(LandingContext)
-    const [showEditProfileModal, setShowEditProfileModal] = useState(false)
-    const [showEditBioModal, setShowEditBioModal] = useState(false)
+    const [showGlanceModal, setShowGlanceModal] = useState(false)
+    const [showMatchModal, setShowMatchModal] = useState(false)
+    const [showBioModal, setShowBioModal] = useState(false)
+    const [showPicModal, setShowPicModal] = useState(false)
 
     const handleClick = (e) => {
-        // console.log(e.currentTarget.id)
 
         switch (e.currentTarget.id) {
             case 'bio':
-                console.log('bio')
+                setShowBioModal(true)
                 break;
-
+            case 'glanceData':
+                setShowGlanceModal(true)
+                break;
+            case 'matchData':
+                setShowMatchModal(true)
+                break;
+            case 'profilePic':
+                setShowPicModal(true)
+                break;
             default:
                 console.log('click')
         }
-
-
     }
 
     return (
         <div className='profile-page-main-container'>
+            {showBioModal ? <BioModal setShowBioModal={setShowBioModal} userData={userData} /> : null}
+            {showGlanceModal ? <GlanceModal setShowGlanceModal={setShowGlanceModal} userData={userData} /> : null}
+            {showMatchModal ? <MatchModal setShowMatchModal={setShowMatchModal} userData={userData} /> : null}
 
             <div className='pic-container'>
                 {userData !== null ? <img src={userData['profile_pic_url']} alt='profile-pic' /> : <ProfilePicPlaceHolder />}
