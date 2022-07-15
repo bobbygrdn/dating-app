@@ -21,12 +21,14 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
 
     const picFormData = new FormData();
 
-    formData.append("profilePic", newPicFile.files[0])
+    // picFormData.append("profilePic", newPicFile.files[0])
     
-    fetch('', {
-        method: "post",
-         body: picFormData
-        })
+    console.log(newPicFile.files[0])
+    console.log(newPicFile)
+    // fetch('', {
+    //     method: "post",
+    //      body: picFormData
+    //     })
 
     // changeUserData(formData)
 
