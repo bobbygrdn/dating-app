@@ -35,6 +35,10 @@ export const DiscoverProvider = ({children}) => {
     const addSingleUser = (data) => {
         setSingleUser(data);
     }
+    const likeUser = (e) => {
+        setClickedUser(e.target.id)
+        console.log(clickedUser)
+    }
 
     /**
      * When the user clicks the like button, the user's id is sent to the server and the user's liked
