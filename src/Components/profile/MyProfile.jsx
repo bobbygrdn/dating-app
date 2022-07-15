@@ -12,7 +12,7 @@ import MatchModal from './MatchModal';
 
 function MyProfile({ darkTheme, setDarkTheme }) {
 
-    const { userData, setUserData } = useContext(LandingContext)
+    const { userData, changeUserData, setUserData } = useContext(LandingContext)
     const [showGlanceModal, setShowGlanceModal] = useState(false)
     const [showMatchModal, setShowMatchModal] = useState(false)
     const [showBioModal, setShowBioModal] = useState(false)
@@ -40,9 +40,9 @@ function MyProfile({ darkTheme, setDarkTheme }) {
 
     return (
         <div className='profile-page-main-container'>
-            {showBioModal ? <BioModal setShowBioModal={setShowBioModal} userData={userData} /> : null}
-            {showGlanceModal ? <GlanceModal setShowGlanceModal={setShowGlanceModal} userData={userData} /> : null}
-            {showMatchModal ? <MatchModal setShowMatchModal={setShowMatchModal} userData={userData} /> : null}
+            {showBioModal ? <BioModal setShowBioModal={setShowBioModal} userData={userData} changeUserData={changeUserData}/> : null}
+            {showGlanceModal ? <GlanceModal setShowGlanceModal={setShowGlanceModal} userData={userData} changeUserData={changeUserData}/> : null}
+            {showMatchModal ? <MatchModal setShowMatchModal={setShowMatchModal} userData={userData} changeUserData={changeUserData}/> : null}
 
             <div className='pic-container'>
                 {userData !== null ? <img src={userData['profile_pic_url']} alt='profile-pic' /> : <ProfilePicPlaceHolder />}

@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
 import ReactDom from "react-dom";
 
-const BioModal = ({ setShowBioModal, userData }) => {
+const BioModal = ({ setShowBioModal, userData, changeUserData }) => {
 
     const [formData, setFormData] = useState({
-        textContent: userData.bio
+        bio: userData.bio
     })
 
     const modalRef = useRef();
@@ -16,6 +16,8 @@ const BioModal = ({ setShowBioModal, userData }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        changeUserData(formData)
+        setShowBioModal(false)
     }
 
     const handleChange = (e) => {
@@ -32,18 +34,19 @@ const BioModal = ({ setShowBioModal, userData }) => {
 
             <div className='editDataContainer'>
 
-                <form onSubmit={handleSubmit} >
-                    <input type='submit' value='Update Bio'
-                        id='editDataSubmitBtn' />
+                <form onSubmit={handleSubmit} className='updateUserDataForm' >
+                    
                     <textarea
                         id='editDataTextArea'
                         className="textareaNewPost"
-                        name="textContent"
-                        value={formData.textContent}
+                        name="bio"
+                        value={formData.bio}
                         onChange={handleChange}
                         rows="7"
                         cols="40"
-                    /> <br />
+                    />
+                    <input type='submit' value='Update Bio'
+                        id='editDataSubmitBtn' />
 
 
                 </form>
