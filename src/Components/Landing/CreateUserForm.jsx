@@ -2,6 +2,8 @@ import { React, useContext, useState } from "react";
 import CreateInputs from "./CreateInputs.jsx";
 import LandingContext from "../../context/LandingContext";
 import logo from "./logo.png";
+import { IoMdCloseCircleOutline } from 'react-icons/io'
+
 
 // import '../../ComponentStyles/Forms.css'
 
@@ -130,6 +132,11 @@ const CreateUserForm = () => {
   const handleChange = (e) => {
     setTempUserData({ ...newTempUserData, [e.target.name]: e.target.value });
   };
+
+  const handleClick = () => {
+    window.location.reload()
+  }
+
   return (
     <div className="createuser--container">
       <img
@@ -143,7 +150,7 @@ const CreateUserForm = () => {
         <div className="createuser--title">Sign Up to Find Luv Now</div>
 
         <div className="createuser--closebtn">
-          <span>&times;</span>
+          <span><IoMdCloseCircleOutline className='landingCloseBtn' onClick={handleClick}/></span>
         </div>
       </div>
       <div className="createuser--formWrapper">

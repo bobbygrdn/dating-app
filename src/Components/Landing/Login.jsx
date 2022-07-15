@@ -2,6 +2,7 @@ import { React, useContext, useState } from "react";
 import LandingContext from "../../context/LandingContext";
 import logo from "./logo.png";
 import LoginInputs from "./LoginInputs";
+import { IoMdCloseCircleOutline } from 'react-icons/io'
 
 const Login = () => {
   const { setLogin, setUserData } = useContext(LandingContext);
@@ -58,6 +59,9 @@ const Login = () => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
+  const handleClick = () => {
+    window.location.reload()
+  }
   return (
     <div className="loginForm--container">
       <img
@@ -70,7 +74,7 @@ const Login = () => {
       <div className="loginForm--header">
         <div className="loginForm--title">Welcome Back</div>
         <div className="loginForm--closeBtn">
-          <span>&times;</span>
+          <span><IoMdCloseCircleOutline className='landingCloseBtn' onClick={handleClick}/></span>
         </div>
       </div>
       <div className="loginForm--wrapper">
