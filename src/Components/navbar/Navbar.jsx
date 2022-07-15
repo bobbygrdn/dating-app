@@ -10,6 +10,10 @@ function Navbar() {
         e.target.classList.add('active-tab')
     }
 
+    const handleLogout = () => {
+        window.location.reload()
+    }
+
     return (
         <>
             <img
@@ -36,7 +40,7 @@ function Navbar() {
                     <li className='navSpacer'>|</li>
 
                     <li>
-                        <Link to='/profile' className='nav-link' onClick={handleClick}>Log out</Link>
+                        <Link to='/' className='nav-link' onClick={handleLogout}>Log out</Link>
                     </li>
                 </ul>
             </div>
