@@ -17,6 +17,7 @@ export const DiscoverProvider = ({children}) => {
     const [index1, setIndex1] = useState(0)
     const [index2, setIndex2] = useState(23)
     const [pages, setPages] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
+    const [clickedUser, setClickedUser] = useState(null)
 
     /**
      * "addUsers" is a function that takes in a parameter called "data" and then sets the state of
@@ -30,6 +31,10 @@ export const DiscoverProvider = ({children}) => {
     }
     const addSingleUser = (data) => {
         setSingleUser(data);
+    }
+    const likeUser = (e) => {
+        setClickedUser(e.target.id)
+        console.log(clickedUser)
     }
 
     /**
@@ -74,7 +79,10 @@ export const DiscoverProvider = ({children}) => {
         index2,
         setIndex1,
         setIndex2,
-        updateIndexes
+        updateIndexes,
+        clickedUser,
+        setClickedUser,
+        likeUser
     }}>
         {children}
     </DiscoverContext.Provider>
