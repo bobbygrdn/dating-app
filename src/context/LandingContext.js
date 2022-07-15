@@ -9,13 +9,24 @@ export const LandingProvider = ({ children }) => {
   const pressedButton = (whichOne) => {
     setWhichButtonWasPressed(whichOne)
   }
+
+  const changeUserData = (formData) => {
+    setUserData(() => {
+      return {
+        ...userData,
+        ...formData
+      }
+    })
+  }
+
   return <LandingContext.Provider value={{
     login,
     setLogin,
     userData,
     setUserData,
     buttonPressed,
-    pressedButton
+    pressedButton,
+    changeUserData
   }}>
     {children}
   </LandingContext.Provider>

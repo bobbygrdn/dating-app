@@ -17,9 +17,8 @@ import "../src/ComponentStyles/CreateSlashLogin.css";
 function App() {
 
     const [darkTheme, setDarkTheme] = useState(false)
-    const { login, buttonPressed } = useContext(LandingContext)
+    const { login, buttonPressed, userData } = useContext(LandingContext)
     const { threads, fetchAllUserThreads } = useContext(InboxContext)
-
 
     if (!login) {
         if (!buttonPressed) return (<Landing />)
@@ -32,11 +31,11 @@ function App() {
 
             <div className='App-container'>
                 <DiscoverProvider>
-                    <Navbar />
+                    <Navbar userData={userData}/>
 
                     <Routes>
 
-                        <Route path='/' element={<Discover />} />
+                        <Route path='/' element={<Discover darkTheme={darkTheme}/>} />
                         <Route path='/inbox' element={<Inbox />} />
                         <Route path='/connections' element={<PendingConnections />} />
                         <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} />} />
