@@ -36,13 +36,15 @@ export const DiscoverProvider = ({children}) => {
         setSingleUser(data);
     }
 
-    
+
     /**
-     * It takes the value of the pending variable and sends it to the server.
+     * When the user clicks on a user, the user's id is set to the state variable clickedUser.
+     * @param e - the event object
      */
-    const likeUser = (id) => {
+    const likeUser = () => {
+        console.log(clickedUser)
         // let data = {
-        //     liked: id
+        //     liked: pending
         // }
 
         // let fetchData ={
@@ -53,15 +55,9 @@ export const DiscoverProvider = ({children}) => {
         //     body: JSON.stringify(data)
         // }
 
-        // fetch('https://https://find-luv.herokuapp.com/api/users/:${clickedUser}', fetchData)
-        // .then(() => {
-        //     window.alert(`You liked ${e.target.first_name}`)
-        // })
-        // .catch(err => {
-        //     console.error(err)
-        // })
-        setSingleModal(false)
-        setClickedUser(null)
+        // fetch('https://https://find-luv.herokuapp.com/api/users', fetchData)
+        // .then(response => response.json())
+        // .then(data => alert(data))
     }
 
     
@@ -111,7 +107,7 @@ export const DiscoverProvider = ({children}) => {
         updateIndexes,
         clickedUser,
         setClickedUser,
-        likeUser,
+        likeUser
     }}>
         {children}
     </DiscoverContext.Provider>
