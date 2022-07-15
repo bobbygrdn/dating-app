@@ -50,7 +50,7 @@ img {
     grid-area: match-options;
     justify-self: left;
     position: relative;
-    top: -25px;
+    top: -15px;
     /* align-self: baseline; */
     /* width: 100%; */
 }
@@ -90,7 +90,8 @@ img {
 }
 
 .fontSizeDropDown,
-.fontStyleDropDown {
+.fontStyleDropDown,
+.updateLoginBtn {
     background-color: #9995;
     padding: .5rem;
     border: none;
@@ -114,6 +115,9 @@ img {
     cursor: pointer;
 }
 
+.updateLoginBtn{
+    background-color:rgba(90, 184, 235, 1) ;
+}
 .editDataBtn {
     opacity: .5;
 }
@@ -291,16 +295,17 @@ img {
     cursor: text
 }
 
-.dataHeight {
+.dataHeight,
+.dataGender,
+.dataAge,
+.dataCity,
+.dataState {
     width: 80%
 }
 
-.dataBodyType {
+.dataBodyType,
+.dataUsername {
     width: 73%
-}
-
-.dataGender {
-    width: 80%
 }
 
 .editGlanceContainer{
@@ -312,8 +317,17 @@ img {
 .dataZipcode{
     width: 65%
 }
-.dataAge,
-.dataCity,
-.dataState{
-    width:80%
+
+.dataPassword{
+width: 55%;
+}
+.editLoginSettingsContainer{
+    height: 250px;
+}
+.editProfilePicContainer{
+    height:180px
+}
+#newPicFile:hover {
+    cursor: pointer;
+    /* background-color: red; */
 }

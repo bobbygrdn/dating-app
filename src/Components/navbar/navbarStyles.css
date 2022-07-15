@@ -61,3 +61,11 @@ li {
 .navSpacer {
     opacity: 50%;
 }
+
+.userNameSpan{
+    font-size: 1rem;
+    vertical-align:text-top;
+    font-family: inherit;
+    margin-left: 15px;
+
+}
