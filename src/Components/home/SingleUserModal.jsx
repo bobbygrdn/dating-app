@@ -5,7 +5,7 @@ import LandingContext from "../../context/LandingContext"
 
 function SingleUserModal({ show, darkTheme }) {
     /* Destructuring the context object. */
-    const { singleUser, setSingleModal, likeUser, setClickedUser, setPending } = useContext(DiscoverContext)
+    const { singleUser, setSingleModal, likeUser, setClickedUser } = useContext(DiscoverContext)
 
     const { userData } = useContext(LandingContext)
     
@@ -16,7 +16,10 @@ function SingleUserModal({ show, darkTheme }) {
     const closeModal = () => {
         setSingleModal(false)
         setClickedUser(null)
-        setPending(null)
+    }
+
+    const runLikeUser = () => {
+        likeUser(userData.user_id)
     }
 
     useEffect(() => {
@@ -63,7 +66,7 @@ function SingleUserModal({ show, darkTheme }) {
                         {/* Rendering two buttons. One button is a "No" button and the other is a "Yes"
                     button. When the user clicks the "No" button, the modal will close and the profile will not be added to their potential matches. When the user clicks the "Yes" button, the modal will close and the profile will be added to their potential matches. */}
                         <div className="footer">
-                            <button className="dislikeButton" onClick={closeModal}>No</button> <button className="likeButton" onClick={likeUser}>Yes</button>
+                            <button className="dislikeButton" onClick={closeModal}>No</button> <button className="likeButton" onClick={runLikeUser}>Yes</button>
                         </div>
                     </div>
                 </div>
