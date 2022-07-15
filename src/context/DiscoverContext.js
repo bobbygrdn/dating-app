@@ -18,7 +18,6 @@ export const DiscoverProvider = ({children}) => {
     const [index2, setIndex2] = useState(23)
     const [pages, setPages] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
     const [clickedUser, setClickedUser] = useState(null)
-    const [pending, setPending] = useState(null)
 
     /**
      * AddUsers is a function that takes in data and sets the state of users to the data that was
@@ -43,21 +42,21 @@ export const DiscoverProvider = ({children}) => {
      */
     const likeUser = () => {
         console.log(clickedUser)
-        let data = {
-            liked: pending
-        }
+        // let data = {
+        //     liked: pending
+        // }
 
-        let fetchData ={
-            method: "PATCH",
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            }),
-            body: JSON.stringify(data)
-        }
+        // let fetchData ={
+        //     method: "PATCH",
+        //     headers: new Headers({
+        //         'Content-Type': 'application/json'
+        //     }),
+        //     body: JSON.stringify(data)
+        // }
 
-        fetch('https://https://find-luv.herokuapp.com/api/users', fetchData)
-        .then(response => response.json())
-        .then(data => alert(data))
+        // fetch('https://https://find-luv.herokuapp.com/api/users', fetchData)
+        // .then(response => response.json())
+        // .then(data => alert(data))
     }
 
     
@@ -107,8 +106,7 @@ export const DiscoverProvider = ({children}) => {
         updateIndexes,
         clickedUser,
         setClickedUser,
-        likeUser,
-        setPending
+        likeUser
     }}>
         {children}
     </DiscoverContext.Provider>
