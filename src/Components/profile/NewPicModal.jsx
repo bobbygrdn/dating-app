@@ -28,7 +28,7 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
     console.log(newPicFile)
 
     fetch(`https://find-luv.herokuapp.com/image/${userData.user_id}`, {
-        method: "post",
+        method: "patch",
          body: picFormData
         })
 
