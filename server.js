@@ -32,13 +32,13 @@ app.listen(PORT, (err) => {
   console.log(`Listening on port: ${PORT}`);
 });
 
-//POST ALL users except for the user logged in;
-app.post("/api/current", async (req, res) => {
-  const { user_id, gender_preference, age1, age2 } = req.body;
+//GET ALL users except for the user logged in;
+app.get("/api/current/:id", async (req, res) => {
+  let id = req.params.id
   try {
     let client = await pool.connect();
     let data = await client.query(
-      `SELECT * FROM users WHERE user_id != '${user_id}' AND gender = '${gender_preference}' AND age BETWEEN '${age1}' AND '${age2}' LIMIT 500;`
+      `SELECT * FROM users WHERE user_id != '${id}' LIMIT 500;`
     );
     res.json(data.rows);
     client.release();
