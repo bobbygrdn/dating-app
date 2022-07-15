@@ -5,7 +5,7 @@ import DiscoverContext from "../../context/DiscoverContext";
 function User (props) {
 
    /* Destructuring the context object. */
-    const {addSingleUser, setSingleModal, singleUser} = useContext(DiscoverContext)
+    const {addSingleUser, setSingleModal, singleUser, setClickedUser} = useContext(DiscoverContext)
     
     /* It fetches a user from the database and then adds that user to the state. */
     const handleClick = (e) =>{
@@ -14,6 +14,7 @@ function User (props) {
         .then(data => addSingleUser(data))
         if(singleUser !== null) {
             setSingleModal(true)
+            setClickedUser(e.target.id)
         }
     }
 
