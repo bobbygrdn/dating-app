@@ -1,6 +1,6 @@
 import { React, useContext, useState } from 'react';
 import LandingContext from '../../context/LandingContext';
-import '../../ComponentStyles/Forms.css';
+// import '../../ComponentStyles/Forms.css';
 import LoginInputs from './LoginInputs';
 import { useNavigate } from 'react-router-dom'
 import logo from "./logo.png";
