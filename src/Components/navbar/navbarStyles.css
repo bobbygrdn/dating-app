@@ -2,6 +2,15 @@
     --font-size: 1.5rem
 }
 
+.darkTheme {
+    background-color: #222 !important;
+    color: whitesmoke !important;
+}
+
+.navDarkTheme {
+    color: whitesmoke !important
+}
+
 .navbar-container {
     box-sizing: border-box;
     font-size: var(--font-size);
@@ -54,8 +63,11 @@ li {
 
 .logo {
     position: absolute;
-    right: 0;
+    right: 10px;
+    top: 10px;
     border: none;
+    width: 180px;
+    height: 180px;
 }
 
 .navSpacer {
@@ -63,9 +75,11 @@ li {
 }
 
 .userNameSpan{
-    font-size: 1rem;
+    font-size: 1.2rem;
     vertical-align:text-top;
-    font-family: inherit;
+    font-family: cursive;
     margin-left: 15px;
+    color: rgb(117, 90, 235);
+    text-shadow: 2px 2px 4px rgb(22, 73, 149);
 
 }

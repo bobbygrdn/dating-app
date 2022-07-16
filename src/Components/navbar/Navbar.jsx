@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import './navbarStyles.css'
 import logo from "./logo.png"
@@ -18,10 +18,65 @@ function Navbar({userData}) {
         window.location.reload()
     }
 
+    useEffect(() => {
+        if (userData.dark_theme) {
+            document.querySelector('body').classList.add('darkTheme')
+            document.querySelector('.navbar-container').classList.add('navDarkTheme')
+        }
+        if (!userData.dark_theme) {
+            document.querySelector('body').classList.remove('darkTheme')
+            document.querySelector('.navbar-container').classList.remove('navDarkTheme')
+        }
+    }, [userData.dark_theme])
+    
+    useEffect(() => {
+        changeFontSize()
+    },[userData.font_size])
+
+    const changeFontSize = () => {
+        let body = document.querySelector('body')
+
+        switch (userData.font_size) {
+            case 'Small':
+                body.style.fontSize = '.9rem'
+                break;
+            case 'Medium':
+                body.style.fontSize = '1rem'
+                break;
+            case 'Large':
+                body.style.fontSize = '1.1rem'
+                break;
+            default:
+                console.warn('Failed to load Font size')
+        }
+    }
+
+    useEffect(() => {
+        changeFontStyle()
+    }, [userData.font_style])
+
+    const changeFontStyle = () => {
+        let body = document.querySelector('body')
+
+        switch (userData['font_style']) {
+            case 'Arial':
+                body.style.fontFamily = 'Noto Serif'
+                break;
+            case 'Fantasy':
+                body.style.fontFamily = 'Edu NSW ACT Foundation'
+                break;
+            case 'Child':
+                body.style.fontFamily = 'Shadows Into Light'
+                break;
+            default:
+                console.warn('Failed to load Font Style')
+        }
+    }
+
     return (
         <>
             <img
-                className="logo" src={logo} alt='none' height="200px" width="200px"></img>
+                className="logo" src={logo} alt='none' />
             <div className='navbar-container'>
                 <h1 className='title'>.Find(luv)</h1>
                 <ul className='navbar-UL'>
