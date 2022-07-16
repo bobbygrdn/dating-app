@@ -467,12 +467,11 @@ app.post("/image/:id", imageUpload.single("image"), async (req, res) => {
       [req.file.path, req.params.id]
     );
     res.json("/image upload done");
-
     client.release();
   } catch (err) {
     console.error(err.message);
   }
-
+  console.log(req.file.filename);
 });
 
 app.get("/images/:filename", (req, res) => {
