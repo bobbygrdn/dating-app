@@ -319,11 +319,24 @@ app.patch('/api/userdata/darktheme/:id', async (req, res) => {
     res.send(error)
   }
 })
-//updates user font sizse setting
+//updates user font size setting
 app.patch('/api/userdata/fontsize/:id', async (req, res) => {
   try {
     let client = await pool.connect()
     await client.query('UPDATE users SET font_size = $1 WHERE user_id = $2', [req.body.font_size, req.params.id])
+    res.json(req.body)
+    client.release()
+  } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+})
+
+//update user font style preference
+app.patch('/api/userdata/fontstyle/:id', async (req, res) => {
+  try {
+    let client = await pool.connect()
+    await client.query('UPDATE users SET font_style = $1 WHERE user_id = $2', [req.body.font_style, req.params.id])
     res.json(req.body)
     client.release()
   } catch (error) {

@@ -8,17 +8,15 @@ function FontSizeSelection({ userData, setUserData, changeUserData }) {
     }
 
     useEffect(() => {
-        // changeFontSize()
-    }, [userData.font_size])
-
-
+        updateDataBaseFontSize(userData.font_size)
+        }, [userData.font_size])
 
     const updateDataBaseFontSize = (fontSize) => {
 
         fetch(`https://find-luv.herokuapp.com/api/userdata/fontsize/${userData.user_id}`, {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify( {font_size :userData.font_size } )
+            body: JSON.stringify( {font_size : fontSize } )
           })
           .then(res => res.json())
           .then(data => console.log(data))

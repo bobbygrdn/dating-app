@@ -51,6 +51,28 @@ function Navbar({userData}) {
         }
     }
 
+    useEffect(() => {
+        changeFontStyle()
+    }, [userData.font_style])
+
+    const changeFontStyle = () => {
+        let body = document.querySelector('body')
+
+        switch (userData['font_style']) {
+            case 'Arial':
+                body.style.fontFamily = 'Noto Serif'
+                break;
+            case 'Fantasy':
+                body.style.fontFamily = 'Edu NSW ACT Foundation'
+                break;
+            case 'Child':
+                body.style.fontFamily = 'Shadows Into Light'
+                break;
+            default:
+                console.warn('Failed to load Font Style')
+        }
+    }
+
     return (
         <>
             <img
