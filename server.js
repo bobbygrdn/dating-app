@@ -75,6 +75,18 @@ app.get("/api/users/:id", async (req, res) => {
   }
 });
 
+// update the liked on a user
+app.patch("/api/liked/:id", async(req,res) => {
+  try {
+    const client = await pool.connect();
+    const data = await client.query("UPDATE users SET liked =CONCAT('$1,',liked) WHERE user_id = $2", [req.body.liked, req.params.id])
+    res.json(data.rows[0]);
+    client.release();
+  } catch (error) {
+    console.error(error)
+  }
+})
+
 //Post User Data with Email && Password
 app.post("/api/login", async (req, res) => {
   try {
@@ -308,6 +320,7 @@ app.delete("/api/users/:id", async (req, res) => {
     console.error(err);
   }
 });
+
 
 //GET ALL pending_connections;
 app.get("/api/pending_connections", async (req, res) => {
