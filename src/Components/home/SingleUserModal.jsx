@@ -27,10 +27,20 @@ function SingleUserModal({ show, darkTheme }) {
         }, clickedUser)
     }
 
+    
+    /* Checking to see if the show prop is true or false. If it is true, then it will add the class
+    singleUserModalDarkTheme to the singleUserModal element. If it is false, then it will remove the
+    class singleUserModalDarkTheme from the singleUserModal element. */
     useEffect(() => {
       checkForDarkTheme()
     },[show])
 
+    /**
+     * If darkTheme is true, add the class singleUserModalDarkTheme to the singleUserModal element.
+     * If darkTheme is false, remove the class singleUserModalDarkTheme from the singleUserModal
+     * element.
+     * @returns the classList.add or classList.remove method.
+     */
     const checkForDarkTheme = () => {
         let singleUserModal = document.querySelector('.singleUserModal')
       if(darkTheme && singleUserModal) {
@@ -40,6 +50,7 @@ function SingleUserModal({ show, darkTheme }) {
        return singleUserModal.classList.remove('singleUserModalDarkTheme')
       }
     }
+
     return (
         <>
 
