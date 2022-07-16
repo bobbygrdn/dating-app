@@ -226,6 +226,20 @@ app.patch("/api/users/:id", async (req, res) => {
   }
 });
 
+//update user 'at a glance' data
+app.patch('/api/userdata/glance/:id' ,async (req, res) => {
+  try {
+    const client = await pool.connect();
+    await client.query('UPDATE users SET first_name = $1, last_name = $2, age = $3, city = $4, state = $5, zipcode = $6 WHERE user_id = $7', [req.body.first_name, req.body.last_name, req.body.age, req.body.city, req.body.state, req.body.zipcode, req.params.id ] )
+    res.json(req.body)
+    client.release()
+    
+  } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+})
+
 //DELETE a user;
 app.delete("/api/users/:id", async (req, res) => {
   try {
@@ -459,7 +473,7 @@ app.delete("/api/threads/:id", async (req, res) => {
   } catch (err) {}
 });
 
-app.patch("/image/:id", imageUpload.single("image"), async (req, res) => {
+app.post("/image/:id", imageUpload.single("image"), async (req, res) => {
   try {
     let client = await pool.connect();
     await client.query(
@@ -474,7 +488,7 @@ app.patch("/image/:id", imageUpload.single("image"), async (req, res) => {
   console.log(req.file.filename);
 });
 
-app.get("/image/:filename", (req, res) => {
+app.get("/images/:filename", (req, res) => {
   const { filename } = req.params;
   const dirname = path.resolve();
   const fullfilepath = path.join(dirname, "images/" + filename);
