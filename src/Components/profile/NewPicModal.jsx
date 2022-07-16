@@ -23,10 +23,6 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
     const picFormData = new FormData();
 
     picFormData.append("image", newPicFile.files[0])
-    
-    console.log(newPicFile.files)
-    console.log(newPicFile)
-    console.log(picFormData)
 
     fetch(`https://find-luv.herokuapp.com/image/${userData.user_id}`, {
         method: "post",
@@ -46,6 +42,7 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
     .then(data => console.log(data))
     .catch(err => console.log(err))
   }
+  
   const handleChange = (e) => {
     setFormData((prevFormData) => {
       return {
