@@ -30,12 +30,14 @@ function Discover({darkTheme}) {
             .then(data => addSingleUser(data[0]))
     }, [])
 
+
+
     /* Returning the Users component, the SingleUserModal component, and the SearchModal component. */
     return (
         <div>
             <Users />
             <SingleUserModal show={singleModal} darkTheme={darkTheme}/>
-            <SearchModal show={searchModal} />
+            <SearchModal show={searchModal} darkTheme={darkTheme} />
         </div>
     )
 
