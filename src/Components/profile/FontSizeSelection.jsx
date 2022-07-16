@@ -18,8 +18,6 @@ function FontSizeSelection({ userData, setUserData, changeUserData }) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify( {font_size : fontSize } )
           })
-          .then(res => res.json())
-          .then(data => console.log(data))
           .catch(err => console.log(err))
     }
 
