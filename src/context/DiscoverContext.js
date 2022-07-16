@@ -18,6 +18,7 @@ export const DiscoverProvider = ({children}) => {
     const [index2, setIndex2] = useState(23)
     const [pages, setPages] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
     const [clickedUser, setClickedUser] = useState(null)
+    const [pending, setPending] = useState(null)
 
     /**
      * AddUsers is a function that takes in data and sets the state of users to the data that was
@@ -43,9 +44,9 @@ export const DiscoverProvider = ({children}) => {
      * @param id2 - the id of the user you are liking
      * @param firstName - the first name of the user you are liking
      */
-    const likeUser = (id1, id2) => {
+    const likeUser = (pending, id2) => {
         let data = {
-            liked: id1
+            liked: pending
         }
 
         let fetchData ={
@@ -114,6 +115,8 @@ export const DiscoverProvider = ({children}) => {
         clickedUser,
         setClickedUser,
         likeUser,
+        pending, 
+        setPending
     }}>
         {children}
     </DiscoverContext.Provider>

@@ -19,7 +19,12 @@ function SingleUserModal({ show, darkTheme }) {
     }
 
     const runLikeUser = () => {
-        likeUser(userData.user_id, clickedUser)
+        likeUser({
+            profile_pic_url: userData.profile_pic_url,
+            first_name: userData.first_name,
+            age: userData.age,
+            zipcode: userData.zipcode
+        }, clickedUser)
     }
 
     useEffect(() => {
