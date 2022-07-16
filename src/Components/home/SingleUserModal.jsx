@@ -3,7 +3,7 @@ import DiscoverContext from "../../context/DiscoverContext"
 import '../../ComponentStyles/Discover.css'
 import LandingContext from "../../context/LandingContext"
 
-function SingleUserModal({ show, darkTheme }) {
+function SingleUserModal({ show }) {
     /* Destructuring the context object. */
     const { singleUser, setSingleModal, likeUser, setClickedUser, clickedUser } = useContext(DiscoverContext)
 
@@ -33,10 +33,10 @@ function SingleUserModal({ show, darkTheme }) {
 
     const checkForDarkTheme = () => {
         let singleUserModal = document.querySelector('.singleUserModal')
-      if(darkTheme && singleUserModal) {
+      if(userData.dark_theme && singleUserModal) {
     return singleUserModal.classList.add('singleUserModalDarkTheme')
       }
-      if(!darkTheme && singleUserModal){
+      if(!userData.dark_theme && singleUserModal){
        return singleUserModal.classList.remove('singleUserModalDarkTheme')
       }
     }
