@@ -63,11 +63,11 @@ li {
 
 .logo {
     position: absolute;
-    right: 10px;
+    left: 30px;
     top: 10px;
     border: none;
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
 }
 
 .navSpacer {
