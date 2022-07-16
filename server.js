@@ -459,7 +459,7 @@ app.delete("/api/threads/:id", async (req, res) => {
   } catch (err) {}
 });
 
-app.patch("/image/:id", imageUpload.single("image"), async (req, res) => {
+app.post("/image/:id", imageUpload.single("image"), async (req, res) => {
   try {
     let client = await pool.connect();
     await client.query(
