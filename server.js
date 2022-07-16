@@ -266,11 +266,26 @@ app.patch('/api/userdata/connection-match/:id' ,async (req, res) => {
     res.send(error)
   }
 })
+//update user bio data
 app.patch('/api/userdata/bio/:id' ,async (req, res) => {
 
   try {
     const client = await pool.connect();
     await client.query('UPDATE users SET bio = $1 WHERE user_id = $2', [req.body.bio, req.params.id ] )
+    res.json(req.body)
+    client.release()
+    
+  } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+})
+//update login settings info
+app.patch('/api/userdata/login/:id' ,async (req, res) => {
+
+  try {
+    const client = await pool.connect();
+    await client.query('UPDATE users SET username = $1, email = $2, password = $3 WHERE user_id = $4', [req.body.username, req.body.email, req.body.password, req.params.id ] )
     res.json(req.body)
     client.release()
     

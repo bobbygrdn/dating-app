@@ -2,10 +2,10 @@ import React, { useRef, useState } from "react";
 import ReactDom from "react-dom";
 
 const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
-  const [formData, setFormData] = useState({
-    profile_pic_url: '',
+  // const [formData, setFormData] = useState({
+  //   profile_pic_url: '',
     
-  });
+  // });
 
   const modalRef = useRef();
   const closeModal = (e) => {
@@ -31,7 +31,6 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
         .then(()=> fetchProfilePic())
         .catch((error) => {console.log(error)})
 
-    // changeUserData(formData)
 
     setShowPicModal(false)
   };
@@ -39,18 +38,18 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
   const fetchProfilePic = () => {
     fetch(`https://find-luv.herokuapp.com/api/profilepic/${userData.user_id}`)
     .then(res=>res.json())
-    .then(data => console.log(data))
+    .then(data =>changeUserData(data) )
     .catch(err => console.log(err))
   }
-  
-  const handleChange = (e) => {
-    setFormData((prevFormData) => {
-      return {
-        ...prevFormData,
-        [e.target.name]: e.target.value,
-      };
-    });
-  };
+
+  // const handleChange = (e) => {
+  //   setFormData((prevFormData) => {
+  //     return {
+  //       ...prevFormData,
+  //       [e.target.name]: e.target.value,
+  //     };
+  //   });
+  // };
   return ReactDom.createPortal(
     <div className="modalContainer" ref={modalRef} onClick={closeModal}>
       <div className="editDataContainer editProfilePicContainer">
@@ -62,8 +61,8 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
             id="newPicFile"
               type="file"
               name="profile_pic_url"
-              onChange={handleChange}
-              value={formData.profile_pic_url}
+              // onChange={handleChange}
+              // value={formData.profile_pic_url}
             />
           </div>
 

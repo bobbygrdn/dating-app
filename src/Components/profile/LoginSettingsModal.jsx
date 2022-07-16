@@ -4,6 +4,7 @@ import ReactDom from "react-dom";
 const LoginSettingsModal = ({ setShowLoginSettingsModal, userData, changeUserData }) => {
   const [formData, setFormData] = useState({
     username: userData.username,
+    email: userData.email,
     password: userData.password,
     verifyPassword: userData.password
   });
@@ -21,10 +22,17 @@ if(formData.password !== formData.verifyPassword) return alert('Passwords do not
 
 let dataToUpdate = {
     username: formData.username,
+    email: formData.email,
     password: formData.password
 }
     changeUserData(dataToUpdate)
 
+    fetch(`https://find-luv.herokuapp.com/api/userdata/login/${userData.user_id}`, {
+      method: "PATCH",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dataToUpdate)
+    })
+    .catch(err => console.log(err))
     setShowLoginSettingsModal(false)
   };
 
@@ -57,6 +65,19 @@ let dataToUpdate = {
               name="username"
               onChange={handleChange}
               value={formData.username}
+              onClick={handleClick}
+              
+            />
+          </div>
+
+          <div className="dataLabel">
+            Email: 
+            <input
+              className="userDataInputBox dataUsername"
+              type="text"
+              name="email"
+              onChange={handleChange}
+              value={formData.email}
               onClick={handleClick}
               
             />
