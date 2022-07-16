@@ -77,9 +77,10 @@ app.get("/api/users/:id", async (req, res) => {
 
 // update the liked on a user
 app.patch("/api/liked/:id", async(req,res) => {
+  let id1= req.body.liked;
   try {
     const client = await pool.connect();
-    const data = await client.query("UPDATE users SET liked =CONCAT('$1,',liked) WHERE user_id = $2", [req.body.liked, req.params.id])
+    const data = await client.query(`UPDATE users SET liked =CONCAT('${id1},',liked) WHERE user_id = '${req.params.id}';`)
     res.json(data.rows[0]);
     client.release();
   } catch (error) {
