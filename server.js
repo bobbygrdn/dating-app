@@ -309,6 +309,18 @@ app.delete("/api/users/:id", async (req, res) => {
   }
 });
 
+// update the liked on a user
+app.patch("/api/liked/:id", async(req,res) => {
+  try {
+    const client = await pool.connect();
+    const data = await client.query("UPDATE users SET liked = $1 WHERE user_id = $2", [req.body.id1, req.params.id])
+    res.json(data.rows);
+    client.release();
+  } catch (error) {
+    console.error(error)
+  }
+})
+
 //GET ALL pending_connections;
 app.get("/api/pending_connections", async (req, res) => {
   try {
