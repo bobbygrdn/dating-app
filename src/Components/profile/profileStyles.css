@@ -298,15 +298,15 @@ img {
 }
 
 .dataHeight,
-.dataGender,
 .dataAge,
 .dataCity,
 .dataState {
     width: 80%
 }
 
-.dataBodyType {
-    width: 73%
+.dataBodyType,
+.dataGender {
+    width: 60%
 }
 
 .editGlanceContainer{
@@ -316,7 +316,7 @@ img {
 .dataFirstName,
 .dataLastName,
 .dataZipcode{
-    width: 65%
+    width: 55%
 }
 .dataUsername{
     width:65%;
