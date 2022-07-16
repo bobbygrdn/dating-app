@@ -29,16 +29,19 @@ function Navbar({userData}) {
         }
     }, [userData.dark_theme])
     
-    let body = document.querySelector('body')
     useEffect(() => {
-console.log(userData.font_size)
+        changeFontSize()
+    },[userData.font_size])
+
+    const changeFontSize = () => {
+        let body = document.querySelector('body')
 
         switch (userData.font_size) {
             case 'Small':
                 body.style.fontSize = '.9rem'
                 break;
             case 'Medium':
-                body.style.fontSize = '1.5rem'
+                body.style.fontSize = '1rem'
                 break;
             case 'Large':
                 body.style.fontSize = '1.1rem'
@@ -46,8 +49,7 @@ console.log(userData.font_size)
             default:
                 console.warn('Failed to load Font size')
         }
-    },[])
-
+    }
 
     return (
         <>
