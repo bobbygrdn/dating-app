@@ -1,21 +1,19 @@
 import React, { useEffect } from 'react'
 import './DarkThemeToggleStyles.css'
 
-function DarkThemeToggleBtn({ darkTheme, setDarkTheme }) {
-
-    useEffect(() => {
-        if (darkTheme) {
-            document.querySelector('body').classList.add('darkTheme')
-            document.querySelector('.navbar-container').classList.add('navDarkTheme')
-        }
-        if (!darkTheme) {
-            document.querySelector('body').classList.remove('darkTheme')
-            document.querySelector('.navbar-container').classList.remove('navDarkTheme')
-        }
-    }, [darkTheme])
+function DarkThemeToggleBtn({ userData, changeUserData }) {
 
     const handleChange = (e) => {
-        setDarkTheme(e.target.checked)
+        changeUserData({dark_theme: e.target.checked})
+
+        fetch(`https://find-luv.herokuapp.com/api/userdata/darktheme/${userData.user_id}`, {
+            method: "PATCH",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify( {dark_theme: e.target.checked} )
+          })
+          .then(res => res.json())
+          .then(data => console.log(data))
+          .catch(err => console.log(err))
     }
 
 
@@ -25,7 +23,7 @@ function DarkThemeToggleBtn({ darkTheme, setDarkTheme }) {
 
             <div className="toggle-switch">
                 <input type="checkbox" className="checkbox"
-                    name={'darkTheme'} id={'darkTheme'} checked={darkTheme} onChange={handleChange} />
+                    name={'darkTheme'} id={'darkTheme'} checked={userData.dark_theme} onChange={handleChange} />
                 <label className="label" htmlFor={'darkTheme'}>
                     <span className="inner" />
                     <span className="switch" />

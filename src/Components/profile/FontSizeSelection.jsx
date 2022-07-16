@@ -1,24 +1,25 @@
 import React, { useEffect } from 'react'
 
-function FontSizeSelection({ userData, setUserData }) {
+function FontSizeSelection({ userData, setUserData, changeUserData }) {
 
     const handleChange = (e) => {
-        setUserData((prevData) => {
-            return {
-                ...prevData,
-                [e.target.name]: e.target.value
-            }
-        })
+        // setUserData((prevData) => {
+        //     return {
+        //         ...prevData,
+        //         [e.target.name]: e.target.value
+        //     }
+        // })
+        changeUserData({[e.target.name]: e.target.value})
     }
 
     useEffect(() => {
         changeFontSize()
-    }, [userData['font_size']])
+    }, [userData.font_size])
 
     const changeFontSize = () => {
         let body = document.querySelector('body')
 
-        switch (userData['font_size']) {
+        switch (userData.font_size) {
             case 'Small':
                 body.style.fontSize = '.9rem'
                 break;
@@ -31,6 +32,18 @@ function FontSizeSelection({ userData, setUserData }) {
             default:
                 console.warn('Failed to load Font size')
         }
+    }
+
+    const updateDataBaseFontSize = (fontSize) => {
+
+        fetch(`https://find-luv.herokuapp.com/api/userdata/fontsize/${userData.user_id}`, {
+            method: "PATCH",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify( {font_size :userData.font_size } )
+          })
+          .then(res => res.json())
+          .then(data => console.log(data))
+          .catch(err => console.log(err))
     }
 
     return (

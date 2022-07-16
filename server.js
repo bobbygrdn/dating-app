@@ -238,6 +238,7 @@ app.patch("/api/users/:id", async (req, res) => {
   }
 });
 
+//!----------- PROFILE UPDATE ROUTES
 //gets profile pic from user
 app.get('/api/profilepic/:id', async (req, res) => {
   try {
@@ -306,6 +307,31 @@ app.patch('/api/userdata/login/:id' ,async (req, res) => {
     res.send(error)
   }
 })
+//updates user dark theme setting
+app.patch('/api/userdata/darktheme/:id', async (req, res) => {
+  try {
+    let client = await pool.connect()
+    await client.query('UPDATE users SET dark_theme = $1 WHERE user_id = $2', [req.body.dark_theme, req.params.id])
+    res.json(req.body)
+    client.release()
+  } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+})
+//updates user font sizse setting
+app.patch('/api/userdata/fontsize/:id', async (req, res) => {
+  try {
+    let client = await pool.connect()
+    await client.query('UPDATE users SET font_size = $1 WHERE user_id = $2', [req.body.font_size, req.params.id])
+    res.json(req.body)
+    client.release()
+  } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+})
+//!-----------------------------
 
 //DELETE a user;
 app.delete("/api/users/:id", async (req, res) => {

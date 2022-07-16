@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import './navbarStyles.css'
 import logo from "./logo.png"
@@ -18,10 +18,41 @@ function Navbar({userData}) {
         window.location.reload()
     }
 
+    useEffect(() => {
+        if (userData.dark_theme) {
+            document.querySelector('body').classList.add('darkTheme')
+            document.querySelector('.navbar-container').classList.add('navDarkTheme')
+        }
+        if (!userData.dark_theme) {
+            document.querySelector('body').classList.remove('darkTheme')
+            document.querySelector('.navbar-container').classList.remove('navDarkTheme')
+        }
+    }, [userData.dark_theme])
+    
+    let body = document.querySelector('body')
+    useEffect(() => {
+console.log(userData.font_size)
+
+        switch (userData.font_size) {
+            case 'Small':
+                body.style.fontSize = '.9rem'
+                break;
+            case 'Medium':
+                body.style.fontSize = '1.5rem'
+                break;
+            case 'Large':
+                body.style.fontSize = '1.1rem'
+                break;
+            default:
+                console.warn('Failed to load Font size')
+        }
+    },[])
+
+
     return (
         <>
             <img
-                className="logo" src={logo} alt='none' height="200px" width="200px"></img>
+                className="logo" src={logo} alt='none' />
             <div className='navbar-container'>
                 <h1 className='title'>.Find(luv)</h1>
                 <ul className='navbar-UL'>

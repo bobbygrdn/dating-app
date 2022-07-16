@@ -16,7 +16,6 @@ import "../src/ComponentStyles/CreateSlashLogin.css";
 
 function App() {
 
-    const [darkTheme, setDarkTheme] = useState(false)
     const { login, buttonPressed, userData } = useContext(LandingContext)
     const { threads, fetchAllUserThreads } = useContext(InboxContext)
 
@@ -35,10 +34,10 @@ function App() {
 
                     <Routes>
 
-                        <Route path='/' element={<Discover darkTheme={darkTheme}/>} />
+                        <Route path='/' element={<Discover />} />
                         <Route path='/inbox' element={<Inbox />} />
                         <Route path='/connections' element={<PendingConnections />} />
-                        <Route path='/profile' element={<MyProfile darkTheme={darkTheme} setDarkTheme={setDarkTheme} />} />
+                        <Route path='/profile' element={<MyProfile />} />
 
                     </Routes>
                 </DiscoverProvider>

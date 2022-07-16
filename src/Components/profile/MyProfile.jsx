@@ -12,9 +12,9 @@ import MatchModal from './MatchModal';
 import LoginSettingsModal from './LoginSettingsModal';
 import NewPicModal from './NewPicModal'
 
-function MyProfile({ darkTheme, setDarkTheme }) {
+function MyProfile() {
 
-    const { userData, changeUserData, setUserData } = useContext(LandingContext)
+    const { userData, changeUserData } = useContext(LandingContext)
     const [showGlanceModal, setShowGlanceModal] = useState(false)
     const [showMatchModal, setShowMatchModal] = useState(false)
     const [showBioModal, setShowBioModal] = useState(false)
@@ -88,9 +88,9 @@ function MyProfile({ darkTheme, setDarkTheme }) {
             </div>
 
             <div className='user-settings-container'>
-                <DarkThemeToggleBtn darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
-                <FontSizeSelection userData={userData} setUserData={setUserData} />
-                <FontStyleSelection userData={userData} setUserData={setUserData} />
+                <DarkThemeToggleBtn userData={userData} changeUserData={changeUserData}/>
+                <FontSizeSelection userData={userData} changeUserData={changeUserData} />
+                <FontStyleSelection userData={userData} changeUserData={changeUserData} />
                 <button id="updateLoginInfo" className='updateLoginBtn' onClick={handleClick}>Update Login Info</button>
             </div>
         </div>
