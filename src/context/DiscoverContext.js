@@ -46,7 +46,7 @@ export const DiscoverProvider = ({children}) => {
      */
     const likeUser = (userInfo, id2) => {
         let data = {
-            liked: userInfo
+            liked: JSON.stringify(userInfo)
         }
 
         let fetchData ={
