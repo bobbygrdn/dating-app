@@ -239,6 +239,20 @@ app.patch('/api/userdata/glance/:id' ,async (req, res) => {
     res.send(error)
   }
 })
+//update user 'Connections match info' data
+app.patch('/api/userdata/connection-match/:id' ,async (req, res) => {
+
+  try {
+    const client = await pool.connect();
+    await client.query('UPDATE users SET height = $1, body_type = $2, gender = $3, sexual_orientation = $4  WHERE user_id = $5', [req.body.height, req.body.body_type, req.body.gender, req.body.sexual_orientation, req.params.id ] )
+    res.json(req.body)
+    client.release()
+    
+  } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+})
 
 //DELETE a user;
 app.delete("/api/users/:id", async (req, res) => {

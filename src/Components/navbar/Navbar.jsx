@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './navbarStyles.css'
 import logo from "./logo.png"
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import {BiUser} from 'react-icons/bi'
 
 function Navbar({userData}) {
@@ -12,9 +12,9 @@ function Navbar({userData}) {
         e.target.classList.add('active-tab')
     }
 
-    let navigate = useNavigate()
+    // let navigate = useNavigate()
     const handleLogout = () => {
-        navigate('/')
+        // navigate('/')
         window.location.reload()
     }
 
