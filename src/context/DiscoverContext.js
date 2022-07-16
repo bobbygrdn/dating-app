@@ -44,9 +44,9 @@ export const DiscoverProvider = ({children}) => {
      * @param id2 - the id of the user you are liking
      * @param firstName - the first name of the user you are liking
      */
-    const likeUser = (pending, id2) => {
+    const likeUser = (userInfo, id2) => {
         let data = {
-            liked: pending
+            liked: userInfo
         }
 
         let fetchData ={
@@ -57,9 +57,9 @@ export const DiscoverProvider = ({children}) => {
             body: JSON.stringify(data)
         }
 
-        fetch(`https://find-luv.herokuapp.com/api/users/${id2}`, fetchData)
+        fetch(`https://find-luv.herokuapp.com/api/liked/${id2}`, fetchData)
         .then(() => {
-            console.log(`liked user ${id2}`)
+            console.log(`${userInfo}`)
         })
         .catch(error => {
             console.error(error);
