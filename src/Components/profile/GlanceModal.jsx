@@ -31,6 +31,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
     .catch(err => console.log(err))
 
     setShowGlanceModal(false)
+    
   };
 
   const handleChange = (e) => {

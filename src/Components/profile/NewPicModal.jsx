@@ -32,6 +32,7 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
         method: "post",
          body: picFormData
         })
+        .then(()=> fetchProfilePic())
         .catch((error) => {console.log(error)})
 
     // changeUserData(formData)
@@ -39,6 +40,12 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
     setShowPicModal(false)
   };
 
+  const fetchProfilePic = () => {
+    fetch(`https://find-luv.herokuapp.com/api/profilepic/${userData.user_id}`)
+    .then(res=>res.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
+  }
   const handleChange = (e) => {
     setFormData((prevFormData) => {
       return {
