@@ -80,6 +80,6 @@ li {
     font-family: cursive;
     margin-left: 15px;
     color: rgb(117, 90, 235);
-    text-shadow: 2px 2px 4px rgb(22, 73, 149);
-
+    text-shadow: 1px 1px 5px #555;
+    /* font-weight: bold; */
 }
