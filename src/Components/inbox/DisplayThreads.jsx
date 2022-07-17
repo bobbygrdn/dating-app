@@ -14,6 +14,7 @@ function DisplayThreads({ threads, userData, orderedProfiles }) {
 
     const handleClick = (e) => {
         console.log(e.currentTarget.id)
+        setDisplayedMessages([])
 
         fetchAllMsgsByThreadId(e.currentTarget.id)
 
