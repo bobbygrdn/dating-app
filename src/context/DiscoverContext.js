@@ -45,16 +45,13 @@ export const DiscoverProvider = ({children}) => {
      * @param firstName - the first name of the user you are liking
      */
     const likeUser = (userInfo, id2) => {
-        let data = {
-            liked: JSON.stringify(userInfo)
-        }
-
+        
         let fetchData ={
             method: "PATCH",
             headers: new Headers({
                 'Content-Type': 'application/json'
             }),
-            body: JSON.stringify(data)
+            body: JSON.stringify(userInfo)
         }
 
         fetch(`https://find-luv.herokuapp.com/api/liked/${id2}`, fetchData)
