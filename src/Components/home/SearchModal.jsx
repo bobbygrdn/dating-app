@@ -1,9 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import DiscoverContext from "../../context/DiscoverContext";
+import LandingContext from "../../context/LandingContext"
 
-function SearchModal ({show, darkTheme}) {
+function SearchModal ({show}) {
     /* Destructuring the context object. */
     const { setSearchModal, setDistance, setAge1, setAge2, setGender, age1, age2, gender, distance, addUsers} = useContext(DiscoverContext)
+
+    const { userData } = useContext(LandingContext)
 
     /**
      * When the user clicks the close button, the search modal will close.
@@ -64,10 +67,10 @@ function SearchModal ({show, darkTheme}) {
        */
       const checkForDarkTheme = () => {
           let searchModal = document.querySelector('.searchModal')
-        if(darkTheme && searchModal) {
+        if(userData.dark_theme && searchModal) {
       return searchModal.classList.add('singleUserModalDarkTheme')
         }
-        if(!darkTheme && searchModal){
+        if(!userData.dark_theme && searchModal){
          return searchModal.classList.remove('singleUserModalDarkTheme')
         }
       }

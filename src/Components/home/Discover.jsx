@@ -36,8 +36,8 @@ function Discover() {
     return (
         <div>
             <Users />
-            <SingleUserModal show={singleModal} darkTheme={darkTheme}/>
-            <SearchModal show={searchModal} darkTheme={darkTheme} />
+            <SingleUserModal show={singleModal} />
+            <SearchModal show={searchModal} />
         </div>
     )
 
