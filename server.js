@@ -76,7 +76,7 @@ app.get("/api/users/:id", async (req, res) => {
 });
 
 // update the liked on a user
-app.patch("/api/liked/:id", async(req,res) => {
+app.patch("/api/liked/:id", async (req, res) => {
   try {
     let { userInfo } = req.body
     const client = await pool.connect();
@@ -244,65 +244,65 @@ app.patch("/api/users/:id", async (req, res) => {
 app.get('/api/profilepic/:id', async (req, res) => {
   try {
     const client = await pool.connect();
-    const data = await client.query('SELECT profile_pic_url FROM users WHERE user_id=$1',[req.params.id])
+    const data = await client.query('SELECT profile_pic_url FROM users WHERE user_id=$1', [req.params.id])
     res.json(data.rows[0])
     client.release()
-  } 
+  }
   catch (error) {
     console.log(error)
     res.send(error)
   }
 })
 //update user 'at a glance' data
-app.patch('/api/userdata/glance/:id' ,async (req, res) => {
+app.patch('/api/userdata/glance/:id', async (req, res) => {
   try {
     const client = await pool.connect();
-    await client.query('UPDATE users SET first_name = $1, last_name = $2, age = $3, city = $4, state = $5, zipcode = $6 WHERE user_id = $7', [req.body.first_name, req.body.last_name, req.body.age, req.body.city, req.body.state, req.body.zipcode, req.params.id ] )
+    await client.query('UPDATE users SET first_name = $1, last_name = $2, age = $3, city = $4, state = $5, zipcode = $6 WHERE user_id = $7', [req.body.first_name, req.body.last_name, req.body.age, req.body.city, req.body.state, req.body.zipcode, req.params.id])
     res.json(req.body)
     client.release()
-    
+
   } catch (error) {
     console.log(error)
     res.send(error)
   }
 })
 //update user 'Connections match info' data
-app.patch('/api/userdata/connection-match/:id' ,async (req, res) => {
+app.patch('/api/userdata/connection-match/:id', async (req, res) => {
 
   try {
     const client = await pool.connect();
-    await client.query('UPDATE users SET height = $1, body_type = $2, gender = $3, sexual_orientation = $4  WHERE user_id = $5', [req.body.height, req.body.body_type, req.body.gender, req.body.sexual_orientation, req.params.id ] )
+    await client.query('UPDATE users SET height = $1, body_type = $2, gender = $3, sexual_orientation = $4  WHERE user_id = $5', [req.body.height, req.body.body_type, req.body.gender, req.body.sexual_orientation, req.params.id])
     res.json(req.body)
     client.release()
-    
+
   } catch (error) {
     console.log(error)
     res.send(error)
   }
 })
 //update user bio data
-app.patch('/api/userdata/bio/:id' ,async (req, res) => {
+app.patch('/api/userdata/bio/:id', async (req, res) => {
 
   try {
     const client = await pool.connect();
-    await client.query('UPDATE users SET bio = $1 WHERE user_id = $2', [req.body.bio, req.params.id ] )
+    await client.query('UPDATE users SET bio = $1 WHERE user_id = $2', [req.body.bio, req.params.id])
     res.json(req.body)
     client.release()
-    
+
   } catch (error) {
     console.log(error)
     res.send(error)
   }
 })
 //update login settings info
-app.patch('/api/userdata/login/:id' ,async (req, res) => {
+app.patch('/api/userdata/login/:id', async (req, res) => {
 
   try {
     const client = await pool.connect();
-    await client.query('UPDATE users SET username = $1, email = $2, password = $3 WHERE user_id = $4', [req.body.username, req.body.email, req.body.password, req.params.id ] )
+    await client.query('UPDATE users SET username = $1, email = $2, password = $3 WHERE user_id = $4', [req.body.username, req.body.email, req.body.password, req.params.id])
     res.json(req.body)
     client.release()
-    
+
   } catch (error) {
     console.log(error)
     res.send(error)
@@ -345,6 +345,22 @@ app.patch('/api/userdata/fontstyle/:id', async (req, res) => {
     res.send(error)
   }
 })
+
+//select all msgs by thread id
+app.get('/api/messages/thread/:id', async (req, res) => {
+  try {
+    let client = await pool.connect()
+    let data = client.query('SELECT * FROM messages WHERE thread_id = $1 ORDER BY message_id ASC', [req.params.id])
+    res.json(data.rows)
+    client.release()
+
+  } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+
+})
+
 //!-----------------------------
 
 //DELETE a user;
@@ -399,7 +415,7 @@ app.delete("/api/pending_connections/:id", async (req, res) => {
     );
     res.json(data.rows);
     client.release();
-  } catch (err) {}
+  } catch (err) { }
 });
 
 //GET ALL messages;
@@ -522,7 +538,7 @@ app.delete("/api/messages/:id", async (req, res) => {
     );
     res.json(data.rows);
     client.release();
-  } catch (err) {}
+  } catch (err) { }
 });
 
 //GET ALL threads
@@ -578,7 +594,7 @@ app.delete("/api/threads/:id", async (req, res) => {
     );
     res.json(data.rows);
     client.release();
-  } catch (err) {}
+  } catch (err) { }
 });
 
 app.post("/image/:id", imageUpload.single("image"), async (req, res) => {

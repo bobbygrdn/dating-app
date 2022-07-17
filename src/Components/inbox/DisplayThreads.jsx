@@ -1,22 +1,30 @@
 import React, { useState, useEffect } from 'react'
-import IndividualThread from './IndividualThread.jsx'
+// import IndividualThread from './IndividualThread.jsx'
+import ThreadMsgModal from "./ThreadMsgModal";
 
 function DisplayThreads({ threads, userData, orderedProfiles }) {
+
+    const [showThreadMsgModal, setShowThreadMsgModal] = useState(false)
+    const [displayedMessages, setDisplayedMessages] = useState([])
 
     useEffect(() => {
         console.log(threads)
         console.log(orderedProfiles)
     }, [])
 
-
-    // if (profiles) { return <IndividualThread threads={threads} profiles={profiles} /> }
     const handleClick = (e) => {
-        console.log(e.target.id)
-        // setShowThreadMsgModal(true)
+        // console.log(e.target.id)
+        fetch(`https://find-luv.herokuapp.com/api/messages/thread/${e.target.id}`)
+            .then(res => res.json())
+            .then(data => setDisplayedMessages(data))
+            .catch(error => console.log(error))
 
+        setShowThreadMsgModal(true)
     }
     return (
         <>
+            {showThreadMsgModal ? <ThreadMsgModal setShowThreadMsgModal={setShowThreadMsgModal} displayedMessages={displayedMessages} /> : null}
+
             {threads.map((elem, index) => {
                 return (
                     <div className='threadCard' key={index} id={elem.thread_id} onClick={handleClick} >
