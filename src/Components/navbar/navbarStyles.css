@@ -2,6 +2,15 @@
     --font-size: 1.5rem
 }
 
+.darkTheme {
+    background-color: #222 !important;
+    color: whitesmoke !important;
+}
+
+.navDarkTheme {
+    color: whitesmoke !important
+}
+
 .navbar-container {
     box-sizing: border-box;
     font-size: var(--font-size);
@@ -45,6 +54,13 @@ li {
     font-size: calc(var(--font-size) + .5rem);
 }
 
+.titleDiv{
+    /* width: 100%; */
+    display: grid;
+    grid-template-columns: 20% 80%;
+    /* justify-content: center; */
+
+}
 .title {
     text-align: center;
     font-family: 'Lily Script One', cursive;
@@ -54,8 +70,11 @@ li {
 
 .logo {
     position: absolute;
-    right: 0;
+    left: 30px;
+    top: 10px;
     border: none;
+    width: 180px;
+    height: 180px;
 }
 
 .navSpacer {
@@ -63,9 +82,11 @@ li {
 }
 
 .userNameSpan{
-    font-size: 1rem;
+    font-size: 1.2rem;
     vertical-align:text-top;
-    font-family: inherit;
+    font-family: cursive;
     margin-left: 15px;
-
+    color: rgb(117, 90, 235);
+    text-shadow: 1px 1px 5px #555;
+    /* font-weight: bold; */
 }
