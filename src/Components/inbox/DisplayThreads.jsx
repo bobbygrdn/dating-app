@@ -1,40 +1,48 @@
 import React, { useState, useEffect } from 'react'
-import IndividualThread from './IndividualThread.jsx'
+// import IndividualThread from './IndividualThread.jsx'
+import ThreadMsgModal from "./ThreadMsgModal";
 
-function DisplayThreads({ threads, dummyUser }) {
+function DisplayThreads({ threads, userData, orderedProfiles }) {
 
-    const [profiles, setProfiles] = useState(null)
+    const [showThreadMsgModal, setShowThreadMsgModal] = useState(false)
+    const [displayedMessages, setDisplayedMessages] = useState([])
 
     useEffect(() => {
-
-        let arrayOfIds = []
-
-        threads.forEach((elem) => {
-            if (elem.recipient_user_id === dummyUser.user_id) {
-                return arrayOfIds.push(elem.sender_user_id)
-            }
-
-            else {
-                return arrayOfIds.push(elem.recipient_user_id)
-            }
-        })
-        createProfilesArray(arrayOfIds)
+        console.log(threads)
+        console.log(orderedProfiles)
     }, [])
 
+    const handleClick = (e) => {
+        // console.log(e.target.id)
+        fetch(`https://find-luv.herokuapp.com/api/messages/thread/${e.target.id}`)
+            .then(res => res.json())
+            .then(data => setDisplayedMessages(data))
+            .catch(error => console.log(error))
 
-    const createProfilesArray = (arrayOfIds) => {
-        let arrayOfProfiles = []
-        arrayOfIds.forEach((elem) => {
-
-            fetch(`https://find-luv.herokuapp.com/api/users/${elem}`)
-                .then(res => res.json())
-                .then(data => { arrayOfProfiles.push(data) })
-        })
-        setProfiles(arrayOfProfiles)
+        setShowThreadMsgModal(true)
     }
-    // if (profiles) { return console.log('yes') }
-    if (profiles) { return <IndividualThread threads={threads} profiles={profiles} /> }
+    return (
+        <>
+            {showThreadMsgModal ? <ThreadMsgModal setShowThreadMsgModal={setShowThreadMsgModal} displayedMessages={displayedMessages} /> : null}
 
+            {threads.map((elem, index) => {
+                return (
+                    <div className='threadCard' key={index} id={elem.thread_id} onClick={handleClick} >
+                        <img id={elem.thread_id} src={orderedProfiles[index].profile_pic_url} alt='thread-pic' />
+                        <div id={elem.thread_id} className='thread-user-info'>
+                            <h3 id={elem.thread_id}>{orderedProfiles[index].first_name} {orderedProfiles[index].last_name}, {orderedProfiles[index].age}</h3>
+                            <h5 id={elem.thread_id}>{orderedProfiles[index].city}, {orderedProfiles[index].state}</h5>
+                            <h6 id={elem.thread_id}>{orderedProfiles[index].gender}, {orderedProfiles[index].body_type}</h6>
+                        </div>
+
+
+                    </div>
+                )
+            })
+            }
+
+        </>
+    )
 }
 
 export default DisplayThreads
