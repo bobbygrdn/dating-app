@@ -21,7 +21,7 @@
 }
 
 .usersContainer {
-  padding: 10px;
+  padding: 40px 10px;
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: 1fr 1fr 1fr;
@@ -31,9 +31,8 @@
 
 .user {
   text-align: center;
-  border: 2px ridge;
-  border-color: whitesmoke;
-  border-width: 10px;
+  border: 5px solid #222;
+  border-radius: 20px;
   margin: 10px;
   cursor: pointer;
 }
@@ -65,9 +64,9 @@ img {
 }
 
 .singleUserModal {
-  border: 2px ridge;
-  border-color: whitesmoke;
-  border-width: 10px;
+  border: 1px solid #555;
+  box-shadow: 3px 3px 3px 3px #333;
+  border-radius: 25px;
   background-color: white;
   padding: 10px;
 }
@@ -94,11 +93,13 @@ img {
 }
 
 .searchModal {
-  border: 2px ridge;
-  border-color: whitesmoke;
-  border-width: 10px;
   background-color: white;
   padding: 10px;
+  border: 1px solid #555;
+  box-shadow: 3px 3px 3px 3px #333;
+  border-radius: 25px;
+  width: 40rem;
+  justify-self: center;
 }
 
 button {
@@ -107,18 +108,44 @@ button {
 
 .closeButton {
   float: right;
+  background-color: #9995;
+  padding: .5rem;
+  border: none;
+  border-radius: 1000px;
+  text-align: center;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  box-shadow: 3px 3px 3px 3px #333;
+}
+
+.submitSearchButton {
+  background-color: #9995;
+  padding: .5rem;
+  border: none;
+  border-radius: 1000px;
+  text-align: center;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  box-shadow: 3px 3px 3px 3px #333;
 }
 
 .header {
-  border: 6px solid gray;
-  margin-top: 30px;
+  padding: .5rem;
+  border: 5px solid #222;
+  border-radius: 1000px;
+  margin-top: 50px;
   margin-bottom: 30px;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .content {
-  border: 6px solid gray;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  border: 5px solid #222;
+  border-radius: 20px;
+  margin: 0 auto;
+  width: 50rem;
 }
 
 .searchContent {
@@ -128,16 +155,43 @@ button {
 
 .dislikeButton {
   float: left;
+  background-color: #9995;
+  padding: .5rem;
+  border: none;
+  border-radius: 1000px;
+  text-align: center;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  box-shadow: 3px 3px 3px 3px #333;
 }
 
 .likeButton {
   float: right;
+  background-color: #9995;
+  padding: .5rem;
+  border: none;
+  border-radius: 1000px;
+  text-align: center;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  box-shadow: 3px 3px 3px 3px #333;
 }
 
 .searchButton {
   position: absolute;
-  top: 0;
-  right: 0;
+  right: 4.5em;
+  top: 15.5em;
+  background-color: #9995;
+  padding: .5rem;
+  border: none;
+  border-radius: 1000px;
+  text-align: center;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  box-shadow: 3px 3px 3px 3px #333;
 }
 
 .singleUserPic {
