@@ -13,14 +13,20 @@ function DisplayThreads({ threads, userData, orderedProfiles }) {
     }, [])
 
     const handleClick = (e) => {
-        // console.log(e.target.id)
-        fetch(`https://find-luv.herokuapp.com/api/messages/thread/${e.target.id}`)
-            .then(res => res.json())
-            .then(data => setDisplayedMessages(data))
-            .catch(error => console.log(error))
+        console.log(e.currentTarget.id)
+
+        fetchAllMsgsByThreadId(e.currentTarget.id)
 
         setShowThreadMsgModal(true)
     }
+
+    const fetchAllMsgsByThreadId = (id) => {
+        fetch(`https://find-luv.herokuapp.com/api/messages/thread/${id}`)
+            .then(res => res.json())
+            .then(data => setDisplayedMessages(data))
+            .catch(error => console.log(error))
+    }
+
     return (
         <>
             {showThreadMsgModal ? <ThreadMsgModal setShowThreadMsgModal={setShowThreadMsgModal} displayedMessages={displayedMessages} /> : null}
@@ -28,11 +34,11 @@ function DisplayThreads({ threads, userData, orderedProfiles }) {
             {threads.map((elem, index) => {
                 return (
                     <div className='threadCard' key={index} id={elem.thread_id} onClick={handleClick} >
-                        <img id={elem.thread_id} src={orderedProfiles[index].profile_pic_url} alt='thread-pic' />
-                        <div id={elem.thread_id} className='thread-user-info'>
-                            <h3 id={elem.thread_id}>{orderedProfiles[index].first_name} {orderedProfiles[index].last_name}, {orderedProfiles[index].age}</h3>
-                            <h5 id={elem.thread_id}>{orderedProfiles[index].city}, {orderedProfiles[index].state}</h5>
-                            <h6 id={elem.thread_id}>{orderedProfiles[index].gender}, {orderedProfiles[index].body_type}</h6>
+                        <img src={orderedProfiles[index].profile_pic_url} alt='thread-pic' />
+                        <div className='thread-user-info'>
+                            <h3>{orderedProfiles[index].first_name} {orderedProfiles[index].last_name}, {orderedProfiles[index].age}</h3>
+                            <h5>{orderedProfiles[index].city}, {orderedProfiles[index].state}</h5>
+                            <h6>{orderedProfiles[index].gender}, {orderedProfiles[index].body_type}</h6>
                         </div>
 
 

@@ -350,7 +350,7 @@ app.patch('/api/userdata/fontstyle/:id', async (req, res) => {
 app.get('/api/messages/thread/:id', async (req, res) => {
   try {
     let client = await pool.connect()
-    let data = client.query('SELECT * FROM messages WHERE thread_id = $1 ORDER BY message_id ASC', [req.params.id])
+    let data = await client.query('SELECT * FROM messages WHERE thread_id = $1 ORDER BY message_id ASC', [req.params.id])
     res.json(data.rows)
     client.release()
 
