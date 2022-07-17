@@ -57,8 +57,7 @@ export const DiscoverProvider = ({children}) => {
             body: JSON.stringify(data)
         }
 
-        // fetch(`https://find-luv.herokuapp.com/api/liked/${id2}`, fetchData)
-        fetch(`http://localhost:8000/api/liked/${id2}`, fetchData)
+        fetch(`https://find-luv.herokuapp.com/api/liked/${id2}`, fetchData)
         .then(() => {
             console.log(`${data}`)
         })
