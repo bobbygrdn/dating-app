@@ -17,7 +17,17 @@ import "../src/ComponentStyles/CreateSlashLogin.css";
 function App() {
 
     const { login, buttonPressed, userData } = useContext(LandingContext)
-    const { threads, fetchAllUserThreads } = useContext(InboxContext)
+    const { threads, fetchAllUserThreads, profiles, handleDisplayingThreads } = useContext(InboxContext)
+
+    useEffect(() => {
+        if (userData) {
+            return fetchAllUserThreads()
+        }
+    }, [login, userData])
+
+    useEffect(() => {
+        handleDisplayingThreads()
+    }, [threads])
 
     if (!login) {
         if (!buttonPressed) return (<Landing />)
@@ -25,12 +35,14 @@ function App() {
         else if (buttonPressed === 'loginButton') return (<Login />)
     }
 
+
     else {
+
         return (
 
             <div className='App-container'>
                 <DiscoverProvider>
-                    <Navbar userData={userData}/>
+                    <Navbar userData={userData} />
 
                     <Routes>
 

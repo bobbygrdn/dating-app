@@ -1,11 +1,12 @@
-import React, {useEffect} from 'react'
+import React, { useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './navbarStyles.css'
+
 import logo from "./logo.png"
 // import { useNavigate } from 'react-router-dom'
-import {BiUser} from 'react-icons/bi'
+import { BiUser } from 'react-icons/bi'
 
-function Navbar({userData}) {
+function Navbar({ userData }) {
 
     const handleClick = (e) => {
         document.querySelectorAll('.nav-link').forEach(elem => elem.classList.remove('active-tab'))
@@ -28,10 +29,10 @@ function Navbar({userData}) {
             document.querySelector('.navbar-container').classList.remove('navDarkTheme')
         }
     }, [userData.dark_theme])
-    
+
     useEffect(() => {
         changeFontSize()
-    },[userData.font_size])
+    }, [userData.font_size])
 
     const changeFontSize = () => {
         let body = document.querySelector('body')
@@ -78,7 +79,7 @@ function Navbar({userData}) {
             <img className="logo" src={logo} alt='none' />
             <div className='navbar-container'>
                 <h1 className='title'>.Find(luv)</h1>
-                
+
                 <ul className='navbar-UL'>
                     <li>
                         <Link to='/' className='nav-link active-tab' onClick={handleClick}>Discover</Link>
@@ -107,9 +108,9 @@ function Navbar({userData}) {
                     <li>
                         <Link to='/' className='nav-link' onClick={handleLogout}>Log out</Link>
                     </li>
-                    <span className='userNameSpan'> <BiUser/> {userData.username}</span>
+                    <span className='userNameSpan'> <BiUser /> {userData.username}</span>
                 </ul>
-                
+
             </div>
         </>
 
