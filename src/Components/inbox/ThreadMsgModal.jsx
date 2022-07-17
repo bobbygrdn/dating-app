@@ -50,7 +50,7 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages }) {
                         rows="7"
                         cols="40"
                     />
-                    <input type='submit' value='Update Bio'
+                    <input type='submit' value='Reply'
                         id='editDataSubmitBtn' />
 
 
