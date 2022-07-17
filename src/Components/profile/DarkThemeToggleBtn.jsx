@@ -11,8 +11,6 @@ function DarkThemeToggleBtn({ userData, changeUserData }) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify( {dark_theme: e.target.checked} )
           })
-          .then(res => res.json())
-          .then(data => console.log(data))
           .catch(err => console.log(err))
     }
 
