@@ -19,13 +19,22 @@ function App() {
     const { login, buttonPressed, userData } = useContext(LandingContext)
     const { threads, fetchAllUserThreads } = useContext(InboxContext)
 
+    useEffect(() => {
+         if(userData){
+             return fetchAllUserThreads()
+         } 
+    },[login])
+     
+    
     if (!login) {
         if (!buttonPressed) return (<Landing />)
         else if (buttonPressed === 'createUserButton') return (<CreateUserForm />)
         else if (buttonPressed === 'loginButton') return (<Login />)
     }
-
+   
+    
     else {
+      
         return (
 
             <div className='App-container'>

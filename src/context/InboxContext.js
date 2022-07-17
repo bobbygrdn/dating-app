@@ -10,7 +10,7 @@ export const InboxProvider = ({ children }) => {
     const { userData } = useContext(LandingContext)
 
     const fetchAllUserThreads = () => {
-        fetch(`https://find-luv.herokuapp.com/api/threads/user/${userData['user_id']}`)
+        fetch(`https://find-luv.herokuapp.com/api/threads/user/${userData.user_id}`)
             .then(res => res.json())
             .then(data => setThreads(data))
             .catch(err => console.log(err))
