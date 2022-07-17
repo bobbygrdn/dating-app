@@ -75,10 +75,10 @@ function Navbar({userData}) {
 
     return (
         <>
-            <img
-                className="logo" src={logo} alt='none' />
+            <img className="logo" src={logo} alt='none' />
             <div className='navbar-container'>
                 <h1 className='title'>.Find(luv)</h1>
+                
                 <ul className='navbar-UL'>
                     <li>
                         <Link to='/' className='nav-link active-tab' onClick={handleClick}>Discover</Link>

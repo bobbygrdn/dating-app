@@ -54,6 +54,13 @@ li {
     font-size: calc(var(--font-size) + .5rem);
 }
 
+.titleDiv{
+    /* width: 100%; */
+    display: grid;
+    grid-template-columns: 20% 80%;
+    /* justify-content: center; */
+
+}
 .title {
     text-align: center;
     font-family: 'Lily Script One', cursive;
@@ -66,8 +73,8 @@ li {
     left: 30px;
     top: 10px;
     border: none;
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
 }
 
 .navSpacer {
