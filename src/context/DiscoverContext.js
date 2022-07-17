@@ -45,17 +45,22 @@ export const DiscoverProvider = ({children}) => {
      */
     const likeUser = (userInfo, id2) => {
         
+        let data = {
+            liked: JSON.stringify(userInfo)
+        }
+
         let fetchData ={
             method: "PATCH",
             headers: new Headers({
                 'Content-Type': 'application/json'
             }),
-            body: JSON.stringify(userInfo)
+            body: JSON.stringify(data)
         }
 
-        fetch(`https://find-luv.herokuapp.com/api/liked/${id2}`, fetchData)
+        // fetch(`https://find-luv.herokuapp.com/api/liked/${id2}`, fetchData)
+        fetch(`http://localhost:8000/api/liked/${id2}`, fetchData)
         .then(() => {
-            console.log(`${userInfo}`)
+            console.log(`${data}`)
         })
         .catch(error => {
             console.error(error);
