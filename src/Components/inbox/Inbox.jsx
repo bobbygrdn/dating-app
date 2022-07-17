@@ -6,14 +6,13 @@ import LandingContext from "../../context/LandingContext";
 import InboxContext from '../../context/InboxContext'
 
 function Inbox() {
-    const { login, buttonPressed, userData } = useContext(LandingContext)
+    const { userData } = useContext(LandingContext)
 
-    const { threads } = useContext(InboxContext);
-    
+    const { threads, orderedProfiles } = useContext(InboxContext);
+
     return (
         <div className='inbox-main-container'>
-            {threads.length > 0 ? <DisplayThreads threads={threads} userData={userData} /> : <MsgNoThreads/>}
-
+            {threads.length > 0 ? <DisplayThreads threads={threads} orderedProfiles={orderedProfiles} userData={userData} /> : <MsgNoThreads />}
         </div>
     )
 
