@@ -3,7 +3,7 @@ import DiscoverContext from "../../context/DiscoverContext"
 import '../../ComponentStyles/Discover.css'
 import LandingContext from "../../context/LandingContext"
 
-function SingleUserModal({ show, darkTheme }) {
+function SingleUserModal({ show }) {
     /* Destructuring the context object. */
     const { singleUser, setSingleModal, likeUser, setClickedUser, clickedUser } = useContext(DiscoverContext)
 
@@ -20,6 +20,7 @@ function SingleUserModal({ show, darkTheme }) {
 
     const runLikeUser = () => {
         likeUser({
+            user_id: userData.user_id,
             profile_pic_url: userData.profile_pic_url,
             first_name: userData.first_name,
             age: userData.age,
@@ -27,19 +28,30 @@ function SingleUserModal({ show, darkTheme }) {
         }, clickedUser)
     }
 
+    
+    /* Checking to see if the show prop is true or false. If it is true, then it will add the class
+    singleUserModalDarkTheme to the singleUserModal element. If it is false, then it will remove the
+    class singleUserModalDarkTheme from the singleUserModal element. */
     useEffect(() => {
       checkForDarkTheme()
     },[show])
 
+    /**
+     * If darkTheme is true, add the class singleUserModalDarkTheme to the singleUserModal element.
+     * If darkTheme is false, remove the class singleUserModalDarkTheme from the singleUserModal
+     * element.
+     * @returns the classList.add or classList.remove method.
+     */
     const checkForDarkTheme = () => {
         let singleUserModal = document.querySelector('.singleUserModal')
-      if(darkTheme && singleUserModal) {
+      if(userData.dark_theme && singleUserModal) {
     return singleUserModal.classList.add('singleUserModalDarkTheme')
       }
-      if(!darkTheme && singleUserModal){
+      if(!userData.dark_theme && singleUserModal){
        return singleUserModal.classList.remove('singleUserModalDarkTheme')
       }
     }
+
     return (
         <>
 

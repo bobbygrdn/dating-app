@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import DiscoverContext from "../../context/DiscoverContext";
 
-function SearchModal ({show}) {
+function SearchModal ({show, darkTheme}) {
     /* Destructuring the context object. */
     const { setSearchModal, setDistance, setAge1, setAge2, setGender, age1, age2, gender, distance, addUsers} = useContext(DiscoverContext)
 
@@ -18,7 +18,6 @@ function SearchModal ({show}) {
     */
     const search = () => {
         setSearchModal(false)
-        // updateUsers()
     }
 
     /**
@@ -48,7 +47,30 @@ function SearchModal ({show}) {
         .then(response => response.json())
         .then(data => addUsers(data))
 
-    }      
+    }   
+    
+    /* Checking if the show variable is true or false. If the show variable is true, then the
+        checkForDarkTheme() function will be called. If the show variable is false, then the
+        checkForDarkTheme() function will not be called. */
+    useEffect(() => {
+        checkForDarkTheme()
+      },[show])
+  
+      /**
+       * If darkTheme is true, add the class 'singleUserModalDarkTheme' to the searchModal element.
+       * If darkTheme is false, remove the class 'singleUserModalDarkTheme' from the searchModal
+       * element.
+       * @returns the classList.add or classList.remove method.
+       */
+      const checkForDarkTheme = () => {
+          let searchModal = document.querySelector('.searchModal')
+        if(darkTheme && searchModal) {
+      return searchModal.classList.add('singleUserModalDarkTheme')
+        }
+        if(!darkTheme && searchModal){
+         return searchModal.classList.remove('singleUserModalDarkTheme')
+        }
+      }
 
     /* Returning the HTML code for the search modal. */
     return (

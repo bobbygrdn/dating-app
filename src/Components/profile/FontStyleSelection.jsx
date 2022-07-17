@@ -1,35 +1,23 @@
 import React, { useEffect } from 'react'
 
-function FontStyleSelection({ userData, setUserData }) {
+function FontStyleSelection({ userData, changeUserData }) {
     const handleChange = (e) => {
-        setUserData((prevData) => {
-            return {
-                ...prevData,
-                [e.target.name]: e.target.value
-            }
-        })
+        changeUserData({[e.target.name]: e.target.value})
     }
 
     useEffect(() => {
-        changeFontStyle()
-    }, [userData['font_style']])
+        updateDataBaseFontStyle(userData.font_style)
+        }, [userData.font_style])
 
-    const changeFontStyle = () => {
-        let body = document.querySelector('body')
 
-        switch (userData['font_style']) {
-            case 'Arial':
-                body.style.fontFamily = 'Noto Serif'
-                break;
-            case 'Fantasy':
-                body.style.fontFamily = 'Edu NSW ACT Foundation'
-                break;
-            case 'Georgia':
-                body.style.fontFamily = 'Shadows Into Light'
-                break;
-            default:
-                console.warn('Failed to load Font Style')
-        }
+    const updateDataBaseFontStyle = (fontStyle) => {
+
+        fetch(`https://find-luv.herokuapp.com/api/userdata/fontstyle/${userData.user_id}`, {
+            method: "PATCH",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify( {font_style : fontStyle } )
+          })
+          .catch(err => console.log(err))
     }
     return (
         <div className='fontStyleContainer'>
@@ -42,7 +30,7 @@ function FontStyleSelection({ userData, setUserData }) {
             >
                 <option value='Arial'>New Serif</option>
                 <option value='Fantasy'>Fantasy</option>
-                <option value='Georgia'>Child</option>
+                <option value='Child'>Child</option>
             </select>
         </div>
     )
