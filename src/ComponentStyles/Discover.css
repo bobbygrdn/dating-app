@@ -217,13 +217,13 @@ button {
   text-align: center;
   position: relative;
   bottom: 0;
-  margin: 10px;
 }
 
 .navNumbers {
   padding-left: 10px;
   cursor: pointer;
   display: inline-flex;
+  font-size: xx-large;
 }
 
 .navNumbers:hover {
