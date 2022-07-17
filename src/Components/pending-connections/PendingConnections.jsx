@@ -22,7 +22,6 @@ function PendingConnections() {
         }
 
         fetch(`https://find-luv.herokuapp.com/api/liked/${userData.user_id}`, fetchData)
-        // fetch(`http://localhost:8000/api/connect/${userData.user_id}`, fetchData)
         .then(() => {
             console.log('Cleared the connections page!')
         })
