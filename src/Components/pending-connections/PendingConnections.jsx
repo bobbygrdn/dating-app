@@ -13,7 +13,7 @@ function PendingConnections() {
 
     useEffect(()=> {
         
-        fetch(`http://localhost:8000/api/pending/${userData.liked}`)
+        fetch(`https://find-luv.herokuapp.com/api/pending/${userData.liked}`)
         .then(response => response.json())
         .then(data => setPending(data))
     }, [setPending, userData.liked])
