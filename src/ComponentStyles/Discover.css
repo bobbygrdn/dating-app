@@ -178,9 +178,7 @@ button {
 }
 
 .searchButton {
-  position: absolute;
-  right: 3.5em;
-  top: 14em;
+  margin: 0 auto;
   background-color: #9995;
   padding: 0.5rem;
   border: none;
@@ -190,6 +188,7 @@ button {
   font-size: inherit;
   font-family: inherit;
   box-shadow: 3px 3px 3px 3px #333;
+  width: 10rem;
 }
 
 .singleUserPic {
