@@ -43,10 +43,18 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
             }
         })
 
+        let newMsg = {
+            content: replyMsg.content,
+            date_time_stamp: msgDateTime,
+            read_receipt: false,
+            sent_from_user_id: userData.user_id,
+            sent_to_user_id: sendingToUserId
+        }
+
         fetch(`https://find-luv.herokuapp.com/api/messages/thread/${threadId}`, {
             method: "post",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(replyMsg)
+            body: JSON.stringify(newMsg)
         })
             .then(res => res.json())
             .then(data => console.log(data))
