@@ -14,11 +14,13 @@ function PendingConnections() {
 
     /* Fetching the data from the API and setting the state of pending to the data. */
     useEffect(()=> {
-        
-        fetch(`https://find-luv.herokuapp.com/api/pending/${userData.liked}`)
-        .then(response => response.json())
-        .then(data => setPending(data))
+            if(pending !== null) {
+            fetch(`https://find-luv.herokuapp.com/api/pending/${userData.liked}`)
+            .then(response => response.json())
+            .then(data => setPending(data))
+        }
     }, [])
+    
 
     /**
      * It's a function that clears the connections page.
@@ -52,10 +54,6 @@ function PendingConnections() {
         <>
         {pending ? 
             <div className='pending-connections-container'>
-                    <NoConnections />
-            </div>
-            :
-            <div className='pending-connections-container'>
             <button className='clearConnectionsButton' onClick={clear}>Clear</button>
                 <div className='connections-container'>
                     {pending.map((elem) => {
@@ -68,6 +66,10 @@ function PendingConnections() {
                     })}
                 
                 </div>
+            </div>
+            :
+            <div className='pending-connections-container'>
+                    <NoConnections />
             </div>
         }
         </>

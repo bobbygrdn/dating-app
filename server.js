@@ -48,12 +48,88 @@ app.get("/api/current/:id", async (req, res) => {
   }
 });
 
+//GET all users defined in full seach modal preferences
 app.get("/api/current/:id/:age1/:age2/:gender", async (req, res) => {
   let { id, gender, age1, age2 } = req.params;
   try {
     let client = await pool.connect();
     let data = await client.query(
       `SELECT * FROM users WHERE (user_id != '${id}') AND (gender = '${gender}') AND (age BETWEEN '${age1}' and '${age2}') LIMIT 500;`
+    );
+    res.json(data.rows);
+    client.release();
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+app.get("/api/current/:id/:gender", async (req, res) => {
+  let { id, gender } = req.params;
+  try {
+    let client = await pool.connect();
+    let data = await client.query(
+      `SELECT * FROM users WHERE (user_id != '${id}') AND (gender = '${gender}') LIMIT 500;`
+    );
+    res.json(data.rows);
+    client.release();
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+app.get("/api/current/:id/:age1/:age2", async (req, res) => {
+  let { id, age1, age2 } = req.params;
+  try {
+    let client = await pool.connect();
+    let data = await client.query(
+      `SELECT * FROM users WHERE (user_id != '${id}') AND (age BETWEEN '${age1}' and '${age2}') LIMIT 500;`
+    );
+    res.json(data.rows);
+    client.release();
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+app.get("/api/single/:name", async (req, res) => {
+  let { name } = req.params;
+  try {
+    let client = await pool.connect();
+    let data = await client.query(
+      `SELECT * FROM users WHERE (first_name = '${name}') LIMIT 1;`
+    );
+    res.json(data.rows);
+    client.release();
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+app.get("/api/single/:userName", async (req, res) => {
+  let { userName } = req.params;
+  try {
+    let client = await pool.connect();
+    let data = await client.query(
+      `SELECT * FROM users WHERE (username = '${userName}') LIMIT 1;`
+    );
+    res.json(data.rows);
+    client.release();
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+app.get("/api/single/:name/:userName", async (req, res) => {
+  let { name, userName } = req.params;
+  try {
+    let client = await pool.connect();
+    let data = await client.query(
+      `SELECT * FROM users WHERE (first_name = '${name}') AND (username = '${userName}') LIMIT 1;`
     );
     res.json(data.rows);
     client.release();

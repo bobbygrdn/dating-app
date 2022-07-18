@@ -4,7 +4,7 @@ import LandingContext from "../../context/LandingContext"
 
 function SearchModal ({show}) {
     /* Destructuring the context object. */
-    const { setSearchModal, setDistance, setAge1, setAge2, setGender, age1, age2, gender, distance, addUsers} = useContext(DiscoverContext)
+    const { setSearchModal, setDistance, setAge1, setAge2, setGender, age1, age2, gender, distance, addUsers } = useContext(DiscoverContext)
 
     const { userData } = useContext(LandingContext)
 
@@ -29,9 +29,26 @@ function SearchModal ({show}) {
      * data to the page.
      */
     const updateUsers = () => {
-       fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}/${age1}/${age2}/${gender}`)
-       .then(response => response.json())
-       .then(data => addUsers(data))
+        console.log(userData.user_id);
+        if(gender !== null && (age1 === null || age1 === '') && (age2 === null || age2 === '')) {
+            fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}/${gender}`)
+            .then(response => response.json())
+            .then(data => addUsers(data))
+            .then(() => setGender(null))
+        }
+        if(gender === null && age1 !== null && age2 !== null) {
+            fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}/${age1}/${age2}`)
+            .then(response => response.json())
+            .then(data => addUsers(data))
+            .then(() => setAge1(null), setAge2(null))
+        } 
+        if(gender !== null && age1 !== null && age2 !== null) {
+            fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}/${age1}/${age2}/${gender}`)
+            .then(response => response.json())
+            .then(data => addUsers(data))
+            .then(() => setGender(null), setAge1(null), setAge2(null))
+        }
+        
 
     }   
     
@@ -75,31 +92,31 @@ function SearchModal ({show}) {
 
                 {/* This is a dropdown menu that allows the user to select a gender. */}
                 <div className="criteria">
-                <label htmlFor="gender" className="attributeSelect">Choose a Gender: </label>
-                <select name="gender" id="gender" defaultValue={null} onChange={(e) => setGender(e.target.value)}>
-                    <option value="">Choose a Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
+                    <label htmlFor="gender" className="attributeSelect">Choose a Gender: </label>
+                    <select name="gender" id="gender" defaultValue={null} onChange={(e) => setGender(e.target.value)}>
+                        <option value={null}>Choose a Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
                 </div>
 
                 
                 {/* Creates two input fields that allow the user to select an age range. */}
                 <div className="criteria">
-                <label htmlFor="age" className="attributeSelect">Choose an Age Range: </label>
-                    <input type="number" defaultValue={null} name="age1" id="age" min="18" max="100" step="1" placeholder={'Age 1'} onChange={(e) => setAge1(e.target.value)}></input>
-                
-                    <input type="number" defaultValue={null} name="age1" id="age" min="18" max="100" step="1" placeholder={'Age 2'} onChange={(e) => setAge2(e.target.value)}></input>
+                    <label htmlFor="age" className="attributeSelect">Choose an Age Range: </label>
+                        <input type="number" defaultValue={null} name="age1" id="age" min="18" max="100" step="1" placeholder={'Age 1'} onChange={(e) => setAge1(e.target.value)}></input>
+                    
+                        <input type="number" defaultValue={null} name="age1" id="age" min="18" max="100" step="1" placeholder={'Age 2'} onChange={(e) => setAge2(e.target.value)}></input>
                 </div>
 
                 {/* A dropdown menu that allows the user to select a distance. */}
                 <div className="criteria">
-                <label htmlFor="distance" className="attributeSelect">Choose a Distance: </label>
-                <select name="distance" id="distance" onChange={(e) => setDistance(e.target.value)}>
-                    <option value="">Choose a Distance</option>
-                    <option value="20">20 Miles</option>
-                    <option value="25">25 Miles</option>
-                </select>
+                    <label htmlFor="distance" className="attributeSelect">Choose a Distance: </label>
+                    <select name="distance" id="distance" onChange={(e) => setDistance(e.target.value)}>
+                        <option value={null} disabled>Choose a Distance</option>
+                        <option value="20">20 Miles</option>
+                        <option value="25">25 Miles</option>
+                    </select>
                 </div>
 
             </div>

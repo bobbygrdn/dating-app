@@ -6,11 +6,12 @@ import DiscoverContext from '../../context/DiscoverContext';
 import SingleUserModal from './SingleUserModal';
 import SearchModal from './SearchModal';
 import LandingContext from '../../context/LandingContext'
+import SearchUserModal from './SearchUserModal';
 
 function Discover() {
 
     /* Destructuring the context object. */
-    const { addUsers, singleModal, addSingleUser, searchModal } = useContext(DiscoverContext)
+    const { addUsers, singleModal, addSingleUser, searchModal, searchUserModal } = useContext(DiscoverContext)
 
     /* Destructuring the context object. */
     const { userData } = useContext(LandingContext)
@@ -44,6 +45,7 @@ function Discover() {
             <Users />
             <SingleUserModal show={singleModal} />
             <SearchModal show={searchModal} />
+            {/* <SearchUserModal show={searchUserModal} /> */}
         </div>
     )
 
