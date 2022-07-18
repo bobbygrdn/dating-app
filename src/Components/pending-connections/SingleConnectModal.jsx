@@ -5,15 +5,27 @@ import PendingContext from "../../context/PendingContext";
 
 function SingleConnectModal ({ show }) {
 
+    /* Destructuring the useContext hook. It is pulling the singleUser, setClickedUser, clickedUser,
+    userData, setConnectModal, and connectUser from the DiscoverContext, LandingContext, and
+    PendingContext. */
     const { singleUser, setClickedUser, clickedUser } = useContext(DiscoverContext)
     const { userData } = useContext(LandingContext)
     const { setConnectModal, connectUser } = useContext(PendingContext)
 
+    /**
+     * When the user clicks the close button, the modal will close and the clicked user will be set to
+     * null.
+     */
     const closeModal = () => {
         setConnectModal(false)
         setClickedUser(null)
     }
 
+    /**
+     * When the user clicks the button, the user_id of the user who clicked the button is passed to the
+     * connectUser function along with the user_id of the user who's profile the user clicked the
+     * button on.
+     */
     const runLikeUser = () => {
         connectUser(userData.user_id,clickedUser)
     }

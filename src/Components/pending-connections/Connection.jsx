@@ -4,8 +4,10 @@ import PendingContext from '../../context/PendingContext'
 
 function Connection (props) {
 
+    /* Destructuring the context. */
     const { singleUser, addSingleUser, setClickedUser } = useContext(DiscoverContext)
     const { setConnectModal } = useContext(PendingContext)
+
     /* It fetches a user from the database and then adds that user to the state. */
     const handleClick = (e) =>{
         fetch(`https://find-luv.herokuapp.com/api/users/${e.target.id}`)
@@ -16,6 +18,7 @@ function Connection (props) {
             setClickedUser(e.target.id)
         }
     }
+    
     return (
         <div className='connection' onClick={handleClick} id={props.elem.user_id}>
             <img
