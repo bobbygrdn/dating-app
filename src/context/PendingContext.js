@@ -8,6 +8,11 @@ export const PendingProvider = ({children}) => {
     const [pending, setPending] = useState([])
     const [singleConnectModal, setConnectModal] = useState(false)
 
+    /**
+     * It takes two user ids, creates a new thread between them, and then closes the modal.
+     * @param user - the user that is logged in
+     * @param clickedUser - the user that was clicked on in the list
+     */
     const connectUser = (user, clickedUser) => {
         let data = {
             recipient_user_id: user,

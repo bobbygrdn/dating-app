@@ -120,4 +120,5 @@ export const DiscoverProvider = ({children}) => {
     </DiscoverContext.Provider>
 }
 
+/* Exporting the context so that it can be used in other files. */
 export default DiscoverContext
