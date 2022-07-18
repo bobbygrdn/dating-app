@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import ReactDom from "react-dom";
 
-function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUserInfo, userData }) {
+function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUserInfo, userData, setDisplayedMessages }) {
 
     const [replyMsg, setReplyMsg] = useState({
         content: '',
@@ -39,6 +39,7 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
         //   })
         //   .catch(err => console.log(err))
 
+        //todo also need to change state on submit to dynamically populate new msg inside box use setDisplayedMessages
     }
 
     const handleChange = (e) => {

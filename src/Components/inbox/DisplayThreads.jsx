@@ -37,7 +37,7 @@ function DisplayThreads({ threads, userData, orderedProfiles }) {
 
     return (
         <>
-            {showThreadMsgModal ? <ThreadMsgModal userData={userData} setShowThreadMsgModal={setShowThreadMsgModal} displayedMessages={displayedMessages} threadMsgUserInfo={threadMsgUserInfo} /> : null}
+            {showThreadMsgModal ? <ThreadMsgModal userData={userData} setShowThreadMsgModal={setShowThreadMsgModal} displayedMessages={displayedMessages} setDisplayedMessages={setDisplayedMessages} threadMsgUserInfo={threadMsgUserInfo} /> : null}
 
             {threads.map((elem, index) => {
                 return (
