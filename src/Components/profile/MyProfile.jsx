@@ -79,6 +79,8 @@ function MyProfile() {
                     <li>{`Body type: ${userData.body_type}`}</li>
                     <li>{`Gender: ${userData.gender}`}</li>
                     <li>{`Sexual orientation: ${userData.sexual_orientation}`}</li>
+                    <li>{`Gender preference: ${userData.gender_preference}`}</li>
+                    <li>{`Preferred age: ${userData.age1} to ${userData.age2}`}</li>
                 </ul>
             </div>
 

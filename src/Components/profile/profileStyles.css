@@ -291,6 +291,11 @@ img {
   width: 60%;
 }
 
+.dataAgeRange {
+  width: 20%;
+  text-align: center;
+}
+
 .editGlanceContainer {
   height: 15em;
   width: 20em
@@ -333,7 +338,7 @@ img {
 
 .matchDataContainer {
   width: 20em;
-  height: 12em;
+  height: 14em;
 }
 
 .profileSecTitle {
