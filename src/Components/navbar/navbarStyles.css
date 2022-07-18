@@ -2,6 +2,12 @@
     --font-size: 1.5rem
 }
 
+body {
+    /* insert your dark light theme color here */
+
+    /* background-color: ; */
+}
+
 .darkTheme {
     background-color: #222 !important;
     color: whitesmoke !important;
@@ -54,13 +60,14 @@ li {
     font-size: calc(var(--font-size) + .5rem);
 }
 
-.titleDiv{
+.titleDiv {
     /* width: 100%; */
     display: grid;
     grid-template-columns: 20% 80%;
     /* justify-content: center; */
 
 }
+
 .title {
     text-align: center;
     font-family: 'Lily Script One', cursive;
@@ -81,9 +88,9 @@ li {
     opacity: 50%;
 }
 
-.userNameSpan{
+.userNameSpan {
     font-size: 1.2rem;
-    vertical-align:text-top;
+    vertical-align: text-top;
     font-family: cursive;
     margin-left: 15px;
     color: rgb(117, 90, 235);
