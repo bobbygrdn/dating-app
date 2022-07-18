@@ -139,6 +139,8 @@
   gap: 1rem;
   width: 95%;
   justify-self: center;
+  position: relative;
+  top: -10px;
 }
 
 .left {
@@ -196,6 +198,8 @@
   display: grid;
   gap: 0.5rem;
   justify-items: center;
+  position: relative;
+  top: -4px;
 }
 
 .replyMsgForm>* {
