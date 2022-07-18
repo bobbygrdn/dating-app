@@ -4,7 +4,7 @@ import ReactDom from "react-dom";
 const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
   // const [formData, setFormData] = useState({
   //   profile_pic_url: '',
-    
+
   // });
 
   const modalRef = useRef();
@@ -25,11 +25,11 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
     picFormData.append("image", newPicFile.files[0])
 
     fetch(`https://find-luv.herokuapp.com/image/${userData.user_id}`, {
-        method: "post",
-         body: picFormData
-        })
-        .then(()=> fetchProfilePic())
-        .catch((error) => {console.log(error)})
+      method: "post",
+      body: picFormData
+    })
+      .then(() => fetchProfilePic())
+      .catch((error) => { console.log(error) })
 
 
     setShowPicModal(false)
@@ -37,9 +37,9 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
 
   const fetchProfilePic = () => {
     fetch(`https://find-luv.herokuapp.com/api/profilepic/${userData.user_id}`)
-    .then(res=>res.json())
-    .then(data =>changeUserData(data) )
-    .catch(err => console.log(err))
+      .then(res => res.json())
+      .then(data => changeUserData(data))
+      .catch(err => console.log(err))
   }
 
   // const handleChange = (e) => {
@@ -55,14 +55,14 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
       <div className="editDataContainer editProfilePicContainer">
         <form onSubmit={handleSubmit} className="updateUserDataForm" >
           <div className="dataLabel">
-            Profile picture: 
+            Profile picture:
             <input
-            //   className="userDataInputBox "
-            id="newPicFile"
+              className="userDataInputBox profilePicInput "
+              id="newPicFile"
               type="file"
               name="profile_pic_url"
-              // onChange={handleChange}
-              // value={formData.profile_pic_url}
+            // onChange={handleChange}
+            // value={formData.profile_pic_url}
             />
           </div>
 
