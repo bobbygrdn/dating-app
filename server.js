@@ -101,7 +101,7 @@ app.patch("/api/connect/:id", async (req, res) => {
   }
 })
 
-app.get("/api/pending/:ids", async (req,res) => {
+app.get("/api/pending/:ids", async (req, res) => {
   try {
     const client = await pool.connect();
     const data = await client.query(`SELECT * FROM users WHERE user_id IN (${req.params.ids});`)
@@ -389,7 +389,7 @@ app.get('/api/messages/thread/:id', async (req, res) => {
 app.patch('/api/messages/thread/:id', async (req, res) => {
   try {
     let client = await pool.connect();
-    const data = await pool.query(
+    const data = await client.query(
       "INSERT INTO messages(date_time_stamp, read_receipt, sent_from_user_id, sent_to_user_id, content, thread_id) VALUES($1, $2, $3, $4, $5, $6)",
       [
         req.body.date_time_stamp,
@@ -400,7 +400,7 @@ app.patch('/api/messages/thread/:id', async (req, res) => {
         req.params.id
       ]
     );
-    res.send(req.body);
+    res.json(req.body);
     client.release();
   } catch (err) {
     console.error(err);
@@ -614,7 +614,7 @@ app.get("/api/threads/:id", async (req, res) => {
   }
 });
 
-app.post("/api/threads", async (req,res) => {
+app.post("/api/threads", async (req, res) => {
   const { recipient_user_id, sender_user_id } = req.body
   try {
     let client = await pool.connect();
