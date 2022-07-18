@@ -76,7 +76,7 @@ function SearchModal ({show}) {
                 {/* This is a dropdown menu that allows the user to select a gender. */}
                 <div className="criteria">
                 <label htmlFor="gender" className="attributeSelect">Choose a Gender: </label>
-                <select name="gender" id="gender" defaultValue={"male"} onChange={(e) => setGender(e.target.value)}>
+                <select name="gender" id="gender" defaultValue={null} onChange={(e) => setGender(e.target.value)}>
                     <option value="">Choose a Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -87,9 +87,9 @@ function SearchModal ({show}) {
                 {/* Creates two input fields that allow the user to select an age range. */}
                 <div className="criteria">
                 <label htmlFor="age" className="attributeSelect">Choose an Age Range: </label>
-                    <input type="number" name="age1" id="age" min="18" max="100" step="1" placeholder={'Age 1'} onChange={(e) => setAge1(e.target.value)}></input>
+                    <input type="number" defaultValue={null} name="age1" id="age" min="18" max="100" step="1" placeholder={'Age 1'} onChange={(e) => setAge1(e.target.value)}></input>
                 
-                    <input type="number" name="age1" id="age" min="18" max="100" step="1" placeholder={'Age 2'} onChange={(e) => setAge2(e.target.value)}></input>
+                    <input type="number" defaultValue={null} name="age1" id="age" min="18" max="100" step="1" placeholder={'Age 2'} onChange={(e) => setAge2(e.target.value)}></input>
                 </div>
 
                 {/* A dropdown menu that allows the user to select a distance. */}
