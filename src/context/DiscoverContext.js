@@ -43,10 +43,10 @@ export const DiscoverProvider = ({children}) => {
      * @param id2 - the id of the user you are liking
      * @param firstName - the first name of the user you are liking
      */
-    const likeUser = (userInfo, id2) => {
+    const likeUser = (id1, id2) => {
         
         let data = {
-            liked: JSON.stringify(userInfo)
+            liked: id1
         }
 
         let fetchData ={
@@ -59,7 +59,7 @@ export const DiscoverProvider = ({children}) => {
 
         fetch(`https://find-luv.herokuapp.com/api/liked/${id2}`, fetchData)
         .then(() => {
-            console.log(`${data}`)
+            console.log(`Liked user ${id2}`)
         })
         .catch(error => {
             console.error(error);
@@ -120,4 +120,5 @@ export const DiscoverProvider = ({children}) => {
     </DiscoverContext.Provider>
 }
 
+/* Exporting the context so that it can be used in other files. */
 export default DiscoverContext

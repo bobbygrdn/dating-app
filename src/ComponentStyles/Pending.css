@@ -23,11 +23,11 @@
 
 .connection {
   text-align: center;
-  border: 2px ridge;
-  border-color: whitesmoke;
-  border-width: 10px;
+  border: 5px solid #222;
+  border-radius: 20px;
   margin: 10px;
   cursor: pointer;
+  padding: 20px;
 }
 
 .connection:hover {
@@ -37,4 +37,46 @@
 h5,
 h6 {
   pointer-events: none;
+}
+
+.clearConnectionsButton {
+  background-color: #9995;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 1000px;
+  text-align: center;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  box-shadow: 3px 3px 3px 3px #333;
+}
+
+.singleConnectModal {
+  border: 1px solid #555;
+  box-shadow: 3px 3px 3px 3px #333;
+  border-radius: 25px;
+  background: -webkit-linear-gradient(#88c9e3, #b3bee7);
+  padding: 10px;
+}
+
+.singleConnectContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: grid;
+  align-items: center;
+  text-align: center;
+
+  background-color: rgba(255, 253, 253, 0.3);
+  padding: 40px;
+}
+
+.singleConnectModalDarkTheme {
+  background: -webkit-linear-gradient(#3d5caa, #5a3b93);
+}
+.noConnections {
+  text-align: center;
 }
