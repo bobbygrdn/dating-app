@@ -157,8 +157,8 @@ img {
 
 .editDataContainer {
   z-index: 1;
-  width: 480px;
-  height: 300px;
+  width: 28em;
+  height: 13em;
   background: #1115;
   border: 1px solid #222;
   display: grid;
@@ -258,6 +258,9 @@ img {
 .updateUserDataForm {
   display: grid;
   gap: 0.5rem;
+  justify-items: center;
+  position: relative;
+  top: 1rem;
   /* grid-template-rows: 1fr; */
 }
 
@@ -265,14 +268,15 @@ img {
   background-color: rgb(117, 90, 235);
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 5px;
+  padding: .3rem;
   border-top-left-radius: 999px;
   border-bottom-left-radius: 999px;
   border-radius: 999px;
   opacity: 0.8;
   /* font-weight: bold; */
-  width: 100%;
+  width: 80%;
   margin: 0;
+
 }
 
 .userDataInputBox {
@@ -280,7 +284,9 @@ img {
   border: none;
   opacity: 0.7;
   padding-left: 5px;
-  width: 50%;
+  width: 35%;
+  font-size: inherit;
+
   /* border: none; */
 }
 
@@ -300,7 +306,7 @@ img {
 .dataAge,
 .dataCity,
 .dataState {
-  width: 80%;
+  width: 70%;
 }
 
 .dataBodyType,
@@ -309,21 +315,26 @@ img {
 }
 
 .editGlanceContainer {
-  height: 380px;
+  height: 15em;
+  width: 20em
 }
 
 .dataFirstName,
 .dataLastName,
 .dataZipcode {
-  width: 55%;
+  width: 50%;
 }
 
 .dataUsername {
-  width: 65%;
+  width: 55%;
+}
+
+.dataEmail {
+  width: 75%;
 }
 
 .dataPassword {
-  width: 50%;
+  width: 35%;
 }
 
 .editLoginSettingsContainer {
@@ -337,4 +348,9 @@ img {
 #newPicFile:hover {
   cursor: pointer;
   /* background-color: red; */
+}
+
+.matchDataContainer {
+  width: 20em;
+  height: 12em;
 }

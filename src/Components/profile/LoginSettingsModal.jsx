@@ -18,13 +18,13 @@ const LoginSettingsModal = ({ setShowLoginSettingsModal, userData, changeUserDat
 
   const handleSubmit = (e) => {
     e.preventDefault();
-if(formData.password !== formData.verifyPassword) return alert('Passwords do not match!')
+    if (formData.password !== formData.verifyPassword) return alert('Passwords do not match!')
 
-let dataToUpdate = {
-    username: formData.username,
-    email: formData.email,
-    password: formData.password
-}
+    let dataToUpdate = {
+      username: formData.username,
+      email: formData.email,
+      password: formData.password
+    }
     changeUserData(dataToUpdate)
 
     fetch(`https://find-luv.herokuapp.com/api/userdata/login/${userData.user_id}`, {
@@ -32,7 +32,7 @@ let dataToUpdate = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dataToUpdate)
     })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
     setShowLoginSettingsModal(false)
   };
 
@@ -45,11 +45,11 @@ let dataToUpdate = {
     });
   };
 
-  const handleClick= (e) => {
+  const handleClick = (e) => {
     let passwordInputs = document.querySelectorAll('.dataPassword')
-    passwordInputs.forEach(elem =>elem.type = 'password')
+    passwordInputs.forEach(elem => elem.type = 'password')
 
-    if(e.target.type === 'password') return e.target.type = 'text'
+    if (e.target.type === 'password') return e.target.type = 'text'
   }
 
   return ReactDom.createPortal(
@@ -58,7 +58,7 @@ let dataToUpdate = {
         <form onSubmit={handleSubmit} className="updateUserDataForm">
 
           <div className="dataLabel">
-            Username: 
+            Username:
             <input
               className="userDataInputBox dataUsername"
               type="text"
@@ -66,25 +66,25 @@ let dataToUpdate = {
               onChange={handleChange}
               value={formData.username}
               onClick={handleClick}
-              
+
             />
           </div>
 
           <div className="dataLabel">
-            Email: 
+            Email:
             <input
-              className="userDataInputBox dataUsername"
+              className="userDataInputBox dataEmail"
               type="text"
               name="email"
               onChange={handleChange}
               value={formData.email}
               onClick={handleClick}
-              
+
             />
           </div>
 
           <div className="dataLabel">
-            Current password: 
+            Current password:
             <input
               className="userDataInputBox dataPassword"
               type="password"
@@ -96,7 +96,7 @@ let dataToUpdate = {
           </div>
 
           <div className="dataLabel">
-            Verify password: 
+            Verify password:
             <input
               className="userDataInputBox dataPassword"
               type="password"
@@ -104,11 +104,11 @@ let dataToUpdate = {
               onChange={handleChange}
               value={formData.verifyPassword}
               onClick={handleClick}
-              
+
             />{" "}
           </div>
 
-          <input type="submit" value="Update Login settings" id="editUserDataBtn" onClick={handleClick}/>
+          <input type="submit" value="Update Login settings" id="editUserDataBtn" onClick={handleClick} />
         </form>
 
         <button

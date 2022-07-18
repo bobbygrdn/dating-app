@@ -24,7 +24,7 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
     setShowMatchModal(false)
   };
 
@@ -38,7 +38,7 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
   };
   return ReactDom.createPortal(
     <div className="modalContainer" ref={modalRef} onClick={closeModal}>
-      <div className="editDataContainer">
+      <div className="editDataContainer matchDataContainer">
         <form onSubmit={handleSubmit} className="updateUserDataForm">
           <div className="dataLabel">
             Height:
