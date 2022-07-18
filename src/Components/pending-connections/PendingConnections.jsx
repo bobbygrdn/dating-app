@@ -1,4 +1,4 @@
-import React, { useContext, useEffect }from 'react'
+import React, { useContext, useEffect } from 'react'
 import "../../ComponentStyles/Pending.css"
 import LandingContext from '../../context/LandingContext'
 import Connection from './Connection'
@@ -13,14 +13,15 @@ function PendingConnections() {
     const { pending, setPending, singleConnectModal } = useContext(PendingContext)
 
     /* Fetching the data from the API and setting the state of pending to the data. */
-    useEffect(()=> {
-            if(userData.liked !== null) {
+    useEffect(() => {
+        console.log(userData.liked)
+        if (userData.liked !== null) {
             fetch(`https://find-luv.herokuapp.com/api/pending/${userData.liked}`)
-            .then(response => response.json())
-            .then(data => setPending(data))
+                .then(response => response.json())
+                .then(data => setPending(data))
         }
     }, [])
-    
+
 
     /**
      * It's a function that clears the connections page.
@@ -30,7 +31,7 @@ function PendingConnections() {
             liked: null
         }
 
-        let fetchData ={
+        let fetchData = {
             method: "PATCH",
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -39,12 +40,12 @@ function PendingConnections() {
         }
 
         fetch(`https://find-luv.herokuapp.com/api/connect/${userData.user_id}`, fetchData)
-        .then(() => {
-            console.log('Cleared the connections page!')
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            .then(() => {
+                console.log('Cleared the connections page!')
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
 
@@ -52,26 +53,26 @@ function PendingConnections() {
     /* Checks the Pending state and returns the Connection & SingleConnectModal Components if not null. If Pending is null, it returns the No Connections Div */
     return (
         <>
-        {pending ? 
-            <div className='pending-connections-container'>
-            <button className='clearConnectionsButton' onClick={clear}>Clear</button>
-                <div className='connections-container'>
-                    {pending.map((elem) => {
-                        return (
-                            <div>
-                            <Connection elem={elem} key={elem.user_id} />
-                            <SingleConnectModal show={singleConnectModal} />
-                        </div>
-                        )
-                    })}
-                
+            {pending ?
+                <div className='pending-connections-container'>
+                    <button className='clearConnectionsButton' onClick={clear}>Clear</button>
+                    <div className='connections-container'>
+                        {pending.map((elem) => {
+                            return (
+                                <div>
+                                    <Connection elem={elem} key={elem.user_id} />
+                                    <SingleConnectModal show={singleConnectModal} />
+                                </div>
+                            )
+                        })}
+
+                    </div>
                 </div>
-            </div>
-            :
-            <div className='pending-connections-container'>
+                :
+                <div className='pending-connections-container'>
                     <NoConnections />
-            </div>
-        }
+                </div>
+            }
         </>
     )
 }
