@@ -16,7 +16,7 @@ function PendingConnections() {
     useEffect(()=> {
         console.log(userData.liked);
             if(userData.liked !== null) {
-            fetch(`http://localhost:8000/api/pending/${userData.liked}`)
+            fetch(`https://find-luv.herokuapp.com/api/pending/${userData.liked}`)
             .then(response => response.json())
             .then(data => setPending(data))
         }
@@ -70,7 +70,8 @@ function PendingConnections() {
             </div>
             :
             <div className='pending-connections-container'>
-                    <NoConnections />
+                <button className='clearConnectionsButton' onClick={clear}>Clear</button>
+                <NoConnections />
             </div>
         }
         </>
