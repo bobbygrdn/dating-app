@@ -22,7 +22,7 @@ export const PendingProvider = ({children}) => {
             body: JSON.stringify(data)
         }
 
-        fetch(`http://localhost:8000/api/threads`, fetchData)
+        fetch(`https://find-luv.herokuapp.com/api/threads`, fetchData)
         .then(() => {
             console.log(`Created Thread between ${user} and ${clickedUser}`)
         })
@@ -37,7 +37,8 @@ export const PendingProvider = ({children}) => {
         pending,
         setPending,
         singleConnectModal,
-        setConnectModal
+        setConnectModal,
+        connectUser
     }}>
         {children}
     </PendingContext.Provider>
