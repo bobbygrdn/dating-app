@@ -21,8 +21,8 @@ const BioModal = ({ setShowBioModal, userData, changeUserData }) => {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
-          })
-          .catch(err => console.log(err))
+        })
+            .catch(err => console.log(err))
         setShowBioModal(false)
     }
 
@@ -41,7 +41,7 @@ const BioModal = ({ setShowBioModal, userData, changeUserData }) => {
             <div className='editDataContainer'>
 
                 <form onSubmit={handleSubmit} className='updateUserDataForm' >
-                    
+
                     <textarea
                         id='editDataTextArea'
                         className="textareaNewPost"
@@ -52,7 +52,7 @@ const BioModal = ({ setShowBioModal, userData, changeUserData }) => {
                         cols="40"
                     />
                     <input type='submit' value='Update Bio'
-                        id='editDataSubmitBtn' />
+                        id='editUserDataBtn' />
 
 
                 </form>

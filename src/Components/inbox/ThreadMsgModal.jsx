@@ -70,18 +70,26 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
         <div className='modalContainer' ref={modalRef} onClick={closeModal}>
             <div className='msgThreadContainer'>
                 <div className='threadModalHeader'>
-                    <img className="msgMiniPic" src={threadMsgUserInfo.pic} alt='profile-pic' />
+                    <img className="msgHeaderPic" src={threadMsgUserInfo.pic} alt='profile-pic' />
                     <p>{threadMsgUserInfo.name}</p>
                 </div>
                 <div id="msgDisplayBox" className='msgDisplayBox'>
                     {displayedMessages.map((elem, index) => {
                         return (
-                            <div key={index} className={elem.sent_from_user_id === userData.user_id ? 'right' : 'left'}>
-                                <div className='individualMsgDiv'>
-                                    <p className='msgContent'>{elem.content}</p>
-                                    <p className='msgDateTimeStamp'>{elem.date_time_stamp}</p>
+                            <>
+
+
+                                <div key={index} className={elem.sent_from_user_id === userData.user_id ? 'right' : 'left'}>
+
+                                    <div className='individualMsgDiv'>
+                                        <p className='msgContent'>{elem.content}</p>
+                                        <p className='msgDateTimeStamp'>{elem.date_time_stamp}</p>
+                                    </div>
                                 </div>
-                            </div>
+
+                                <img className={elem.sent_from_user_id === userData.user_id ? 'rightMiniPic' : 'leftMiniPic'} src={elem.sent_from_user_id === userData.user_id ? userData.profile_pic_url : threadMsgUserInfo.pic} alt='profile-pic' />
+                            </>
+
                         )
                     })}
 
