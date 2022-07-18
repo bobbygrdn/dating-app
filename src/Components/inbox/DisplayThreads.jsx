@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 // import IndividualThread from './IndividualThread.jsx'
 import ThreadMsgModal from "./ThreadMsgModal";
 
@@ -8,19 +8,16 @@ function DisplayThreads({ threads, userData, orderedProfiles }) {
     const [displayedMessages, setDisplayedMessages] = useState([])
     const [threadMsgUserInfo, setThreadMsgUserInfo] = useState({
         pic: '',
-        name: ''
+        name: '',
+        id: ''
     })
-
-    useEffect(() => {
-        console.log(threads)
-        console.log(orderedProfiles)
-    }, [])
 
     const handleClick = (e) => {
         setDisplayedMessages([])
         setThreadMsgUserInfo({
             pic: e.currentTarget.title,
-            name: e.currentTarget.align
+            name: e.currentTarget.align,
+            id: e.currentTarget.id
         })
 
         fetchAllMsgsByThreadId(e.currentTarget.id)
@@ -37,7 +34,7 @@ function DisplayThreads({ threads, userData, orderedProfiles }) {
 
     return (
         <>
-            {showThreadMsgModal ? <ThreadMsgModal userData={userData} setShowThreadMsgModal={setShowThreadMsgModal} displayedMessages={displayedMessages} threadMsgUserInfo={threadMsgUserInfo} fetchAllMsgsByThreadId={fetchAllMsgsByThreadId} /> : null}
+            {showThreadMsgModal ? <ThreadMsgModal showThreadMsgModal={showThreadMsgModal} userData={userData} setShowThreadMsgModal={setShowThreadMsgModal} displayedMessages={displayedMessages} threadMsgUserInfo={threadMsgUserInfo} fetchAllMsgsByThreadId={fetchAllMsgsByThreadId} /> : null}
 
             {threads.map((elem, index) => {
                 return (

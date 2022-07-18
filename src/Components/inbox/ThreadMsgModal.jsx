@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import ReactDom from "react-dom";
 
-function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUserInfo, userData, fetchAllMsgsByThreadId }) {
+function ThreadMsgModal({ showThreadMsgModal, setShowThreadMsgModal, displayedMessages, threadMsgUserInfo, userData, fetchAllMsgsByThreadId }) {
 
     const [replyMsg, setReplyMsg] = useState({
         content: ''
@@ -11,6 +11,20 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
         var elem = document.getElementById('msgDisplayBox');
         elem.scrollTop = elem.scrollHeight;
     }, [threadMsgUserInfo, setShowThreadMsgModal, displayedMessages])
+
+    useEffect(() => {
+
+        getMsgs()
+        const interval = setInterval(() => {
+            getMsgs()
+        }, 10000)
+
+        return () => clearInterval(interval)
+    }, [])
+
+    const getMsgs = () => {
+        fetchAllMsgsByThreadId(threadMsgUserInfo.id)
+    }
 
     const modalRef = useRef();
     const closeModal = (e) => {
@@ -110,7 +124,7 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
                         id='editDataSubmitBtn' />
 
                 </form>
-                <button className='modalCloseBtn' onClick={() => setShowThreadMsgModal(false)}> X </button>
+                <button className='modalCloseBtn' onClick={() => { setShowThreadMsgModal(false) }}> X </button>
             </div>
         </div>,
         document.getElementById('portal')
