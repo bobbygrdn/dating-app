@@ -44,13 +44,13 @@ function Navbar({ userData }) {
 
         switch (userData.font_size) {
             case 'Small':
-                body.style.fontSize = '1rem'
+                body.style.fontSize = '22px'
                 break;
             case 'Medium':
-                body.style.fontSize = '1.3rem'
+                body.style.fontSize = '25px'
                 break;
             case 'Large':
-                body.style.fontSize = '1.5rem'
+                body.style.fontSize = '28px'
                 break;
             default:
                 console.warn('Failed to load Font size')
