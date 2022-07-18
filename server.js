@@ -386,7 +386,7 @@ app.patch('/api/userdata/connection-match/:id', async (req, res) => {
 
   try {
     const client = await pool.connect();
-    await client.query('UPDATE users SET height = $1, body_type = $2, gender = $3, sexual_orientation = $4, gender_preference = $5, age1 = $6, age2 = $7, WHERE user_id = $8', [req.body.height, req.body.body_type, req.body.gender, req.body.sexual_orientation, req.body.gender_preference, req.body.age1, req.body.age2, req.params.id])
+    await client.query('UPDATE users SET height = $1, body_type = $2, gender = $3, sexual_orientation = $4, gender_preference = $5, age1 = $6, age2 = $7 WHERE user_id = $8', [req.body.height, req.body.body_type, req.body.gender, req.body.sexual_orientation, req.body.gender_preference, req.body.age1, req.body.age2, req.params.id])
     res.json(req.body)
     client.release()
 
