@@ -77,3 +77,6 @@ h6 {
 .singleConnectModalDarkTheme {
   background: -webkit-linear-gradient(#3d5caa, #5a3b93);
 }
+.noConnections {
+  text-align: center;
+}
