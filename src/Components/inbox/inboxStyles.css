@@ -152,6 +152,7 @@
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
   width: 60%;
+  animation: animateMsgLeft .5s;
 
 }
 
@@ -164,6 +165,8 @@
   border-top-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
   width: 60%;
+  animation: animateMsgRight .5s;
+
 }
 
 .individualMsgDiv {
@@ -214,4 +217,18 @@
   to {
     transform: scale(1);
   }
+}
+
+@keyframes animateMsgRight {
+  from {
+    transform: translateX(100px);
+  }
+
+}
+
+@keyframes animateMsgLeft {
+  from {
+    transform: translateX(-100px);
+  }
+
 }
