@@ -10,10 +10,13 @@ export const DiscoverProvider = ({children}) => {
     const [singleUser, setSingleUser] = useState(null)
     const [singleModal, setSingleModal] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
-    const [distance, setDistance] = useState('25')
-    const [age1, setAge1] = useState('18')
-    const [age2, setAge2] = useState('100')
-    const [gender, setGender] = useState('male')
+    const [searchUserModal, setSearchUserModal] = useState(false)
+    const [distance, setDistance] = useState(null)
+    const [age1, setAge1] = useState(null)
+    const [age2, setAge2] = useState(null)
+    const [gender, setGender] = useState(null)
+    const [name, setName] = useState(null)
+    const [userName, setUserName] = useState(null)
     const [index1, setIndex1] = useState(0)
     const [index2, setIndex2] = useState(23)
     const [pages, setPages] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
@@ -114,7 +117,13 @@ export const DiscoverProvider = ({children}) => {
         updateIndexes,
         clickedUser,
         setClickedUser,
-        likeUser
+        likeUser,
+        name,
+        setName,
+        searchUserModal,
+        setSearchUserModal,
+        userName,
+        setUserName
     }}>
         {children}
     </DiscoverContext.Provider>

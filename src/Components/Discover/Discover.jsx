@@ -6,21 +6,28 @@ import DiscoverContext from '../../context/DiscoverContext';
 import SingleUserModal from './SingleUserModal';
 import SearchModal from './SearchModal';
 import LandingContext from '../../context/LandingContext'
+import SearchUserModal from './SearchUserModal';
 
 function Discover() {
 
     /* Destructuring the context object. */
-    const { addUsers, singleModal, addSingleUser, searchModal } = useContext(DiscoverContext)
+    const { addUsers, singleModal, addSingleUser, searchModal, searchUserModal } = useContext(DiscoverContext)
 
     /* Destructuring the context object. */
     const { userData } = useContext(LandingContext)
-
     
     /* Fetching the data from the API and adding it to the state. */
     useEffect(() => {
+        if(userData.gender_preference !== 'not specified' && userData.age1 !== 'not specified' && userData.age2 !== 'not specified') {
+            fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}/${userData.age1}/${userData.age2}/${userData.gender_preference}`)
+            .then(response => response.json())
+            .then(data => addUsers(data))
+        } else {
             fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}`)
             .then(response => response.json())
             .then(data => addUsers(data))
+        }
+            
     }, []);
 
     /* Fetching the data from the API and adding it to the state. */
@@ -38,6 +45,7 @@ function Discover() {
             <Users />
             <SingleUserModal show={singleModal} />
             <SearchModal show={searchModal} />
+            {/* <SearchUserModal show={searchUserModal} /> */}
         </div>
     )
 
