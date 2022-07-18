@@ -44,7 +44,7 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
         })
 
         fetch(`https://find-luv.herokuapp.com/api/messages/thread/${threadId}`, {
-            method: "PATCH",
+            method: "post",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(replyMsg)
         })
