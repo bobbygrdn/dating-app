@@ -15,7 +15,7 @@ function PendingConnections() {
     /* Fetching the data from the API and setting the state of pending to the data. */
     useEffect(()=> {
         
-        fetch(`http://localhost:8000/api/pending/${userData.liked}`)
+        fetch(`https://find-luv.herokuapp.com/api/pending/${userData.liked}`)
         .then(response => response.json())
         .then(data => setPending(data))
     }, [])
@@ -50,7 +50,7 @@ function PendingConnections() {
     /* Checks the Pending state and returns the Connection & SingleConnectModal Components if not null. If Pending is null, it returns the No Connections Div */
     return (
         <>
-        {pending ? 
+        {!pending ? 
             <div className='pending-connections-container'>
                     <NoConnections />
             </div>
