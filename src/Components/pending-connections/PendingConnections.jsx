@@ -1,6 +1,5 @@
 import React, { useContext }from 'react'
 import "../../ComponentStyles/Pending.css"
-import DiscoverContext from '../../context/DiscoverContext'
 import LandingContext from '../../context/LandingContext'
 import Connection from './Connection'
 
