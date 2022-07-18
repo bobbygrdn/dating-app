@@ -29,7 +29,7 @@ function SearchModal ({show}) {
      * data to the page.
      */
     const updateUsers = () => {
-       fetch(`http://localhost:8000/api/current/${userData.user_id}/${age1}/${age2}/${gender}`)
+       fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}/${age1}/${age2}/${gender}`)
        .then(response => response.json())
        .then(data => addUsers(data))
 
