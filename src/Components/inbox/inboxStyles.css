@@ -248,6 +248,29 @@
   width: 95%;
 }
 
+#editDataSubmitBtn {
+  /* font-size: 0.8rem; */
+  height: 25px;
+  padding: 0 10px 0 10px;
+  opacity: 0.6;
+  transition: font-size 0.2s;
+  transition: opacity 0.2s;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px #333;
+  background-color: rgba(90, 184, 235, 1);
+  font-size: 1.2rem;
+}
+
+#editDataSubmitBtn:hover {
+  /* font-size: .9rem; */
+  opacity: 1;
+  cursor: pointer;
+}
+
 @keyframes animate {
   from {
     transform: scale(0.5);
