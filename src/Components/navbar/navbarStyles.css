@@ -92,7 +92,7 @@ li {
   vertical-align: text-top;
   font-family: cursive;
   margin-left: 15px;
-  color: rgb(117, 90, 235);
-  text-shadow: 1px 1px 5px #555;
+  color: white;
+  text-shadow: 1px 1px 5px #041c25;
   /* font-weight: bold; */
 }
