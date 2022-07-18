@@ -5,6 +5,11 @@ import './navbarStyles.css'
 import logo from "./logo.png"
 // import { useNavigate } from 'react-router-dom'
 import { BiUser } from 'react-icons/bi'
+import { GrUserSettings, GrLogout } from 'react-icons/gr'
+import { TbHeartHandshake, TbMessages } from 'react-icons/tb'
+import { ImProfile } from 'react-icons/im' // discover?
+import { RiUserHeartLine, RiHomeHeartLine } from 'react-icons/ri' // discover?
+
 
 function Navbar({ userData }) {
 
@@ -100,7 +105,7 @@ function Navbar({ userData }) {
                     <li className='navSpacer'>|</li>
 
                     <li>
-                        <Link to='/profile' className='nav-link' onClick={handleClick}>My Profile</Link>
+                        <Link to='/profile' className='nav-link' onClick={handleClick}>My Profile </Link>
                     </li>
 
                     <li className='navSpacer'>|</li>
