@@ -5,7 +5,7 @@ import Inbox from "./Components/inbox/Inbox.jsx";
 import PendingConnections from "./Components/pending-connections/PendingConnections.jsx";
 import MyProfile from "./Components/profile/MyProfile.jsx";
 import Landing from "./Components/Landing/Landing.jsx";
-import Discover from "./Components/home/Discover.jsx";
+import Discover from "./Components/Discover/Discover.jsx";
 import CreateUserForm from "./Components/Landing/CreateUserForm";
 import Login from "./Components/Landing/Login";
 import LandingContext from "./context/LandingContext";
