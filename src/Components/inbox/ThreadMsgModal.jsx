@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
 import ReactDom from "react-dom";
-import LoadingChat from './LoadingChat';
 
 function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUserInfo, userData, fetchAllMsgsByThreadId }) {
 
@@ -69,7 +68,6 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
     return ReactDom.createPortal(
 
         <div className='modalContainer' ref={modalRef} onClick={closeModal}>
-            {displayedMessages ? <LoadingChat /> : null}
             <div className='msgThreadContainer'>
                 <div className='threadModalHeader'>
                     <img className="msgMiniPic" src={threadMsgUserInfo.pic} alt='profile-pic' />
