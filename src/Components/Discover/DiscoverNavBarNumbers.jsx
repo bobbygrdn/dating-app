@@ -2,8 +2,12 @@ import React, { useContext } from "react";
 import DiscoverContext from '../../context/DiscoverContext'
 
 function DiscoverNavBarNumbers (props) {
+    /* Destructuring the `updateIndexes` function from the `DiscoverContext` context. */
     const {updateIndexes} = useContext(DiscoverContext)
 
+    /**
+     * When the user clicks on a button, update the state of the app and scroll to the top of the page.
+     */
     const handleClick = (e) => {
         updateIndexes(e.target.id)
         window.scrollTo(0, 0)

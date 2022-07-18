@@ -1,65 +1,66 @@
-import { useContext, useEffect} from "react"
-import DiscoverContext from "../../context/DiscoverContext"
-import '../../ComponentStyles/Discover.css'
-import LandingContext from "../../context/LandingContext"
+import React, { useContext, useEffect } from "react";
+import LandingContext from "../../context/LandingContext";
+import DiscoverContext from "../../context/DiscoverContext";
+import PendingContext from "../../context/PendingContext";
 
-function SingleUserModal({ show }) {
-    /* Destructuring the context object. */
-    const { singleUser, setSingleModal, likeUser, setClickedUser, clickedUser } = useContext(DiscoverContext)
+function SingleConnectModal ({ show }) {
 
+    /* Destructuring the useContext hook. It is pulling the singleUser, setClickedUser, clickedUser,
+    userData, setConnectModal, and connectUser from the DiscoverContext, LandingContext, and
+    PendingContext. */
+    const { singleUser, setClickedUser, clickedUser } = useContext(DiscoverContext)
     const { userData } = useContext(LandingContext)
-    
+    const { setConnectModal, connectUser } = useContext(PendingContext)
+
     /**
      * When the user clicks the close button, the modal will close and the clicked user will be set to
      * null.
      */
     const closeModal = () => {
-        setSingleModal(false)
+        setConnectModal(false)
         setClickedUser(null)
     }
 
+    /**
+     * When the user clicks the button, the user_id of the user who clicked the button is passed to the
+     * connectUser function along with the user_id of the user who's profile the user clicked the
+     * button on.
+     */
     const runLikeUser = () => {
-        likeUser({
-            user_id: userData.user_id,
-            profile_pic_url: userData.profile_pic_url,
-            first_name: userData.first_name,
-            age: userData.age,
-            zipcode: userData.zipcode
-        }, clickedUser)
+        connectUser(userData.user_id,clickedUser)
     }
 
-    
     /* Checking to see if the show prop is true or false. If it is true, then it will add the class
     singleUserModalDarkTheme to the singleUserModal element. If it is false, then it will remove the
     class singleUserModalDarkTheme from the singleUserModal element. */
     useEffect(() => {
-      checkForDarkTheme()
-    },[show])
-
-    /**
-     * If darkTheme is true, add the class singleUserModalDarkTheme to the singleUserModal element.
-     * If darkTheme is false, remove the class singleUserModalDarkTheme from the singleUserModal
-     * element.
-     * @returns the classList.add or classList.remove method.
-     */
-    const checkForDarkTheme = () => {
-        let singleUserModal = document.querySelector('.singleUserModal')
-      if(userData.dark_theme && singleUserModal) {
-    return singleUserModal.classList.add('singleUserModalDarkTheme')
+        checkForDarkTheme()
+      },[show])
+  
+      /**
+       * If darkTheme is true, add the class singleUserModalDarkTheme to the singleUserModal element.
+       * If darkTheme is false, remove the class singleUserModalDarkTheme from the singleUserModal
+       * element.
+       * @returns the classList.add or classList.remove method.
+       */
+      const checkForDarkTheme = () => {
+          let singleConnectModal = document.querySelector('.singleConnectModal')
+        if(userData.dark_theme && singleConnectModal) {
+      return singleConnectModal.classList.add('singleConnectModalDarkTheme')
+        }
+        if(!userData.dark_theme && singleConnectModal){
+         return singleConnectModal.classList.remove('singleUserModalDarkTheme')
+        }
       }
-      if(!userData.dark_theme && singleUserModal){
-       return singleUserModal.classList.remove('singleUserModalDarkTheme')
-      }
-    }
 
-    return (
+      return (
         <>
 
             {/* A ternary operator. It is saying if show is true, then render the modal. If show is
             false, then render null. */}
             {show ?
-                <div className="singleUserContainer">
-                    <div className="singleUserModal">
+                <div className="singleConnectContainer">
+                    <div className="singleConnectModal">
                         {/* Rendering a button that when clicked, will close the modal. */}
                         <button className="closeButton" onClick={closeModal}>Close</button>
 
@@ -80,8 +81,7 @@ function SingleUserModal({ show }) {
                             </div>
                         </div>
 
-                        {/* Rendering two buttons. One button is a "No" button and the other is a "Yes"
-                    button. When the user clicks the "No" button, the modal will close and the profile will not be added to their potential matches. When the user clicks the "Yes" button, the modal will close and the profile will be added to their potential matches. */}
+                        
                         <div className="footer">
                             <button className="dislikeButton" onClick={closeModal}>No</button> <button className="likeButton" onClick={runLikeUser}>Yes</button>
                         </div>
@@ -93,4 +93,4 @@ function SingleUserModal({ show }) {
     )
 }
 
-export default SingleUserModal
+export default SingleConnectModal

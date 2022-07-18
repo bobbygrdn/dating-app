@@ -89,12 +89,23 @@ app.patch("/api/liked/:id", async(req,res) => {
 })
 
 // clear the liked on a user
-app.patch("/api/connect/:id", async(req,res) => {
+app.patch("/api/connect/:ids", async(req,res) => {
   let userInfo = req.body.liked
   try {
     const client = await pool.connect();
     const data = await client.query(`UPDATE users SET liked ='${userInfo}' WHERE user_id = '${req.params.id}';`)
     res.json(data.rows[0]);
+    client.release();
+  } catch (error) {
+    console.error(error)
+  }
+})
+
+app.get("/api/pending/:ids", async (req,res) => {
+  try {
+    const client = await pool.connect();
+    const data = await client.query(`SELECT * FROM users WHERE user_id IN (${req.params.ids});`)
+    res.json(data.rows);
     client.release();
   } catch (error) {
     console.error(error)
@@ -580,6 +591,18 @@ app.get("/api/threads/:id", async (req, res) => {
     console.error(err);
   }
 });
+
+app.post("/api/threads", async (req,res) => {
+  const { recipient_user_id, sender_user_id } = req.body
+  try {
+    let client = await pool.connect();
+    let data = await client.query(`INSERT INTO threads(recipient_user_id, sender_user_id) VALUES ('${recipient_user_id}','${sender_user_id}')`)
+    res.send(req.body);
+    client.release();
+  } catch (error) {
+    console.error(error)
+  }
+})
 
 //Get threads by user- recipient id or sender id
 app.get("/api/threads/user/:id", async (req, res) => {
