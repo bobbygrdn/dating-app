@@ -37,7 +37,7 @@ function MyProfile() {
                 setShowPicModal(true)
                 break;
             case 'updateLoginInfo':
-            setShowLoginSettingsModal(true)
+                setShowLoginSettingsModal(true)
                 break;
 
             default:
@@ -48,10 +48,10 @@ function MyProfile() {
     return (
         <div className='profile-page-main-container'>
 
-            {showBioModal ? <BioModal setShowBioModal={setShowBioModal} userData={userData} changeUserData={changeUserData}/> : null}
-            {showGlanceModal ? <GlanceModal setShowGlanceModal={setShowGlanceModal} userData={userData} changeUserData={changeUserData}/> : null}
-            {showMatchModal ? <MatchModal setShowMatchModal={setShowMatchModal} userData={userData} changeUserData={changeUserData}/> : null}
-            {showLoginSettingsModal ? <LoginSettingsModal setShowLoginSettingsModal={setShowLoginSettingsModal} userData={userData} changeUserData={changeUserData}/> : null}
+            {showBioModal ? <BioModal setShowBioModal={setShowBioModal} userData={userData} changeUserData={changeUserData} /> : null}
+            {showGlanceModal ? <GlanceModal setShowGlanceModal={setShowGlanceModal} userData={userData} changeUserData={changeUserData} /> : null}
+            {showMatchModal ? <MatchModal setShowMatchModal={setShowMatchModal} userData={userData} changeUserData={changeUserData} /> : null}
+            {showLoginSettingsModal ? <LoginSettingsModal setShowLoginSettingsModal={setShowLoginSettingsModal} userData={userData} changeUserData={changeUserData} /> : null}
             {showPicModal ? <NewPicModal setShowPicModal={setShowPicModal} userData={userData} changeUserData={changeUserData} /> : null}
 
 
@@ -64,7 +64,7 @@ function MyProfile() {
             <div className='snapshot-container'>
                 <h3>At a glance <FaRegEdit id='glanceData' className='editDataBtn' onClick={handleClick} /></h3>
                 <ul className='snapshotUL'>
-                    
+
                     <li>{`First name: ${userData.first_name}`}</li>
                     <li>{`Last name: ${userData.last_name}`}</li>
                     <li>{`Age: ${userData.age == 0 ? 'not specified' : userData.age}`}</li>
@@ -88,10 +88,10 @@ function MyProfile() {
             </div>
 
             <div className='user-settings-container'>
-                <DarkThemeToggleBtn userData={userData} changeUserData={changeUserData}/>
+                <DarkThemeToggleBtn userData={userData} changeUserData={changeUserData} />
                 <FontSizeSelection userData={userData} changeUserData={changeUserData} />
                 <FontStyleSelection userData={userData} changeUserData={changeUserData} />
-                <button id="updateLoginInfo" className='updateLoginBtn' onClick={handleClick}>Update Login Info</button>
+                <button id="updateLoginInfo" className='updateLoginBtn' onClick={handleClick}>Update Login</button>
             </div>
         </div>
     )
