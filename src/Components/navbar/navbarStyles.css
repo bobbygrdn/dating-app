@@ -1,99 +1,98 @@
 :root {
-    --font-size: 1.5rem
+  --font-size: 1.5rem;
 }
 
 body {
-    /* insert your dark light theme color here */
-
-    background-color: white;
+  /* insert your dark light theme color here */
+  margin-bottom: 278px;
+  background: -webkit-linear-gradient(#b3bee7, #84ceeb);
 }
 
 .darkTheme {
-    background-color: #222 !important;
-    color: whitesmoke !important;
+  background: -webkit-linear-gradient(#3d5caa, #5a3b93) !important;
+  color: whitesmoke !important;
 }
 
 .navDarkTheme {
-    color: whitesmoke !important
+  color: whitesmoke !important;
 }
 
 .navbar-container {
-    box-sizing: border-box;
-    font-size: var(--font-size);
-    width: fit-content;
-    margin: 0 auto;
-    padding: 1rem;
-    border-radius: 25px;
-    color: #333;
+  box-sizing: border-box;
+  font-size: var(--font-size);
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 25px;
+  color: #333;
 }
 
 .navbar-UL {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
-    font-size: inherit;
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  font-size: inherit;
 }
 
 li {
-    font-size: inherit;
+  font-size: inherit;
 }
 
 .nav-link {
-    text-decoration: none;
-    color: inherit;
-    font-size: inherit;
-    transition: all .3s ease-in-out;
-    opacity: .3;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.3;
 }
 
 .nav-link:hover {
-    opacity: 1;
-    color: inherit;
-    /* font-size: 1.8rem; */
-    font-size: calc(var(--font-size) + .5rem);
+  opacity: 1;
+  color: inherit;
+  /* font-size: 1.8rem; */
+  font-size: calc(var(--font-size) + 0.5rem);
 }
 
 .active-tab {
-    color: inherit;
-    opacity: 1;
-    font-weight: bold;
-    font-size: calc(var(--font-size) + .5rem);
+  color: inherit;
+  opacity: 1;
+  font-weight: bold;
+  font-size: calc(var(--font-size) + 0.5rem);
 }
 
 .titleDiv {
-    /* width: 100%; */
-    display: grid;
-    grid-template-columns: 20% 80%;
-    /* justify-content: center; */
-
+  /* width: 100%; */
+  display: grid;
+  grid-template-columns: 20% 80%;
+  /* justify-content: center; */
 }
 
 .title {
-    text-align: center;
-    font-family: 'Lily Script One', cursive;
-    font-size: 6rem;
-    margin-bottom: 20px;
+  text-align: center;
+  font-family: "Lily Script One", cursive;
+  font-size: 6rem;
+  margin-bottom: 20px;
 }
 
 .logo {
-    position: absolute;
-    left: 30px;
-    top: 10px;
-    border: none;
-    width: 180px;
-    height: 180px;
+  position: absolute;
+  left: 30px;
+  top: 10px;
+  border: none;
+  width: 180px;
+  height: 180px;
 }
 
 .navSpacer {
-    opacity: 50%;
+  opacity: 50%;
 }
 
 .userNameSpan {
-    font-size: 1.2rem;
-    vertical-align: text-top;
-    font-family: cursive;
-    margin-left: 15px;
-    color: rgb(117, 90, 235);
-    text-shadow: 1px 1px 5px #555;
-    /* font-weight: bold; */
+  font-size: 1.2rem;
+  vertical-align: text-top;
+  font-family: cursive;
+  margin-left: 15px;
+  color: rgb(117, 90, 235);
+  text-shadow: 1px 1px 5px #555;
+  /* font-weight: bold; */
 }
