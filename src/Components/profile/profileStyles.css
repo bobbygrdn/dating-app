@@ -354,3 +354,14 @@ img {
   width: 20em;
   height: 12em;
 }
+
+
+@keyframes animate {
+  from {
+    transform: scale(0.5);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}

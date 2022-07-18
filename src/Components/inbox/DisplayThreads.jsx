@@ -6,6 +6,10 @@ function DisplayThreads({ threads, userData, orderedProfiles }) {
 
     const [showThreadMsgModal, setShowThreadMsgModal] = useState(false)
     const [displayedMessages, setDisplayedMessages] = useState([])
+    const [threadMsgUserInfo, setThreadMsgUserInfo] = useState({
+        pic: '',
+        name: ''
+    })
 
     useEffect(() => {
         console.log(threads)
@@ -13,8 +17,11 @@ function DisplayThreads({ threads, userData, orderedProfiles }) {
     }, [])
 
     const handleClick = (e) => {
-        console.log(e.currentTarget.id)
         setDisplayedMessages([])
+        setThreadMsgUserInfo({
+            pic: e.currentTarget.title,
+            name: e.currentTarget.align
+        })
 
         fetchAllMsgsByThreadId(e.currentTarget.id)
 
@@ -30,11 +37,11 @@ function DisplayThreads({ threads, userData, orderedProfiles }) {
 
     return (
         <>
-            {showThreadMsgModal ? <ThreadMsgModal setShowThreadMsgModal={setShowThreadMsgModal} displayedMessages={displayedMessages} /> : null}
+            {showThreadMsgModal ? <ThreadMsgModal userData={userData} setShowThreadMsgModal={setShowThreadMsgModal} displayedMessages={displayedMessages} setDisplayedMessages={setDisplayedMessages} threadMsgUserInfo={threadMsgUserInfo} /> : null}
 
             {threads.map((elem, index) => {
                 return (
-                    <div className='threadCard' key={index} id={elem.thread_id} onClick={handleClick} >
+                    <div className='threadCard' key={index} id={elem.thread_id} align={`${orderedProfiles[index].first_name} ${orderedProfiles[index].last_name}`} title={orderedProfiles[index].profile_pic_url} onClick={handleClick} >
                         <img src={orderedProfiles[index].profile_pic_url} alt='thread-pic' />
                         <div className='thread-user-info'>
                             <h3>{orderedProfiles[index].first_name} {orderedProfiles[index].last_name}, {orderedProfiles[index].age}</h3>

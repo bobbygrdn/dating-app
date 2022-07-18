@@ -1,7 +1,7 @@
- DROP DATABASE IF EXISTS findluv;
- CREATE DATABASE findluv;
+--  DROP DATABASE IF EXISTS findluv;
+--  CREATE DATABASE findluv;
 
- \c findluv;
+--  \c findluv;
 
 DROP TABLE IF EXISTS landing_page, users, pending_connections, messages, threads;
 
@@ -55,8 +55,7 @@ CREATE TABLE threads(
 CREATE TABLE messages(
     message_id SERIAL PRIMARY KEY,
     content TEXT,
-    date_stamp TEXT,
-    time_stamp TEXT,
+    date_time_stamp TEXT,
     read_receipt BOOLEAN,
     thread_id INTEGER,
     foreign key(thread_id) references threads(thread_id),

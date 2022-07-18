@@ -76,7 +76,7 @@ app.get("/api/users/:id", async (req, res) => {
 });
 
 // update the liked on a user
-app.patch("/api/liked/:id", async(req,res) => {
+app.patch("/api/liked/:id", async (req, res) => {
   let userInfo = req.body.liked
   try {
     const client = await pool.connect();
@@ -89,7 +89,7 @@ app.patch("/api/liked/:id", async(req,res) => {
 })
 
 // clear the liked on a user
-app.patch("/api/connect/:ids", async(req,res) => {
+app.patch("/api/connect/:id", async (req, res) => {
   let userInfo = req.body.liked
   try {
     const client = await pool.connect();
@@ -383,6 +383,28 @@ app.get('/api/messages/thread/:id', async (req, res) => {
     res.send(error)
   }
 
+})
+
+//inserts new msg into msg table with correct thread id FK
+app.patch('/api/messages/thread/:id', async (req, res) => {
+  try {
+    let client = await pool.connect();
+    const data = await pool.query(
+      "INSERT INTO messages(date_time_stamp, read_receipt, sent_from_user_id, sent_to_user_id, content, thread_id) VALUES($1, $2, $3, $4, $5, $6)",
+      [
+        req.body.date_time_stamp,
+        req.body.read_receipt,
+        req.body.sent_from_user_id,
+        req.body.sent_to_user_id,
+        req.body.content,
+        req.params.id
+      ]
+    );
+    res.send(req.body);
+    client.release();
+  } catch (err) {
+    console.error(err);
+  }
 })
 
 //!-----------------------------
