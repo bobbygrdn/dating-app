@@ -4,11 +4,17 @@ import ReactDom from "react-dom";
 function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUserInfo, userData }) {
 
     const [replyMsg, setReplyMsg] = useState({
-        msgText: ''
+        content: '',
+        date_stamp: '',
+        time_stamp: '',
+        read_receipt: false,
+        sent_from_user_id: userData.user_id,
+        sent_to_user_id: ''
     })
 
     useEffect(() => {
         console.log(displayedMessages)
+        console.log(displayedMessages[0])
 
         var elem = document.getElementById('msgDisplayBox');
         elem.scrollTop = elem.scrollHeight;
@@ -22,12 +28,17 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
     }
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log(displayedMessages[0])
+        let threadId = displayedMessages[0].thread_id
+        let sendingToUserId;
+        //! write ternary to find who user is sending the msg to. check displayedMessages[0] === userData.user_id
         // fetch(`https://find-luv.herokuapp.com/api/userdata/bio/${userData.user_id}`, {
         //     method: "PATCH",
         //     headers: { 'Content-Type': 'application/json' },
         //     body: JSON.stringify(formData)
         //   })
         //   .catch(err => console.log(err))
+
     }
 
     const handleChange = (e) => {
@@ -38,6 +49,8 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
             }
         })
     }
+
+
     return ReactDom.createPortal(
 
         <div className='modalContainer' ref={modalRef} onClick={closeModal}>
@@ -49,7 +62,6 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
                 </div>
                 <div id="msgDisplayBox" className='msgDisplayBox'>
                     {displayedMessages.map((elem, index) => {
-                        console.log(elem)
                         return (
                             <div className={elem.sent_from_user_id === userData.user_id ? 'right' : 'left'}>
                                 <div className='individualMsgDiv'>
@@ -73,9 +85,8 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
                         rows="3"
                         cols="40"
                     />
-                    <input type='submit' value='Reply'
+                    <input type='submit' value={`Reply to ${threadMsgUserInfo.name}`}
                         id='editDataSubmitBtn' />
-
 
                 </form>
                 <button className='modalCloseBtn' onClick={() => setShowThreadMsgModal(false)}> X </button>
