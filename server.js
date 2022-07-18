@@ -89,12 +89,23 @@ app.patch("/api/liked/:id", async(req,res) => {
 })
 
 // clear the liked on a user
-app.patch("/api/connect/:id", async(req,res) => {
+app.patch("/api/connect/:ids", async(req,res) => {
   let userInfo = req.body.liked
   try {
     const client = await pool.connect();
     const data = await client.query(`UPDATE users SET liked ='${userInfo}' WHERE user_id = '${req.params.id}';`)
     res.json(data.rows[0]);
+    client.release();
+  } catch (error) {
+    console.error(error)
+  }
+})
+
+app.get("/api/pending/:ids", async (req,res) => {
+  try {
+    const client = await pool.connect();
+    const data = await client.query(`SELECT * FROM users WHERE user_id IN (${req.params.ids});`)
+    res.json(data.rows);
     client.release();
   } catch (error) {
     console.error(error)
