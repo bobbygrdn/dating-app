@@ -29,6 +29,8 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(displayedMessages[0])
+        console.log(replyMsg.content)
+
         let threadId = displayedMessages[0].thread_id
         let sendingToUserId;
         //! write ternary to find who user is sending the msg to. check displayedMessages[0] === userData.user_id
@@ -80,8 +82,8 @@ function ThreadMsgModal({ setShowThreadMsgModal, displayedMessages, threadMsgUse
                     <textarea
                         id='replyMsgTextArea'
                         className="textareaNewPost"
-                        name="msgText"
-                        value={replyMsg.msgText}
+                        name="content"
+                        value={replyMsg.content}
                         onChange={handleChange}
                         rows="3"
                         cols="40"
