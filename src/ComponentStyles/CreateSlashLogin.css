@@ -13,13 +13,13 @@
 
   text-align: center;
 
-  padding: 16.4rem;
+  padding: 7.7rem;
 }
 
 .heartLogo2 {
   position: absolute;
-  right: 220px;
-  margin-top: 85px;
+  left: 30px;
+  margin-top: 15px;
   border: none;
   padding: 0.5rem;
 }
@@ -125,13 +125,13 @@
   line-height: 1.5;
   place-content: center;
   text-align: center;
-  padding: 7.9rem;
+  padding: 5.9rem;
 }
 
 .heartLogo {
   position: absolute;
-  right: 200px;
-  margin-top: -55px;
+  left: 30px;
+  margin-top: -65px;
   border: none;
 }
 
