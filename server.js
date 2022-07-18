@@ -386,7 +386,7 @@ app.get('/api/messages/thread/:id', async (req, res) => {
 })
 
 //inserts new msg into msg table with correct thread id FK
-app.patch('/api/messages/thread/:id', async (req, res) => {
+app.post('/api/messages/thread/:id', async (req, res) => {
   try {
     let client = await pool.connect();
     await client.query("INSERT INTO messages(date_time_stamp, read_receipt, sent_from_user_id, sent_to_user_id, content, thread_id) VALUES($1, $2, $3, $4, $5, $6)", [
