@@ -1,93 +1,91 @@
 .inbox-main-container {
-    margin: 0 3rem 0 3rem;
-    font-size: inherit;
-    padding: 1rem;
-    display: grid;
-
-    gap: 1rem;
-    justify-items: center;
-    align-items: center;
-    border: 1px solid #555;
-    box-shadow: 3px 3px 3px 3px #333;
-    border-radius: 25px;
+  margin: 0 3rem 0 3rem;
+  font-size: inherit;
+  padding: 1rem;
+  display: grid;
+  background: -webkit-linear-gradient(#84ceeb, #b3bee7);
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  border: 1px solid #555;
+  box-shadow: 3px 3px 3px 3px #333;
+  border-radius: 25px;
 }
 
 .threadCard {
-    /* border-bottom: 1px solid #3335;
+  /* border-bottom: 1px solid #3335;
     border-right: 1px solid #3335; */
-    border-radius: 25px;
-    width: 80%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "'thread-pic' thread-user-info"
-    ;
-    padding: .5rem;
-    box-shadow: 3px 3px 3px 3px #3335;
+  border-radius: 25px;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "'thread-pic' thread-user-info";
+  padding: 0.5rem;
+  box-shadow: 3px 3px 3px 3px #3335;
 }
 
 .threadCard:hover {
-    cursor: pointer;
-    transform: translateY(-5px);
+  cursor: pointer;
+  transform: translateY(-5px);
 }
 
 .threadCard img {
-    grid-area: 'thread-pic';
-    height: 128px;
-    width: 128px;
-    justify-self: center;
+  grid-area: "thread-pic";
+  height: 128px;
+  width: 128px;
+  justify-self: center;
 }
 
 .thread-user-info {
-    grid-area: 'thread-user-info';
-    align-self: center;
+  grid-area: "thread-user-info";
+  align-self: center;
 }
 
 .modalContainer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .editDataContainer {
-    z-index: 1;
-    width: 480px;
-    height: 300px;
-    background: #1115;
-    border: 1px solid #222;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    position: relative;
-    animation: animate 0.3s;
-    box-shadow: 10px 10px 10px #555;
+  z-index: 1;
+  width: 480px;
+  height: 300px;
+  background: #1115;
+  border: 1px solid #222;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+  animation: animate 0.3s;
+  box-shadow: 10px 10px 10px #555;
 }
 
 .modalCloseBtn {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    padding: 0 10px 0 10px;
-    background: darkred;
-    color: white;
-    font-weight: bold;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    opacity: .5;
-    transition: opacity .2s;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 0 10px 0 10px;
+  background: darkred;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  opacity: 0.5;
+  transition: opacity 0.2s;
 }
 
 .modalCloseBtn:hover {
-    cursor: pointer;
-    opacity: 1;
-    font-size: 1rem;
+  cursor: pointer;
+  opacity: 1;
+  font-size: 1rem;
 }

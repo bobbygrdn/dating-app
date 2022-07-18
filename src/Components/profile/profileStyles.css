@@ -1,336 +1,333 @@
 .profile-page-main-container {
-    margin: 0 3rem 0 3rem;
-    font-size: inherit;
-    padding: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas:
-        "pic snapshot match-options "
-        "bio bio bio "
-        "settings settings settings";
-    gap: 1rem;
-    justify-items: center;
-    align-items: center;
-    border: 1px solid #555;
-    box-shadow: 3px 3px 3px 3px #333;
-    border-radius: 25px;
+  margin: 0 3rem 0 3rem;
+  font-size: 25px;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "pic snapshot match-options "
+    "bio bio bio "
+    "settings settings settings";
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  border: 1px solid #555;
+  box-shadow: 5px 5px 5px 5px #333;
+  border-radius: 25px;
+  background: -webkit-linear-gradient(#84ceeb, #b3bee7);
 }
 
 .pic-container {
-    grid-area: pic;
+  grid-area: pic;
 }
 
 .profilePicPlaceHolder {
-    height: 256px;
-    width: 256px;
-    background-color: #5555;
-    border-radius: 100%;
+  height: 256px;
+  width: 256px;
+  background-color: #5555;
+  border-radius: 100%;
 }
 
 img {
-    border-radius: 100%;
-    border: 1px solid whitesmoke;
-    height: 256px;
-    width: 256px
+  border-radius: 100%;
+  border: 1px solid whitesmoke;
+  height: 256px;
+  width: 256px;
 }
 
 .snapshot-container {
-    grid-area: snapshot;
-    justify-self: left;
+  grid-area: snapshot;
+  justify-self: left;
 }
 
 .snapshotUL {
-    list-style: none;
-    /* padding: .5rem; */
+  list-style: none;
+  /* padding: .5rem; */
 }
 
 .snapshotUL li {
-    margin: .5rem;
+  margin: 0.5rem;
 }
 
 .match-preferences-options-container {
-    grid-area: match-options;
-    justify-self: left;
-    position: relative;
-    top: -15px;
-    /* align-self: baseline; */
-    /* width: 100%; */
+  grid-area: match-options;
+  justify-self: left;
+  position: relative;
+  top: -15px;
+  /* align-self: baseline; */
+  /* width: 100%; */
 }
 
 .connectionInfoUL {
-    list-style: none;
-    /* padding: .5rem; */
+  list-style: none;
+  /* padding: .5rem; */
 }
 
 .connectionInfoUL li {
-    margin: .5rem
+  margin: 0.5rem;
 }
 
 .bio-details-container {
-    grid-area: bio;
-    justify-self: left;
-    padding-left: 1rem;
+  grid-area: bio;
+  justify-self: left;
+  padding-left: 1rem;
 }
 
-.bio-details-container>* {
-    margin: .5rem;
+.bio-details-container > * {
+  margin: 0.5rem;
 }
 
 .user-settings-container {
-    grid-area: settings;
-    display: flex;
-    gap: 3rem;
-    align-items: baseline;
+  grid-area: settings;
+  display: flex;
+  gap: 3rem;
+  align-items: baseline;
 }
 
-.user-settings-container>* {
-    height: fit-content;
+.user-settings-container > * {
+  height: fit-content;
 }
 
 .fontSizeSelectionContainer {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .fontSizeDropDown,
 .fontStyleDropDown,
 .updateLoginBtn {
-    background-color: #9995;
-    padding: .5rem;
-    border: none;
-    border-radius: 1000px;
-    text-align: center;
-    color: inherit;
-    font-size: inherit;
-    font-family: inherit;
-    box-shadow: 3px 3px 3px 3px #333;
-    ;
-    /* font-weight: bold; */
+  background-color: #9995;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 1000px;
+  text-align: center;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  box-shadow: 3px 3px 3px 3px #333;
+  /* font-weight: bold; */
 }
 
 .fontSizeDropDown:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
-
-.fontStyleContainer {}
 
 .fontStyleDropDown:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.updateLoginBtn{
-    background-color:rgba(90, 184, 235, 1) ;
+.updateLoginBtn {
+  background-color: rgba(90, 184, 235, 1);
 }
 .editDataBtn {
-    opacity: .5;
+  opacity: 0.5;
 }
 
 .editDataBtn:hover {
-    cursor: pointer;
-    opacity: 1;
-    transform: translateY(-1px);
+  cursor: pointer;
+  opacity: 1;
+  transform: translateY(-1px);
 }
 
 .editPicBtn {
-    /* opacity: 0; */
-    vertical-align: top;
-    position: relative;
-    top: 20px;
-    left: -20px
+  /* opacity: 0; */
+  vertical-align: top;
+  position: relative;
+  top: 20px;
+  left: -20px;
 }
 
 .pic-container:hover .editDataBtn {
-    opacity: 1;
+  opacity: 1;
 }
 
 .modalContainer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .editDataContainer {
-    z-index: 1;
-    width: 480px;
-    height: 300px;
-    background: #1115;
-    border: 1px solid #222;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    position: relative;
-    animation: animate 0.3s;
-    box-shadow: 10px 10px 10px #555;
+  z-index: 1;
+  width: 480px;
+  height: 300px;
+  background: #1115;
+  border: 1px solid #222;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+  animation: animate 0.3s;
+  box-shadow: 10px 10px 10px #555;
 }
 
 .modalCloseBtn {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    padding: 0 10px 0 10px;
-    background: darkred;
-    color: white;
-    font-weight: bold;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    opacity: .5;
-    transition: opacity .2s;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 0 10px 0 10px;
+  background: darkred;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  opacity: 0.5;
+  transition: opacity 0.2s;
 }
 
 .modalCloseBtn:hover {
-    cursor: pointer;
-    opacity: 1;
-    font-size: 1rem;
+  cursor: pointer;
+  opacity: 1;
+  font-size: 1rem;
 }
 
 #editDataSubmitBtn {
-    /* position: relative;
+  /* position: relative;
     left: 8px;
     top: -174px; */
-    font-size: .8rem;
-    height: 25px;
-    padding: 0 10px 0 10px;
-    opacity: .5;
-    transition: font-size .2s;
-    transition: opacity .2s;
-    color: white;
-    font-weight: bold;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    box-shadow: 2px 2px #333;
-    background-color: rgba(90, 184, 235, 1);
+  font-size: 0.8rem;
+  height: 25px;
+  padding: 0 10px 0 10px;
+  opacity: 0.5;
+  transition: font-size 0.2s;
+  transition: opacity 0.2s;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px #333;
+  background-color: rgba(90, 184, 235, 1);
 }
 
 #editDataSubmitBtn:hover {
-    /* font-size: .9rem; */
-    opacity: 1;
-    cursor: pointer;
+  /* font-size: .9rem; */
+  opacity: 1;
+  cursor: pointer;
 }
 
 #editUserDataBtn {
-    font-size: .8rem;
-    height: 25px;
-    padding: 0 10px 0 10px;
-    opacity: .6;
-    transition: font-size .2s;
-    transition: opacity .2s;
-    color: white;
-    font-weight: bold;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    box-shadow: 2px 2px #333;
-    background-color: rgba(90, 184, 235, 1);
+  font-size: 0.8rem;
+  height: 25px;
+  padding: 0 10px 0 10px;
+  opacity: 0.6;
+  transition: font-size 0.2s;
+  transition: opacity 0.2s;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px #333;
+  background-color: rgba(90, 184, 235, 1);
 }
 
 #editUserDataBtn:hover {
-    /* font-size: .9rem; */
-    opacity: 1;
-    cursor: pointer;
+  /* font-size: .9rem; */
+  opacity: 1;
+  cursor: pointer;
 }
 
 #editDataTextArea {
-    /* position: relative;
+  /* position: relative;
     left: -40px;
     top: 10px; */
-    font-size: inherit;
-    color: #222;
-    background-color: whitesmoke;
-    font-family: inherit;
-    border: none;
-    border-radius: 5px;
-    color: rgb(22, 73, 149);
-    
+  font-size: inherit;
+  color: #222;
+  background-color: whitesmoke;
+  font-family: inherit;
+  border: none;
+  border-radius: 5px;
+  color: rgb(22, 73, 149);
 }
 
-#editDataTextArea:focus{
-    outline: none;
+#editDataTextArea:focus {
+  outline: none;
 }
 
 .updateUserDataForm {
-    display: grid;
-    gap: .5rem;
-    /* grid-template-rows: 1fr; */
+  display: grid;
+  gap: 0.5rem;
+  /* grid-template-rows: 1fr; */
 }
 
 .dataLabel {
-    background-color: rgb(117, 90, 235);
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 5px;
-    border-top-left-radius: 999px;
-    border-bottom-left-radius: 999px;
-    border-radius: 999px;
-    opacity: .8;
-    /* font-weight: bold; */
-    width: 100%;
-    margin: 0;
+  background-color: rgb(117, 90, 235);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+  border-radius: 999px;
+  opacity: 0.8;
+  /* font-weight: bold; */
+  width: 100%;
+  margin: 0;
 }
 
 .userDataInputBox {
-    background-color: rgb(117, 90, 235);
-    border: none;
-    opacity: .7;
-    padding-left: 5px;
-    width: 50%;
-    /* border: none; */
+  background-color: rgb(117, 90, 235);
+  border: none;
+  opacity: 0.7;
+  padding-left: 5px;
+  width: 50%;
+  /* border: none; */
 }
 
 .userDataInputBox:hover {
-    opacity: 1;
-    cursor: pointer;
+  opacity: 1;
+  cursor: pointer;
 }
 
 .userDataInputBox:focus {
-    outline: none;
-    opacity: 1;
-    color: white;
-    cursor: text
+  outline: none;
+  opacity: 1;
+  color: white;
+  cursor: text;
 }
 
 .dataHeight,
 .dataAge,
 .dataCity,
 .dataState {
-    width: 80%
+  width: 80%;
 }
 
 .dataBodyType,
 .dataGender {
-    width: 60%
+  width: 60%;
 }
 
-.editGlanceContainer{
-    height: 380px
+.editGlanceContainer {
+  height: 380px;
 }
 
 .dataFirstName,
 .dataLastName,
-.dataZipcode{
-    width: 55%
+.dataZipcode {
+  width: 55%;
 }
-.dataUsername{
-    width:65%;
+.dataUsername {
+  width: 65%;
 }
-.dataPassword{
-width: 50%;
+.dataPassword {
+  width: 50%;
 }
-.editLoginSettingsContainer{
-    height: 250px;
+.editLoginSettingsContainer {
+  height: 250px;
 }
-.editProfilePicContainer{
-    height:150px
+.editProfilePicContainer {
+  height: 150px;
 }
 #newPicFile:hover {
-    cursor: pointer;
-    /* background-color: red; */
+  cursor: pointer;
+  /* background-color: red; */
 }
