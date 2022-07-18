@@ -48,6 +48,21 @@ app.get("/api/current/:id", async (req, res) => {
   }
 });
 
+app.get("/api/current/:id/:age1/:age2/:gender", async (req, res) => {
+  let { id, gender, age1, age2 } = req.params;
+  try {
+    let client = await pool.connect();
+    let data = await client.query(
+      `SELECT * FROM users WHERE (user_id != '${id}') AND (gender = '${gender}') AND (age BETWEEN '${age1}' and '${age2}') LIMIT 500;`
+    );
+    res.json(data.rows);
+    client.release();
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
 //GET ALL users;
 app.get("/api/users", async (req, res) => {
   try {
