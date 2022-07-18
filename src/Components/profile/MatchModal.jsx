@@ -7,6 +7,7 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
     body_type: userData.body_type,
     gender: userData.gender,
     sexual_orientation: userData.sexual_orientation,
+    gender_preference: userData.gender_preference
   });
 
   const modalRef = useRef();
@@ -81,6 +82,17 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
               name="sexual_orientation"
               onChange={handleChange}
               value={formData.sexual_orientation}
+            />{" "}
+          </div>
+
+          <div className="dataLabel">
+            Gender preference:
+            <input
+              className="userDataInputBox"
+              type="text"
+              name="gender_preference"
+              onChange={handleChange}
+              value={formData.gender_preference}
             />{" "}
           </div>
 

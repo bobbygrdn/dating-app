@@ -53,7 +53,7 @@ img {
   grid-area: match-options;
   justify-self: left;
   position: relative;
-  top: -15px;
+  /* top: -15px; */
   /* align-self: baseline; */
   /* width: 100%; */
 }
@@ -191,33 +191,9 @@ img {
   font-size: 1rem;
 }
 
-#editDataSubmitBtn {
-  /* position: relative;
-    left: 8px;
-    top: -174px; */
-  font-size: 0.8rem;
-  height: 25px;
-  padding: 0 10px 0 10px;
-  opacity: 0.5;
-  transition: font-size 0.2s;
-  transition: opacity 0.2s;
-  color: white;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  box-shadow: 2px 2px #333;
-  background-color: rgba(90, 184, 235, 1);
-}
-
-#editDataSubmitBtn:hover {
-  /* font-size: .9rem; */
-  opacity: 1;
-  cursor: pointer;
-}
 
 #editUserDataBtn {
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
   height: 25px;
   padding: 0 10px 0 10px;
   opacity: 0.6;
@@ -230,6 +206,7 @@ img {
   border-radius: 10px;
   box-shadow: 2px 2px #333;
   background-color: rgba(90, 184, 235, 1);
+  font-size: 1.2rem;
 }
 
 #editUserDataBtn:hover {
@@ -337,6 +314,10 @@ img {
   width: 35%;
 }
 
+.profilePicInput {
+  width: 65%;
+}
+
 .editLoginSettingsContainer {
   height: 250px;
 }
@@ -355,6 +336,11 @@ img {
   height: 12em;
 }
 
+.profileSecTitle {
+  display: flex;
+  gap: 5px;
+  text-align: center;
+}
 
 @keyframes animate {
   from {

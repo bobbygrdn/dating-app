@@ -22,7 +22,7 @@ function MyProfile() {
     const [showPicModal, setShowPicModal] = useState(false)
 
     const handleClick = (e) => {
-
+        console.log(userData)
         switch (e.currentTarget.id) {
             case 'bio':
                 setShowBioModal(true)
@@ -73,7 +73,7 @@ function MyProfile() {
             </div>
 
             <div className='match-preferences-options-container'>
-                <h3>Connections match info <FaRegEdit id='matchData' className='editDataBtn' onClick={handleClick} /></h3>
+                <h3 className='profileSecTitle'>Connections match info <FaRegEdit id='matchData' className='editDataBtn' onClick={handleClick} /></h3>
                 <ul className='connectionInfoUL'>
                     <li>{`Height: ${userData.height}`} inches</li>
                     <li>{`Body type: ${userData.body_type}`}</li>
