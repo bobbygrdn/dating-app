@@ -205,9 +205,11 @@ button {
 
 #gender,
 #age,
-#distance {
+#distance,
+#name {
   height: 30px;
   border-radius: 5px;
+  text-align: center;
 }
 
 .discoverNav {
