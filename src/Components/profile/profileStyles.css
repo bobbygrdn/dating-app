@@ -1,6 +1,6 @@
 .profile-page-main-container {
   margin: 0 3rem 0 3rem;
-  font-size: 25px;
+  /* font-size: 25px; */
   padding: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -73,7 +73,7 @@ img {
   padding-left: 1rem;
 }
 
-.bio-details-container > * {
+.bio-details-container>* {
   margin: 0.5rem;
 }
 
@@ -84,7 +84,7 @@ img {
   align-items: baseline;
 }
 
-.user-settings-container > * {
+.user-settings-container>* {
   height: fit-content;
 }
 
@@ -117,7 +117,9 @@ img {
 
 .updateLoginBtn {
   background-color: rgba(90, 184, 235, 1);
+  /* width: fit-content */
 }
+
 .editDataBtn {
   opacity: 0.5;
 }
@@ -315,18 +317,23 @@ img {
 .dataZipcode {
   width: 55%;
 }
+
 .dataUsername {
   width: 65%;
 }
+
 .dataPassword {
   width: 50%;
 }
+
 .editLoginSettingsContainer {
   height: 250px;
 }
+
 .editProfilePicContainer {
   height: 150px;
 }
+
 #newPicFile:hover {
   cursor: pointer;
   /* background-color: red; */
