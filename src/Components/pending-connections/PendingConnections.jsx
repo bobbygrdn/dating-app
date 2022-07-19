@@ -14,8 +14,8 @@ function PendingConnections() {
 
     /* Fetching the data from the API and setting the state of pending to the data. */
     useEffect(() => {
-        console.log(userData.liked)
-        if (userData.liked !== null) {
+        console.log(userData.liked);
+        if (userData.liked !== '0') {
             fetch(`https://find-luv.herokuapp.com/api/pending/${userData.liked}`)
                 .then(response => response.json())
                 .then(data => setPending(data))
