@@ -5,10 +5,9 @@ import './navbarStyles.css'
 import logo from "./logo.png"
 // import { useNavigate } from 'react-router-dom'
 import { BiUser } from 'react-icons/bi'
-import { GrUserSettings, GrLogout } from 'react-icons/gr'
-import { TbHeartHandshake, TbMessages } from 'react-icons/tb'
+import { TbMessages, TbLogout } from 'react-icons/tb'
 import { ImProfile } from 'react-icons/im' // discover?
-import { RiUserHeartLine, RiHeartAddLine } from 'react-icons/ri' // discover?
+import { RiHeartAddLine, RiUserSettingsLine } from 'react-icons/ri' // discover?
 
 
 function Navbar({ userData }) {
@@ -112,7 +111,7 @@ function Navbar({ userData }) {
 
                     <li>
                         <Link to='/profile' className='nav-link' onClick={handleClick}>
-                            <GrUserSettings className='nav-icon' />
+                            <RiUserSettingsLine className='nav-icon' />
                             My Profile </Link>
                     </li>
 
@@ -120,7 +119,7 @@ function Navbar({ userData }) {
 
                     <li>
                         <Link to='/' className='nav-link' onClick={handleLogout}>
-                            <GrLogout className='nav-icon' />
+                            <TbLogout className='nav-icon' />
                             Log out</Link>
                     </li>
                     <span className='userNameSpan'> <BiUser /> {userData.username}</span>
