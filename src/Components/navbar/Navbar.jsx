@@ -8,7 +8,7 @@ import { BiUser } from 'react-icons/bi'
 import { GrUserSettings, GrLogout } from 'react-icons/gr'
 import { TbHeartHandshake, TbMessages } from 'react-icons/tb'
 import { ImProfile } from 'react-icons/im' // discover?
-import { RiUserHeartLine, RiHomeHeartLine } from 'react-icons/ri' // discover?
+import { RiUserHeartLine, RiHeartAddLine } from 'react-icons/ri' // discover?
 
 
 function Navbar({ userData }) {
@@ -87,31 +87,41 @@ function Navbar({ userData }) {
 
                 <ul className='navbar-UL'>
                     <li>
-                        <Link to='/' className='nav-link active-tab' onClick={handleClick}>Discover</Link>
+                        <Link to='/' className='nav-link active-tab' onClick={handleClick}>
+                            <ImProfile className='nav-icon' />
+                            Discover</Link>
                     </li>
 
                     <li className='navSpacer'>|</li>
 
                     <li>
-                        <Link to='/inbox' className='nav-link' onClick={handleClick}>Inbox</Link>
+                        <Link to='/inbox' className='nav-link' onClick={handleClick}>
+                            <TbMessages className='nav-icon' />
+                            Inbox</Link>
                     </li>
 
                     <li className='navSpacer'>|</li>
 
                     <li>
-                        <Link to='/connections' className='nav-link' onClick={handleClick}>Connections</Link>
+                        <Link to='/connections' className='nav-link' onClick={handleClick}>
+                            <RiHeartAddLine className='nav-icon' />
+                            Connections</Link>
                     </li>
 
                     <li className='navSpacer'>|</li>
 
                     <li>
-                        <Link to='/profile' className='nav-link' onClick={handleClick}>My Profile </Link>
+                        <Link to='/profile' className='nav-link' onClick={handleClick}>
+                            <GrUserSettings className='nav-icon' />
+                            My Profile </Link>
                     </li>
 
                     <li className='navSpacer'>|</li>
 
                     <li>
-                        <Link to='/' className='nav-link' onClick={handleLogout}>Log out</Link>
+                        <Link to='/' className='nav-link' onClick={handleLogout}>
+                            <GrLogout className='nav-icon' />
+                            Log out</Link>
                     </li>
                     <span className='userNameSpan'> <BiUser /> {userData.username}</span>
                 </ul>

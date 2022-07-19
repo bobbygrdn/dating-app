@@ -44,20 +44,28 @@ li {
   font-size: inherit;
   transition: all 0.3s ease-in-out;
   opacity: 0.3;
+  display: grid;
+  justify-items: center;
+  transition: .3s ease-in-out;
 }
 
 .nav-link:hover {
   opacity: 1;
   color: inherit;
   /* font-size: 1.8rem; */
-  font-size: calc(var(--font-size) + 0.5rem);
+  font-size: calc(var(--font-size) + .8rem);
+}
+
+.nav-icon {
+  font-size: inherit;
+  width: fit-content;
 }
 
 .active-tab {
   color: inherit;
   opacity: 1;
   font-weight: bold;
-  font-size: calc(var(--font-size) + 0.5rem);
+  font-size: calc(var(--font-size) + .8rem);
 }
 
 .titleDiv {
@@ -88,7 +96,7 @@ li {
 }
 
 .userNameSpan {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   vertical-align: text-top;
   font-family: cursive;
   margin-left: 15px;

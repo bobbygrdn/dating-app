@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import ReactDom from "react-dom";
+import sound from './newMsgSound.wav'
 
 function ThreadMsgModal({ showThreadMsgModal, setShowThreadMsgModal, displayedMessages, threadMsgUserInfo, userData, fetchAllMsgsByThreadId }) {
 
@@ -66,7 +67,8 @@ function ThreadMsgModal({ showThreadMsgModal, setShowThreadMsgModal, displayedMe
             )
             .catch(err => console.log(err))
 
-
+        let msgSound = new Audio(sound)
+        msgSound.play()
     }
 
     const handleChange = (e) => {

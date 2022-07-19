@@ -192,6 +192,7 @@
   border-bottom-left-radius: 1rem;
   width: 60%;
   animation: animateMsgRight .5s;
+  height: fit-content;
 
 }
 
