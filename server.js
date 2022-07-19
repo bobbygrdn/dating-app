@@ -700,8 +700,8 @@ app.post("/api/threads", async (req, res) => {
   const { recipient_user_id, sender_user_id } = req.body
   try {
     let client = await pool.connect();
-    let data = await client.query(`INSERT INTO threads(recipient_user_id, sender_user_id) VALUES ('${recipient_user_id}','${sender_user_id}') OUTPUT inserted.* SELECT 1`)
-    res.send(data);
+    let data = await client.query(`INSERT INTO threads(recipient_user_id, sender_user_id) VALUES ('${recipient_user_id}','${sender_user_id}') returning thread_id`)
+    res.json(data);
     client.release();
   } catch (error) {
     console.error(error)
