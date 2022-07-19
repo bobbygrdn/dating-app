@@ -52,7 +52,7 @@ function PendingConnections() {
     /* Checks the Pending state and returns the Connection & SingleConnectModal Components if not null. If Pending is null, it returns the No Connections Div */
     return (
         <>
-            {!pending ?
+            {pending.length > 0 ?
                 <div className='pending-connections-container'>
                     <button className='clearConnectionsButton' onClick={clear}>Clear</button>
                     <div className='connections-container'>
