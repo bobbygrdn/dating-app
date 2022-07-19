@@ -22,11 +22,9 @@ function PendingConnections() {
     }, [])
 
     const getConnections = () => {
-        if (userData.liked !== '0') {
-            fetch(`https://find-luv.herokuapp.com/api/pending/${userData.liked}`)
-                .then(response => response.json())
-                .then(data => setPending(data))
-        }
+        fetch(`https://find-luv.herokuapp.com/api/pending/${userData.liked}`)
+        .then(response => response.json())
+        .then(data => setPending(data))
     }
 
 
