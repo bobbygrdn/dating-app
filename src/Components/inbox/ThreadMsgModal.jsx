@@ -100,8 +100,8 @@ function ThreadMsgModal({ showThreadMsgModal, setShowThreadMsgModal, displayedMe
                                         <p className='msgDateTimeStamp'>{elem.date_time_stamp}</p>
                                     </div>
                                 </div>
-
                                 <img className={elem.sent_from_user_id === userData.user_id ? 'rightMiniPic' : 'leftMiniPic'} src={elem.sent_from_user_id === userData.user_id ? userData.profile_pic_url : threadMsgUserInfo.pic} alt='profile-pic' />
+
                             </>
 
                         )
