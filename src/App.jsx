@@ -17,15 +17,30 @@ function App() {
     const { login, buttonPressed, userData } = useContext(LandingContext)
     const { threads, fetchAllUserThreads, profiles, handleDisplayingThreads } = useContext(InboxContext)
 
+    // useEffect(() => {
+    //     if (userData) {
+    //         return fetchAllUserThreads()
+    //     }
+    // }, [login, userData])
+
     useEffect(() => {
         if (userData) {
-            return fetchAllUserThreads()
+            fetchAllUserThreads()
+
+            const interval = setInterval(() => {
+                console.log('fetched threads')
+                fetchAllUserThreads()
+            }, 5000)
+
+            return () => clearInterval(interval)
         }
     }, [login, userData])
 
     useEffect(() => {
         handleDisplayingThreads()
-    }, [threads])
+    }, [threads ? threads.length : null])
+
+
 
     if (!login) {
         if (!buttonPressed) return (<Landing />)
@@ -40,16 +55,16 @@ function App() {
 
             <div className='App-container'>
 
-                    <Navbar userData={userData} />
+                <Navbar userData={userData} />
 
-                    <Routes>
+                <Routes>
 
-                        <Route path='/' element={<Discover />} />
-                        <Route path='/inbox' element={<Inbox />} />
-                        <Route path='/connections' element={<PendingConnections />} />
-                        <Route path='/profile' element={<MyProfile />} />
+                    <Route path='/' element={<Discover />} />
+                    <Route path='/inbox' element={<Inbox />} />
+                    <Route path='/connections' element={<PendingConnections />} />
+                    <Route path='/profile' element={<MyProfile />} />
 
-                    </Routes>
+                </Routes>
 
             </div>
 

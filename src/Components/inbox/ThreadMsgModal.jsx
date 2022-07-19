@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import ReactDom from "react-dom";
+import sound from './newMsgSound.wav'
 
 function ThreadMsgModal({ showThreadMsgModal, setShowThreadMsgModal, displayedMessages, threadMsgUserInfo, userData, fetchAllMsgsByThreadId }) {
 
@@ -14,15 +15,16 @@ function ThreadMsgModal({ showThreadMsgModal, setShowThreadMsgModal, displayedMe
 
     useEffect(() => {
 
-        getMsgs()
+        // getMsgs()
         const interval = setInterval(() => {
             getMsgs()
-        }, 10000)
+        }, 5000)
 
         return () => clearInterval(interval)
     }, [])
 
     const getMsgs = () => {
+        console.log('fetched msgs')
         fetchAllMsgsByThreadId(threadMsgUserInfo.id)
     }
 
@@ -66,7 +68,8 @@ function ThreadMsgModal({ showThreadMsgModal, setShowThreadMsgModal, displayedMe
             )
             .catch(err => console.log(err))
 
-
+        let msgSound = new Audio(sound)
+        msgSound.play()
     }
 
     const handleChange = (e) => {
