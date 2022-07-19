@@ -15,15 +15,16 @@ function ThreadMsgModal({ showThreadMsgModal, setShowThreadMsgModal, displayedMe
 
     useEffect(() => {
 
-        getMsgs()
+        // getMsgs()
         const interval = setInterval(() => {
             getMsgs()
-        }, 10000)
+        }, 5000)
 
         return () => clearInterval(interval)
     }, [])
 
     const getMsgs = () => {
+        console.log('fetched msgs')
         fetchAllMsgsByThreadId(threadMsgUserInfo.id)
     }
 
