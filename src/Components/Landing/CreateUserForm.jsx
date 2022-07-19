@@ -32,6 +32,7 @@ const CreateUserForm = () => {
     dark_theme: false,
     font_size: "Medium",
     font_style: "Arial",
+    liked: 0
   });
   //const [ setNewUser ] = useContext(LandingContext)
 
@@ -150,7 +151,7 @@ const CreateUserForm = () => {
         <div className="createuser--title">Sign Up to Find Luv Now</div>
 
         <div className="createuser--closebtn">
-          <span><IoMdCloseCircleOutline className='landingCloseBtn' onClick={handleClick}/></span>
+          <span><IoMdCloseCircleOutline className='landingCloseBtn' onClick={handleClick} /></span>
         </div>
       </div>
       <div className="createuser--formWrapper">
