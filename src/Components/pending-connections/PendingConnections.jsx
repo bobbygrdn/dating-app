@@ -28,7 +28,7 @@ function PendingConnections() {
      */
     const clear = () => {
         let data = {
-            liked: null
+            liked: '0'
         }
 
         let fetchData = {
@@ -70,6 +70,7 @@ function PendingConnections() {
                 </div>
                 :
                 <div className='pending-connections-container'>
+                    <button className='clearConnectionsButton' onClick={clear}>Clear</button>
                     <NoConnections />
                 </div>
             }
