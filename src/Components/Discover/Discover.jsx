@@ -18,14 +18,6 @@ function Discover() {
     
     /* Fetching the data from the API and adding it to the state. */
     useEffect(() => {
-        const interval = setInterval(() => {
-            getMatches()
-        }, 5000)
-        
-        return () => clearInterval(interval)            
-    }, []);
-
-    const getMatches = () => {
         if(userData.gender_preference !== 'not specified' && userData.age1 !== 'not specified' && userData.age2 !== 'not specified') {
             fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}/${userData.age1}/${userData.age2}/${userData.gender_preference}`)
             .then(response => response.json())
@@ -34,9 +26,10 @@ function Discover() {
             fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}`)
             .then(response => response.json())
             .then(data => addUsers(data))
-        }
-    }
+        }     
+    }, []);
 
+        
     /* Fetching the data from the API and adding it to the state. */
     useEffect(() => {
         fetch('https://find-luv.herokuapp.com/api/users')
