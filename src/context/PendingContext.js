@@ -5,7 +5,7 @@ const PendingContext = createContext()
 export const PendingProvider = ({children}) => {
     
     /* Setting the initial state of the context. */
-    const [pending, setPending] = useState(null)
+    const [pending, setPending] = useState([])
     const [singleConnectModal, setConnectModal] = useState(false)
 
     /**
