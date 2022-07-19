@@ -705,8 +705,8 @@ app.post("/api/threads", async (req, res) => {
     let client = await pool.connect();
     let data = await client.query(`INSERT INTO threads(recipient_user_id, sender_user_id) VALUES ('${recipient_user_id}','${sender_user_id}') returning thread_id`)
 
-    // await client.query('INSERT INTO messages (date_time_stamp, read_receipt, sent_from_user_id, sent_to_user_id, content, thread_id) VALUES ($1, $2, $3, $4, $5, $6)', [req.body.date_time_stamp, req.body.read_receipt, req.body.sent_from_user_id, req.body.sent_to_user_id, req.body.content, req.params.id]);
-    res.json(msgDateTime)
+    await client.query('INSERT INTO messages (date_time_stamp, read_receipt, sent_from_user_id, sent_to_user_id, content, thread_id) VALUES ($1, $2, $3, $4, $5, $6)', [msgDateTime, false, sender_user_id, recipient_user_id, 'Hi! It looks like we matched!', data.rows[0].thread_id]);
+
     res.json(data.rows[0].thread_id);
     client.release();
   } catch (error) {
