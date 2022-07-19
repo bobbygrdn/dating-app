@@ -34,19 +34,16 @@ function SearchModal ({show}) {
             fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}/${gender}`)
             .then(response => response.json())
             .then(data => addUsers(data))
-            .then(() => setGender(null))
         }
         if(gender === null && age1 !== null && age2 !== null) {
             fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}/${age1}/${age2}`)
             .then(response => response.json())
             .then(data => addUsers(data))
-            .then(() => setAge1(null), setAge2(null))
         } 
         if(gender !== null && age1 !== null && age2 !== null) {
             fetch(`https://find-luv.herokuapp.com/api/current/${userData.user_id}/${age1}/${age2}/${gender}`)
             .then(response => response.json())
             .then(data => addUsers(data))
-            .then(() => setGender(null), setAge1(null), setAge2(null))
         }
         
 
