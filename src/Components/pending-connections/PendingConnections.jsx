@@ -49,7 +49,6 @@ function PendingConnections() {
     }
 
 
-
     /* Checks the Pending state and returns the Connection & SingleConnectModal Components if not null. If Pending is null, it returns the No Connections Div */
     return (
         <>
