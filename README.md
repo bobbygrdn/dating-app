@@ -15,7 +15,7 @@ A Full-Stack Dating Application built using React.
 
 ## Tech Stack
 
-**Client:** React, TailwindCSS
+**Client:** React, BootstrapCSS
 
 **Server:** Node, Express
 
