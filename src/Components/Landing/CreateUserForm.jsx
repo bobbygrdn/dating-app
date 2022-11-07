@@ -122,7 +122,7 @@ const CreateUserForm = () => {
         "Content-Type": "application/json; charset=UTF-8",
       }),
     };
-    fetch("https://find-luv.herokuapp.com/api/users", fetchData).then(() => {
+    fetch("https://find-luv.onrender.com/api/users", fetchData).then(() => {
       console.log("createdUser");
     });
     // setLogin(true)

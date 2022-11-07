@@ -27,7 +27,7 @@ const LoginSettingsModal = ({ setShowLoginSettingsModal, userData, changeUserDat
     }
     changeUserData(dataToUpdate)
 
-    fetch(`https://find-luv.herokuapp.com/api/userdata/login/${userData.user_id}`, {
+    fetch(`https://find-luv.onrender.com/api/userdata/login/${userData.user_id}`, {
       method: "PATCH",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dataToUpdate)

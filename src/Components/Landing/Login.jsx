@@ -1,4 +1,4 @@
-import { React, useContext, useState ,useEffect} from 'react';
+import { React, useContext, useState, useEffect } from 'react';
 import LandingContext from '../../context/LandingContext';
 import LoginInputs from './LoginInputs';
 import { useNavigate } from 'react-router-dom'
@@ -13,30 +13,30 @@ const Login = () => {
     password: "",
   });
 
-const refreshUserData = () => {
-  let jsonDat = JSON.stringify(loginData);
+  const refreshUserData = () => {
+    let jsonDat = JSON.stringify(loginData);
 
-  let fetchData = {
-    method: "POST",
-    body: jsonDat,
-    headers: new Headers({
-      "Content-type": "application/json",
-    }),
-  };
+    let fetchData = {
+      method: "POST",
+      body: jsonDat,
+      headers: new Headers({
+        "Content-type": "application/json",
+      }),
+    };
 
-  fetch("https://find-luv.herokuapp.com/api/login", fetchData)
+    fetch("https://find-luv.onrender.com/api/login", fetchData)
       .then((res) => res.json())
       .then((data) => setLoginData(data[0]))
-}
+  }
 
   useEffect(() => {
 
-    if (setLogin === true){
+    if (setLogin === true) {
       const interval = setInterval(() => {
         console.log('working')
         refreshUserData()
       }, 5000)
-      return () =>  clearInterval(interval)
+      return () => clearInterval(interval)
     }
   }, [])
 
@@ -78,7 +78,7 @@ const refreshUserData = () => {
         "Content-type": "application/json",
       }),
     };
-    fetch("https://find-luv.herokuapp.com/api/login", fetchData)
+    fetch("https://find-luv.onrender.com/api/login", fetchData)
       .then((res) => res.json())
       .then((data) => {
         setUserData(data[0]);
@@ -106,7 +106,7 @@ const refreshUserData = () => {
       <div className="loginForm--header">
         <div className="loginForm--title">Welcome Back</div>
         <div className="loginForm--closeBtn">
-          <span><IoMdCloseCircleOutline className='landingCloseBtn' onClick={handleClick}/></span>
+          <span><IoMdCloseCircleOutline className='landingCloseBtn' onClick={handleClick} /></span>
         </div>
       </div>
       <div className="loginForm--wrapper">

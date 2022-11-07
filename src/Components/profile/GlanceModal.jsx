@@ -23,15 +23,15 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
     e.preventDefault();
     changeUserData(formData)
 
-    fetch(`https://find-luv.herokuapp.com/api/userdata/glance/${userData.user_id}`, {
+    fetch(`https://find-luv.onrender.com/api/userdata/glance/${userData.user_id}`, {
       method: "PATCH",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
 
     setShowGlanceModal(false)
-    
+
   };
 
   const handleChange = (e) => {
@@ -46,9 +46,9 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
     <div className="modalContainer" ref={modalRef} onClick={closeModal}>
       <div className="editDataContainer editGlanceContainer">
         <form onSubmit={handleSubmit} className="updateUserDataForm">
-       
+
           <div className="dataLabel">
-            First name: 
+            First name:
             <input
               className="userDataInputBox dataFirstName"
               type="text"
@@ -59,7 +59,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
           </div>
 
           <div className="dataLabel">
-            Last name: 
+            Last name:
             <input
               className="userDataInputBox dataLastName"
               type="text"
@@ -70,7 +70,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
           </div>
 
           <div className="dataLabel">
-            Age: 
+            Age:
             <input
               className="userDataInputBox dataAge"
               type="text"
@@ -79,9 +79,9 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
               value={formData.age}
             />{" "}
           </div>
-          
+
           <div className="dataLabel">
-            City:  
+            City:
             <input
               className="userDataInputBox dataCity"
               type="text"
@@ -92,7 +92,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
           </div>
 
           <div className="dataLabel">
-            State: 
+            State:
             <input
               className="userDataInputBox dataState"
               type="text"
@@ -103,7 +103,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
           </div>
 
           <div className="dataLabel">
-            Zip code: 
+            Zip code:
             <input
               className="userDataInputBox dataZipcode"
               type="text"

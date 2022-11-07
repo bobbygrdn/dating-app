@@ -17,14 +17,14 @@ function PendingConnections() {
         const interval = setInterval(() => {
             getConnections()
         }, 5000)
-        
+
         return () => clearInterval(interval)
     }, [])
 
     const getConnections = () => {
-        fetch(`https://find-luv.herokuapp.com/api/pending/${userData.liked}`)
-        .then(response => response.json())
-        .then(data => setPending(data))
+        fetch(`https://find-luv.onrender.com/api/pending/${userData.liked}`)
+            .then(response => response.json())
+            .then(data => setPending(data))
     }
 
 
@@ -44,7 +44,7 @@ function PendingConnections() {
             body: JSON.stringify(data)
         }
 
-        fetch(`https://find-luv.herokuapp.com/api/connect/${userData.user_id}`, fetchData)
+        fetch(`https://find-luv.onrender.com/api/connect/${userData.user_id}`, fetchData)
             .then(() => {
                 console.log('Cleared the connections page!')
             })

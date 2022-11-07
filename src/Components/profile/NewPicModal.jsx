@@ -24,7 +24,7 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
 
     picFormData.append("image", newPicFile.files[0])
 
-    fetch(`https://find-luv.herokuapp.com/image/${userData.user_id}`, {
+    fetch(`https://find-luv.onrender.com/image/${userData.user_id}`, {
       method: "post",
       body: picFormData
     })
@@ -36,7 +36,7 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
   };
 
   const fetchProfilePic = () => {
-    fetch(`https://find-luv.herokuapp.com/api/profilepic/${userData.user_id}`)
+    fetch(`https://find-luv.onrender.com/api/profilepic/${userData.user_id}`)
       .then(res => res.json())
       .then(data => changeUserData(data))
       .catch(err => console.log(err))

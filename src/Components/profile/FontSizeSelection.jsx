@@ -3,22 +3,22 @@ import React, { useEffect } from 'react'
 function FontSizeSelection({ userData, setUserData, changeUserData }) {
 
     const handleChange = (e) => {
-      
-        changeUserData({[e.target.name]: e.target.value})
+
+        changeUserData({ [e.target.name]: e.target.value })
     }
 
     useEffect(() => {
         updateDataBaseFontSize(userData.font_size)
-        }, [userData.font_size])
+    }, [userData.font_size])
 
     const updateDataBaseFontSize = (fontSize) => {
 
-        fetch(`https://find-luv.herokuapp.com/api/userdata/fontsize/${userData.user_id}`, {
+        fetch(`https://find-luv.onrender.com/api/userdata/fontsize/${userData.user_id}`, {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify( {font_size : fontSize } )
-          })
-          .catch(err => console.log(err))
+            body: JSON.stringify({ font_size: fontSize })
+        })
+            .catch(err => console.log(err))
     }
 
     return (

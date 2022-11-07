@@ -4,14 +4,14 @@ import './DarkThemeToggleStyles.css'
 function DarkThemeToggleBtn({ userData, changeUserData }) {
 
     const handleChange = (e) => {
-        changeUserData({dark_theme: e.target.checked})
+        changeUserData({ dark_theme: e.target.checked })
 
-        fetch(`https://find-luv.herokuapp.com/api/userdata/darktheme/${userData.user_id}`, {
+        fetch(`https://find-luv.onrender.com/api/userdata/darktheme/${userData.user_id}`, {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify( {dark_theme: e.target.checked} )
-          })
-          .catch(err => console.log(err))
+            body: JSON.stringify({ dark_theme: e.target.checked })
+        })
+            .catch(err => console.log(err))
     }
 
 

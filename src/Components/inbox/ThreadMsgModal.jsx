@@ -57,7 +57,7 @@ function ThreadMsgModal({ showThreadMsgModal, setShowThreadMsgModal, displayedMe
 
         if (newMsg.content.length === 0) return alert('You forgot to type in your message!');
 
-        fetch(`https://find-luv.herokuapp.com/api/messages/thread/${threadId}`, {
+        fetch(`https://find-luv.onrender.com/api/messages/thread/${threadId}`, {
             method: "post",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newMsg)

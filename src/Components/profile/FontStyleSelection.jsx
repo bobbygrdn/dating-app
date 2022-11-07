@@ -2,22 +2,22 @@ import React, { useEffect } from 'react'
 
 function FontStyleSelection({ userData, changeUserData }) {
     const handleChange = (e) => {
-        changeUserData({[e.target.name]: e.target.value})
+        changeUserData({ [e.target.name]: e.target.value })
     }
 
     useEffect(() => {
         updateDataBaseFontStyle(userData.font_style)
-        }, [userData.font_style])
+    }, [userData.font_style])
 
 
     const updateDataBaseFontStyle = (fontStyle) => {
 
-        fetch(`https://find-luv.herokuapp.com/api/userdata/fontstyle/${userData.user_id}`, {
+        fetch(`https://find-luv.onrender.com/api/userdata/fontstyle/${userData.user_id}`, {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify( {font_style : fontStyle } )
-          })
-          .catch(err => console.log(err))
+            body: JSON.stringify({ font_style: fontStyle })
+        })
+            .catch(err => console.log(err))
     }
     return (
         <div className='fontStyleContainer'>

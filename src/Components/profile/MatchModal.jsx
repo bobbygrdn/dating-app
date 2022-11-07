@@ -22,7 +22,7 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     changeUserData(formData)
-    fetch(`https://find-luv.herokuapp.com/api/userdata/connection-match/${userData.user_id}`, {
+    fetch(`https://find-luv.onrender.com/api/userdata/connection-match/${userData.user_id}`, {
       method: "PATCH",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)

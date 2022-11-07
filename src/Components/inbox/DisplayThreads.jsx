@@ -26,7 +26,7 @@ function DisplayThreads({ threads, userData, orderedProfiles }) {
     }
 
     const fetchAllMsgsByThreadId = (id) => {
-        fetch(`https://find-luv.herokuapp.com/api/messages/thread/${id}`)
+        fetch(`https://find-luv.onrender.com/api/messages/thread/${id}`)
             .then(res => res.json())
             .then(data => setDisplayedMessages(data))
             .catch(error => console.log(error))
