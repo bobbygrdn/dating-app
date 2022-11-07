@@ -67,7 +67,7 @@ const LoginSettingsModal = ({ setShowLoginSettingsModal, userData, changeUserDat
               value={formData.username}
               onClick={handleClick}
 
-            />
+              disabled />
           </div>
 
           <div className="dataLabel">
@@ -80,7 +80,7 @@ const LoginSettingsModal = ({ setShowLoginSettingsModal, userData, changeUserDat
               value={formData.email}
               onClick={handleClick}
 
-            />
+              disabled />
           </div>
 
           <div className="dataLabel">
@@ -92,7 +92,7 @@ const LoginSettingsModal = ({ setShowLoginSettingsModal, userData, changeUserDat
               onChange={handleChange}
               value={formData.password}
               onClick={handleClick}
-            />{" "}
+              disabled />{" "}
           </div>
 
           <div className="dataLabel">
@@ -105,10 +105,10 @@ const LoginSettingsModal = ({ setShowLoginSettingsModal, userData, changeUserDat
               value={formData.verifyPassword}
               onClick={handleClick}
 
-            />{" "}
+              disabled />{" "}
           </div>
 
-          <input type="submit" value="Update Login settings" id="editUserDataBtn" onClick={handleClick} />
+          <input type="submit" value="Update Login settings" id="editUserDataBtn" onClick={handleClick} disabled />
         </form>
 
         <button

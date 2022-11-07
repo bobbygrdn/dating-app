@@ -3,7 +3,7 @@ import LandingContext from "../../context/LandingContext";
 import DiscoverContext from "../../context/DiscoverContext";
 import PendingContext from "../../context/PendingContext";
 
-function SingleConnectModal ({ show }) {
+function SingleConnectModal({ show }) {
 
     /* Destructuring the useContext hook. It is pulling the singleUser, setClickedUser, clickedUser,
     userData, setConnectModal, and connectUser from the DiscoverContext, LandingContext, and
@@ -27,7 +27,7 @@ function SingleConnectModal ({ show }) {
      * button on.
      */
     const runLikeUser = () => {
-        connectUser(userData.user_id,clickedUser)
+        connectUser(userData.user_id, clickedUser)
     }
 
     /* Checking to see if the show prop is true or false. If it is true, then it will add the class
@@ -35,25 +35,25 @@ function SingleConnectModal ({ show }) {
     class singleUserModalDarkTheme from the singleUserModal element. */
     useEffect(() => {
         checkForDarkTheme()
-      },[show])
-  
-      /**
-       * If darkTheme is true, add the class singleUserModalDarkTheme to the singleUserModal element.
-       * If darkTheme is false, remove the class singleUserModalDarkTheme from the singleUserModal
-       * element.
-       * @returns the classList.add or classList.remove method.
-       */
-      const checkForDarkTheme = () => {
-          let singleConnectModal = document.querySelector('.singleConnectModal')
-        if(userData.dark_theme && singleConnectModal) {
-      return singleConnectModal.classList.add('singleConnectModalDarkTheme')
-        }
-        if(!userData.dark_theme && singleConnectModal){
-         return singleConnectModal.classList.remove('singleUserModalDarkTheme')
-        }
-      }
+    }, [show])
 
-      return (
+    /**
+     * If darkTheme is true, add the class singleUserModalDarkTheme to the singleUserModal element.
+     * If darkTheme is false, remove the class singleUserModalDarkTheme from the singleUserModal
+     * element.
+     * @returns the classList.add or classList.remove method.
+     */
+    const checkForDarkTheme = () => {
+        let singleConnectModal = document.querySelector('.singleConnectModal')
+        if (userData.dark_theme && singleConnectModal) {
+            return singleConnectModal.classList.add('singleConnectModalDarkTheme')
+        }
+        if (!userData.dark_theme && singleConnectModal) {
+            return singleConnectModal.classList.remove('singleUserModalDarkTheme')
+        }
+    }
+
+    return (
         <>
 
             {/* A ternary operator. It is saying if show is true, then render the modal. If show is
@@ -81,9 +81,9 @@ function SingleConnectModal ({ show }) {
                             </div>
                         </div>
 
-                        
+
                         <div className="footer">
-                            <button className="dislikeButton" onClick={closeModal}>No</button> <button className="likeButton" onClick={runLikeUser}>Yes</button>
+                            <button className="dislikeButton" onClick={closeModal} disabled>No</button> <button className="likeButton" onClick={runLikeUser} disabled>Yes</button>
                         </div>
                     </div>
                 </div>

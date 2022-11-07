@@ -124,7 +124,7 @@ function ThreadMsgModal({ showThreadMsgModal, setShowThreadMsgModal, displayedMe
                         cols="40"
                     />
                     <input type='submit' value={`Reply to ${threadMsgUserInfo.name}`}
-                        id='editDataSubmitBtn' />
+                        id='editDataSubmitBtn' disabled />
 
                 </form>
                 <button className='modalCloseBtn' onClick={() => { setShowThreadMsgModal(false) }}> X </button>

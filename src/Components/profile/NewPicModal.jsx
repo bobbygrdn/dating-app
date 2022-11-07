@@ -61,13 +61,13 @@ const NewPicModal = ({ setShowPicModal, userData, changeUserData }) => {
               id="newPicFile"
               type="file"
               name="profile_pic_url"
-            // onChange={handleChange}
-            // value={formData.profile_pic_url}
-            />
+              // onChange={handleChange}
+              // value={formData.profile_pic_url}
+              disabled />
           </div>
 
 
-          <input type="submit" value="Update Profile Pic" id="editUserDataBtn" />
+          <input type="submit" value="Update Profile Pic" id="editUserDataBtn" disabled />
         </form>
 
         <button

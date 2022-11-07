@@ -53,7 +53,7 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
               name="height"
               onChange={handleChange}
               value={formData.height}
-            />
+              disabled />
           </div>
 
           <div className="dataLabel">
@@ -64,7 +64,7 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
               name="body_type"
               onChange={handleChange}
               value={formData.body_type}
-            />{" "}
+              disabled />{" "}
           </div>
 
           <div className="dataLabel">
@@ -75,7 +75,7 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
               name="gender"
               onChange={handleChange}
               value={formData.gender}
-            />{" "}
+              disabled />{" "}
           </div>
 
           <div className="dataLabel">
@@ -86,7 +86,7 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
               name="sexual_orientation"
               onChange={handleChange}
               value={formData.sexual_orientation}
-            />{" "}
+              disabled />{" "}
           </div>
 
           <div className="dataLabel">
@@ -97,7 +97,7 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
               name="gender_preference"
               onChange={handleChange}
               value={formData.gender_preference}
-            />{" "}
+              disabled />{" "}
           </div>
           <div className="dataLabel">
             Preferred age:
@@ -107,18 +107,18 @@ const MatchModal = ({ setShowMatchModal, userData, changeUserData }) => {
               name="age1"
               onChange={handleChange}
               value={formData.age1}
-            />{" to "}
+              disabled />{" to "}
             <input
               className="userDataInputBox dataAgeRange"
               type="number"
               name="age2"
               onChange={handleChange}
               value={formData.age2}
-            />
+              disabled />
 
           </div>
 
-          <input type="submit" value="Update Match info" id="editUserDataBtn" />
+          <input type="submit" value="Update Match info" id="editUserDataBtn" disabled />
         </form>
 
         <button

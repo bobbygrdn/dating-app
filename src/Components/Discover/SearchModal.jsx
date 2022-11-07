@@ -120,7 +120,7 @@ function SearchModal({ show }) {
 
                         {/* A button that allows the user to submit the search. */}
                         <div className="footer">
-                            <button className="submitSearchButton" onClick={search}>Submit</button>
+                            <button className="submitSearchButton" onClick={search} disabled>Submit</button>
                         </div>
 
                     </div>

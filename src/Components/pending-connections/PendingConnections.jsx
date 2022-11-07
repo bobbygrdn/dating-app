@@ -74,7 +74,7 @@ function PendingConnections() {
                 </div>
                 :
                 <div className='pending-connections-container'>
-                    <button className='clearConnectionsButton' onClick={clear}>Clear</button>
+                    <button className='clearConnectionsButton' onClick={clear} disabled>Clear</button>
                     <NoConnections />
                 </div>
             }

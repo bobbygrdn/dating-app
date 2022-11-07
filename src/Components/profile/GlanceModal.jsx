@@ -55,7 +55,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
               name="first_name"
               onChange={handleChange}
               value={formData.first_name}
-            />{" "}
+              disabled />{" "}
           </div>
 
           <div className="dataLabel">
@@ -66,7 +66,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
               name="last_name"
               onChange={handleChange}
               value={formData.last_name}
-            />{" "}
+              disabled />{" "}
           </div>
 
           <div className="dataLabel">
@@ -77,7 +77,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
               name="age"
               onChange={handleChange}
               value={formData.age}
-            />{" "}
+              disabled />{" "}
           </div>
 
           <div className="dataLabel">
@@ -88,7 +88,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
               name="city"
               onChange={handleChange}
               value={formData.city}
-            />{" "}
+              disabled />{" "}
           </div>
 
           <div className="dataLabel">
@@ -99,7 +99,7 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
               name="state"
               onChange={handleChange}
               value={formData.state}
-            />{" "}
+              disabled />{" "}
           </div>
 
           <div className="dataLabel">
@@ -110,10 +110,10 @@ const GlanceModal = ({ setShowGlanceModal, userData, changeUserData }) => {
               name="zipcode"
               onChange={handleChange}
               value={formData.zipcode}
-            />{" "}
+              disabled />{" "}
           </div>
 
-          <input type="submit" value="Update Glance info" id="editUserDataBtn" />
+          <input type="submit" value="Update Glance info" id="editUserDataBtn" disabled />
         </form>
 
         <button

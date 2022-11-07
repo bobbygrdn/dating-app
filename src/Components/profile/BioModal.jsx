@@ -50,9 +50,9 @@ const BioModal = ({ setShowBioModal, userData, changeUserData }) => {
                         onChange={handleChange}
                         rows="7"
                         cols="40"
-                    />
+                        disabled />
                     <input type='submit' value='Update Bio'
-                        id='editUserDataBtn' />
+                        id='editUserDataBtn' disabled />
 
 
                 </form>
