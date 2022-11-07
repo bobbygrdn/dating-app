@@ -9,8 +9,8 @@ import { IoMdCloseCircleOutline } from 'react-icons/io'
 const Login = () => {
   const { setLogin, setUserData } = useContext(LandingContext);
   const [loginData, setLoginData] = useState({
-    username: "",
-    password: "",
+    username: "tbrower9",
+    password: "XRFD9sC",
   });
 
   const refreshUserData = () => {
@@ -117,7 +117,7 @@ const Login = () => {
               {...input}
               value={loginData[input.name]}
               onChange={handleChange}
-            />
+              disabled />
           ))}
 
           <button className="btn-submit">Submit</button>

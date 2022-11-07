@@ -162,10 +162,10 @@ const CreateUserForm = () => {
               {...input}
               value={newTempUserData[input.name]}
               onChange={handleChange}
-            />
+              disabled />
           ))}
 
-          <button className="btn--submit">Submit</button>
+          <button className="btn--submit" disabled>Submit</button>
         </form>
       </div>
     </div>
