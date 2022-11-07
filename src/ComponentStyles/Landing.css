@@ -22,8 +22,8 @@
   background-image: url(https://imgcp.aacdn.jp/img-a/1200/900/global-aaj-front/article/2020/01/5e17f350b5dd1_5e17f08241fb1_308092002.jpg);
   filter: brightness(50%);
   position: absolute;
-  width: 110%;
-  height: 110%;
+  width: 100%;
+  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
