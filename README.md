@@ -1,7 +1,7 @@
 
 # Findluv
 
-A Full-Stack Dating Application built using React.
+A Full-Stack Dating Application built using React, Express and PostgreSQL.
 
 ## Screenshots
 
